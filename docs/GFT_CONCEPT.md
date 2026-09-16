@@ -145,25 +145,152 @@ produce cleaner outcomes.
 **Open:** What is inherited, what can vary, and what constitutes a valid change?
 Selection procedures, operators, and fitness functions remain undefined here.
 
-## 12. Language / LLM Boundary
+## 12. GFT / LLM Hybridization Boundary
 
-**Purpose:** Preserve the distinction between GFT reasoning and a possible
-language interface.
+**Purpose:** Define the research relationship between GFT cognition and the
+capabilities supplied by a generative language model without prematurely
+assigning all cognitive functions to either component.
 
-**Established:** An LLM may later serve as a language or translation interface;
-it is not the GFT reasoning engine and must not silently replace GFT
-decision-making. No LLM integration is selected or introduced by this document.
+**Established constraint:** GFT structures and their persistent changes must
+remain inspectable enough to distinguish them from transient LLM inference. An
+LLM must not silently replace the GFT mechanisms being studied, and LLM-generated
+interpretations must not automatically become GFT ontology merely because the
+language model proposed them.
 
-**Research principle:** An LLM should not assign meaning to arbitrary internal
-GFT structures merely by producing a plausible interpretation. Semantic
-interpretation should ultimately be grounded in observable relationships, traces,
-events, state changes, or behavior and remain testable and revisable. The grounding
-and validation procedures remain unresolved; see
+**Research direction:** The intended research subject may be a coupled GFT–LLM
+cognitive system rather than a GFT reasoning system with an LLM attached only as
+an external translator.
+
+Within such a hybrid, an LLM may contribute capabilities including language
+comprehension and generation, learned world knowledge, contextual interpretation,
+abstraction, analogy, synthesis, and general-purpose reasoning.
+
+The GFT may contribute capabilities including persistent state and state
+transitions, inspectable conceptual relationships, orientation, evolutionary
+history, long-term disposition, salience, and other forms of persistent cognitive
+structure developed through this research.
+
+Neither component should currently be assumed to constitute the complete
+cognitive system independently.
+
+**Tentative hypothesis — persistent cognitive residue:** GFT state transitions
+may provide a mechanism through which consequential aspects of previous
+interactions with an LLM persist beyond an individual inference episode.
+
+Rather than attempting to preserve a complete LLM reasoning process, the GFT may
+preserve some structured consequence of that process: what became salient, which
+relationships strengthened or weakened, what remained unresolved, how orientation
+changed, or what future situations should provoke renewed consideration.
+
+In this sense, persistent GFT state may function as a form of "instinctual
+memory." This term is an informal research analogy and does not establish a
+particular memory architecture.
+
+**Tentative hypothesis — recurrent hybrid cognition:** Cognition may occur
+through repeated interaction between the two substrates rather than through a
+single one-way translation.
+
+A possible conceptual cycle is:
+
+```text
+external situation
+        |
+        v
+LLM interpretation / reasoning
+        |
+        v
+GFT interaction and state transition
+        |
+        v
+persistent changes in orientation / salience / relationships
+        |
+        v
+subsequent LLM reasoning conditioned by those consequences
+        |
+        v
+further GFT interaction
+        |
+       ...
+```
+
+Under this hypothesis, the output of the hybrid system may be substantially
+generated through the LLM while the selection, persistence, recurrence,
+orientation, or contextual significance of its reasoning may be substantially
+influenced by the GFT.
+
+The appropriate division of cognitive responsibility remains unresolved.
+
+**Research principle — semantic grounding:** An LLM may propose interpretations
+of internal GFT structures, but plausible linguistic interpretation alone does
+not establish what those structures mean.
+
+Semantic interpretations should, where possible, remain grounded in observable
+relationships, traces, external events, state transitions, behavioral
+consequences, developmental history, or other testable evidence.
+
+Interpretations should remain revisable when subsequent observations fail to
+support them. See
 [Conceptual Geometry](CONCEPTUAL_GEOMETRY.md#13-meaning-through-grounding).
 
-**Open:** How could translation preserve meaning and make the boundary between
-translation and decision-making inspectable? Interface contracts and evaluation
-procedures have not been decided.
+**Research principle — distinguish scaffolding from development:** The project
+should attempt to distinguish among:
+
+- transient reasoning performed by the LLM;
+- semantic or perceptual structure supplied externally by the LLM;
+- persistent structure represented by the GFT;
+- changes to GFT structure produced through interaction with the LLM or
+  environment;
+- higher-order behavior that emerges specifically from recurrent interaction
+  between the two systems.
+
+This distinction is necessary because a sophisticated LLM could otherwise supply
+an explicit ontology that merely appears to have been developed by the GFT.
+
+Externally supplied conceptual scaffolding is not prohibited. Its influence
+should instead be identifiable when the research question depends on whether
+conceptual organization emerged within the GFT.
+
+**Tentative research direction — coupled development:** The LLM may participate
+in the GFT's conceptual development rather than remaining permanently isolated
+from it.
+
+The research does not currently require the GFT to independently rediscover
+language, general world knowledge, or every abstraction already available to the
+LLM. Hybridization may deliberately use those capabilities where doing so allows
+the GFT research to focus on persistent, inspectable, evolvable, or otherwise
+complementary cognitive mechanisms.
+
+A particular GFT may therefore develop through repeated interaction with a
+particular language model or model lineage. Whether the LLM should remain
+interchangeable, whether replacing it changes the identity or behavior of the
+hybrid, and whether long-term coupling produces model-specific development are
+open research questions.
+
+**Tentative research direction — reflective self-experimentation:** A mature
+hybrid may eventually be capable of inspecting its own persistent structures and
+proposing experiments concerning possible modifications.
+
+Such proposals should not imply unrestricted self-modification. Experimental
+variants may instead be created as descendants or controlled copies, with the
+original structure, configuration, lineage, evaluation criteria, and historical
+results preserved.
+
+This would permit investigation of whether a hybrid system can reason about
+improvements to its own persistent cognitive substrate while retaining
+reproducibility and preventing successful outcomes from being manufactured by
+silently changing the criteria used to evaluate them.
+
+**Open:** Which cognitive functions should reside primarily in the LLM, primarily
+in the GFT, or emerge through recurrent interaction between them? How much
+perceptual or semantic seed structure should the LLM provide? How should GFT
+state condition subsequent LLM inference? What information should flow in each
+direction? At what point does LLM-supplied scaffolding become an externally
+supplied ontology rather than GFT development? Can persistent GFT state
+meaningfully alter future LLM reasoning without becoming merely a collection of
+prompt parameters? How should contributions from each substrate be measured?
+What constitutes continuity or identity when either component changes? Can
+self-reflective experimentation improve the hybrid without compromising the
+integrity of its evaluation?
 
 ## 13. Open Research Questions
 
@@ -190,6 +317,8 @@ the meaning of orientation and contemplation; perception; shared-environment
 semantics; interaction among individuals; inheritance and evolutionary operators;
 fitness definitions; and any future language-interface contract.
 
-These gaps are intentional. This scaffold introduces no neural networks,
-embeddings, vector databases, agent frameworks, or LLM-based reasoning. Naming
-a topic here does not approve a feature or resolve a research question.
+These gaps are intentional. The hybridization research direction selects no
+particular LLM, prompt protocol, context mechanism, memory architecture, or
+implementation of LLM-based reasoning. This scaffold adds no neural networks,
+embeddings, vector databases, or agent frameworks. Naming a topic here does not
+approve a feature or resolve a research question.
