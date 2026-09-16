@@ -15,5 +15,9 @@ dependencies = [
 [dependency-groups]
 dev = ["pytest==9.1.1"]
 
-# Environment-only repository for now: no build backend or package layout yet.
+# No distribution build backend yet; pytest imports directly from src.
 # Use requirements-dev.txt to reproduce direct AND transitive dependencies.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
