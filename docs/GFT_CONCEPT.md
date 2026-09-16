@@ -38,9 +38,13 @@ tree or node representation is defined here.
 
 **Purpose:** Reserve a definition for what a GFT can treat as a concept.
 
-**Open:** Existing documentation does not define a concept, its identity, its
-meaning, or its relationship to fuzzy reasoning. How are concepts distinguished
-and related? No storage form or computational representation is implied by the term.
+**Experimental hypothesis:** [Conceptual Geometry](CONCEPTUAL_GEOMETRY.md) records
+the current detailed experimental hypothesis for conceptual representation. It
+is not an established architecture or a selected computational representation.
+
+**Open:** A concept's identity, meaning, and relationship to fuzzy reasoning
+remain unsettled. How are concepts distinguished and related? The linked
+hypothesis's theoretical and implementation questions remain open.
 
 ## 4. Conceptual Workspace
 
@@ -149,6 +153,13 @@ language interface.
 **Established:** An LLM may later serve as a language or translation interface;
 it is not the GFT reasoning engine and must not silently replace GFT
 decision-making. No LLM integration is selected or introduced by this document.
+
+**Research principle:** An LLM should not assign meaning to arbitrary internal
+GFT structures merely by producing a plausible interpretation. Semantic
+interpretation should ultimately be grounded in observable relationships, traces,
+events, state changes, or behavior and remain testable and revisable. The grounding
+and validation procedures remain unresolved; see
+[Conceptual Geometry](CONCEPTUAL_GEOMETRY.md#13-meaning-through-grounding).
 
 **Open:** How could translation preserve meaning and make the boundary between
 translation and decision-making inspectable? Interface contracts and evaluation

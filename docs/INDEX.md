@@ -9,6 +9,9 @@ by this index.
 - [GFT Concept](GFT_CONCEPT.md) — conceptual research scaffold distinguishing
   established decisions, tentative interpretations, and unresolved questions;
   not a complete architecture or implementation specification.
+- [Conceptual Geometry](CONCEPTUAL_GEOMETRY.md) — current detailed experimental
+  hypothesis for conceptual representation, with tentative geometric relationships,
+  semantic grounding principles, and open questions; not an established architecture.
 
 ## Established project decisions
 
