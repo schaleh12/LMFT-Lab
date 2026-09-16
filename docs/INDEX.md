@@ -4,6 +4,12 @@ This area is for research specifications, architecture documents, hypotheses,
 and theoretical design. No GFT theory or implementation architecture is defined
 by this index.
 
+## Research specifications
+
+- [GFT Concept](GFT_CONCEPT.md) — conceptual research scaffold distinguishing
+  established decisions, tentative interpretations, and unresolved questions;
+  not a complete architecture or implementation specification.
+
 ## Established project decisions
 
 - [AGENTS.md](../AGENTS.md) defines the repository's research and development rules.
