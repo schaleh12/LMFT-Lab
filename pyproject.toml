@@ -1,0 +1,19 @@
+[project]
+name = "gft-lab"
+version = "0.0.0"
+description = "Experimental research into inspectable, evolvable Genetic Fuzzy Tree architectures"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy==2.5.3",
+    "scipy==1.18.1",
+    "deap==1.4.4",
+    "scikit-fuzzy==0.5.0",
+    "networkx==3.6.1",
+]
+
+[dependency-groups]
+dev = ["pytest==9.1.1"]
+
+# Environment-only repository for now: no build backend or package layout yet.
+# Use requirements-dev.txt to reproduce direct AND transitive dependencies.

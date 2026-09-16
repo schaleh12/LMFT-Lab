@@ -1,0 +1,12 @@
+# Complete development environment, including runtime dependencies.
+-r requirements.txt
+
+# Keep pytest consistent with the dev group in pyproject.toml.
+pytest==9.1.1
+
+# Existing transitive test dependencies on Python 3.12.
+colorama==0.4.6; sys_platform == "win32"
+iniconfig==2.3.0
+packaging==26.3
+pluggy==1.6.0
+Pygments==2.21.0
