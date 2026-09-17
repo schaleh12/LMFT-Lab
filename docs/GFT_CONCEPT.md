@@ -250,6 +250,45 @@ Externally supplied conceptual scaffolding is not prohibited. Its influence
 should instead be identifiable when the research question depends on whether
 conceptual organization emerged within the GFT.
 
+**Research principle — persistent cognitive sovereignty:** Persistent GFT
+structure should retain meaningful independence from transient LLM inference.
+
+An LLM may inform, challenge, contextualize, expand, or substantially influence
+GFT state, but LLM output should not possess automatic authority over persistent
+GFT orientation merely because it is linguistically persuasive, confident,
+verbose, repetitive, instruction-conditioned, or prevalent in the model's
+training-derived representations.
+
+For purposes of this research, persistent GFT structures may provisionally be
+described as an "instinctual" substrate: accumulated relationships, orientations,
+salience, tensions, dispositions, and other persistent consequences of
+development that survive individual LLM inference episodes. This is an informal
+research analogy and does not imply biological instinct or subjective experience.
+
+Persistent disagreement between the GFT and its associated LLM is a permissible
+system state. The GFT should not be required to reach agreement with the LLM as
+a termination condition for reflection.
+
+Repeated or paraphrased instances of substantially equivalent LLM reasoning
+should not automatically receive independent evidential weight. Once an argument
+or relationship has been substantively represented, further linguistic
+elaboration alone should not compel repeated reconsideration or persistent state
+change.
+
+This independence must not make persistent GFT structure immutable. New evidence,
+experience, counterexamples, failed predictions, newly discovered relationships,
+or other substantively relevant information must remain capable of challenging
+and changing persistent GFT state.
+
+A repeated failure of LLM inference to resolve a persistent conflict may instead
+be represented as information about the behavior or limitations of that inference
+process rather than as additional evidence for the repeated conclusion.
+
+The mechanisms by which the system distinguishes substantive new information
+from rhetorical or semantic repetition, models LLM reliability, terminates
+unproductive inference loops, and revises persistent state remain open research
+questions.
+
 **Tentative research direction — coupled development:** The LLM may participate
 in the GFT's conceptual development rather than remaining permanently isolated
 from it.
@@ -290,7 +329,10 @@ meaningfully alter future LLM reasoning without becoming merely a collection of
 prompt parameters? How should contributions from each substrate be measured?
 What constitutes continuity or identity when either component changes? Can
 self-reflective experimentation improve the hybrid without compromising the
-integrity of its evaluation?
+integrity of its evaluation? How should the hybrid distinguish genuinely new
+evidence from repeated inference? How should persistent disagreement between the
+GFT and LLM be represented and resolved without making persistent GFT structure
+immutable or giving repeated LLM inference de facto control over it?
 
 ## 13. Open Research Questions
 
