@@ -51,7 +51,7 @@ Accordingly, an implementation should not assume without experimental justificat
 
 ## 4. The 3 × 2 Structure
 
-**Tentative hypothesis:** A primitive duality may acquire additional conceptual resolution through interaction with a three-part distinction, producing a six-region structure.
+**Tentative hypothesis:** A primitive duality may acquire additional conceptual resolution through interaction with a three-part distinction, producing a six-position structure.
 
 Abstractly:
 
@@ -61,22 +61,25 @@ Abstractly:
              A     B     A     B     A     B
 ```
 
-This 3 × 2 geometry is currently of particular interest because a number of independently considered conceptual schemes appear capable of being projected onto a similar six-position topology.
+A current refinement of this hypothesis is that A and B need not be antonyms, mutually exclusive endpoints, or complementary memberships constrained to sum to one. They may instead represent two distinguishable and independently fuzzy manifestations of their parent distinction.
 
-Candidate examples include structures involving:
+For a candidate pair A/B, it may therefore be permissible for both memberships to be high, both to be low, or either to dominate:
 
-* freedom, justice, and efficiency;
-* agency and existence;
-* chaos and order;
-* continuity and discretion;
-* psychological or personality-related distinctions;
-* critical, pessimistic, moral, or theological distinctions.
+```text
+mu_A in [0, 1]
+mu_B in [0, 1]
 
-These mappings are experimental conceptual interpretations. They are not claims that established psychological, theological, political, or philosophical terminology objectively possesses this structure.
+no requirement that:
+mu_A + mu_B = 1
+```
+
+This interpretation is attractive because candidate bisections such as power / wastelessness, agency / existence, matter / life, or clarity / confidence can plausibly coexist rather than behaving as zero-sum opposites. Whether independent fuzzy membership is the correct computational interpretation remains an experimental question.
+
+The 3 × 2 geometry is currently of particular interest because a number of independently considered conceptual schemes appear capable of being projected onto a similar six-position topology. Candidate domains include cultural, philosophical, scientific, and psychological structures.
+
+These mappings are experimental conceptual interpretations. They are not claims that established scientific, psychological, political, theological, or philosophical terminology objectively possesses this structure.
 
 The recurrence of a 3 × 2 topology is a research observation and hypothesis to be investigated rather than assumed to be universally correct.
-
----
 
 ## 5. Structural Analogy Across Conceptual Domains
 
@@ -106,28 +109,39 @@ Whether such structural analogies actually emerge, remain stable, or provide use
 
 ## 6. Recursive Conceptual Resolution
 
-**Tentative hypothesis:** Conceptual resolution may increase recursively by introducing additional distinctions.
+**Tentative hypothesis:** Conceptual organization may increase recursively by introducing additional distinctions, with factorial structure serving as a candidate organizational grammar rather than merely a sequence of node counts.
 
-One candidate pattern is related to factorial growth:
+The numerical progression is:
 
 ```text
 2!  = 2
-3!  = 6
-4!  = 24
-5!  = 120
-6!  = 720
+3!  = 3 × 2 = 6
+4!  = 4 × 3 × 2 = 24
+5!  = 5 × 4 × 3 × 2 = 120
+6!  = 6 × 5 × 4 × 3 × 2 = 720
 ...
 ```
 
-In this interpretation, the highest layers contain extremely generalized distinctions, while subsequent layers provide increasingly fine resolution with which contextual nuances can be distinguished.
+Under the current interpretation, the factors themselves may have structural significance. For example, a 3! structure may be interpreted as three parent distinctions, each resolving into a two-part fuzzy structure. A 4! structure may then organize four interacting 3 × 2 structures. Higher factorial orders may provide candidate organizations of structures available at preceding orders.
 
-This does **not** currently establish that a GFT must literally contain 2, 6, 24, 120, or 720 nodes, concepts, dimensions, or branches.
+A candidate Version 0.1 seed geometry currently being considered is therefore:
 
-The factorial pattern is presently a conceptual hypothesis about increasing combinatorial resolution.
+```text
+4!
+|
++-- Cultural       -> 3 × 2
++-- Philosophical  -> 3 × 2
++-- Scientific     -> 3 × 2
++-- Psychological  -> 3 × 2
+```
 
-The appropriate computational interpretation remains unresolved.
+This gives 24 seed positions, but the hypothesis is not simply that 24 nodes are intrinsically important. The experimental claim is that the organization `4 × 3 × 2` may matter: four interacting domains, each containing three parent distinctions, each with two independently fuzzy manifestations.
 
----
+Possible future interpretations of 5! and 6! include progressively broader organizations of already-developed lower-order structures. Informal metaphors such as larger conceptual territories or "kingdoms" may be useful during exploration, but no computational meaning has yet been assigned to those higher orders.
+
+The reciprocal sequence `1/n!` remains of interest as a possible description of progressively finer or diminishing contributions as factorial order increases. It is **not currently established as a literal numerical weighting rule**. Equal, factorial, learned, evolved, or other weighting schemes should remain experimentally comparable rather than being assumed in advance.
+
+This does **not** establish that every GFT must literally contain 2, 6, 24, 120, or 720 nodes, concepts, dimensions, or branches, nor that factorial expansion is necessarily the correct architecture. The factorial interpretation remains a falsifiable conceptual hypothesis.
 
 ## 7. Prime Components
 
@@ -363,8 +377,8 @@ Major unresolved questions include:
 4. Is the 3 × 2 structure genuinely important or merely an attractive human abstraction?
 5. What mathematical role, if any, should factorial growth play?
 6. What mathematical role, if any, should prime numbers play?
-7. How should the contribution of increasingly deep abstraction levels be weighted?
-8. Does a relationship such as 1/n! provide a useful model for decreasing influence at increasingly specific levels?
+7. How should the contribution of increasingly deep abstraction levels or factorial orders be weighted?
+8. Does a relationship such as 1/n! provide a useful model for progressively finer or diminishing contribution, and if so, should it be literal, approximate, learned, evolved, or merely descriptive?
 9. Can concepts possess fuzzy membership in all regions without the representation becoming uninformative?
 10. How are abstraction depth and geometric position related?
 11. How does conceptual genealogy differ from geometric similarity?
@@ -393,6 +407,8 @@ This document does not currently specify:
 * fixed English labels for primitive structures;
 * the exact significance of prime numbers;
 * the exact significance of factorial growth;
+* whether 1/n! has any literal numerical weighting role;
+* whether paired child memberships are independent in every 3 × 2 implementation;
 * how concepts are created or destroyed;
 * how conceptual ancestry is encoded;
 * how an LLM receives GFT state;
