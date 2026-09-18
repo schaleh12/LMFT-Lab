@@ -44,6 +44,10 @@ The implementation must preserve the following distinctions:
 The LLM must not silently replace the GFT's cognition. LLM interpretations are
 proposals or inputs unless a documented interface explicitly gives them another
 role. A plausible verbal explanation is not proof of what a GFT structure means.
+The GFT retains authority over which proposed concepts are admitted, which
+communicative intention is selected, and whether expression occurs at all. The
+LLM may realize or clarify a selected intention, but it may not override that
+selection merely because another response would be more fluent or entertaining.
 
 ## 3. The Minimum Individual
 
@@ -63,10 +67,14 @@ discarding its developmental history, or silently changing the memory and
 conditioning protocol may create a materially different individual even if the
 same model name and personality description are retained.
 
-## 4. Candidate V0.1 Seed Geometry
+## 4. Hardcoded V0.1 Seed Geometry
 
-The following is a developmental seed, not a claim that English labels are the
-primitive reality of the geometry.
+The following structure is hardcoded as the seed geometry for the V0.1
+experiment. V0.1 proceeds on the affirmative working hypothesis that this
+geometry is a coherent and sufficient functional substrate for stable early
+development. Its use does not claim that the English labels are the primitive
+reality of conceptual geometry, that the structure is universally optimal, or
+that its performance has already been experimentally demonstrated.
 
 ```text
 GFT V0.1 SEED GEOMETRY
@@ -86,10 +94,10 @@ GFT V0.1 SEED GEOMETRY
 │   ├── Being
 │   │   ├── Agency
 │   │   └── Existence
-│   ├── Form
-│   │   ├── Chaos
-│   │   └── Order
-│   └── Change
+│   ├── Structure
+│   │   ├── Order
+│   │   └── Chaos
+│   └── Persistence
 │       ├── Continuity
 │       └── Discretion
 │
@@ -105,16 +113,29 @@ GFT V0.1 SEED GEOMETRY
 │       └── Retention
 │
 └── PSYCHOLOGICAL
-    └── deliberately under-specified at birth
+    ├── Will
+    │   ├── Intention
+    │   └── Execution
+    ├── Truth
+    │   ├── Theory
+    │   └── Fact
+    └── Discipline
+        ├── Clarity
+        └── Confidence
 ```
 
 These labels are human handles for inspecting candidate regions. Membership may
 be fuzzy and cross-cutting. A developed concept may participate in multiple
 regions, retain a distinct genealogy, and lack a concise human-language name.
 
-The Psychological domain begins comparatively open so that individuality is
-not merely authored as a character sheet. Its later structure must remain
-inspectable and historically attributable.
+The Psychological domain is a functional part of the individual at birth, not
+an empty placeholder. V0.1 must define explicit baseline memberships,
+relationships, and update behavior sufficient for Will, Truth, and Discipline
+to participate in decisions immediately. These initial conditions are a
+starting configuration, not a finished personality. Their later strengths,
+conflicts, interpretations, cross-domain relationships, and descendants must
+develop through the individual's history and remain inspectable and
+historically attributable.
 
 ## 5. Asymmetric Cultivation
 
@@ -149,7 +170,10 @@ so.
 The Psychological domain is the most developmentally protected. The teacher may
 set environmental boundaries and prevent harmful external action, but it has
 minimal authority to directly write personality, attachment, taste, private
-salience, or emotional disposition.
+salience, or emotional disposition. The hardcoded Will, Truth, and Discipline
+structure supplies initial psychological coordinates; it does not authorize the
+teacher to set their developed memberships or use them as a predetermined
+personality profile.
 
 ## 6. Developmental Phases
 
@@ -158,10 +182,10 @@ elapsed wall-clock time or a cosmetic prompt change.
 
 ### 6.1 Birth
 
-At birth, the individual may have seed geometry, update mechanisms, basic
-attention/salience behavior, and interfaces to its teacher and environment. It
-does not need a mature voice, finished opinions, comedic timing, or a simulated
-adult personality.
+At birth, the individual has the complete V0.1 seed geometry, explicit baseline
+state, update mechanisms, basic attention/salience behavior, and interfaces to
+its teacher and environment. It does not need a mature voice, finished opinions,
+comedic timing, or a simulated adult personality.
 
 ### 6.2 Early Childhood
 
@@ -376,9 +400,11 @@ V0.1 distinguishes three forms of change:
 3. **Evolutionary change** — mutation, crossover, or selection among controlled
    candidates or descendants.
 
-V0.1 must implement or simulate inspectable state adaptation. It may prototype
-developmental consolidation. It is not required to perform unrestricted or
-open-ended evolution.
+V0.1 must implement inspectable state adaptation and a minimal form of
+developmental consolidation. Experiences must be capable of producing durable,
+traceable changes in conceptual relationships and disposition; otherwise the
+system has not demonstrated development. V0.1 is not required to perform
+unrestricted or open-ended evolution.
 
 Evolutionary experiments must preserve the original individual, ancestry,
 random seed, configuration, mutation record, fitness definition, evaluation
@@ -421,8 +447,8 @@ The demonstration succeeds provisionally if:
    choice through inspectable GFT state;
 3. relevant episodic evidence can be retrieved without replaying the full
    lifetime transcript;
-4. cultural guidance affects behavior without directly specifying the entire
-   Psychological domain;
+4. cultural guidance affects behavior without directly authoring the
+   individual's developed psychological disposition;
 5. the system can distinguish LLM suggestions from admitted, grounded GFT
    structures;
 6. two individuals with the same seed but different experiences develop
@@ -466,7 +492,8 @@ The following remain deliberately unresolved:
 - the precise boundary between GFT-selected thought and LLM-supplied reasoning;
 - whether a different LLM model continues the same individual;
 - mutation, crossover, population, and fitness mechanisms;
-- whether the candidate seed geometry is computationally useful; and
+- which limitations of the selected seed geometry are revealed experimentally,
+  and what evidence would justify revising it in a later version; and
 - which later motor, artistic, social, or real-world environments should be
   introduced.
 
@@ -478,7 +505,9 @@ controlled experiments, not silently decided by implementation convenience.
 The minimal implementation order is:
 
 1. define a transparent GFT state representation and trace format;
-2. encode the candidate seed geometry without treating its labels as proven;
+2. encode the hardcoded V0.1 seed geometry with explicit baseline memberships,
+   relationships, and update behavior, without treating its labels as
+   theoretically universal;
 3. implement atomic persistence and the append-only event archive;
 4. implement episodic/semantic retrieval and bounded working-context assembly;
 5. define the LLM ↔ GFT interface and label every contribution by source;
