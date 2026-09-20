@@ -99,7 +99,7 @@ GFT V0.1 SEED GEOMETRY
 │   │   └── Chaos
 │   └── Persistence
 │       ├── Continuity
-│       └── Discretion
+│       └── Discreteness
 │
 ├── EXPERIENTIAL
 │   ├── Reflection
@@ -127,6 +127,11 @@ GFT V0.1 SEED GEOMETRY
 These labels are human handles for inspecting candidate regions. Membership may
 be fuzzy and cross-cutting. A developed concept may participate in multiple
 regions, retain a distinct genealogy, and lack a concise human-language name.
+
+Within Persistence, **Continuity** denotes preservation of identity, state, or
+process across time. **Discreteness** denotes the division of change into
+bounded events, decisions, phases, or transitions. These regions may overlap;
+they are not required to behave as a binary switch or exhaustive opposites.
 
 The Psychological domain is a functional part of the individual at birth, not
 an empty placeholder. V0.1 must define explicit baseline memberships,
