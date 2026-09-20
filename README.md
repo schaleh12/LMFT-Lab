@@ -52,6 +52,8 @@ snapshots together, verify imports and `pip check`, and run the relevant tests.
 Run tests with `.\.venv\Scripts\python.exe -m pytest` (or the macOS/Linux
 equivalent). Tests currently cover package import and deterministic structural
 birth: the complete seed hierarchy, provisional numerical bounds, and provenance.
+Direct-activation tests also cover temporary values, reset behavior, input
+validation, and inspectable traces without persistent changes.
 Learning, action selection, and persistence are not implemented yet.
 
 ## Repository layout
@@ -74,3 +76,32 @@ constructs the 40 named seed records from `docs/MINIMAL_GFT_SPEC.md` without fil
 I/O or random sampling. See [Experiment 001](experiments/EXPERIMENT_001_PERSISTENT_REVISION.md)
 for the provisional initialization values and remaining experimental decisions.
 This is structural scaffolding, not the complete runtime birth process.
+
+## Inspect one numerical input
+
+Run this from the repository root in PowerShell. The explicit import path is
+needed until distribution packaging is introduced.
+
+```powershell
+@'
+import sys
+sys.path.insert(0, "src")
+from gft_lab.birth import create_birth_state
+from gft_lab.activation import activate_direct
+
+state = create_birth_state("seed-a", birth_event_id="birth-a", random_seed=42)
+frame = activate_direct(
+    state,
+    {"philosophical/being/agency": 0.8, "philosophical/being/existence": 0.3},
+    event_id="input-1",
+    source_instance="mechanical-fixture-1",
+)
+print(frame.format_trace())
+'@ | .\.venv\Scripts\python.exe -B -
+```
+
+The trace lists all 40 nodes and distinguishes supplied values from omitted
+inputs. A new call computes a fresh temporary activation frame; it does not
+accumulate activation or modify the birth state. These are developer-authored
+numbers, not discovered meanings or evidence of understanding. There is no
+propagation, learning, action selection, or automatic file storage.

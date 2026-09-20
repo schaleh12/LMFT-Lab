@@ -73,6 +73,32 @@ The owner's incremental implementation request permits this structural step
 before resolving the behavior-related choices below. Numerical fixtures and
 acceptance criteria must still be frozen before an evaluated experiment.
 
+### Completed baby step: direct activation inspection
+
+The owner approved the numerical example before attempting a manually interpreted
+situation. `src/gft_lab/activation.py` implements only Runtime Section 9.1 and
+the temporary-reset behavior of Section 8. It is not the full event processor.
+
+- A developer-authored input supplies stable node IDs and membership values.
+  Agency `0.8` and Existence `0.3` are the first mechanical fixture; they carry
+  no asserted semantic interpretation. Paired values are not normalized.
+- Each call validates the entire input and returns an immutable activation frame
+  for all 40 nodes. Omitted values become zero. Unknown IDs, non-finite values,
+  and values outside `[0, 1]` are rejected rather than silently corrected.
+- The frame preserves input ID, developer source/version, individual and birth
+  IDs, seed/initialization/state versions, and the supplied value or omission
+  behind every activation. Its rule version is `direct-only-1`.
+- Activation is an ephemeral overlay; the immutable structural birth record and
+  its persistent fields remain unchanged. Subsequent inputs start from zero,
+  and previously returned frames remain unchanged and inspectable.
+- No propagation, timestamps, event sequence enforcement, durable event archive,
+  or full runtime event envelope exists yet. Input IDs are caller-supplied, and
+  this calculation does not provide stream-wide duplicate detection.
+
+This diagnostic path does not meet the full mechanical-phase acceptance criteria.
+Human interpretations of a future imagined situation must be labeled by source;
+they would be authored input, not meanings independently inferred by the GFT.
+
 ### Requirements for the eventual mechanical experiment
 
 - Instantiate the complete seed from Minimal Section 4, including Cultural,
