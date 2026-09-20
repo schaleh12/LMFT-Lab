@@ -99,6 +99,41 @@ This diagnostic path does not meet the full mechanical-phase acceptance criteria
 Human interpretations of a future imagined situation must be labeled by source;
 they would be authored input, not meanings independently inferred by the GFT.
 
+### Completed baby step: bounded propagation
+
+`src/gft_lab/propagation.py` now applies Runtime Section 9.2 to explicitly
+supplied directed `association` records. The owner authorized this mechanical
+step; it does not establish the real seed's association network or semantics.
+
+- Defaults are two synchronous passes and gain 0.25, as specified by the runtime.
+  Every pass uses the preceding pass's activation and the original direct input:
+  `clamp(direct + gain * sum(source_activation * weight), 0, 1)`.
+- Genealogical links do not implicitly propagate. Only supplied active
+  associations participate; negative weights reduce relevance, not baseline.
+  Confidence and plasticity are recorded but are not extra multipliers in this
+  formula. Neither relationships nor persistent node values change.
+- Immutable results retain the direct-input frame, configuration, relationship
+  records and source, and every pass's source contributions, sum, unclamped
+  value, and clamped result. Rule version is `synchronous-association-1`.
+- Deterministic summation uses relationship-ID order and `math.fsum`; node
+  calculations use stable ID order. Duplicate relationship IDs or directed pairs
+  are rejected in this diagnostic path to avoid accidental double-counting.
+- The diagnostic API permits 0 through 100 passes and gain in `[0, 1]`; these
+  are engineering limits, not validated cognitive properties. Zero passes or
+  zero gain leaves direct activation unchanged. Cycles and self-links remain
+  bounded by the same fixed pass count.
+- Endpoint references and numerical fields are validated before calculation.
+  Relationship provenance IDs are recorded as supplied; resolving them against
+  an authoritative event archive remains future work.
+
+Synthetic tests use existing node IDs only as numerical addresses. For unit
+weights on A -> B -> C, direct A = 0.8 produces B = 0.2 on pass 1 and C = 0.05
+on pass 2. This does not assert that the addressed concepts cause, imply, or
+support one another. No synthetic edges are installed in the birth constructor.
+
+No action selection, learning, semantic inference, persistence, or full
+Experiment 001 execution is provided by this step.
+
 ### Requirements for the eventual mechanical experiment
 
 - Instantiate the complete seed from Minimal Section 4, including Cultural,

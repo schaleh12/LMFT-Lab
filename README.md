@@ -54,6 +54,8 @@ equivalent). Tests currently cover package import and deterministic structural
 birth: the complete seed hierarchy, provisional numerical bounds, and provenance.
 Direct-activation tests also cover temporary values, reset behavior, input
 validation, and inspectable traces without persistent changes.
+Propagation tests cover synchronous passes, signed influences, bounded cycles,
+deterministic ordering, and invalid relationship/configuration rejection.
 Learning, action selection, and persistence are not implemented yet.
 
 ## Repository layout
@@ -105,3 +107,24 @@ inputs. A new call computes a fresh temporary activation frame; it does not
 accumulate activation or modify the birth state. These are developer-authored
 numbers, not discovered meanings or evidence of understanding. There is no
 propagation, learning, action selection, or automatic file storage.
+
+## Bounded propagation
+
+`gft_lab.propagation.propagate_activation` extends direct activation over an
+explicit tuple of `Association` records, with a required `relationship_source`
+identifying the authored wiring. The seed hierarchy itself supplies no implicit
+propagation edges. The default `PropagationConfig` uses two passes and gain 0.25.
+
+In the synthetic unit-weight chain A -> B -> C used by the tests:
+
+| Stage | A | B | C |
+| --- | ---: | ---: | ---: |
+| Direct input | 0.8 | 0 | 0 |
+| Pass 1 | 0.8 | 0.2 | 0 |
+| Pass 2 | 0.8 | 0.2 | 0.05 |
+
+These are numerical test connections, not established conceptual relationships.
+The result's `format_trace()` shows each pass's inputs, weighted contributions,
+and clamping. The result's `activations` property returns the final temporary
+values. No learned or persistent state is changed. See Experiment 001 for the
+diagnostic limits and remaining research decisions.
