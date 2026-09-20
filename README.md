@@ -50,14 +50,15 @@ and configuration when experiments are introduced.
 Dependency updates should be deliberate: update the declarations and pinned
 snapshots together, verify imports and `pip check`, and run the relevant tests.
 Run tests with `.\.venv\Scripts\python.exe -m pytest` (or the macOS/Linux
-equivalent). Currently the only test checks that the local package imports;
-there is no GFT implementation or behavioral test suite yet.
+equivalent). Tests currently cover package import and deterministic structural
+birth: the complete seed hierarchy, provisional numerical bounds, and provenance.
+Learning, action selection, and persistence are not implemented yet.
 
 ## Repository layout
 
 ```text
-src/gft_lab/  Minimal Python package; future GFT implementation
-tests/       Automated tests; currently a package import sanity check
+src/gft_lab/  Python package with in-memory structural birth construction
+tests/       Package and structural birth validation tests
 docs/        Research specifications, hypotheses, and design documentation
 experiments/ Controlled experiments and reproducibility records
 ```
@@ -65,4 +66,11 @@ experiments/ Controlled experiments and reproducibility records
 See [the documentation index](docs/INDEX.md) for established decisions and open
 research questions, and [the experiment guidelines](experiments/README.md) for
 reproducibility requirements. These directories establish places for future work;
-they do not define a GFT architecture or an evolutionary experiment.
+the research documents define their current scope.
+
+The first implemented step is `gft_lab.birth.create_birth_state`, which takes an
+individual ID plus explicit `birth_event_id` and `random_seed` arguments. It
+constructs the 40 named seed records from `docs/MINIMAL_GFT_SPEC.md` without file
+I/O or random sampling. See [Experiment 001](experiments/EXPERIMENT_001_PERSISTENT_REVISION.md)
+for the provisional initialization values and remaining experimental decisions.
+This is structural scaffolding, not the complete runtime birth process.
