@@ -6,7 +6,7 @@ import re
 
 import pytest
 
-from gft_lab.birth import InitialValues, create_birth_state
+from lmft_lab.birth import InitialValues, create_birth_state
 
 
 def newborn():
@@ -14,8 +14,8 @@ def newborn():
 
 
 def test_seed_matches_controlling_document():
-    spec = (Path(__file__).resolve().parents[1] / "docs" / "MINIMAL_GFT_SPEC.md")
-    diagram = spec.read_text(encoding="utf-8").split("GFT V0.1 SEED GEOMETRY", 1)[1]
+    spec = (Path(__file__).resolve().parents[1] / "docs" / "MINIMAL_LMFT_SPEC.md")
+    diagram = spec.read_text(encoding="utf-8").split("LMFT V0.1 SEED GEOMETRY", 1)[1]
     diagram = diagram.split("```", 1)[0]
     expected = []
     parents = {}

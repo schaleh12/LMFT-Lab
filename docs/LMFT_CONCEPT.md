@@ -1,8 +1,8 @@
 # LMFT Concept — Research Hypothesis
 
 **Status:** Proposed research direction, not demonstrated cognition. This document
-supersedes the evolution-centered GFT hypothesis. Existing filenames and the
-`gft_lab` package remain unchanged for compatibility. See the
+supersedes the evolution-centered GFT hypothesis. Specification filenames and the Python package now use LMFT terminology;
+historical research references and original seed-version identifiers are retained. See the
 [documentation index](INDEX.md) for specification authority and migration notes.
 
 ## 1. Central hypothesis
@@ -23,7 +23,7 @@ authorized real-world goals. None of those mature capacities is established.
 
 ## 2. Founding constitution and conceptual geometry
 
-The [seed](MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry) is a foundational
+The [seed](MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry) is a foundational
 scaffold analogous to a philosophical or religious constitution: a small set of
 principles through which experience is interpreted and integrated. This analogy
 requires neither supernatural belief nor worship nor assumptions of consciousness.
@@ -38,6 +38,13 @@ Cultural, Philosophical, Experiential, and Psychological branches are retained.
 Psychological → Contemplation replaces Discipline and retains Clarity and
 Confidence. Experiential remains because it is part of the established seed;
 the older Scientific alternative is historical geometry research.
+
+The 40 founding nodes, names, and parent-child organization are canonical and
+frozen for V0.1; changes require explicit owner approval. Learned concepts,
+relationships, judgments, memories, and interpretations are separate developmental
+state. Experiential Reflection appraises Novelty/Salience for attention, whereas
+Psychological Contemplation evaluates interpretive Clarity and evidential Confidence.
+This structural freeze does not finalize numerical activation or revision rules.
 
 The geometry may support conceptual compression into persistent relationships
 and expansion into contextual distinctions. Whether it does so usefully must be
@@ -143,7 +150,7 @@ social behavior and continuous autonomy are roadmap topics, not V0.1 acceptance 
 **Make the newborn LMFT change its mind in a traceable way, save its state to
 disk, restart, and demonstrate that it remembers why.**
 
-The [minimal specification](MINIMAL_GFT_SPEC.md) and
+The [minimal specification](MINIMAL_LMFT_SPEC.md) and
 [Experiment 001](../experiments/EXPERIMENT_001_PERSISTENT_REVISION.md) define the
 small mechanical target. Show persistent revision, supporting and contradicting
 evidence, reproducibility, and a later behavioral consequence. Passing establishes

@@ -1,7 +1,7 @@
 # LMFT Runtime Specification
 
 **Status:** V0.1 provisional computational design
-**Depends on:** [Minimal LMFT Specification](MINIMAL_GFT_SPEC.md)
+**Depends on:** [Minimal LMFT Specification](MINIMAL_LMFT_SPEC.md)
 **Purpose:** Convert the developmental LMFT design into a small, transparent,
 testable runtime without prematurely claiming that its first numerical choices
 are final.
@@ -100,10 +100,17 @@ This is called an LMFT because the seed and conceptual ancestry remain tree-like
 The runtime graph is not required to be a pure tree once fuzzy cross-membership
 and learned association are represented.
 
+The founding inventory is frozen by [Minimal Section 4](MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
+Its names and parent-child links cannot be changed or expanded without explicit
+owner approval. `seeded: true` identifies founding nodes; future derived concepts
+must remain non-founding records. Learned edges, judgments, memories, and revisable
+interpretations do not alter the founding hierarchy. Numerical updates remain
+experimental; the structural freeze does not freeze activation or revision rules.
+
 ### 4.2 Node record
 
 The proposed runtime node record is below. The current birth implementation
-groups numerical fields in `values` and supports only the historical seed:
+groups numerical fields in `values` and supports the canonical seed:
 
 ```yaml
 id: stable machine identifier
@@ -218,8 +225,9 @@ Birth creates:
 - a first recoverable checkpoint.
 
 The current constructor does not emit an event, create memory, or checkpoint.
-It uses `minimal-v0.1-seed-1`, including Discipline. See the
-[seed migration boundary](MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry).
+It uses `lmft-v0.1-seed-1`, including Contemplation. Explicit conversion from
+`minimal-v0.1-seed-1` is limited to neutral structural birth records. See the
+[seed migration boundary](MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
 
 ### 6.2 Provisional baseline policy
 
@@ -603,6 +611,12 @@ the first experiment.
 ## 15. Contemplation and Idle Processing
 
 Contemplation is a bounded internal event, not unrestricted free-running language.
+Experiential → Reflection appraises Novelty and Salience for attention/revisiting;
+Psychological → Contemplation evaluates Clarity and evidential Confidence of an
+interpretation. Novel or salient content can trigger contemplation without being
+credible. The event kind `reflection` below is historical runtime vocabulary for
+reflective processing, not an instruction to activate the Experiential Reflection
+branch or an implementation of either branch. See [Minimal Section 4](MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
 Reactive contemplation follows an external event or conflict; endogenous
 contemplation revisits a recorded unresolved question. Both retain question ID,
 trigger, evidence references, activation trace, alternatives, proposed changes,
@@ -788,7 +802,7 @@ and trace limits.
 
 ## 21. Implementation Sequence
 
-For the immediate milestone follow [Minimal Section 18](MINIMAL_GFT_SPEC.md#18-implementation-order).
+For the immediate milestone follow [Minimal Section 18](MINIMAL_LMFT_SPEC.md#18-implementation-order).
 The sequence below is the retained broader roadmap; it is not a requirement to
 implement every component before demonstrating one persistent revision.
 

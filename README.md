@@ -27,20 +27,32 @@ Genetic search, breeding, crossover, and fitness optimization are no longer
 required. Distinctive personality, relationships, continuous contemplation, and
 authorized real-world agency belong to the long-term roadmap.
 
+The [40-node founding seed](docs/MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry)
+is canonical and frozen for V0.1, including Contemplation. Changes to its names,
+inventory, or parent-child organization require explicit approval. Learned state
+and interpretations remain separate; numerical mechanisms remain experimental.
+
 ## Migration and implementation status
 
-LMFT means **Language Model Fuzzy Tree**. The GitHub repository, project directory,
-`gft_lab` package, `gft-lab` metadata, dependency pins, and existing specification
-filenames retain their historical names. DEAP remains installed in the recorded
-environment but is not required by the new research direction.
+LMFT means **Language Model Fuzzy Tree**. The project is LMFT-Lab, the Python
+package is `lmft_lab`, and the specifications use LMFT filenames. Old `gft_lab`
+imports must be updated; no compatibility import alias is installed. Dependency
+pins are unchanged. DEAP remains a legacy dependency, not a research requirement.
 
-Implemented: deterministic in-memory structural birth, direct activation, and
-bounded synchronous propagation with inspectable traces. Not implemented:
-persistent revision, disk memory/restart, Contemplation, constitutional enforcement,
-SLMs, or runtime LLM integration. The code still uses Discipline and its path IDs;
-the target seed renames it to Contemplation, retaining Clarity and Confidence.
-[Minimal Section 4](docs/MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry) describes
-that pending versioned migration and preserves the historical code fixture.
+Implemented: canonical 40-node structural birth (`lmft-v0.1-seed-1`), explicit
+historical birth-record conversion, direct activation, and bounded propagation.
+Contemplation is now a seed label and path, not an implemented cognitive process.
+Persistent judgment revision, disk memory/restart, constitutional enforcement,
+SLMs, and runtime LLM integration remain unimplemented.
+
+`lmft_lab.migration.migrate_legacy_birth_record` accepts an exact historical
+neutral birth record (`minimal-v0.1-seed-1`) and returns a new canonical state plus
+migration metadata without altering the input or writing files. It rejects mixed
+versions and developed states. External relationships, traces, and saved files
+are not automatically migrated. See [Minimal Section 4](docs/MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
+
+The local workspace folder and GitHub remote still use `GFT-Lab` pending the
+separate location/repository rename; these names do not affect Python imports.
 
 ## Recreate the development environment
 
@@ -66,10 +78,10 @@ requirements files pin the installed direct and transitive package versions:
 test dependencies. Use the latter for reproducible development setup with the
 existing pip 24.0; no additional environment manager is required.
 
-The minimal Python package lives in `src/gft_lab`. Pytest adds `src` to its import
+The minimal Python package lives in `src/lmft_lab`. Pytest adds `src` to its import
 path so tests use this checkout. Distribution packaging and a build backend are
 deferred; use the requirements commands above rather than `pip install .`.
-The placeholder project version is `0.0.0`. Outside pytest, importing `gft_lab`
+The placeholder project version is `0.0.0`. Outside pytest, importing `lmft_lab`
 currently requires adding `src` to Python's import path.
 
 The pins record the working Windows CPython 3.12.3 environment, not a
@@ -93,7 +105,7 @@ Learning, action selection, and persistence are not implemented yet.
 ## Repository layout
 
 ```text
-src/gft_lab/  Python package with in-memory structural birth construction
+src/lmft_lab/  Python package with in-memory structural birth construction
 tests/       Package and structural birth validation tests
 docs/        Research specifications, hypotheses, and design documentation
 experiments/ Controlled experiments and reproducibility records
@@ -104,10 +116,10 @@ research questions, and [the experiment guidelines](experiments/README.md) for
 reproducibility requirements. These directories establish places for future work;
 the research documents define their current scope.
 
-The first implemented step is `gft_lab.birth.create_birth_state`, which takes an
+The first implemented step is `lmft_lab.birth.create_birth_state`, which takes an
 individual ID plus explicit `birth_event_id` and `random_seed` arguments. It
-constructs the 40 historical seed records documented in
-[Minimal Appendix A](docs/MINIMAL_GFT_SPEC.md#appendix-a-historical-implemented-seed-compatibility) without file
+constructs the 40 canonical seed records documented in
+[Minimal Section 4](docs/MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry) without file
 I/O or random sampling. See [Experiment 001](experiments/EXPERIMENT_001_PERSISTENT_REVISION.md)
 for the provisional initialization values and remaining experimental decisions.
 This is structural scaffolding, not the complete runtime birth process.
@@ -121,8 +133,8 @@ needed until distribution packaging is introduced.
 @'
 import sys
 sys.path.insert(0, "src")
-from gft_lab.birth import create_birth_state
-from gft_lab.activation import activate_direct
+from lmft_lab.birth import create_birth_state
+from lmft_lab.activation import activate_direct
 
 state = create_birth_state("seed-a", birth_event_id="birth-a", random_seed=42)
 frame = activate_direct(
@@ -143,7 +155,7 @@ propagation, learning, action selection, or automatic file storage.
 
 ## Bounded propagation
 
-`gft_lab.propagation.propagate_activation` extends direct activation over an
+`lmft_lab.propagation.propagate_activation` extends direct activation over an
 explicit tuple of `Association` records, with a required `relationship_source`
 identifying the authored wiring. The seed hierarchy itself supplies no implicit
 propagation edges. The default `PropagationConfig` uses two passes and gain 0.25.

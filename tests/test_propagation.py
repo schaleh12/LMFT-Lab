@@ -4,8 +4,8 @@ from dataclasses import asdict, replace
 
 import pytest
 
-from gft_lab.birth import create_birth_state
-from gft_lab.propagation import Association, PropagationConfig, propagate_activation
+from lmft_lab.birth import create_birth_state
+from lmft_lab.propagation import Association, PropagationConfig, propagate_activation
 
 
 # Existing records are just addresses A/B/C for numerical tests.

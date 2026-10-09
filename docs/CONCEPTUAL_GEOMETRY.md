@@ -1,5 +1,11 @@
 # LMFT Conceptual Geometry
 
+The [canonical V0.1 seed](MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry) is
+frozen at 40 named founding nodes with fixed parent-child relationships. The
+broader geometric hypotheses below do not authorize renaming, removing,
+rearranging, or expanding that seed. Such changes require explicit approval;
+learned structure remains non-founding and numerical mechanisms experimental.
+
 ## 1. Purpose
 
 This document records an experimental hypothesis about how concepts may be represented within a Language Model Fuzzy Tree (LMFT).
@@ -138,7 +144,7 @@ a universal geometry, is:
 ```
 
 The older Scientific-domain alternative is superseded for this seed, but remains
-a historical mapping hypothesis. The controlling [Minimal Specification](MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry)
+a historical mapping hypothesis. The controlling [Minimal Specification](MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry)
 preserves all established branches except Discipline → Contemplation, whose
 children remain Clarity and Confidence. There are 40 records when domain roots
 and parent distinctions are included. This gives 24 leaf positions, but the hypothesis is not simply that 24 nodes are intrinsically important. The experimental claim is that the organization `4 × 3 × 2` may matter: four interacting domains, each containing three parent distinctions, each with two independently fuzzy manifestations.

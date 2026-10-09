@@ -4,10 +4,10 @@ from dataclasses import dataclass, fields
 from math import isfinite
 
 
-SEED_VERSION = "minimal-v0.1-seed-1"
+SEED_VERSION = "lmft-v0.1-seed-1"
 INITIALIZATION_VERSION = "neutral-structural-scaffold-1"
 
-# Minimal GFT Specification, section 4. These labels are inspection handles.
+# Minimal LMFT Specification, section 4. These labels are inspection handles.
 SEED_HIERARCHY = (
     ("CULTURAL", (
         ("Efficiency", ("Power", "Wastelessness")),
@@ -27,7 +27,7 @@ SEED_HIERARCHY = (
     ("PSYCHOLOGICAL", (
         ("Will", ("Intention", "Execution")),
         ("Truth", ("Theory", "Fact")),
-        ("Discipline", ("Clarity", "Confidence")),
+        ("Contemplation", ("Clarity", "Confidence")),
     )),
 )
 

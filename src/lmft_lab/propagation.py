@@ -4,8 +4,8 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from math import fsum, isfinite
 
-from gft_lab.activation import ActivationFrame, activate_direct
-from gft_lab.birth import BirthState
+from lmft_lab.activation import ActivationFrame, activate_direct
+from lmft_lab.birth import BirthState
 
 
 def _text(name, value):
@@ -51,7 +51,7 @@ class PropagationConfig:
     gain: float = 0.25
 
     def __post_init__(self):
-        # Diagnostic resource guard, not a proposed property of GFT cognition.
+        # Diagnostic resource guard, not a proposed property of LMFT cognition.
         if type(self.passes) is not int or not 0 <= self.passes <= 100:
             raise ValueError("passes must be an integer in [0, 100]")
         _bounded("gain", self.gain)

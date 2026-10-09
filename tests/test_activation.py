@@ -4,8 +4,8 @@ from dataclasses import FrozenInstanceError, asdict
 
 import pytest
 
-from gft_lab.activation import activate_direct
-from gft_lab.birth import create_birth_state
+from lmft_lab.activation import activate_direct
+from lmft_lab.birth import create_birth_state
 
 
 AGENCY = "philosophical/being/agency"

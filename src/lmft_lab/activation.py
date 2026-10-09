@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from math import isfinite
 
-from gft_lab.birth import BirthState, validate_birth_state
+from lmft_lab.birth import BirthState, validate_birth_state
 
 
 @dataclass(frozen=True)

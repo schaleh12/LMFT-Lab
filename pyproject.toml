@@ -1,7 +1,7 @@
 [project]
-name = "gft-lab"
+name = "lmft-lab"
 version = "0.0.0"
-description = "Experimental research into inspectable, evolvable Genetic Fuzzy Tree architectures"
+description = "Experimental research into persistent, inspectable Language Model Fuzzy Tree architectures"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [

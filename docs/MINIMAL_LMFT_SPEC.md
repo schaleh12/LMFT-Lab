@@ -1,8 +1,8 @@
 # Minimal LMFT Specification
 
 **Status:** V0.1 documentation target; only structural birth, direct activation,
-and bounded propagation are implemented. The code still uses the historical seed
-in Appendix A. This specification controls scope when the runtime or older
+and bounded propagation are implemented. The code uses the canonical seed in Section 4; Appendix A preserves
+the historical seed for explicit compatibility conversion. This specification controls scope when the runtime or older
 experiment proposals conflict with it.
 
 ## 1. Purpose
@@ -37,10 +37,17 @@ as mocks. Record model/prompt/configuration identity if a real LLM is later used
 
 ## 4. Hardcoded V0.1 Seed Geometry
 
-This is the target LMFT scaffold, not a demonstrated universal geometry. Preserve
-all 40 named records: four domain roots, twelve distinctions, and twenty-four
-leaves; no synthetic root. Paired memberships are independent, not complementary.
-The only intended label change is Discipline → Contemplation.
+**Canonical founding geometry — frozen for LMFT V0.1.** The exact 40 nodes
+below, their names, domain organization, order, and parent-child relationships
+are fixed: four domain roots, twelve distinctions, and twenty-four leaves, with
+no synthetic root. Do not rename, remove, rearrange, or expand this founding seed
+without explicit project-owner approval. Contemplation is the canonical name;
+Discipline exists only in the historical implementation in Appendix A.
+
+The freeze is a structural research decision, not proof of a universal geometry.
+Activation, memberships, priors, propagation, confidence calibration, and revision
+rules remain experimental and versioned. Paired memberships are currently treated
+as independent, not complementary; the freeze does not finalize their mathematics.
 
 ```text
 LMFT V0.1 SEED GEOMETRY
@@ -95,17 +102,48 @@ or transitions. Genealogy differs from fuzzy membership and from propagation
 edges. Experiential is retained from the established seed; Scientific was an
 older alternative, not a requested replacement.
 
-Contemplation is intended to evaluate uncertainty, resolve conceptual conflicts,
-and generate questions for the LLM. Clarity concerns intelligibility/coherence;
-Confidence concerns evidence/justification. These remain distinct from each
-other and from activation, salience, and numerical node confidence. Merely naming
-a branch Contemplation does not implement reflection.
+Founding nodes are distinct from learned concepts, non-genealogical relationships,
+judgments, memories, and interpretations. Those developmental records may refer
+to founding nodes without becoming founding nodes or altering their labels or
+parent links. Any later learned descendants must remain separately identified as
+non-founding; they do not expand the canonical seed inventory. Revising an
+interpretation of a principle must not silently revise the seed itself.
 
-The current code still emits `psychological/discipline` and its two child paths.
-A later explicit seed-version migration must map those three IDs to
-`psychological/contemplation` and its children, preserve provenance and old
-records, and update the seed-contract test. This documentation change performs
-no state or code migration. Appendix A records what the code actually constructs.
+| Branch | Responsibility | Does not establish |
+| --- | --- | --- |
+| Experiential → Reflection → Novelty / Salience | Appraise how an experience differs from prior experience and how important it is for attention or later revisiting | Whether its interpretation is coherent, true, or well supported |
+| Psychological → Contemplation → Clarity / Confidence | Deliberate about interpretations, uncertainty, conflicts, and questions; assess intelligibility/coherence separately from evidence/justification | That novelty, attention, or a persuasive explanation supplies evidence |
+
+Reflection can flag an experience for Contemplation. Contemplation may propose a
+revised interpretation or future attention priority through the normal validated
+revision path. The branches are neither synonyms nor competing implementations
+of one operation. Reactive and endogenous Contemplation can revisit experiential
+records. Seed-leaf activation is not automatically an appraisal or confidence
+measurement; neither branch's complete mechanism is implemented. Numerical
+node salience/confidence fields remain distinct from the named seed leaves.
+
+The approved implementation uses `lmft-v0.1-seed-1` and canonical Contemplation
+paths. `lmft_lab.migration.migrate_legacy_birth_record` explicitly converts a
+complete historical neutral birth record and returns `SeedMigration`: the new
+state, source/target versions, migration rule version, and the three renamed IDs.
+The source record is unchanged. Initialization values, individual/birth identity,
+random seed, and event provenance are preserved. This is structural conversion,
+not a learning event; state version remains zero.
+
+| Historical ID | Canonical ID |
+| --- | --- |
+| `psychological/discipline` | `psychological/contemplation` |
+| `psychological/discipline/clarity` | `psychological/contemplation/clarity` |
+| `psychological/discipline/confidence` | `psychological/contemplation/confidence` |
+
+The converter rejects unknown fields, altered inventory/values, mixed versions,
+and developed states. The regular constructor/validator accepts only the canonical
+version. The compatibility test independently reads Appendix A; the birth contract
+test reads the canonical diagram. No historical files, traces, or relationship
+endpoints are rewritten. External records must retain their original version and
+require a separately validated conversion using the explicit map; no checkpoint
+loader or automatic archive migration exists. Approval for this implementation
+has been granted; future founding-geometry changes still require explicit approval.
 
 ## 5. Cultivation and Founding Principles
 
@@ -163,7 +201,7 @@ Receive an external or internal event; estimate relevance, novelty, salience,
 valence, and uncertainty; map it into conceptual relationships; propagate activation;
 identify conflicts and surprises; invoke Contemplation; seek LLM clarification or
 criticism when useful; validate proposed revisions; persist justified changes;
-and revisit unresolved questions. See [the concept](GFT_CONCEPT.md#3-experience-digestion).
+and revisit unresolved questions. See [the concept](LMFT_CONCEPT.md#3-experience-digestion).
 
 V0.1 exercises only the bounded, testable subset needed for persistent revision.
 It may use authored estimates and fixed mock responses, with their provenance
@@ -254,7 +292,8 @@ and evidence for useful internalization remain research questions.
 ## 18. Implementation Order
 
 1. Record the small V0.1 fixture, evidence and revision rules, and acceptance checks.
-2. Migrate the seed label/IDs with versioned compatibility and focused tests.
+2. Canonical seed construction and explicit legacy birth conversion are implemented;
+   retain their focused compatibility tests.
 3. Add validated evidence, revision, and trace records around existing activation.
 4. Implement one deterministic revision and a read-only behavioral probe.
 5. Add recoverable file storage, reason lookup, restart, and replay.
@@ -264,10 +303,9 @@ and evidence for useful internalization remain research questions.
 ## Appendix A. Historical implemented seed compatibility
 
 **Historical only:** `minimal-v0.1-seed-1` is the unchanged GFT-era code fixture.
-The current `tests/test_birth.py` parses the marker below. Keeping this explicit
-snapshot preserves the existing test without pretending the implementation already
-supports Contemplation. The target in Section 4 is authoritative for new LMFT work;
-a passing legacy seed test does not validate that new target.
+The migration tests read this historical diagram to validate compatibility.
+The canonical birth test reads Section 4. This appendix preserves the old meaning
+and identifiers; it is not an alternative founding geometry for new individuals.
 
 ```text
 GFT V0.1 SEED GEOMETRY

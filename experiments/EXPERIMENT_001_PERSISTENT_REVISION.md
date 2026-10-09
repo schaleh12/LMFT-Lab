@@ -1,7 +1,7 @@
 # Experiment 001: Persistent Revision
 
 **Status:** Draft mechanical-phase protocol; not yet executed. Updated for the
-LMFT direction. Existing numerical diagnostics retain historical code names.
+LMFT direction. Numerical diagnostics now use the `lmft_lab` package; historical seed records remain versioned.
 
 **First milestone:** Make the newborn LMFT change its mind in a traceable way,
 save its state to disk, restart, and demonstrate that it remembers why. Show a
@@ -13,11 +13,11 @@ and decisions still needed before a scientifically interpretable run.
 
 ## 1. Specification authority and scope
 
-The [Minimal LMFT Specification](../docs/MINIMAL_GFT_SPEC.md) controls where it
-conflicts with the [Runtime Specification](../docs/GFT_RUNTIME_SPEC.md).
+The [Minimal LMFT Specification](../docs/MINIMAL_LMFT_SPEC.md) controls where it
+conflicts with the [Runtime Specification](../docs/LMFT_RUNTIME_SPEC.md).
 Runtime Section 19.1 defines the mechanical-phase requirements. Its numerical
 defaults are provisional computational choices, not validated conceptual theory.
-The broader [LMFT Concept](../docs/GFT_CONCEPT.md) and
+The broader [LMFT Concept](../docs/LMFT_CONCEPT.md) and
 [Conceptual Geometry](../docs/CONCEPTUAL_GEOMETRY.md) remain research context.
 
 This protocol does not silently amend those specifications. Choices labeled
@@ -49,20 +49,18 @@ correctness of the conceptual geometry, or the effectiveness of an LMFT–LLM hy
 
 ### Completed baby step: structural birth
 
-The project owner previously approved the historical hierarchy now preserved in
-Minimal Appendix A. `src/gft_lab/birth.py` still constructs that hierarchy in memory; it does not implement the full runtime birth contract.
-
-The target LMFT seed in Minimal Section 4 renames Discipline to Contemplation,
-retaining Clarity and Confidence. The implementation and existing seed-contract
-test have not migrated. Preserve `minimal-v0.1-seed-1` records; a future versioned
-mapping must update the parent and both child IDs without rewriting old evidence.
+The constructor now implements the canonical Section 4 seed with Contemplation,
+Clarity, and Confidence under `lmft-v0.1-seed-1`. The explicit legacy converter
+accepts only complete neutral `minimal-v0.1-seed-1` birth records, preserves its
+input, and returns new state plus migration metadata. It performs no file writes
+or conversion of external traces/relationships. Appendix A preserves the old seed.
 
 Recorded implementation conventions for this step:
 
 - All 40 named entries are records: four domain roots at depth 0, twelve parent
   distinctions at depth 1, and twenty-four leaves at depth 2. There is no synthetic
   root. Lowercase label paths form stable IDs; genealogy is explicit.
-- Seed version is `minimal-v0.1-seed-1`; initialization version is
+- Seed version is `lmft-v0.1-seed-1`; initialization version is
   `neutral-structural-scaffold-1`. The caller supplies individual ID, birth-event
   ID, and random seed. State version is zero. No randomness or clock is consulted.
 - Each node has immutable, inspectable numerical values grouped in a `values`
@@ -87,7 +85,7 @@ acceptance criteria must still be frozen before an evaluated experiment.
 ### Completed baby step: direct activation inspection
 
 The owner approved the numerical example before attempting a manually interpreted
-situation. `src/gft_lab/activation.py` implements only Runtime Section 9.1 and
+situation. `src/lmft_lab/activation.py` implements only Runtime Section 9.1 and
 the temporary-reset behavior of Section 8. It is not the full event processor.
 
 - A developer-authored input supplies stable node IDs and membership values.
@@ -112,7 +110,7 @@ they would be authored input, not meanings independently inferred by the LMFT.
 
 ### Completed baby step: bounded propagation
 
-`src/gft_lab/propagation.py` now applies Runtime Section 9.2 to explicitly
+`src/lmft_lab/propagation.py` now applies Runtime Section 9.2 to explicitly
 supplied directed `association` records. The owner authorized this mechanical
 step; it does not establish the real seed's association network or semantics.
 
@@ -144,6 +142,12 @@ support one another. No synthetic edges are installed in the birth constructor.
 
 No action selection, learning, semantic inference, persistence, or full
 Experiment 001 execution is provided by this step.
+
+The founding inventory in Minimal Section 4 is now canonical and frozen.
+Experimental learning must revise separately identified judgments, relationships,
+or interpretations, not seed names or parent-child links. Numerical rules remain
+experimental and must be fixed for each evaluated run. The approved canonical seed migration is implemented; future changes to founding
+geometry still require explicit approval.
 
 ### Requirements for the eventual mechanical experiment
 
