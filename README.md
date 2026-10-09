@@ -51,8 +51,9 @@ migration metadata without altering the input or writing files. It rejects mixed
 versions and developed states. External relationships, traces, and saved files
 are not automatically migrated. See [Minimal Section 4](docs/MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
 
-The local workspace folder and GitHub remote still use `GFT-Lab` pending the
-separate location/repository rename; these names do not affect Python imports.
+The GitHub repository is [LMFT-Lab](https://github.com/schaleh12/LMFT-Lab), and
+the local `origin` remote uses that URL. The active workspace folder still uses
+`GFT-Lab`; its eventual rename does not change the Python package name.
 
 ## Recreate the development environment
 

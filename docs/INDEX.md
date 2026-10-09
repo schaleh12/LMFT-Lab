@@ -41,8 +41,9 @@ recommendations are evaluated, while Codex is the external development assistant
 
 The Python package is now `lmft_lab`, metadata names LMFT-Lab, and specification
 filenames use LMFT. Update old imports and documentation paths. Dependency pins
-are unchanged. The workspace folder and GitHub remote still use GFT-Lab pending
-a separate location/repository rename. Historical research references remain.
+are unchanged. GitHub and the local `origin` remote now use
+[LMFT-Lab](https://github.com/schaleh12/LMFT-Lab). The active workspace folder
+still uses GFT-Lab. Historical research references remain.
 
 | Conflict discovered | Documentation resolution |
 | --- | --- |
