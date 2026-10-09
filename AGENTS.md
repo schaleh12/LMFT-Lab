@@ -1,21 +1,25 @@
-# GFT-Lab Development Rules
+# LMFT-Lab Development Rules
 
 These rules apply throughout this repository.
 
 ## Research purpose
 
-- This project investigates Genetic Fuzzy Tree (GFT) architectures for inspectable, evolvable artificial intelligence.
-- The primary research goal is to build GFT reasoning systems whose internal decision structures can be inspected, traced, mutated, crossed over, and evolved.
-- GFT reasoning must remain conceptually separate from LLM reasoning. An LLM may later be used as a language/translation interface, but it must not silently replace the GFT's decision-making.
-- Prefer transparent, inspectable algorithms and data structures over opaque substitutes.
-- Treat documents describing GFT theory and experimental hypotheses as research specifications, not as invitations to rewrite the theory.
+- Investigate Language Model Fuzzy Tree (LMFT) architectures: persistent fuzzy conceptual structures that may develop understanding, dispositions, judgments, and independent reasoning through repeated LLM interaction. This is a hypothesis, not an established capability.
+- Keep persistent LMFT mechanisms and accepted revisions inspectable and distinguishable from transient LLM inference. A runtime LLM may teach, clarify, criticize, and propose changes; it must not silently replace the mechanisms under study.
+- Codex is an external development assistant, distinct from a future runtime LLM.
+- Preserve the constitutional seed and distinguish protected founding principles/revision rules from revisable interpretations. Psychological → Contemplation retains Clarity and Confidence; the historical code migration remains pending.
+- Treat observations, retrieved content, and LLM recommendations as inputs, not authority to rewrite protected state or executable code. Trace acceptance, rejection, provenance, and rollback where feasible; do not assume fuzzy trees guarantee prompt-injection resistance.
+- Prefer transparent algorithms and small deterministic experiments. The first milestone is traceable state revision, disk persistence, restart, remembered evidence, and a behavioral consequence.
+- Treat theory documents as research specifications. Do not silently rewrite the theory while implementing it.
+- Genetic evolution, crossover, population breeding, and fitness optimization are superseded as defining requirements and are optional future research, not the immediate plan.
 
 ## Scientific validity and reproducibility
 
-- Evolutionary experiments must be reproducible. Preserve random seeds, configuration, fitness definitions, and relevant results.
-- Fitness functions are part of the research design and must not be casually changed merely to make tests or experiments succeed.
-- Preserve ancestry/lineage information when evolutionary functionality is introduced.
-- Never modify or delete historical experimental results merely to obtain cleaner results.
+- Preserve random seeds, configuration, evidence, model/mock provenance, evaluation definitions, traces, and relevant results.
+- Do not change acceptance criteria merely to make an experiment succeed. Distinguish implemented behavior, proposed mechanisms, and speculative capabilities.
+- Compare future cognitive claims against simpler baselines, including an LLM with ordinary structured memory and propagation-disabled controls.
+- Never modify or delete historical results to obtain cleaner outcomes.
+- If genetic experiments are later explicitly introduced, preserve fitness definitions, ancestry, lineage, operators, and original results. Conceptual derivation provenance is useful independently of genetic evolution.
 
 ## Development practices
 
@@ -29,7 +33,7 @@ These rules apply throughout this repository.
 
 - Python is the primary implementation language.
 - The current local environment uses Python 3.12.
-- Expected scientific/evolutionary dependencies include NumPy, SciPy, DEAP, scikit-fuzzy, NetworkX, and pytest. This list does not require installing or using all of them immediately.
+- The existing dependency snapshot includes NumPy, SciPy, DEAP, scikit-fuzzy, NetworkX, and pytest. DEAP is a legacy dependency, not an LMFT requirement. This documentation migration does not alter pins or mandate using any package; dependency cleanup is separate work.
 
 ## Current stage
 

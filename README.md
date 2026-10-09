@@ -1,14 +1,46 @@
-# GFT-Lab
+# LMFT-Lab
 
-Experimental development environment for Genetic Fuzzy Tree (GFT) based artificial intelligence.
+Experimental development environment for Language Model Fuzzy Tree (LMFT) based artificial intelligence.
 
-## Project goals
+## Research hypothesis and first milestone
 
-- Develop inspectable Genetic Fuzzy Tree reasoning systems.
-- Experiment with fuzzy reasoning and genetic evolution.
-- Develop co-evolving GFT architectures.
-- Keep GFT reasoning separate from the LLM language/translation layer.
-- Record reproducible evolutionary experiments.
+LMFT investigates whether persistent fuzzy conceptual relationships can develop
+understanding, dispositions, judgments, and independent reasoning through repeated
+interaction with language models. The newborn initially depends on a founding
+LLM; later internalization into structures, classifiers, procedures, or specialized
+small models must be demonstrated experimentally. Codex assists development
+externally and is not currently integrated as a runtime teacher.
+
+The seed acts like a philosophical or religious constitution, without supernatural
+belief or assumed consciousness. Protect founding principles while revising their
+interpretations through evidence. Contemplation distinguishes Clarity from
+Confidence and may eventually support reactive and internally initiated reflection.
+These are research goals, not implemented cognitive capabilities.
+
+**First milestone:** make the newborn change its mind in a traceable way, save
+its state to disk, restart, and demonstrate that it remembers why. Keep V0.1
+small and deterministic, with authored evidence or mocked LLM responses. Later
+experiments must compare against an LLM with ordinary structured memory to test
+whether fuzzy activation adds measurable value.
+
+Genetic search, breeding, crossover, and fitness optimization are no longer
+required. Distinctive personality, relationships, continuous contemplation, and
+authorized real-world agency belong to the long-term roadmap.
+
+## Migration and implementation status
+
+LMFT means **Language Model Fuzzy Tree**. The GitHub repository, project directory,
+`gft_lab` package, `gft-lab` metadata, dependency pins, and existing specification
+filenames retain their historical names. DEAP remains installed in the recorded
+environment but is not required by the new research direction.
+
+Implemented: deterministic in-memory structural birth, direct activation, and
+bounded synchronous propagation with inspectable traces. Not implemented:
+persistent revision, disk memory/restart, Contemplation, constitutional enforcement,
+SLMs, or runtime LLM integration. The code still uses Discipline and its path IDs;
+the target seed renames it to Contemplation, retaining Clarity and Confidence.
+[Minimal Section 4](docs/MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry) describes
+that pending versioned migration and preserves the historical code fixture.
 
 ## Recreate the development environment
 
@@ -74,7 +106,8 @@ the research documents define their current scope.
 
 The first implemented step is `gft_lab.birth.create_birth_state`, which takes an
 individual ID plus explicit `birth_event_id` and `random_seed` arguments. It
-constructs the 40 named seed records from `docs/MINIMAL_GFT_SPEC.md` without file
+constructs the 40 historical seed records documented in
+[Minimal Appendix A](docs/MINIMAL_GFT_SPEC.md#appendix-a-historical-implemented-seed-compatibility) without file
 I/O or random sampling. See [Experiment 001](experiments/EXPERIMENT_001_PERSISTENT_REVISION.md)
 for the provisional initialization values and remaining experimental decisions.
 This is structural scaffolding, not the complete runtime birth process.

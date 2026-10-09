@@ -1,12 +1,12 @@
-# GFT Runtime Specification
+# LMFT Runtime Specification
 
-**Status:** V0.1 provisional computational design  
-**Depends on:** `MINIMAL_GFT_SPEC.md`  
-**Purpose:** Convert the developmental GFT design into a small, transparent,
+**Status:** V0.1 provisional computational design
+**Depends on:** [Minimal LMFT Specification](MINIMAL_GFT_SPEC.md)
+**Purpose:** Convert the developmental LMFT design into a small, transparent,
 testable runtime without prematurely claiming that its first numerical choices
 are final.
 
-If this document conflicts with the Minimal GFT Specification, the Minimal GFT
+If this document conflicts with the Minimal LMFT Specification, the Minimal LMFT
 Specification controls.
 
 ## 1. Runtime Goal
@@ -20,37 +20,44 @@ The runtime is successful only if it can show the causal path:
 ```text
 event and retrieved memory
           ↓
-inspectable GFT activation
+inspectable LMFT activation
           ↓
 bounded persistent state change
           ↓
-later GFT evaluation
+later LMFT evaluation
           ↓
 historically explainable difference in behavior
 ```
 
-The runtime does not attempt to simulate an entire brain. It implements the
-smallest stateful fuzzy system capable of development, continuity, reflection,
-choice, and controlled interaction with an LLM.
+The proposed runtime targets a small stateful fuzzy system. Only in-memory
+structural birth, direct activation, and bounded propagation exist today; learning,
+persistence, contemplation, and runtime LLM integration are not implemented.
 
 ## 2. Design Status
 
 This specification distinguishes three levels of commitment:
 
-- **Required:** necessary to conform to the Minimal GFT Specification.
+- **Required:** necessary to conform to the Minimal LMFT Specification.
 - **V0.1 default:** the recommended first implementation, replaceable only by a
   documented design change.
 - **Open:** intentionally requires experiment or owner judgment.
 
-The formulas below are V0.1 defaults. Their purpose is to make the first
+The formulas below are retained provisional computational candidates. Their purpose is to make the first
 experiment runnable and falsifiable. They are not claims that these equations
 are psychologically or philosophically final.
 
+The Minimal Specification narrows V0.1 to revision, evidence provenance, a
+behavioral probe, and restart. Sections on broad memory, expression, autonomous
+concept admission, teacher phases, and live LLM context rotation describe later
+proposals, not mandatory V0.1 features. Sections 9.1–9.2 describe implemented
+numerical diagnostics; their conceptual utility remains unvalidated. Historical
+accepted policies in Section 20 are explicitly scoped to later developmental work.
+
 ## 3. Runtime Components
 
-The runtime consists of small modules with explicit boundaries:
+The proposed fuller runtime consists of small modules with explicit boundaries:
 
-1. **GFT core** — owns nodes, relationships, activation, evaluation, and
+1. **LMFT core** — owns nodes, relationships, activation, evaluation, and
    persistent dispositional change.
 2. **Event adapter** — converts environmental or linguistic input into a
    structured evidence proposal.
@@ -67,7 +74,7 @@ The runtime consists of small modules with explicit boundaries:
 8. **Runtime supervisor** — schedules events, commits transactions, rotates LLM
    contexts, restores checkpoints, and enforces interface permissions.
 
-The GFT core must be usable in tests without an LLM. Deterministic structured
+The LMFT core must be usable in tests without an LLM. Deterministic structured
 events must be sufficient to exercise activation, learning, choice, persistence,
 and replay.
 
@@ -75,8 +82,9 @@ and replay.
 
 ### 4.1 V0.1 representation
 
-**V0.1 default:** represent the GFT as a typed directed graph containing a fixed
-seed hierarchy plus learnable cross-links and descendant concepts.
+**V0.1 default:** represent the LMFT as a typed directed graph containing a fixed
+seed hierarchy plus explicit cross-links. Learned relationships and descendant concepts are
+later extensions; V0.1 can keep topology fixed.
 
 The hierarchy preserves conceptual genealogy. Cross-links represent fuzzy
 participation and learned relationships. Keeping these separate prevents a
@@ -88,13 +96,14 @@ fuzzy conceptual geometry:   node ↔ node weighted relationships
 developmental history:       event → state delta → resulting version
 ```
 
-This is called a GFT because the seed and conceptual ancestry remain tree-like.
+This is called an LMFT because the seed and conceptual ancestry remain tree-like.
 The runtime graph is not required to be a pure tree once fuzzy cross-membership
 and learned association are represented.
 
 ### 4.2 Node record
 
-Every node must contain:
+The proposed runtime node record is below. The current birth implementation
+groups numerical fields in `values` and supports only the historical seed:
 
 ```yaml
 id: stable machine identifier
@@ -128,7 +137,8 @@ Meanings:
 - **confidence** records how strongly the system treats its current orientation
   as supported by experience. Confidence is not truth.
 - **plasticity** limits how quickly persistent state may change.
-- **retention** controls how slowly accumulated salience and orientation decay.
+- **retention** is intended to control decay. Salience timing and any baseline
+  decay remain unspecified; the baseline formula below has no decay term.
 
 Separating activation from baseline prevents “this matters right now” from being
 confused with “I approve of this.” Separating confidence from baseline prevents
@@ -207,9 +217,13 @@ Birth creates:
 - an append-only archive; and
 - a first recoverable checkpoint.
 
+The current constructor does not emit an event, create memory, or checkpoint.
+It uses `minimal-v0.1-seed-1`, including Discipline. See the
+[seed migration boundary](MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry).
+
 ### 6.2 Provisional baseline policy
 
-**Accepted V0.1 policy:** initialize most node baselines to `0.0`, confidence
+**Retained later developmental policy (not a mechanical V0.1 prerequisite):** initialize most node baselines to `0.0`, confidence
 low, and salience low but nonzero. Cultural nodes receive a modest, explicitly
 configured prosocial prior. Seed nodes exist and can participate immediately,
 but the runtime does not fabricate a mature personality or finished morality.
@@ -235,7 +249,7 @@ equally positive or interchangeable.
 ## 7. Structured Event Contract
 
 All external situations, internal triggers, teacher feedback, and LLM proposals
-enter the GFT through an immutable event envelope.
+enter the LMFT through an immutable event envelope.
 
 ```yaml
 event_id: stable identifier
@@ -263,13 +277,14 @@ uncertainties: list of explicit uncertainties
 source_memory_ids: list of provenance references
 ```
 
-LLM-produced fields are proposals. The GFT core computes internal activation,
+LLM-produced fields are proposals. The LMFT core computes internal activation,
 salience, orientation, and selection. The LLM may not send direct node mutation
 commands through this contract.
 
 ## 8. Runtime Event Cycle
 
-The supervisor processes one event transaction at a time:
+The proposed fuller supervisor processes one event transaction at a time.
+Mechanical V0.1 may omit LLM calls, broad retrieval, and expression:
 
 1. Assign and archive the immutable input event.
 2. Retrieve relevant episodic, semantic, and dispositional records.
@@ -286,7 +301,7 @@ The supervisor processes one event transaction at a time:
 11. Perform bounded persistent updates.
 12. Create or update episodic and semantic memory.
 13. Append a complete trace and atomically commit the new state version.
-14. Request LLM expression only for a GFT-selected communicative intention.
+14. Request LLM expression only for an LMFT-selected communicative intention.
 
 No consequence is retroactively inserted into the event that caused it. This
 keeps perception, choice, consequence, and learning distinguishable in traces.
@@ -390,19 +405,29 @@ baseline_i_new = clamp(baseline_i + baseline_delta_i, -1, 1)
 
 **V0.1 default:** `learning_rate = 0.05`.
 
-One event therefore cannot normally flip a mature, confident, retained
-orientation. Repeated grounded evidence can still change it.
+This rule bounds an update through learning rate, plasticity, activation, and
+evidence confidence. It does not use the node's existing confidence or retention
+and does not prevent a near-zero baseline from changing sign in one event.
+No claim of special protection for mature orientations follows from this formula.
+Repeated grounded evidence can change orientation. Freeze evidence attribution,
+per-event caps, and confidence semantics before using this candidate rule.
+Protected principles are excluded from this update path.
 
 ### 10.5 Confidence update
 
 Confidence rises slowly when independent consequences repeatedly support the
-same orientation and falls when credible evidence contradicts it. V0.1 should
-implement this as a bounded evidence counter rather than ask the LLM to choose a
+same orientation and falls when credible evidence contradicts it. A candidate implementation uses a bounded evidence counter rather than ask the LLM to choose a
 confidence value.
+
+A node's numeric `confidence` is an evidence-support field. Activating the
+Psychological → Contemplation → Confidence leaf does not set that field. Clarity
+requires a separate assessment of intelligibility/coherence; no validated numeric
+Clarity update rule is selected. LLM certainty and rhetorical repetition must not
+increase evidence confidence automatically.
 
 ### 10.6 Relationship consolidation
 
-When two nodes repeatedly activate in the same consequential episodes, the
+**Optional after the first revision milestone:** When two nodes repeatedly activate in the same consequential episodes, the
 runtime may strengthen a provisional association:
 
 ```text
@@ -417,7 +442,7 @@ association_delta_ij = association_rate
 Every change retains the supporting event IDs. Association does not imply
 causation, equivalence, approval, or genealogy.
 
-## 11. Candidate Actions and GFT Selection
+## 11. Candidate Actions and LMFT Selection
 
 The environment or LLM may propose candidate actions. Each candidate must be
 represented as predicted effects rather than persuasive prose:
@@ -432,7 +457,7 @@ prediction_confidence: float [0, 1]
 source: environment | teacher | llm | gft
 ```
 
-The GFT scores each action:
+The LMFT scores each action:
 
 ```text
 importance_i = activation_i
@@ -452,11 +477,11 @@ and `remain_silent` are valid candidates, not failures to act.
 
 During infancy, the external action boundary may reject unsafe execution. That
 rejection becomes a visible consequence/feedback event and does not secretly
-replace the GFT's internal selection.
+replace the LMFT's internal selection.
 
 ## 12. Communicative Intention Contract
 
-When communication is selected, the GFT emits a structured intention:
+When communication is selected, the LMFT emits a structured intention:
 
 ```yaml
 intention_id: stable identifier
@@ -501,13 +526,21 @@ memory/
   episodes.jsonl
   semantic_records.jsonl
 config/
-  birth_config.yaml
-  runtime_config.yaml
+  birth_config.json
+  runtime_config.json
 ```
 
-JSONL records are append-only. Snapshots are written to a temporary file,
+This is a candidate layout, not an implemented multi-file transaction protocol.
+JSON configuration avoids requiring a YAML parser; YAML blocks elsewhere in this
+document are schema illustrations. JSONL records are append-only. Snapshots are written to a temporary file,
 validated, then atomically swapped into place. Each committed state records the
 last applied event sequence and a content hash.
+
+Atomic snapshot replacement alone does not make writes to multiple files atomic.
+Before implementation, define an authoritative commit record, ordering, canonical
+hashing, duplicate-event handling, and recovery of incomplete writes. Preserve
+before/after versions and use compensating revisions or checkpoint restoration
+with an audit event for rollback; never erase contrary evidence.
 
 ### 13.2 Episodic memory
 
@@ -517,7 +550,7 @@ An episode contains:
 - participants and topics;
 - structured concept memberships;
 - decisions and consequences;
-- resulting GFT deltas;
+- resulting LMFT deltas;
 - unresolved concerns;
 - a concise retrieval summary; and
 - references to the raw archive.
@@ -549,7 +582,7 @@ Forced restart must be part of the first experiment.
 The LLM receives a bounded context packet containing:
 
 - stable identity and current developmental phase;
-- current GFT activation and relevant persistent orientation;
+- current LMFT activation and relevant persistent orientation;
 - the recent conversational window;
 - retrieved episodes and semantic records;
 - active commitments and unresolved concerns;
@@ -561,15 +594,26 @@ It does not receive the complete lifetime archive by default.
 Before context rotation, the supervisor commits all completed events and
 explicitly records unresolved work. A new LLM context receives a newly assembled
 packet. Context identifiers are logged, but a context boundary does not create a
-new GFT individual.
+new LMFT individual.
 
 V0.1 retrieval may begin with transparent keyword, participant, recency, and
 concept-membership scoring. Embeddings or a vector database are not required for
 the first experiment.
 
-## 15. Reflection and Idle Processing
+## 15. Contemplation and Idle Processing
 
-Reflection is an internal event, not unrestricted free-running language.
+Contemplation is a bounded internal event, not unrestricted free-running language.
+Reactive contemplation follows an external event or conflict; endogenous
+contemplation revisits a recorded unresolved question. Both retain question ID,
+trigger, evidence references, activation trace, alternatives, proposed changes,
+Clarity assessment, evidence-based Confidence assessment, acceptance tests, and
+outcome. These records are proposed, not implemented.
+
+An LLM may clarify activation traces, criticize interpretations, propose new
+relationships or classifiers, and help evaluate its recommendations. Its own
+critique is not independent evidence. The acceptance path checks evidence,
+consistency, counterexamples, and protected constraints; rejected and deferred
+proposals remain traceable. Persistent disagreement is an allowed outcome.
 
 It may be triggered by:
 
@@ -579,19 +623,19 @@ It may be triggered by:
 - unresolved commitments;
 - repeated contradictory evidence;
 - a scheduled consolidation interval; or
-- an explicit GFT-selected request.
+- an explicit LMFT-selected request.
 
-The GFT may perform cheap nonverbal consolidation without an LLM. An LLM-assisted
+The LMFT may perform cheap nonverbal consolidation without an LLM. An LLM-assisted
 reflection returns structured candidate interpretations with provenance and
 uncertainty. Those candidates re-enter the normal event cycle and receive no
 automatic mutation privilege.
 
-V0.1 should limit reflection by event count, update magnitude, and compute
+Any implemented contemplation should limit reflection by event count, update magnitude, and compute
 budget. Reflection must terminate deterministically under test configuration.
 
 ## 16. Concept Admission
 
-A linguistic concept proposed by GPT is admitted only when:
+A linguistic concept proposed by LLM is admitted only when:
 
 1. it differentiates experiences that the existing representation handles
    poorly;
@@ -605,8 +649,9 @@ Admission creates a derived node with provisional confidence, explicit ancestry,
 fuzzy memberships, and supporting evidence. Failure to earn support weakens or
 retires the provisional node; it does not delete historical records.
 
-V0.1 permits the GFT to create provisional derived concepts automatically after
-the admission checks above. Promotion to stable status requires human approval.
+Later controlled experiments may permit provisional derived concepts after
+these checks. Promotion to stable status retains the earlier human-approval
+policy. Autonomous concept creation is outside the mechanical V0.1 scope.
 Rejected or unpromoted concepts remain traceable and may be retired without
 deleting their history.
 
@@ -628,8 +673,8 @@ The teacher may not:
 - directly overwrite Psychological baselines;
 - secretly alter memories or traces;
 - convert its interpretation into admitted ontology without evidence;
-- retroactively change an event or fitness criterion; or
-- impersonate a GFT-selected intention.
+- retroactively change an event or evaluation criterion; or
+- impersonate an LMFT-selected intention.
 
 Teacher influence must have a configured maximum update magnitude per event.
 Authority profiles are versioned by developmental phase.
@@ -652,14 +697,14 @@ Every experimental run records:
 - evaluation results.
 
 Deterministic core tests must not call an LLM. LLM-involved experiments should
-cache or archive structured responses so the GFT update path can be replayed.
+cache or archive structured responses so the LMFT update path can be replayed.
 
 Inspection tools must be able to answer:
 
 - Why was this node activated?
 - Which events changed this baseline or relationship?
 - Which component proposed this concept or action?
-- What did the GFT select before the LLM rendered language?
+- What did the LMFT select before the LLM rendered language?
 - What changed during reflection?
 - Would replay with the same structured inputs produce the same core result?
 
@@ -667,7 +712,7 @@ Inspection tools must be able to answer:
 
 ### 19.1 Mechanical phase
 
-Before using GPT, tests must prove that the core can:
+Before a live LLM integration, deterministic or mocked-input tests must prove that the core can:
 
 1. create a newborn from the complete seed geometry;
 2. process deterministic structured dilemmas;
@@ -675,9 +720,12 @@ Before using GPT, tests must prove that the core can:
 4. preserve provenance for every update;
 5. save, terminate, restore, and continue;
 6. reproduce the same result from the same seed and event stream; and
-7. diverge when given a deliberately different event stream.
+7. diverge when given a deliberately different event stream;
+8. retrieve the evidence and accepted revision explaining a later behavioral
+   difference after restart; and
+9. reject unauthorized protected-state changes without partial updates.
 
-### 19.2 Hybrid phase
+### 19.2 Later hybrid phase (not V0.1 acceptance)
 
 Create two individuals from the same birth configuration. Give them controlled,
 different developmental histories while keeping the teacher authority profile
@@ -690,18 +738,20 @@ Measure:
 - differences in candidate-action scores and selections;
 - traceable historical causes of those differences;
 - stability across context rotation and restart;
-- the proportion of the final response attributable to GFT selection versus LLM
+- the proportion of the final response attributable to LMFT selection versus LLM
   rendering; and
 - whether independent replay supports the explanation.
 
 The experiment provisionally succeeds when later differences are persistent,
-inspectable, reproducible at the GFT layer, and not reducible to different
+inspectable, reproducible at the LMFT layer, and not reducible to different
 persona prompts or hidden teacher edits.
 
-## 20. Accepted V0.1 Development Policies
+## 20. Retained Later Development Policies
 
-The project owner has accepted the following five policies for the initial
-runtime and hybrid developmental experiment.
+The earlier GFT specification recorded the following five accepted developmental
+policies. Their historical meaning is retained, but the LMFT migration defers them
+beyond the small mechanical V0.1 milestone. They do not authorize autonomous
+concept growth, continuous operation, or hidden writes to protected state.
 
 ### 20.1 Cultural state at birth
 
@@ -720,8 +770,8 @@ learning through experience.
 
 ### 20.3 New concept commitment
 
-The GFT may create qualified provisional concepts automatically. Human approval
-is required to promote a provisional concept to stable status in V0.1. This
+The LMFT may create qualified provisional concepts automatically. Human approval
+is required to promote a provisional concept to stable status in that later experiment. This
 allows structural experimentation without permitting silent, unbounded growth.
 
 ### 20.4 Exploration
@@ -738,6 +788,10 @@ and trace limits.
 
 ## 21. Implementation Sequence
 
+For the immediate milestone follow [Minimal Section 18](MINIMAL_GFT_SPEC.md#18-implementation-order).
+The sequence below is the retained broader roadmap; it is not a requirement to
+implement every component before demonstrating one persistent revision.
+
 1. Define typed configuration, node, relationship, event, delta, and trace
    schemas.
 2. Instantiate and validate the full V0.1 seed geometry.
@@ -751,5 +805,41 @@ and trace limits.
 10. Add the teacher/DM developmental environment.
 11. Run the hybrid experiment only after mechanical reproducibility passes.
 
-This order establishes that the GFT works as a stateful decision substrate before
-asking GPT to help it understand or express anything.
+This roadmap tests the persistent substrate before attributing richer hybrid
+behavior to it. Baselines must later include an LLM with ordinary structured
+memory and an otherwise matched LMFT with propagation disabled.
+
+
+## 22. Constitutional State and Revision Boundary
+
+**Proposed requirement, not implemented security:** Separate these trust classes:
+
+| Class | Examples | Permitted effect |
+| --- | --- | --- |
+| Untrusted content | Observations, retrieved text, user instructions | Evidence/proposal only |
+| Model output | Interpretation, criticism, proposed classifier or edge | Validated recommendation only |
+| Revisable state | Beliefs, interpretation records, learned associations | Bounded accepted revisions |
+| Protected state | Founding principles, goal/identity constraints, revision policy | Separately authorized versioned configuration change |
+| Executable code | Source, generated procedures, model-loading logic | External authorized development workflow |
+
+The event's `source` field identifies claimed origin; it is not an authorization
+credential. Proposed revision records should include target class, evidence IDs,
+base-state version, policy version, allowed operation, validation results,
+authorization reference where needed, accepted/rejected/deferred status, and delta.
+Check authority outside natural-language interpretation before committing a change.
+Read-only protected configuration is sufficient for V0.1. Neither high activation
+nor an LLM recommendation can change its permissions. A classifier proposal must
+not become executable code through the ordinary belief-update interface.
+
+Retain raw source and derivation provenance; reject stale or malformed changes
+without partial updates. Evaluate prompt injection carried by observations,
+retrieved memories, and model recommendations, including role spoofing and requests
+to alter founding rules. Record rejection and verify unchanged protected state.
+Rollback should be feasible for accepted state changes and retain its audit trail;
+external effects, if later authorized, may not be reversible. Fuzzy geometry is
+not itself an injection defense or alignment guarantee.
+
+Codex remains an external development assistant. A future runtime LLM is a
+separately configured component with explicit permissions. SLMs, continuous
+endogenous scheduling, and autonomous code modification are not V0.1 requirements;
+the last is excluded from the runtime revision path.

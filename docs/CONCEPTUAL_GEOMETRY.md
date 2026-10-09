@@ -1,8 +1,8 @@
-# GFT Conceptual Geometry
+# LMFT Conceptual Geometry
 
 ## 1. Purpose
 
-This document records an experimental hypothesis about how concepts may be represented within a Genetic Fuzzy Tree (GFT).
+This document records an experimental hypothesis about how concepts may be represented within a Language Model Fuzzy Tree (LMFT).
 
 The central proposal is that concepts need not begin as words, symbols, dictionary definitions, or human-authored ontological categories. Instead, concepts may arise as fuzzy positions and relationships within a recursively structured conceptual geometry.
 
@@ -22,7 +22,8 @@ Its conceptual identity may emerge from the overall pattern of those relationshi
 
 Under this hypothesis, concepts such as freedom, neediness, impact, fire, justice, greed, or agency would not necessarily require primitive symbolic definitions. They may instead occupy distinguishable positions within a larger relational geometry.
 
-The representation required to implement such positions has not yet been selected.
+The runtime selects a provisional graph representation for mechanical tests;
+the semantics and usefulness of geometric positions remain unvalidated.
 
 ---
 
@@ -101,7 +102,7 @@ abstract position
        +---- interpretation in domain C
 ```
 
-may allow the GFT to express recurring conceptual tendencies at different levels and within different contexts.
+may allow the LMFT to express recurring conceptual tendencies at different levels and within different contexts.
 
 Whether such structural analogies actually emerge, remain stable, or provide useful explanatory power is an open experimental question.
 
@@ -124,24 +125,29 @@ The numerical progression is:
 
 Under the current interpretation, the factors themselves may have structural significance. For example, a 3! structure may be interpreted as three parent distinctions, each resolving into a two-part fuzzy structure. A 4! structure may then organize four interacting 3 × 2 structures. Higher factorial orders may provide candidate organizations of structures available at preceding orders.
 
-A candidate Version 0.1 seed geometry currently being considered is therefore:
+The current seed scaffold, selected for experiments rather than validated as
+a universal geometry, is:
 
 ```text
 4!
 |
 +-- Cultural       -> 3 × 2
 +-- Philosophical  -> 3 × 2
-+-- Scientific     -> 3 × 2
++-- Experiential   -> 3 × 2
 +-- Psychological  -> 3 × 2
 ```
 
-This gives 24 seed positions, but the hypothesis is not simply that 24 nodes are intrinsically important. The experimental claim is that the organization `4 × 3 × 2` may matter: four interacting domains, each containing three parent distinctions, each with two independently fuzzy manifestations.
+The older Scientific-domain alternative is superseded for this seed, but remains
+a historical mapping hypothesis. The controlling [Minimal Specification](MINIMAL_GFT_SPEC.md#4-hardcoded-v01-seed-geometry)
+preserves all established branches except Discipline → Contemplation, whose
+children remain Clarity and Confidence. There are 40 records when domain roots
+and parent distinctions are included. This gives 24 leaf positions, but the hypothesis is not simply that 24 nodes are intrinsically important. The experimental claim is that the organization `4 × 3 × 2` may matter: four interacting domains, each containing three parent distinctions, each with two independently fuzzy manifestations.
 
 Possible future interpretations of 5! and 6! include progressively broader organizations of already-developed lower-order structures. Informal metaphors such as larger conceptual territories or "kingdoms" may be useful during exploration, but no computational meaning has yet been assigned to those higher orders.
 
-The reciprocal sequence `1/n!` remains of interest as a possible description of progressively finer or diminishing contributions as factorial order increases. It is **not currently established as a literal numerical weighting rule**. Equal, factorial, learned, evolved, or other weighting schemes should remain experimentally comparable rather than being assumed in advance.
+The reciprocal sequence `1/n!` remains of interest as a possible description of progressively finer or diminishing contributions as factorial order increases. It is **not currently established as a literal numerical weighting rule**. Equal, factorial, learned, or other weighting schemes should remain experimentally comparable rather than being assumed in advance.
 
-This does **not** establish that every GFT must literally contain 2, 6, 24, 120, or 720 nodes, concepts, dimensions, or branches, nor that factorial expansion is necessarily the correct architecture. The factorial interpretation remains a falsifiable conceptual hypothesis.
+This does **not** establish that every LMFT must literally contain 2, 6, 24, 120, or 720 nodes, concepts, dimensions, or branches, nor that factorial expansion is necessarily the correct architecture. The factorial interpretation remains a falsifiable conceptual hypothesis.
 
 ## 7. Prime Components
 
@@ -155,7 +161,7 @@ This interpretation is highly tentative.
 
 No computational rule currently defines:
 
-* what a prime factor means within a GFT;
+* what a prime factor means within an LMFT;
 * when a new factor should appear;
 * whether factors correspond to dimensions, branches, poles, operators, or something else;
 * whether prime structure provides any measurable advantage over alternative geometries.
@@ -235,13 +241,13 @@ Whether all four are necessary is unresolved.
 
 ## 11. Human Language Is Not the Primitive Geometry
 
-**Research direction:** Human-language labels should not automatically be treated as the primitive internal vocabulary of the GFT.
+**Research direction:** Human-language labels should not automatically be treated as the primitive internal vocabulary of the LMFT.
 
 Terms such as "good," "evil," "freedom," "justice," "efficiency," "agency," "existence," "chaos," and "order" may be useful human interpretations of conceptual structures.
 
 They may also turn out to be inaccurate, incomplete, culturally contingent, or excessively low-resolution descriptions of those structures.
 
-An experimental GFT should therefore be capable, at least in principle, of containing meaningful internal distinctions for which no concise human-language label exists.
+An experimental LMFT should therefore be capable, at least in principle, of containing meaningful internal distinctions for which no concise human-language label exists.
 
 This is especially relevant at the highest levels of abstraction.
 
@@ -253,11 +259,11 @@ This is especially relevant at the highest levels of abstraction.
 
 Under this hypothesis, the system would not necessarily be told that a particular primitive region means "freedom" or "justice."
 
-Instead, experience, evolution, internal relationships, and environmental interaction could produce stable conceptual patterns.
+Instead, experience, LLM-assisted interpretation, internal relationships, and environmental interaction could produce stable conceptual patterns.
 
 A human or language model might later observe that one such pattern behaves similarly to what humans ordinarily describe as freedom, justice, agency, coercion, attachment, or another concept.
 
-Such interpretation should remain a hypothesis about the GFT's structure rather than automatically becoming its definition.
+Such interpretation should remain a hypothesis about the LMFT's structure rather than automatically becoming its definition.
 
 ---
 
@@ -281,21 +287,18 @@ The exact grounding procedure remains unresolved.
 
 ---
 
-## 14. The LLM as Translator
+## 14. The LLM as Clarifier, Teacher, and Developmental Partner
 
-**Research direction:** A future LLM may assist in translating between human language and sufficiently grounded GFT structures.
+The LLM may interpret traces, explain conceptual conflict, propose distinctions,
+classifiers, or relationships, and assist in evaluating recommendations. Translation
+is one role within this broader developmental partnership. Codex's external
+software-development role is distinct from a future runtime LLM.
 
-The LLM should not silently become the source of the GFT's conceptual reasoning.
-
-One possible research procedure would allow a GFT to develop or evolve without an LLM participating in its internal conceptual development. An LLM could later inspect structured traces and propose human-language interpretations of developed structures.
-
-For example, an LLM might report that an unlabeled structure appears associated with autonomy, coercion, voluntary action, captivity, or choice.
-
-Such an interpretation would be treated as a semantic hypothesis.
-
-The interpretation could then be tested against new controlled situations.
-
-If the predicted relationships fail to appear, the interpretation should be weakened or rejected rather than forcing the GFT's behavior to conform to the language model's description.
+Every supplied interpretation is a semantic hypothesis with source attribution.
+Test it on controlled observations and counterexamples; revise or reject it when
+predictions fail. Sophisticated teacher-supplied structure must not be described
+as independently discovered by the LMFT. An unassisted system with a later
+translator remains an optional comparison, not the central architecture.
 
 ---
 
@@ -306,7 +309,7 @@ If the predicted relationships fail to appear, the interpretation should be weak
 A possible experimental cycle is:
 
 ```text
-GFT develops internal structure
+LMFT develops internal structure
             |
             v
 structure participates in observable behavior
@@ -330,19 +333,16 @@ The methodology required to perform such validation rigorously remains undecided
 
 ---
 
-## 16. Evolution and Cultural Abstraction
+## 16. Development and Cultural Abstraction
 
-**Tentative hypothesis:** Some conceptual abstractions may be evolved rather than predefined.
+**Tentative hypothesis:** Different experiences and teaching histories may develop
+different conceptual organizations over the same protected seed. Recurring
+relationships across independently developed systems could support generality,
+but shared teacher/model biases must be controlled before claiming convergence.
 
-The primitive geometry may constrain or bias the kinds of conceptual relationships available without dictating the eventual cultural or linguistic concepts that develop within it.
-
-Different GFT populations, environments, histories, or evolutionary pressures might therefore produce different conceptual organizations over the same primitive geometry.
-
-Conversely, independently evolved populations might develop recurring structural correspondences.
-
-Whether such convergence occurs is an empirical question.
-
-If independently developed structures repeatedly produce similar grounded relationships, that recurrence may provide evidence that the underlying geometry is capturing something more general than an arbitrary vocabulary.
+The earlier proposal to evolve abstractions across populations is retained as
+optional future research. Mutation, crossover, breeding, and fitness optimization
+are superseded as defining requirements and are absent from the immediate plan.
 
 ---
 
@@ -353,7 +353,7 @@ The following concepts have motivated the current hypothesis:
 * good / evil;
 * agency / existence;
 * chaos / order;
-* continuity / discretion;
+* continuity / discreteness;
 * freedom / justice / efficiency;
 * moral and theological distinctions;
 * personality and psychological distinctions;
@@ -361,7 +361,7 @@ The following concepts have motivated the current hypothesis:
 
 These are **candidate interpretations and exploratory mappings**, not established primitive dimensions.
 
-Clinical psychological terminology used during conceptual exploration should not be treated as a claim that the GFT geometry represents accepted psychological or psychiatric classification.
+Clinical psychological terminology used during conceptual exploration should not be treated as a claim that the LMFT geometry represents accepted psychological or psychiatric classification.
 
 Likewise, theological or moral mappings are research interpretations rather than established metaphysical claims.
 
@@ -373,35 +373,33 @@ Major unresolved questions include:
 
 1. What computational object actually represents a conceptual coordinate?
 2. What constitutes a dimension, pole, branch, or region?
-3. Is the primitive duality fixed, evolved, or discovered?
+3. Is the primitive duality fixed or developed?
 4. Is the 3 × 2 structure genuinely important or merely an attractive human abstraction?
 5. What mathematical role, if any, should factorial growth play?
 6. What mathematical role, if any, should prime numbers play?
 7. How should the contribution of increasingly deep abstraction levels or factorial orders be weighted?
-8. Does a relationship such as 1/n! provide a useful model for progressively finer or diminishing contribution, and if so, should it be literal, approximate, learned, evolved, or merely descriptive?
+8. Does a relationship such as 1/n! provide a useful model for progressively finer or diminishing contribution, and if so, should it be literal, approximate, learned, or merely descriptive?
 9. Can concepts possess fuzzy membership in all regions without the representation becoming uninformative?
 10. How are abstraction depth and geometric position related?
 11. How does conceptual genealogy differ from geometric similarity?
 12. How can new conceptual dimensions emerge?
 13. How can the system develop concepts that have no convenient human-language equivalent?
 14. How can semantic grounding be measured without allowing the translator to define the answer?
-15. How can independently evolved conceptual geometries be compared?
+15. How can independently developed conceptual geometries be compared?
 16. What evidence would falsify the proposed 3 × 2 or recursive-resolution hypotheses?
 
 ---
 
 ## 19. Decisions Explicitly Not Yet Made
 
-This document does not currently specify:
+This hypothesis document does not independently settle the topics below. The
+Minimal and Runtime specifications select provisional test representations and
+numerical ranges; these are engineering choices, not validation of geometry:
 
 * a tree or graph representation;
 * a node representation;
 * coordinate dimensionality;
 * membership functions;
-* mutation operators;
-* crossover operators;
-* fitness functions;
-* population structure;
 * numerical ranges;
 * the meaning of the primitive poles;
 * fixed English labels for primitive structures;
@@ -411,8 +409,31 @@ This document does not currently specify:
 * whether paired child memberships are independent in every 3 × 2 implementation;
 * how concepts are created or destroyed;
 * how conceptual ancestry is encoded;
-* how an LLM receives GFT state;
+* how an LLM receives LMFT state;
 * how semantic validation is scored;
 * whether the proposed geometry is ultimately correct.
 
 These unknowns should remain explicit until experimental or design reasoning provides a reason to resolve them.
+
+
+## 20. Constitution, Contemplation, and Experimental Tests
+
+The seed functions analogously to a philosophical or religious constitution:
+founding principles guide interpretation without requiring worship, supernatural
+belief, or consciousness. Protected principles differ from revisable meanings,
+applications, and learned relationships. Natural-language recommendations cannot
+automatically rewrite either constitutional state or its revision rules.
+
+Contemplation is the central proposed mechanism for uncertainty evaluation,
+conflict resolution, and questions to the LLM. Its Clarity child concerns coherence
+and intelligibility; Confidence concerns evidence and justification. The children
+are independently fuzzy, not competing ends of one scale. Reactive and endogenous
+contemplation must preserve evidence and acceptance/rejection traces.
+
+The seed is intended to compress conceptual experience into persistent structure
+and expand it into new contextual distinctions. Measure that usefulness rather
+than infer it from symmetry or evocative labels. Compare against simpler
+representations, an LLM with ordinary structured memory, and propagation-disabled
+controls. Preserve failures and costs. The abstract unlabeled-emergence hypothesis
+in Section 12 is distinct from the actual hand-labeled V0.1 scaffold; that scaffold
+cannot demonstrate discovery of labels that were supplied at birth.
