@@ -30,8 +30,10 @@ historically explainable difference in behavior
 ```
 
 The proposed runtime targets a small stateful fuzzy system. Only in-memory
-structural birth, direct activation, and bounded propagation exist today; learning,
-persistence, contemplation, and runtime LLM integration are not implemented.
+structural birth, direct activation, bounded propagation, and the bounded
+[local-model proposal path](LOCAL_MODELS.md) exist today. Learning and persistent
+judgment revision are not implemented; contemplation support is a single model
+call, not an autonomous cognitive loop.
 
 ## 2. Design Status
 
@@ -265,7 +267,7 @@ individual_id: target individual
 sequence: monotonically increasing integer
 timestamp: recorded wall-clock time
 kind: observation | dilemma | outcome | feedback | reflection | memory_recall
-source: environment | teacher | llm | gft | developer
+source: environment | teacher | llm | lmft | developer
 source_instance: model/configuration or component version
 caused_by_event_id: optional provenance reference
 payload: kind-specific structured data
@@ -462,7 +464,7 @@ predicted_effects:
   node_id_a: float [-1, 1]
   node_id_b: float [-1, 1]
 prediction_confidence: float [0, 1]
-source: environment | teacher | llm | gft
+source: environment | teacher | llm | lmft
 ```
 
 The LMFT scores each action:
@@ -621,7 +623,9 @@ Reactive contemplation follows an external event or conflict; endogenous
 contemplation revisits a recorded unresolved question. Both retain question ID,
 trigger, evidence references, activation trace, alternatives, proposed changes,
 Clarity assessment, evidence-based Confidence assessment, acceptance tests, and
-outcome. These records are proposed, not implemented.
+outcome. This full record design remains proposed. The local-model path
+records a bounded subset of proposals, quotes, reasons, questions, and activation;
+it does not implement the complete reflection/revision mechanism.
 
 An LLM may clarify activation traces, criticize interpretations, propose new
 relationships or classifiers, and help evaluate its recommendations. Its own
@@ -726,7 +730,8 @@ Inspection tools must be able to answer:
 
 ### 19.1 Mechanical phase
 
-Before a live LLM integration, deterministic or mocked-input tests must prove that the core can:
+For the persistent-revision experiment, deterministic or mocked-input tests
+must prove that the core can:
 
 1. create a newborn from the complete seed geometry;
 2. process deterministic structured dilemmas;
@@ -857,3 +862,17 @@ Codex remains an external development assistant. A future runtime LLM is a
 separately configured component with explicit permissions. SLMs, continuous
 endogenous scheduling, and autonomous code modification are not V0.1 requirements;
 the last is excluded from the runtime revision path.
+
+
+## 23. Authorized local-model integration before persistent revision
+
+The owner requested a bounded local-model integration before completion of the
+persistent-revision experiment. This explicitly relaxes the earlier sequencing
+prerequisite, not the evidence or revision acceptance criteria. See
+[LOCAL_MODELS.md](LOCAL_MODELS.md) for the implemented interface and exact commands.
+Model memberships drive temporary activation through the existing numerical core.
+Digestion and contemplation proposals cannot commit beliefs or alter the seed.
+No new state/seed migration is required. The proposed event-source spelling is
+now `lmft`; no implemented serialized event stream used the historical `gft`
+value. Existing activation calls still default to `developer`; model-derived
+frames explicitly identify `llm` and the request hash.

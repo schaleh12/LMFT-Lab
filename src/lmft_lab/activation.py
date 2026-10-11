@@ -50,6 +50,7 @@ def activate_direct(
     *,
     event_id: str,
     source_instance: str,
+    source: str = "developer",
 ) -> ActivationFrame:
     """Inspect one developer-authored input under runtime section 9.1.
 
@@ -61,6 +62,8 @@ def activate_direct(
     The frame records the proposed memberships; they are not stored concepts.
     """
     validate_birth_state(state)
+    if source not in ("developer", "llm"):
+        raise ValueError("source must be developer or llm")
     for name, value in (("event_id", event_id), ("source_instance", source_instance)):
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"{name} must be a nonempty string")
@@ -92,5 +95,6 @@ def activate_direct(
         initialization_version=state.initialization_version,
         state_version=state.version,
         source_instance=source_instance,
+        source=source,
         entries=entries,
     )

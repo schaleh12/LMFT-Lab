@@ -1,7 +1,7 @@
 # Minimal LMFT Specification
 
-**Status:** V0.1 documentation target; only structural birth, direct activation,
-and bounded propagation are implemented. The code uses the canonical seed in Section 4; Appendix A preserves
+**Status:** V0.1 documentation target; structural birth, direct activation,
+bounded propagation, and a local-model proposal path are implemented. The code uses the canonical seed in Section 4; Appendix A preserves
 the historical seed for explicit compatibility conversion. This specification controls scope when the runtime or older
 experiment proposals conflict with it.
 
@@ -298,7 +298,10 @@ and evidence for useful internalization remain research questions.
 4. Implement one deterministic revision and a read-only behavioral probe.
 5. Add recoverable file storage, reason lookup, restart, and replay.
 6. Test rejection, duplicate events, interrupted writes, and controlled histories.
-7. Only after this, evaluate LLM-assisted contemplation and simpler memory baselines.
+7. Evaluate persistent development and simpler memory baselines after these checks.
+   The owner has separately authorized the bounded local-model proposal path
+   before revision/persistence completion; it cannot commit state changes. See
+   [local-model scope](LOCAL_MODELS.md).
 
 ## Appendix A. Historical implemented seed compatibility
 

@@ -14,7 +14,11 @@
 The Minimal Specification controls implementation scope when older runtime or
 experiment requirements differ. Protocol choices must be frozen before evaluation;
 hypotheses are not results. Only structural birth, direct activation, and bounded
-propagation exist today. Numerical defaults are not validated cognitive laws.
+propagation, explicit legacy conversion, and a bounded local-model proposal path
+exist today. Persistent judgment revision remains unimplemented. Numerical defaults are not validated cognitive laws.
+
+- [Local model setup and boundary](LOCAL_MODELS.md): pinned Windows CUDA models,
+  automatic downloads, offline use, validation, and smoke evidence.
 
 ## Canonical V0.1 seed freeze
 
@@ -42,8 +46,7 @@ recommendations are evaluated, while Codex is the external development assistant
 The Python package is now `lmft_lab`, metadata names LMFT-Lab, and specification
 filenames use LMFT. Update old imports and documentation paths. Dependency pins
 are unchanged. GitHub and the local `origin` remote now use
-[LMFT-Lab](https://github.com/schaleh12/LMFT-Lab). The active workspace folder
-still uses GFT-Lab. Historical research references remain.
+[LMFT-Lab](https://github.com/schaleh12/LMFT-Lab). The workspace folder now uses LMFT-Lab. Historical research references remain.
 
 | Conflict discovered | Documentation resolution |
 | --- | --- |

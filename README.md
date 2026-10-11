@@ -41,9 +41,14 @@ pins are unchanged. DEAP remains a legacy dependency, not a research requirement
 
 Implemented: canonical 40-node structural birth (`lmft-v0.1-seed-1`), explicit
 historical birth-record conversion, direct activation, and bounded propagation.
-Contemplation is now a seed label and path, not an implemented cognitive process.
-Persistent judgment revision, disk memory/restart, constitutional enforcement,
-SLMs, and runtime LLM integration remain unimplemented.
+The optional local-model path now provides linguistic interpretation, experience
+digestion, and one bounded contemplation-support call, with temporary activation
+and validated proposals. Persistent judgment revision, disk state/restart, and
+full constitutional enforcement remain unimplemented.
+
+See [Local model setup](docs/LOCAL_MODELS.md) for exact Windows/RTX 4080 commands,
+automatic pinned downloads, offline operation, and the boundary between proposals
+and accepted state changes.
 
 `lmft_lab.migration.migrate_legacy_birth_record` accepts an exact historical
 neutral birth record (`minimal-v0.1-seed-1`) and returns a new canonical state plus
@@ -52,8 +57,9 @@ versions and developed states. External relationships, traces, and saved files
 are not automatically migrated. See [Minimal Section 4](docs/MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
 
 The GitHub repository is [LMFT-Lab](https://github.com/schaleh12/LMFT-Lab), and
-the local `origin` remote uses that URL. The active workspace folder still uses
-`GFT-Lab`; its eventual rename does not change the Python package name.
+the local `origin` remote uses that URL. The workspace is now
+`LMFT based general AI/LMFT-Lab`. Historical GFT references describe old research
+or explicit compatibility records, not the current architecture.
 
 ## Recreate the development environment
 
@@ -101,7 +107,10 @@ Direct-activation tests also cover temporary values, reset behavior, input
 validation, and inspectable traces without persistent changes.
 Propagation tests cover synchronous passes, signed influences, bounded cycles,
 deterministic ordering, and invalid relationship/configuration rejection.
-Learning, action selection, and persistence are not implemented yet.
+Local-model tests additionally cover validation, cache/offline behavior, role
+flow, failures, and state isolation using mocked inference. Actual model runs
+are recorded separately in [the smoke report](experiments/LOCAL_MODEL_SMOKE.md).
+Learning, action selection, and persistent cognitive state remain unimplemented.
 
 ## Repository layout
 

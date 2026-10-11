@@ -350,3 +350,9 @@ A passing mechanical protocol does not demonstrate useful conceptual compression
 SLM internalization, autonomous contemplation, personality, or injection resistance
 outside the tested cases. Clarity/coherence and evidence-based Confidence must be
 evaluated separately; persuasive model output is not independent evidence.
+
+
+The separately authorized [local-model smoke path](../docs/LOCAL_MODELS.md) may
+run before this experiment is complete. Its proposals and temporary activations
+do not satisfy the persistent-revision acceptance checks and do not alter this
+mechanical protocol or its no-live-model evaluation boundary.

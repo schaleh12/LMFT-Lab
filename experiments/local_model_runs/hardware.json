@@ -1,0 +1,9 @@
+{
+  "server_pid": 25388,
+  "gpu": "NVIDIA GeForce RTX 4080, 610.88, 16376 MiB, 5245 MiB",
+  "compute_processes": "25388, C:\\Users\\schal\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\LMFT-Lab\\cache\\backend\\b11429\\bin\\llama-server.exe, [N/A]",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "source_base_commit": "8d892acafe8e1fb9a5899d39b9ed54c08776a955",
+  "scope": "Filtered to the LMFT server; raw diagnostic retained locally in outputs/hardware-raw-001.json."
+}

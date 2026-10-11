@@ -15,6 +15,18 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# GFT experiment outputs (we can refine this later)
+# LMFT experiment outputs
 outputs/
 logs/
+# Local models, backend binaries, and credentials
+.cache/
+models/
+.cache-lmft/
+*.gguf
+*.safetensors
+*.partial
+.env
+.env.*
+!.env.example
+.huggingface/
+*.token

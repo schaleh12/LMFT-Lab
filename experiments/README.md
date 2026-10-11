@@ -36,3 +36,8 @@ include learning-disabled and propagation-disabled controls and an LLM with
 ordinary structured memory under matched evidence/model/resource conditions.
 Distinguish better explanation from stronger evidence; record unsuccessful
 revisions and constitutional/prompt-injection test failures as well as successes.
+
+
+[Local-model smoke run](LOCAL_MODEL_SMOKE.md) records actual CUDA and offline
+proposal-path execution, separate from mocked tests and from the unexecuted
+persistent-revision experiment.

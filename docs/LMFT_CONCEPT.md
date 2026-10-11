@@ -70,8 +70,10 @@ The proposed cycle is:
 
 Language models, specialized small language models (SLMs), classifiers, and
 deterministic procedures may eventually share these tasks. Their estimates are
-not automatically facts. V0.1 uses authored inputs and deterministic or mocked
-responses; the entire cycle is not yet implemented or validated.
+not automatically facts. Mechanical tests use authored inputs and mocked responses. The optional
+[local-model path](LOCAL_MODELS.md) adds real interpretation, digestion, and bounded
+contemplation proposals. The entire cycle, including revision, is not implemented
+or validated.
 
 ## 4. LLM partnership and internalization
 
@@ -180,5 +182,6 @@ Open issues include operational constitutional principles and authorization,
 evidence independence and calibration, reliable grounding, useful propagation
 semantics, bounded endogenous scheduling, model replacement and identity,
 criteria for internalization, and meaningful measures of conceptual development.
-No specific runtime LLM, SLM training method, vector database, or agent framework
-is selected by this document.
+The local integration selects a pinned Qwen3-4B GGUF for initial experiments;
+this is not a claim that it is an adequate founding teacher. No SLM training
+method, vector database, or agent framework is selected.

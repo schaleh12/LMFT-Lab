@@ -1,0 +1,16 @@
+{
+  "source_base_commit": "8d892acafe8e1fb9a5899d39b9ed54c08776a955",
+  "note": "Uncommitted file hashes for the implementation used in final offline run 003.",
+  "sha256": {
+    "config/local_models.json": "0997ef620bb1a93d10a3262f35894ed6e36b8aeb7b685dd890fccae801aee3ab",
+    "src/lmft_lab/__init__.py": "bbfad5c569b6e0ca313060bffc23deb753ac4e196e8526ee693e4234a6ba0eb0",
+    "src/lmft_lab/__main__.py": "4054868abeff759cf065beefc0aa3ea19ffe71071f5bf55c08921fe0e7165e12",
+    "src/lmft_lab/activation.py": "ed95553c0baa65f45c11c54e75b9aabb0908f1db1adf60546edf741e894ed511",
+    "src/lmft_lab/birth.py": "4eded40b8beebcd2e87022d4e9e0d09de2e99a2b8c99eb5fc922aba9c7c80d6b",
+    "src/lmft_lab/local_models.py": "914842f1ce28bcb299a669d482ff381caea68b27c73b3da2d47185d4eb617591",
+    "src/lmft_lab/migration.py": "5cbef1fc62805210896be519d50d10d87ffeda19fe757c81fa66bafebf2016bd",
+    "src/lmft_lab/model_assets.py": "21048a449f1bfc52bf5b5f35cd2b570aadfdc3f37926a695233d23222d22fe32",
+    "src/lmft_lab/processing.py": "a1256fdd246333318015f691237bd53ffc0f8f7e57a27a56583f3cd7b0a60255",
+    "src/lmft_lab/propagation.py": "f4d47d5db9d1dd49dca126894f7a85011882e9e17692837befc8bf8b86fac382"
+  }
+}

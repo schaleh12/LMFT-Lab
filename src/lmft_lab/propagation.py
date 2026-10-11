@@ -119,6 +119,7 @@ def propagate_activation(
     source_instance: str,
     relationship_source: str,
     config: PropagationConfig = PropagationConfig(),
+    source: str = "developer",
 ) -> PropagationResult:
     """Apply Runtime 9.2 without inferring edges from genealogy or labels.
 
@@ -131,7 +132,7 @@ def propagate_activation(
         raise ValueError("config must be PropagationConfig")
     config.__post_init__()
     direct_frame = activate_direct(state, proposed_memberships, event_id=event_id,
-                                   source_instance=source_instance)
+                                   source_instance=source_instance, source=source)
     if not isinstance(relationships, tuple):
         raise ValueError("relationships must be an immutable tuple")
     known = {n.id for n in state.nodes}
