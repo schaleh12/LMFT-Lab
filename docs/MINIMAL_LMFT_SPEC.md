@@ -1,7 +1,8 @@
 # Minimal LMFT Specification
 
 **Status:** V0.1 documentation target; structural birth, direct activation,
-bounded propagation, and a local-model proposal path are implemented. The code uses the canonical seed in Section 4; Appendix A preserves
+bounded propagation, a local-model proposal path and a narrow
+[supervised persistent fixture runtime](INTERACTIVE_RUNTIME.md) are implemented. The code uses the canonical seed in Section 4; Appendix A preserves
 the historical seed for explicit compatibility conversion. This specification controls scope when the runtime or older
 experiment proposals conflict with it.
 
@@ -141,8 +142,8 @@ and developed states. The regular constructor/validator accepts only the canonic
 version. The compatibility test independently reads Appendix A; the birth contract
 test reads the canonical diagram. No historical files, traces, or relationship
 endpoints are rewritten. External records must retain their original version and
-require a separately validated conversion using the explicit map; no checkpoint
-loader or automatic archive migration exists. Approval for this implementation
+require a separately validated conversion using the explicit map; the new runtime
+loads only its own schema-1 checkpoint, with no automatic legacy archive migration. Approval for this implementation
 has been granted; future founding-geometry changes still require explicit approval.
 
 ## 5. Cultivation and Founding Principles
@@ -300,8 +301,9 @@ and evidence for useful internalization remain research questions.
 6. Test rejection, duplicate events, interrupted writes, and controlled histories.
 7. Evaluate persistent development and simpler memory baselines after these checks.
    The owner has separately authorized the bounded local-model proposal path
-   before revision/persistence completion; it cannot commit state changes. See
-   [local-model scope](LOCAL_MODELS.md).
+   before revision/persistence completion; that adapter cannot commit state changes.
+   A subsequent authorized [fixture runtime](INTERACTIVE_RUNTIME.md) now commits
+   separately validated evidence revisions. See [local-model scope](LOCAL_MODELS.md).
 
 ## Appendix A. Historical implemented seed compatibility
 

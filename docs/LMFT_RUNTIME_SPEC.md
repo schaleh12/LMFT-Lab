@@ -29,11 +29,12 @@ later LMFT evaluation
 historically explainable difference in behavior
 ```
 
-The proposed runtime targets a small stateful fuzzy system. Only in-memory
-structural birth, direct activation, bounded propagation, and the bounded
-[local-model proposal path](LOCAL_MODELS.md) exist today. Learning and persistent
-judgment revision are not implemented; contemplation support is a single model
-call, not an autonomous cognitive loop.
+The proposed runtime targets a small stateful fuzzy system. Implemented components
+include structural birth, direct activation, bounded propagation and the
+[local-model proposal path](LOCAL_MODELS.md). The [supervised fixture runner](INTERACTIVE_RUNTIME.md)
+adds persistent judgment revision and inbox/outbox communication. Its separate
+mechanical judgment does not implement the node-learning formulas below.
+Contemplation support remains one bounded call, not an autonomous cognitive loop.
 
 ## 2. Design Status
 
@@ -876,3 +877,30 @@ No new state/seed migration is required. The proposed event-source spelling is
 now `lmft`; no implemented serialized event stream used the historical `gft`
 value. Existing activation calls still default to `developer`; model-derived
 frames explicitly identify `llm` and the request hash.
+
+
+## 24. Implemented supervised fixture runtime
+
+The owner authorized a minimal persistent runner after the local-model integration.
+[INTERACTIVE_RUNTIME.md](INTERACTIVE_RUNTIME.md) defines its actual protocol, commit
+point, post-halt-only diagnostics and commands. One separately named judgment uses
+an authored bounded evidence score; it does not change any numerical equation above
+or the canonical founding inventory. The [frozen protocol](../experiments/INTERACTIVE_REVISION_PROTOCOL.md)
+and [results](../experiments/INTERACTIVE_REVISION_RESULTS.md) distinguish mechanical
+revision from actual local-model smoke testing. No automatic teacher bridge,
+endogenous contemplation, constitutional modification or autonomous code edit exists.
+
+## 25. Comparative procedure fixture
+
+The [second fixture](COMPARATIVE_RELIABILITY.md) retains the existing separate
+judgment score equation and tests authored propagation against zero passes and
+a structured-memory recount. No activation-to-revision coupling is introduced;
+held-out scope and evidence eligibility are experimental conventions in its
+[preregistration](../experiments/COMPARATIVE_RELIABILITY_PROTOCOL.md).
+
+## 26. Conditional lookup and clarification fixture
+
+The authorized [context-dependent experiment](CONTEXTUAL_EXPERIMENT.md) reuses the
+separate judgment counter per authored feature value. Selection is ordinary lookup,
+not propagation. Its clarification and identity policies are fixture conventions,
+not changes to the protected seed or numerical equations above.

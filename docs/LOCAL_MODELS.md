@@ -17,9 +17,10 @@ switching unloads the prior process. Separate roles are not independent witnesse
 The seed, numerical update equations, legacy migration, and existing developer
 activation defaults are unchanged. Digestion/contemplation output is recorded as
 a proposal, never committed as a belief, confidence update, or constitutional edit.
-There is no implemented judgment-revision engine to call yet. Its future acceptance
-path must retain evidence/reasons and explicit policies. JSON trace files are
-diagnostic records, not restored cognitive state or a transactional event store.
+The [supervised runner](INTERACTIVE_RUNTIME.md) now wraps this path with a separate
+fixture-specific revision rule and recoverable state. It retains one adapter across
+inputs. Model recommendations still have no acceptance authority. Standalone JSON
+trace files remain diagnostics, not restored cognitive state or a transaction store.
 
 ## Model and backend choice
 

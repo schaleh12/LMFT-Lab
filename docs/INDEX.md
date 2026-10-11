@@ -13,9 +13,11 @@
 
 The Minimal Specification controls implementation scope when older runtime or
 experiment requirements differ. Protocol choices must be frozen before evaluation;
-hypotheses are not results. Only structural birth, direct activation, and bounded
-propagation, explicit legacy conversion, and a bounded local-model proposal path
-exist today. Persistent judgment revision remains unimplemented. Numerical defaults are not validated cognitive laws.
+hypotheses are not results. Implemented: structural birth, direct activation, bounded
+propagation, explicit legacy conversion, local-model proposals and a supervised
+file-backed runtime with one separate fixture judgment. Numerical defaults are
+not validated cognitive laws. See [runtime commands and boundaries](INTERACTIVE_RUNTIME.md)
+and [experiment results](../experiments/INTERACTIVE_REVISION_RESULTS.md).
 
 - [Local model setup and boundary](LOCAL_MODELS.md): pinned Windows CUDA models,
   automatic downloads, offline use, validation, and smoke evidence.
@@ -60,8 +62,9 @@ are unchanged. GitHub and the local `origin` remote now use
 | YAML configuration versus no parser dependency | Proposed storage uses JSON; schema examples may still use YAML notation |
 
 Canonical and legacy tests cover their respective diagrams. Numerical evidence
-attribution, confidence calibration, concrete constitutional policy, and
-recoverable commit semantics remain open; see the experiment's decision groups.
+attribution beyond the authored fixture, confidence calibration, and concrete
+constitutional policy remain open. The narrow runner now defines recoverable
+checkpoint replacement; broader storage designs remain proposals.
 
 ## Research tests and roadmap
 
@@ -72,3 +75,16 @@ into classifiers, procedures, or specialized models. Compare against ordinary
 structured LLM memory and propagation-disabled controls. Continuous agency,
 relationship-specific identity, and expressive personality are long-term ambitions,
 not initial acceptance criteria. Preserve unsuccessful findings and historical meaning.
+
+## Comparative procedure fixture
+
+[Setup and implementation](COMPARATIVE_RELIABILITY.md), [preregistered protocol](../experiments/COMPARATIVE_RELIABILITY_PROTOCOL.md),
+and [results](../experiments/COMPARATIVE_RELIABILITY_RESULTS.md) describe the second
+small experiment. It preserves the seed and equations and explicitly tests whether
+propagation is causally involved in the existing evidence-counter judgment.
+
+## Context-dependent learning
+
+[Guide](CONTEXTUAL_EXPERIMENT.md), [preregistration](../experiments/CONTEXTUAL_PROTOCOL.md),
+and [results](../experiments/CONTEXTUAL_RESULTS.md) cover conditional lookup, missing
+information and bounded deduplication. Previous propagation-equivalence results stand.

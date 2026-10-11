@@ -72,8 +72,9 @@ Language models, specialized small language models (SLMs), classifiers, and
 deterministic procedures may eventually share these tasks. Their estimates are
 not automatically facts. Mechanical tests use authored inputs and mocked responses. The optional
 [local-model path](LOCAL_MODELS.md) adds real interpretation, digestion, and bounded
-contemplation proposals. The entire cycle, including revision, is not implemented
-or validated.
+contemplation proposals. A [supervised fixture runtime](INTERACTIVE_RUNTIME.md) now
+adds one evidence-backed judgment and restart. The fuller developmental cycle
+and cognitive usefulness are not established by that mechanical result.
 
 ## 4. LLM partnership and internalization
 

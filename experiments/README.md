@@ -2,7 +2,10 @@
 
 This area holds LMFT experimental protocols and reproducibility records.
 [Experiment 001](EXPERIMENT_001_PERSISTENT_REVISION.md) is a draft persistent-revision
-protocol; it has not been executed. Numerical unit tests are not a completed
+protocol; its broader developmental study has not been executed. A narrow
+[interactive fixture protocol](INTERACTIVE_REVISION_PROTOCOL.md) now has
+[mechanical and actual-model results](INTERACTIVE_REVISION_RESULTS.md).
+Numerical unit tests are not a completed
 developmental experiment. Genetic search is optional future research only.
 
 Each future experiment should preserve enough information to reproduce and
@@ -26,8 +29,8 @@ or subsequent runs.
 
 The repository currently ignores directories named `outputs/` and `logs/`.
 Ignored files are not a durable experimental record: preserve results needed for
-reproducibility in tracked files or a documented durable archive. No storage
-format, experiment framework, or archival service is selected here.
+reproducibility in tracked files or a documented durable archive. The supervised runner uses a versioned JSON checkpoint for short experiments;
+no archival service is selected.
 
 
 The immediate target is a small traceable change of mind that survives restart
@@ -41,3 +44,13 @@ revisions and constitutional/prompt-injection test failures as well as successes
 [Local-model smoke run](LOCAL_MODEL_SMOKE.md) records actual CUDA and offline
 proposal-path execution, separate from mocked tests and from the unexecuted
 persistent-revision experiment.
+
+[Comparative procedure reliability](COMPARATIVE_RELIABILITY_PROTOCOL.md) is the
+second grounded fixture, with [results](COMPARATIVE_RELIABILITY_RESULTS.md) and
+[commands](../docs/COMPARATIVE_RELIABILITY.md). It compares the current counter with
+and without propagation and an independent structured-memory recount. Original
+interactive results remain historical records.
+
+The [contextual protocol](CONTEXTUAL_PROTOCOL.md) and [results](CONTEXTUAL_RESULTS.md)
+test conditional judgments, linked clarification and reduced retransmission overhead
+against conditional and aggregate memory.

@@ -1,5 +1,12 @@
 # Experiment 001: Persistent Revision
 
+**Implementation follow-up:** The narrower [interactive fixture protocol](INTERACTIVE_REVISION_PROTOCOL.md)
+now exercises one separate judgment, outbox clarification, linked evidence, actual
+process restart and controls. See [results](INTERACTIVE_REVISION_RESULTS.md). This
+does not mark the broader two-history developmental study below as executed, or
+validate its provisional node-learning formulas. Original protocol meaning is retained.
+
+
 **Status:** Draft mechanical-phase protocol; not yet executed. Updated for the
 LMFT direction. Numerical diagnostics now use the `lmft_lab` package; historical seed records remain versioned.
 

@@ -43,8 +43,10 @@ Implemented: canonical 40-node structural birth (`lmft-v0.1-seed-1`), explicit
 historical birth-record conversion, direct activation, and bounded propagation.
 The optional local-model path now provides linguistic interpretation, experience
 digestion, and one bounded contemplation-support call, with temporary activation
-and validated proposals. Persistent judgment revision, disk state/restart, and
-full constitutional enforcement remain unimplemented.
+and validated proposals. The [supervised runtime](docs/INTERACTIVE_RUNTIME.md) adds
+inbox/outbox communication, recoverable checkpoints and one separate fixture judgment
+with evidence-backed revision and restart. Full constitutional enforcement and
+general developmental learning remain research work.
 
 See [Local model setup](docs/LOCAL_MODELS.md) for exact Windows/RTX 4080 commands,
 automatic pinned downloads, offline operation, and the boundary between proposals
@@ -110,12 +112,15 @@ deterministic ordering, and invalid relationship/configuration rejection.
 Local-model tests additionally cover validation, cache/offline behavior, role
 flow, failures, and state isolation using mocked inference. Actual model runs
 are recorded separately in [the smoke report](experiments/LOCAL_MODEL_SMOKE.md).
-Learning, action selection, and persistent cognitive state remain unimplemented.
+Runtime tests now cover fixture revision, persistence, actual process restart,
+message handling and post-halt inspection. See the [mechanical and actual-model
+results](experiments/INTERACTIVE_REVISION_RESULTS.md); general action selection
+and cognitive development remain unimplemented.
 
 ## Repository layout
 
 ```text
-src/lmft_lab/  Python package with in-memory structural birth construction
+src/lmft_lab/  Seed, activation, local models and supervised persistent runtime
 tests/       Package and structural birth validation tests
 docs/        Research specifications, hypotheses, and design documentation
 experiments/ Controlled experiments and reproducibility records
@@ -183,3 +188,11 @@ The result's `format_trace()` shows each pass's inputs, weighted contributions,
 and clamping. The result's `activations` property returns the final temporary
 values. No learned or persistent state is changed. See Experiment 001 for the
 diagnostic limits and remaining research decisions.
+
+A second [comparative procedure fixture](docs/COMPARATIVE_RELIABILITY.md) tests
+propagation-enabled, propagation-disabled and structured-memory conditions without
+changing the revision equation. See its [results](experiments/COMPARATIVE_RELIABILITY_RESULTS.md).
+
+The [context-dependent study](docs/CONTEXTUAL_EXPERIMENT.md) adds authored-feature
+lookup, verified clarification and evidence/context deduplication. See
+[its results](experiments/CONTEXTUAL_RESULTS.md); it makes no fuzzy-advantage claim.
