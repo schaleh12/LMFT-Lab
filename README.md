@@ -204,3 +204,7 @@ The [scoped-support study](docs/SCOPED_ATTENTION.md) tests Fact/Confidence influ
 The [consistent-support experiment](docs/CONSISTENT_SUPPORT.md) separates observation coverage from task-specific consistency. Its [results](experiments/CONSISTENT_SUPPORT_RESULTS.md) reproduce the old failure and compare a revised circuit with exact ablations and ordinary memory.
 
 The [correction experiment](docs/CORRECTION_EXPERIMENT.md) preserves erroneous originals while applying authorized, verified replacements through an effective evidence view. Its [results](experiments/CORRECTION_RESULTS.md) demonstrate restart-safe repair and ordinary-memory equivalence.
+
+The [local teacher connection](docs/LOCAL_TEACHER.md) supports one versioned developmental profile and independently validated route lessons. The [first actual offline study](experiments/TEACHER_RESULTS.md) retained a rejected proposal and demonstrated no transfer; it is separate from mocked acceptance tests.
+
+The [bounded teacher briefing follow-up](experiments/TEACHER_BRIEFING_RESULTS.md) accepted one useful route lesson and appropriate no-change recommendations, with ordinary-memory equivalence. Development now returns to [correcting one outcome sample](docs/EVIDENCE_LEARNING_HANDOFF.md); that next experiment is documented, not implemented.

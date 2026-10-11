@@ -104,3 +104,11 @@ information and bounded deduplication. Previous propagation-equivalence results 
 ## Correction without erasure
 
 [Guide](CORRECTION_EXPERIMENT.md), [protocol](../experiments/CORRECTION_PROTOCOL.md), and [results](../experiments/CORRECTION_RESULTS.md) separate correction authority, verification, lineage and prediction quality.
+
+## Local developmental teacher
+
+[Guide and commands](LOCAL_TEACHER.md), [preregistration](../experiments/TEACHER_PROTOCOL.md), and [results](../experiments/TEACHER_RESULTS.md) document the real 8B teacher, frozen profile, independent acceptance and negative first transfer result.
+
+## Teacher briefing follow-up and evidence-learning handoff
+
+[Protocol](../experiments/TEACHER_BRIEFING_PROTOCOL.md), [four-call results](../experiments/TEACHER_BRIEFING_RESULTS.md), and [next outcome-correction task](EVIDENCE_LEARNING_HANDOFF.md). Teacher communication remains optional.

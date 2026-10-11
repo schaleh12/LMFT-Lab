@@ -10,7 +10,7 @@ import re
 import sys
 import time
 
-from . import reliability, contextual, attention, scoped_attention, consistent_attention, correction
+from . import reliability, contextual, attention, scoped_attention, consistent_attention, correction, teacher
 from .birth import create_birth_state
 from .judgment import newborn, probe, revise, RULE_VERSION
 from .local_models import LocalModels, load_config, strict_json
@@ -82,7 +82,7 @@ def initial_state(individual, learning, manifest, experiment="channel"):
             "judgment": newborn(), "processed": {}, "receipts": [], "outbox": [],
             "questions": {}, "asked_issues": [], "diagnostics": []}
     if experiment != "channel":
-        result.update(experiment=experiment, judgment=correction.newborn(experiment, manifest.get("correction_policy")) if experiment in correction.MODES else consistent_attention.newborn(experiment) if experiment in consistent_attention.MODES else scoped_attention.newborn(experiment) if experiment in scoped_attention.MODES else attention.newborn(experiment) if experiment in attention.MODES else contextual.newborn(experiment) if experiment in contextual.MODES else reliability.newborn())
+        result.update(experiment=experiment, judgment=teacher.newborn(experiment, manifest.get("teacher_study")) if experiment in teacher.MODES else correction.newborn(experiment, manifest.get("correction_policy")) if experiment in correction.MODES else consistent_attention.newborn(experiment) if experiment in consistent_attention.MODES else scoped_attention.newborn(experiment) if experiment in scoped_attention.MODES else attention.newborn(experiment) if experiment in attention.MODES else contextual.newborn(experiment) if experiment in contextual.MODES else reliability.newborn())
     return result
 
 
@@ -109,7 +109,7 @@ def advance(previous, queued, models):
     try:
         if malformed:
             raise ValueError(malformed)
-        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES))
+        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES))
     except (ValueError, TypeError) as exc:
         receipt.update(status="rejected", reason=str(exc), raw=raw)
         emit(state, "response", {"text": "Inbox record rejected: invalid message format.",
@@ -126,6 +126,8 @@ def advance(previous, queued, models):
         return state
     state["processed"][message["id"]] = identity
     receipt.update(message_id=message["id"], status="processed", message=message)
+    if experiment in teacher.MODES:
+        return teacher.handle(state, message, models, receipt)
     if experiment in correction.MODES:
         return correction.handle(state, message, models, receipt)
     if experiment in consistent_attention.MODES:
@@ -198,14 +200,27 @@ def advance(previous, queued, models):
 
 
 def run(root, *, individual=None, mode="local", config_path="config/local_models.json", offline=False,
-        learning=True, experiment="channel"):
+        learning=True, experiment="channel", teacher_profile="foundational-teacher-v1",
+        teacher_config="config/teacher_models.json", teacher_study="historical"):
     store = Store(root)
     config = load_config(config_path) if mode == "local" else None
     manifest = software_manifest(config, mode)
+    if experiment in teacher.MODES:
+        from .teacher_profile import load_profile
+        manifest["teacher_profile"] = load_profile(teacher_profile)
+        manifest["teacher_config"] = load_config(teacher_config)
+        if teacher_profile == "foundational-teacher-v2" or teacher_study != "historical":
+            from .teacher_briefing import load_briefing
+            manifest["teacher_briefing"] = load_briefing()
+        if teacher_study != "historical":
+            manifest["teacher_study"] = {"situation": teacher_study,
+                "initial_weights": manifest["teacher_briefing"]["situations"][teacher_study]}
+        if "teacher" not in manifest["teacher_config"]["roles"]:
+            raise ValueError("teacher model role required")
     if experiment in correction.MODES:
         manifest["correction_policy"] = correction.load_policy()
     if experiment != "channel":
-        manifest.update(experiment=experiment, fixture_rule=correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
+        manifest.update(experiment=experiment, fixture_rule=teacher.RULE if experiment in teacher.MODES else correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
     with locked(store.root / "runtime.lock"):
         if (store.root / "checkpoint.json").exists():
             state = store.read()
@@ -249,9 +264,12 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("start")
     start.add_argument("--new", dest="individual")
-    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES), default="channel")
+    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES), default="channel")
     start.add_argument("--mode", choices=("local", "fixture"), default="local")
     start.add_argument("--config", default="config/local_models.json")
+    start.add_argument("--teacher-profile", default="foundational-teacher-v1")
+    start.add_argument("--teacher-config", default="config/teacher_models.json")
+    start.add_argument("--teacher-study", choices=("historical", "beneficial", "no-change"), default="historical")
     start.add_argument("--offline", action="store_true")
     start.add_argument("--learning-disabled", action="store_true")
     submit = commands.add_parser("submit")
@@ -266,7 +284,8 @@ def main(argv=None):
     try:
         if args.command == "start":
             run(args.root, individual=args.individual, mode=args.mode, config_path=args.config,
-                offline=args.offline, learning=not args.learning_disabled, experiment=args.experiment)
+                offline=args.offline, learning=not args.learning_disabled, experiment=args.experiment,
+                teacher_profile=args.teacher_profile, teacher_config=args.teacher_config, teacher_study=args.teacher_study)
             return 0
         if args.command == "submit":
             message = validate_message(strict_json(Path(args.file).read_text(encoding="utf-8-sig")), contextual_content=True)
@@ -277,7 +296,7 @@ def main(argv=None):
             output = store.stop()
         else:
             state = store.inspect()
-            output = ({"weights":state["judgment"]["weights"]} if args.command == "probe" and state.get("experiment") in (*attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES) else contextual.probe(state["judgment"]) if args.command == "probe" and state.get("experiment") in contextual.MODES else
+            output = ({"weights":state["judgment"]["weights"]} if args.command == "probe" and state.get("experiment") in (*attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES) else contextual.probe(state["judgment"]) if args.command == "probe" and state.get("experiment") in contextual.MODES else
                       ((reliability.probe(state["judgment"]) if state.get("experiment", "channel") != "channel"
                        else probe(state["judgment"])) if args.command == "probe" else state))
         print(json.dumps(output, ensure_ascii=False, indent=2))

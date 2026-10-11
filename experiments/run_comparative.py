@@ -50,9 +50,10 @@ def wait_for(predicate, process, timeout=420):
     raise TimeoutError("Fixed experiment deadline exceeded")
 
 
-def start(root, condition, *, new=False, local=False, control=False):
+def start(root, condition, *, new=False, local=False, control=False, extra_args=()):
     command = [sys.executable, "-m", "lmft_lab.runtime", "--root", str(root), "start",
                "--experiment", condition, "--mode", "local" if local else "fixture"]
+    command.extend(extra_args)
     if new: command += ["--new", "procedure-study"]
     if local: command += ["--offline"]
     if control: command += ["--learning-disabled"]

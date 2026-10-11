@@ -920,3 +920,9 @@ The [consistent-support study](CONSISTENT_SUPPORT.md) distinguishes verified obs
 ## 30. Provenance-preserving correction experiment
 
 The [correction study](CORRECTION_EXPERIMENT.md) adds explicit authorization, target eligibility and independent replacement verification around an immutable observation ledger. Existing selectors consume its effective heads without changing the consistent-support mapping, fixed routes, seed or equations. Only scoped observations are correctable; outcome-counter correction remains future work. Ordinary-memory equivalence is reported without attributing ledger integrity to propagation.
+
+## 31. Local developmental teacher experiment
+
+The [local teacher study](LOCAL_TEACHER.md) adds one profile-controlled external proposal path for bounded existing route weights. Training evidence and fixed validation govern acceptance independently of model prose; fresh cases use no teacher. Teacher dispositions remain separate from experience-based updates. The first actual proposal was rejected, with no demonstrated transfer. Seed geometry, numerical equations, correction and migration behavior are unchanged.
+
+The [teacher briefing follow-up](../experiments/TEACHER_BRIEFING_RESULTS.md) tests clarified scoped context against the historical prompt under unchanged acceptance. One accepted preference affected fresh investigations, matching ordinary memory; no general comprehension claim follows. The next bounded task is [outcome-sample correction](EVIDENCE_LEARNING_HANDOFF.md), not additional teacher architecture.

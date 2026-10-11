@@ -1,0 +1,28 @@
+{
+  "version": "route-briefing-2",
+  "situations": {
+    "beneficial": {
+      "A": 0.5,
+      "B": 0.5,
+      "D": 0.5
+    },
+    "no-change": {
+      "A": 0.25,
+      "B": 0.75,
+      "D": 0.5
+    }
+  },
+  "context": {
+    "context_version": "route-briefing-2",
+    "question": "Using the recorded calibration results and current route weights, is one permitted route-weight change justified? If so propose it; otherwise retain an evidenced route weight and explain why no change is warranted.",
+    "routes": {
+      "A": "An instrument route requesting the shielded condition; relevant to the conditional judgment.",
+      "B": "An alternative instrument route requesting the same shielded condition; equally relevant.",
+      "D": "Requests color, which cannot resolve the shielded-condition judgment."
+    },
+    "availability_semantics": "available=true means that this calibration trial returned a usable measurement of the requested condition. available=false means that it returned no usable measurement. A record exists in either case. Neither flag is the value of shielded, a correctness label, nor evidence that a prediction succeeded.",
+    "selection_semantics": "Among candidates with independent conflicting reports, LMFT selects one positive-score candidate. For equally relevant conflicting A/B candidates, a larger route weight increases the selection score; equal scores choose A before B by candidate ID. D has lower relevance. Only one route is tried per case. If that route supplies no usable measurement, LMFT abstains; it does not automatically try the other route. The weight is a preference, not a probability of truth.",
+    "acceptance_semantics": "A changed weight needs at least two distinct supplied calibration records for that same route supporting its direction: available measurements support increasing preference, unavailable measurements support decreasing it. Independent fixed validation must strictly increase relevant resolved investigations without increasing irrelevant requests. A no-op is retained but cannot be accepted as an improvement. There are two validation cases, so two resolutions is the maximum.",
+    "scope": "Only these calibration records and current state support the lesson. Future availability and predictive success are unknown. Do not assume route reliability generalizes to every case."
+  }
+}

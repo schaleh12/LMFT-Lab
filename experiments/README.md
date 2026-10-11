@@ -62,3 +62,7 @@ The [scoped-support protocol](SCOPED_ATTENTION_PROTOCOL.md) and [results](SCOPED
 [Consistent-support protocol](CONSISTENT_SUPPORT_PROTOCOL.md), [results](CONSISTENT_SUPPORT_RESULTS.md), and [commands](../docs/CONSISTENT_SUPPORT.md) preserve the old counterexample and separate fresh-case performance from historical regressions.
 
 [Correction protocol](CORRECTION_PROTOCOL.md), [results](CORRECTION_RESULTS.md), and [commands](../docs/CORRECTION_EXPERIMENT.md) test immutable originals, authorized replacement, effective evidence, cache invalidation and restart against disabled acceptance and ordinary memory.
+
+[Teacher protocol](TEACHER_PROTOCOL.md), [results](TEACHER_RESULTS.md), and [commands](../docs/LOCAL_TEACHER.md) document one actual offline local-teacher exchange, a retained rejection, fresh-case equivalence and zero-inference replay under final hardened code.
+
+[Briefing comparison protocol](TEACHER_BRIEFING_PROTOCOL.md) and [results](TEACHER_BRIEFING_RESULTS.md) close the four-call teacher-comprehension follow-up. The [roadmap handoff](../docs/EVIDENCE_LEARNING_HANDOFF.md) returns to one outcome-sample correction without implementing it here.

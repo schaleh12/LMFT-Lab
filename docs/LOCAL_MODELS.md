@@ -161,3 +161,7 @@ A real run is demonstrated separately in
 The CLI is not a checkpoint loader, live conversation service, autonomous
 contemplation loop, or the persistent judgment-revision experiment. All three
 roles run once per observation; no recursive thought scheduling is implemented.
+
+## Separate developmental teacher role
+
+The optional [local teacher connection](LOCAL_TEACHER.md) reuses this asset cache, inference lifecycle and provenance. config/teacher_models.json adds a separate teacher role while preserving the original three-role configuration. Its explicit one-question command is separate from the ordinary processing path; see the actual negative teaching result before making transfer claims.

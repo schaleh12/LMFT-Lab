@@ -45,8 +45,8 @@ def load_config(path):
         raise ValueError("configure at least one model")
     for spec in config["models"].values():
         ModelSpec(**spec)
-    if set(config["roles"]) != set(ROLES) or any(v not in config["models"] for v in config["roles"].values()):
-        raise ValueError("all three model roles must reference configured models")
+    if set(config["roles"]) not in (set(ROLES), set(ROLES) | {"teacher"}) or any(v not in config["models"] for v in config["roles"].values()):
+        raise ValueError("three small-model roles and optional teacher must reference configured models")
     g = config["generation"]
     if set(g) != {"context_size", "max_tokens", "temperature", "seed", "timeout_seconds"}:
         raise ValueError("unexpected generation configuration")
@@ -218,11 +218,16 @@ class LocalModels(AbstractContextManager):
             raise
 
     def complete(self, role, observation, node_ids, context):
-        name = self.config["roles"][role]
         request = make_request(role, observation, node_ids, context, self.config["generation"])
+        return self.generate(role, request, PROMPT_VERSION,
+                             lambda raw: validate_proposal(raw, node_ids, observation))
+
+    def generate(self, role, request, prompt_version, validator):
+        """Shared bounded inference and provenance for configured structured roles."""
+        name = self.config["roles"][role]
         trace = {"role": role, "model_key": name, "model": self.config["models"][name],
                  "backend": "llama.cpp", "backend_version": BACKEND_VERSION, "backend_archive_sha256": BACKEND_FILES,
-                 "execution": "local", "offline": self.offline, "prompt_version": PROMPT_VERSION,
+                 "execution": "local", "offline": self.offline, "prompt_version": prompt_version,
                  "request": request, "generation": self.config["generation"],
                  "request_sha256": hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()}
         started = time.monotonic()
@@ -232,12 +237,12 @@ class LocalModels(AbstractContextManager):
                                      self.config["generation"]["timeout_seconds"])
             trace["response"] = response
             choice = response["choices"][0]
-            if choice.get("finish_reason") != "stop":
+            if not isinstance(choice, dict) or choice.get("finish_reason") != "stop":
                 raise ModelError("Model output did not finish normally (possibly token limit).")
             raw = choice["message"]["content"]
             if not isinstance(raw, str):
                 raise ModelError("Backend returned no text content.")
-            proposal = validate_proposal(raw, node_ids, observation)
+            proposal = validator(raw)
             trace.update(status="validated", elapsed_seconds=time.monotonic() - started)
             return proposal, trace
         except (ModelError, OSError, ValueError, KeyError, IndexError, TypeError) as exc:

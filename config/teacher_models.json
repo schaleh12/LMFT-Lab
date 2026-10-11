@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "models": {
+    "qwen3_4b": {
+      "repo_id": "Qwen/Qwen3-4B-GGUF",
+      "revision": "bc640142c66e1fdd12af0bd68f40445458f3869b",
+      "filename": "Qwen3-4B-Q4_K_M.gguf",
+      "sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5"
+    },
+    "qwen3_8b_teacher": {
+      "repo_id": "Qwen/Qwen3-8B-GGUF",
+      "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+      "filename": "Qwen3-8B-Q4_K_M.gguf",
+      "sha256": "d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785"
+    }
+  },
+  "roles": {
+    "interpretation": "qwen3_4b",
+    "digestion": "qwen3_4b",
+    "contemplation": "qwen3_4b",
+    "teacher": "qwen3_8b_teacher"
+  },
+  "generation": {
+    "context_size": 8192,
+    "max_tokens": 1024,
+    "temperature": 0,
+    "seed": 42,
+    "timeout_seconds": 120
+  }
+}

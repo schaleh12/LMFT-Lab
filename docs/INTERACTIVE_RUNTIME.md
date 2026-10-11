@@ -234,3 +234,9 @@ Optional [consistent-support modes](CONSISTENT_SUPPORT.md) preserve the supervis
 ## Correction fixture
 
 Optional [correction modes](CORRECTION_EXPERIMENT.md) preserve the same supervised interface and atomic checkpoint boundary. A pinned authority policy, append-only lineage and effective evidence view support scoped observation correction; prior outcome counters remain unchanged.
+
+## Supervised local teacher connection
+
+Opt-in [teacher modes](LOCAL_TEACHER.md) emit a deliberate teaching request and accept only a bounded, independently validated route proposal through the inbox. An explicit one-question adapter command uses a frozen profile; no background bridge runs. Teacher profile/config selection is pinned at birth and restart, and the existing communication boundary remains unchanged.
+
+The [bounded briefing comparison](../experiments/TEACHER_BRIEFING_RESULTS.md) adds an explicitly selected v2 profile and fresh `--teacher-study beneficial` / `no-change` initializations. Default historical behavior, lesson schema, acceptance policy and communication boundaries remain unchanged. See the [evidence-learning handoff](EVIDENCE_LEARNING_HANDOFF.md) for the next task.
