@@ -111,4 +111,12 @@ information and bounded deduplication. Previous propagation-equivalence results 
 
 ## Teacher briefing follow-up and evidence-learning handoff
 
-[Protocol](../experiments/TEACHER_BRIEFING_PROTOCOL.md), [four-call results](../experiments/TEACHER_BRIEFING_RESULTS.md), and [next outcome-correction task](EVIDENCE_LEARNING_HANDOFF.md). Teacher communication remains optional.
+[Protocol](../experiments/TEACHER_BRIEFING_PROTOCOL.md), [four-call results](../experiments/TEACHER_BRIEFING_RESULTS.md), and [evidence-learning handoff](EVIDENCE_LEARNING_HANDOFF.md). Teacher communication remains optional.
+
+## Outcome evidence correction
+
+[Guide](OUTCOME_CORRECTION.md), [frozen protocol](../experiments/OUTCOME_CORRECTION_PROTOCOL.md),
+and [results](../experiments/OUTCOME_CORRECTION_RESULTS.md) extend the shared ledger to
+outcome repair and unchanged numerical recomputation, with exactly one active contribution
+per event. Restart-safe behavioral changes match ordinary memory; prediction accuracy
+does not improve. No teacher calls or propagation are involved.

@@ -69,7 +69,7 @@ Source attribution on every original and correction remains inspectable after ha
 Only scoped observations are correctable here. Prior outcome samples are not eligible targets;
 the existing sum(signs)/(n+2) equation still operates on the unchanged eight eligible outcome
 roots. Condition repair can select a different existing conditional judgment, without adding
-outcome samples or changing the numerical rule. Correcting outcome evidence is future work.
+outcome samples or changing the numerical rule. The separate [outcome-correction study](OUTCOME_CORRECTION.md) now tests outcome repair; this historical fixture remains unchanged.
 
 ## Caches, questions and persistence
 

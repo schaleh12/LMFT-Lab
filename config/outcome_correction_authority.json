@@ -1,0 +1,73 @@
+{
+  "version": "synthetic-correction-permits-1",
+  "permits": {
+    "o1-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "e9e60ae6cb3350e1c6d5c134e29904d98191cd4ac9de7d6639a58126ed6150df"
+    },
+    "o2-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "50428d83b12408de149edfb44a675d275cb209da86115eea92f27a71e98a6c28"
+    },
+    "o3-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "38481f5ec1defe73d5894e00a4b997719856f234ecdf096825d772aa149af1ce"
+    },
+    "o4-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "7ecda85cd48f9f9a6f8f0588094750e25eaefa18151beba5d7551f29ba79a699"
+    },
+    "o6-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "b08c589d7f3999e107b2529c91b20f4097202ee8e25d1e8083d1b3e458cfed61"
+    },
+    "o6-b": {
+      "authority": "fixture-curator",
+      "payload_sha256": "ce0c12d807a816d1b72914d0fece45439a44dc5f0956233f45a876c0f5db3145"
+    },
+    "o7-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "3b83562c13947fd14c53c70df85ff85ddd78b8a7da6e716edb308d89939d6821"
+    },
+    "o7-b": {
+      "authority": "fixture-curator",
+      "payload_sha256": "f3a9ac350fa99f6a26b8ed2207b52e9ffea2c0c5035654835d0f9571307223d9"
+    },
+    "o7-c": {
+      "authority": "fixture-curator",
+      "payload_sha256": "d9b270b5b3b5ffcdd02785f2fb51a26bdf54f25ce25d0d1bea0c3c18ae92707e"
+    },
+    "o8-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "0d8a67bbfbdd6bed5e7b2a9ace2e351639ff3c6d7d69efa529a36739ab9c8056"
+    },
+    "o9-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "4fed3187b2e0719f7ba2f0c128dfe7f050171179b83f0f7cf3d100137a0249a1"
+    },
+    "o10-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "f87dd39227f1cdd77a0accb5d747205c401a322529268640800612fc9e0344ab"
+    },
+    "o10-b": {
+      "authority": "fixture-curator",
+      "payload_sha256": "296c141ee440369319cce6d7ec0eaf72d8a22d8e869c78e2bc3dd7c2c34dd123"
+    },
+    "o10-c": {
+      "authority": "fixture-curator",
+      "payload_sha256": "c7dc8de7c250da7a5a122bd35701298c0c0de2ce89910f3f5afb581de696ad2b"
+    },
+    "o11-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "ff07af1e92e984518d04209df43c5f4ae3159f38153871fa2bdf8a2df9ccd212"
+    },
+    "o11-b": {
+      "authority": "fixture-curator",
+      "payload_sha256": "a9e0f188f309ea622fbd1f014560c79bc7bb9da62f26dba4d1fc0f9ccbbd7da2"
+    },
+    "o12-a": {
+      "authority": "fixture-curator",
+      "payload_sha256": "b6a28849fd0aa46fbca952a0175eb56b3db4326c94fe6937f76febb0819318b1"
+    }
+  }
+}

@@ -240,3 +240,12 @@ Optional [correction modes](CORRECTION_EXPERIMENT.md) preserve the same supervis
 Opt-in [teacher modes](LOCAL_TEACHER.md) emit a deliberate teaching request and accept only a bounded, independently validated route proposal through the inbox. An explicit one-question adapter command uses a frozen profile; no background bridge runs. Teacher profile/config selection is pinned at birth and restart, and the existing communication boundary remains unchanged.
 
 The [bounded briefing comparison](../experiments/TEACHER_BRIEFING_RESULTS.md) adds an explicitly selected v2 profile and fresh `--teacher-study beneficial` / `no-change` initializations. Default historical behavior, lesson schema, acceptance policy and communication boundaries remain unchanged. See the [evidence-learning handoff](EVIDENCE_LEARNING_HANDOFF.md) for the next task.
+
+## Outcome correction fixture
+
+Optional [outcome-correction modes](OUTCOME_CORRECTION.md) reuse the existing correction
+transaction and atomic checkpoint. A separately pinned instrument-log/reference policy
+permits repair of an erroneous outcome, while preserving the original and projecting one
+active version per independent event through the unchanged judgment rule. These modes
+make zero model calls; historical scoped-correction modes still retain their prior behavior.
+Use fresh individuals; no automatic historical checkpoint migration is added.

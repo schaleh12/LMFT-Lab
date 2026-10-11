@@ -10,7 +10,7 @@ import re
 import sys
 import time
 
-from . import reliability, contextual, attention, scoped_attention, consistent_attention, correction, teacher
+from . import reliability, contextual, attention, scoped_attention, consistent_attention, correction, teacher, outcome_correction
 from .birth import create_birth_state
 from .judgment import newborn, probe, revise, RULE_VERSION
 from .local_models import LocalModels, load_config, strict_json
@@ -82,7 +82,7 @@ def initial_state(individual, learning, manifest, experiment="channel"):
             "judgment": newborn(), "processed": {}, "receipts": [], "outbox": [],
             "questions": {}, "asked_issues": [], "diagnostics": []}
     if experiment != "channel":
-        result.update(experiment=experiment, judgment=teacher.newborn(experiment, manifest.get("teacher_study")) if experiment in teacher.MODES else correction.newborn(experiment, manifest.get("correction_policy")) if experiment in correction.MODES else consistent_attention.newborn(experiment) if experiment in consistent_attention.MODES else scoped_attention.newborn(experiment) if experiment in scoped_attention.MODES else attention.newborn(experiment) if experiment in attention.MODES else contextual.newborn(experiment) if experiment in contextual.MODES else reliability.newborn())
+        result.update(experiment=experiment, judgment=outcome_correction.newborn(experiment, manifest.get("outcome_correction_policy")) if experiment in outcome_correction.MODES else teacher.newborn(experiment, manifest.get("teacher_study")) if experiment in teacher.MODES else correction.newborn(experiment, manifest.get("correction_policy")) if experiment in correction.MODES else consistent_attention.newborn(experiment) if experiment in consistent_attention.MODES else scoped_attention.newborn(experiment) if experiment in scoped_attention.MODES else attention.newborn(experiment) if experiment in attention.MODES else contextual.newborn(experiment) if experiment in contextual.MODES else reliability.newborn())
     return result
 
 
@@ -109,7 +109,7 @@ def advance(previous, queued, models):
     try:
         if malformed:
             raise ValueError(malformed)
-        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES))
+        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES))
     except (ValueError, TypeError) as exc:
         receipt.update(status="rejected", reason=str(exc), raw=raw)
         emit(state, "response", {"text": "Inbox record rejected: invalid message format.",
@@ -126,6 +126,8 @@ def advance(previous, queued, models):
         return state
     state["processed"][message["id"]] = identity
     receipt.update(message_id=message["id"], status="processed", message=message)
+    if experiment in outcome_correction.MODES:
+        return outcome_correction.handle(state, message, models, receipt)
     if experiment in teacher.MODES:
         return teacher.handle(state, message, models, receipt)
     if experiment in correction.MODES:
@@ -217,10 +219,12 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
                 "initial_weights": manifest["teacher_briefing"]["situations"][teacher_study]}
         if "teacher" not in manifest["teacher_config"]["roles"]:
             raise ValueError("teacher model role required")
+    if experiment in outcome_correction.MODES:
+        manifest["outcome_correction_policy"] = outcome_correction.load_policy()
     if experiment in correction.MODES:
         manifest["correction_policy"] = correction.load_policy()
     if experiment != "channel":
-        manifest.update(experiment=experiment, fixture_rule=teacher.RULE if experiment in teacher.MODES else correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
+        manifest.update(experiment=experiment, fixture_rule=outcome_correction.RULE if experiment in outcome_correction.MODES else teacher.RULE if experiment in teacher.MODES else correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
     with locked(store.root / "runtime.lock"):
         if (store.root / "checkpoint.json").exists():
             state = store.read()
@@ -264,7 +268,7 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("start")
     start.add_argument("--new", dest="individual")
-    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES), default="channel")
+    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES), default="channel")
     start.add_argument("--mode", choices=("local", "fixture"), default="local")
     start.add_argument("--config", default="config/local_models.json")
     start.add_argument("--teacher-profile", default="foundational-teacher-v1")
@@ -296,7 +300,7 @@ def main(argv=None):
             output = store.stop()
         else:
             state = store.inspect()
-            output = ({"weights":state["judgment"]["weights"]} if args.command == "probe" and state.get("experiment") in (*attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES) else contextual.probe(state["judgment"]) if args.command == "probe" and state.get("experiment") in contextual.MODES else
+            output = (outcome_correction.snapshot(state["judgment"]) if args.command == "probe" and state.get("experiment") in outcome_correction.MODES else {"weights":state["judgment"]["weights"]} if args.command == "probe" and state.get("experiment") in (*attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES) else contextual.probe(state["judgment"]) if args.command == "probe" and state.get("experiment") in contextual.MODES else
                       ((reliability.probe(state["judgment"]) if state.get("experiment", "channel") != "channel"
                        else probe(state["judgment"])) if args.command == "probe" else state))
         print(json.dumps(output, ensure_ascii=False, indent=2))

@@ -66,3 +66,8 @@ The [scoped-support protocol](SCOPED_ATTENTION_PROTOCOL.md) and [results](SCOPED
 [Teacher protocol](TEACHER_PROTOCOL.md), [results](TEACHER_RESULTS.md), and [commands](../docs/LOCAL_TEACHER.md) document one actual offline local-teacher exchange, a retained rejection, fresh-case equivalence and zero-inference replay under final hardened code.
 
 [Briefing comparison protocol](TEACHER_BRIEFING_PROTOCOL.md) and [results](TEACHER_BRIEFING_RESULTS.md) close the four-call teacher-comprehension follow-up. The [roadmap handoff](../docs/EVIDENCE_LEARNING_HANDOFF.md) returns to one outcome-sample correction without implementing it here.
+
+[Outcome-correction protocol](OUTCOME_CORRECTION_PROTOCOL.md), [results](OUTCOME_CORRECTION_RESULTS.md),
+and [commands](../docs/OUTCOME_CORRECTION.md) complete that handoff in a separate zero-model
+study: immutable ancestry, one active outcome per root, exact counter recomputation, actual
+restart and ordinary-memory equivalence. Prediction quality remains unchanged.

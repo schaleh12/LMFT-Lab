@@ -1,11 +1,30 @@
-# Handoff: return to outcome evidence correction
+# Evidence-learning handoff
+
+## Current status — outcome repair completed
+
+The [outcome-correction study](OUTCOME_CORRECTION.md) completed this handoff on 2026-10-11.
+Its [results](../experiments/OUTCOME_CORRECTION_RESULTS.md) record 371 passing tests and
+766/766 evaluated checks. Accepted replacements preserve ancestry, contribute once per
+event, recompute the unchanged score, and survive restart with behavioral consequences.
+Ordinary memory matches LMFT; no prediction improvement or propagation contribution was
+demonstrated. Teacher integration remains unchanged and unused.
+
+The smallest proposed next experiment is one independently verified contrary outcome
+after correction and restart, with a preregistered expected score and a memory control.
+Test that correction does not freeze the judgment against later eligible evidence. This
+follow-up has not been implemented.
+
+## Historical handoff from the teacher study
+
+The following records the prior task boundary and motivation, before outcome repair was
+implemented; its future-tense descriptions are historical.
 
 The bounded [teacher briefing study](../experiments/TEACHER_BRIEFING_RESULTS.md) closes
 this teacher-comprehension follow-up. Teacher communication remains an optional supervised
 capability. Further prompt tuning, model comparisons or teacher architecture expansion are
 not prerequisites for deterministic LMFT mechanism research.
 
-## Next bounded task — not implemented here
+### Then-next bounded task — now completed in the separate study
 
 Correct one mistaken outcome sample and recompute the **unchanged** judgment equation from
 one effective record per independent outcome root:
@@ -23,7 +42,7 @@ the counter from its evidence mapping; it is not an outcome-correction API. The 
 must explicitly connect effective outcome roots to that same numerical calculation rather
 than overwriting originals or incrementing the independent count.
 
-## Suggested minimum preregistration
+### Original suggested minimum preregistration
 
 - One revisable judgment, one clearly erroneous registered outcome and one independently
   verified authorized replacement. Fix evidence eligibility and target identity beforehand.
@@ -45,7 +64,7 @@ existing revision/correction policies, migrations, historical studies and commun
 boundary unchanged. Use a separately versioned outcome eligibility rule; do not silently
 expand the historical scoped-observation fixture or migrate historical individuals.
 
-## Readiness and blockers
+### Original readiness and blockers
 
 No teacher-model or hardware blocker is known for this deterministic next step. The missing
 piece is explicit outcome-target eligibility and projection of effective outcome records into

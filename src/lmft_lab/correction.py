@@ -8,8 +8,8 @@ from .runtime_store import digest
 RULE="correction-ledger-1"
 MODES=("correction-lmft","correction-disabled","correction-memory")
 
-def load_policy():
-    policy=json.loads((Path(__file__).resolve().parents[2]/"config/correction_authority.json").read_text(encoding="utf-8"))
+def load_policy(filename="correction_authority.json"):
+    policy=json.loads((Path(__file__).resolve().parents[2]/"config"/filename).read_text(encoding="utf-8"))
     if set(policy)!={"version","permits"} or policy["version"]!="synthetic-correction-permits-1":
         raise ValueError("unknown correction authority policy")
     return policy
@@ -40,9 +40,11 @@ def cache_key(current,case):
     return digest({"case":case,"effective":relevant,"mode":current["mode"],
                    "weights":current["weights"],"branches":current["branches"]})
 
-def correct(state,message,receipt):
+def correct(state,message,receipt,*,fixture=None,target_check=None,after_accept=None,
+            state_ref=effective_ref,acceptance_disabled=False):
     from .runtime import emit
-    from . import correction_fixture as fixture
+    if fixture is None:
+        from . import correction_fixture as fixture
     current=state["judgment"];record=message["content"]["record"];cid=record.get("correction_id")
     identity=digest(record)
     prior=current["correction_index"].get(cid) if isinstance(cid,str) else None
@@ -52,7 +54,7 @@ def correct(state,message,receipt):
         return state
     event={"event_id":"correction-event-"+str(len(current["corrections"])+1),"correction_id":cid,
         "proposal":deepcopy(record),"payload_digest":identity,"sender":message["sender"],"source":message["source"],
-        "message_id":message["id"],"before":effective_ref(current),
+        "message_id":message["id"],"before":state_ref(current),
         "authorization":{"checked":False,"passed":False},"eligibility":{"checked":False,"passed":False},
         "verification":{"checked":False,"passed":False},"accepted":False,"cache_invalidated":[],"closed_questions":[]}
     reason=None
@@ -75,18 +77,20 @@ def correct(state,message,receipt):
         if target is None:reason="target does not exist in scoped evidence"
         elif current["heads"].get(root)!=record["target_id"]:reason="stale target: a newer accepted head exists"
         elif digest(target["record"])!=record["expected_digest"]:reason="stale target digest"
-        elif any(replacement.get(k)!=target["record"][k] for k in ("case_id","scope","question","part")):
+        elif target_check is not None and (target_reason:=target_check(target["record"],replacement)):
+            reason=target_reason
+        elif target_check is None and any(replacement.get(k)!=target["record"][k] for k in ("case_id","scope","question","part")):
             reason="replacement changes target scope or measurement coordinate"
         elif replacement.get("evidence_id")!="replacement/"+cid or replacement.get("evidence_id") in current["ledger"]:
             reason="replacement identity is not a fresh correction record"
         event["eligibility"]={"checked":True,"passed":reason is None,"reason":reason or "active exact target; same scoped coordinate","root":root}
     if reason is None:
         valid=fixture.replacement_valid(record["replacement"],cid)
-        event["verification"]={"checked":True,"passed":valid,"validator":"registered-coordinate-reference-1",
-            "coordinate":{k:record["replacement"].get(k) for k in ("case_id","scope","question","part")},
+        event["verification"]={"checked":True,"passed":valid,"validator":getattr(fixture,"VALIDATOR","registered-coordinate-reference-1"),
+            "coordinate":{k:record["replacement"].get(k) for k in getattr(fixture,"COORDINATES",("case_id","scope","question","part"))},
             "reason":"exact independent reference match" if valid else "malformed or unverifiable replacement"}
         if not valid:reason="replacement validation failed"
-    if reason is None and (current["mode"]=="correction-disabled" or not state["learning"]):
+    if reason is None and (acceptance_disabled or current["mode"]=="correction-disabled" or not state["learning"]):
         reason="correction acceptance disabled"
     if reason is None:
         replacement=deepcopy(record["replacement"]);eid=replacement["evidence_id"]
@@ -96,16 +100,19 @@ def correct(state,message,receipt):
         current["roots"][eid]=root;current["heads"][root]=eid
         event["accepted"]=True
         reason="verified authorized replacement supersedes active target; same independent root"
-        for key,item in current["cases"].items():
-            case=item["input"]
-            cached=current["cache"].get(key)
-            if cached and cached["key"]!=cache_key(current,case):
-                current["cache"].pop(key);event["cache_invalidated"].append(key)
-            for qid,q in state["questions"].items():
-                if q["case_id"]==key and q["status"]=="open" and circuit.support(effective(current),case,q["question"])["resolved"]:
-                    q.update(status="resolved_by_correction",closed_by=event["event_id"])
-                    event["closed_questions"].append(qid)
-    event["reason"]=reason;event["after"]=effective_ref(current)
+        if after_accept is not None:
+            after_accept(state,event)
+        else:
+            for key,item in current["cases"].items():
+                case=item["input"]
+                cached=current["cache"].get(key)
+                if cached and cached["key"]!=cache_key(current,case):
+                    current["cache"].pop(key);event["cache_invalidated"].append(key)
+                for qid,q in state["questions"].items():
+                    if q["case_id"]==key and q["status"]=="open" and circuit.support(effective(current),case,q["question"])["resolved"]:
+                        q.update(status="resolved_by_correction",closed_by=event["event_id"])
+                        event["closed_questions"].append(qid)
+    event["reason"]=reason;event["after"]=state_ref(current)
     current["corrections"].append(event)
     if isinstance(cid,str) and not prior:
         current["correction_index"][cid]={"event_id":event["event_id"],"payload_digest":identity}
