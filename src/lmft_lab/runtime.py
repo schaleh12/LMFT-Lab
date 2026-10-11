@@ -10,7 +10,7 @@ import re
 import sys
 import time
 
-from . import reliability, contextual
+from . import reliability, contextual, attention, scoped_attention, consistent_attention, correction
 from .birth import create_birth_state
 from .judgment import newborn, probe, revise, RULE_VERSION
 from .local_models import LocalModels, load_config, strict_json
@@ -82,7 +82,7 @@ def initial_state(individual, learning, manifest, experiment="channel"):
             "judgment": newborn(), "processed": {}, "receipts": [], "outbox": [],
             "questions": {}, "asked_issues": [], "diagnostics": []}
     if experiment != "channel":
-        result.update(experiment=experiment, judgment=contextual.newborn(experiment) if experiment in contextual.MODES else reliability.newborn())
+        result.update(experiment=experiment, judgment=correction.newborn(experiment, manifest.get("correction_policy")) if experiment in correction.MODES else consistent_attention.newborn(experiment) if experiment in consistent_attention.MODES else scoped_attention.newborn(experiment) if experiment in scoped_attention.MODES else attention.newborn(experiment) if experiment in attention.MODES else contextual.newborn(experiment) if experiment in contextual.MODES else reliability.newborn())
     return result
 
 
@@ -109,7 +109,7 @@ def advance(previous, queued, models):
     try:
         if malformed:
             raise ValueError(malformed)
-        validate_message(message, contextual_content=experiment in contextual.MODES)
+        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES))
     except (ValueError, TypeError) as exc:
         receipt.update(status="rejected", reason=str(exc), raw=raw)
         emit(state, "response", {"text": "Inbox record rejected: invalid message format.",
@@ -126,6 +126,14 @@ def advance(previous, queued, models):
         return state
     state["processed"][message["id"]] = identity
     receipt.update(message_id=message["id"], status="processed", message=message)
+    if experiment in correction.MODES:
+        return correction.handle(state, message, models, receipt)
+    if experiment in consistent_attention.MODES:
+        return consistent_attention.handle(state, message, models, receipt)
+    if experiment in scoped_attention.MODES:
+        return scoped_attention.handle(state, message, models, receipt)
+    if experiment in attention.MODES:
+        return attention.handle(state, message, models, receipt)
     if experiment in contextual.MODES:
         return contextual.handle(state, message, models, receipt)
     rejection = None
@@ -194,8 +202,10 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
     store = Store(root)
     config = load_config(config_path) if mode == "local" else None
     manifest = software_manifest(config, mode)
+    if experiment in correction.MODES:
+        manifest["correction_policy"] = correction.load_policy()
     if experiment != "channel":
-        manifest.update(experiment=experiment, fixture_rule=contextual.RULE if experiment in contextual.MODES else reliability.RULE)
+        manifest.update(experiment=experiment, fixture_rule=correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
     with locked(store.root / "runtime.lock"):
         if (store.root / "checkpoint.json").exists():
             state = store.read()
@@ -239,7 +249,7 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("start")
     start.add_argument("--new", dest="individual")
-    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES), default="channel")
+    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES), default="channel")
     start.add_argument("--mode", choices=("local", "fixture"), default="local")
     start.add_argument("--config", default="config/local_models.json")
     start.add_argument("--offline", action="store_true")
@@ -267,7 +277,7 @@ def main(argv=None):
             output = store.stop()
         else:
             state = store.inspect()
-            output = (contextual.probe(state["judgment"]) if args.command == "probe" and state.get("experiment") in contextual.MODES else
+            output = ({"weights":state["judgment"]["weights"]} if args.command == "probe" and state.get("experiment") in (*attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES) else contextual.probe(state["judgment"]) if args.command == "probe" and state.get("experiment") in contextual.MODES else
                       ((reliability.probe(state["judgment"]) if state.get("experiment", "channel") != "channel"
                        else probe(state["judgment"])) if args.command == "probe" else state))
         print(json.dumps(output, ensure_ascii=False, indent=2))

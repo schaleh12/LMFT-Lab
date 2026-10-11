@@ -88,3 +88,19 @@ propagation is causally involved in the existing evidence-counter judgment.
 [Guide](CONTEXTUAL_EXPERIMENT.md), [preregistration](../experiments/CONTEXTUAL_PROTOCOL.md),
 and [results](../experiments/CONTEXTUAL_RESULTS.md) cover conditional lookup, missing
 information and bounded deduplication. Previous propagation-equivalence results stand.
+
+## Attention-guided verification
+
+[Guide](ATTENTION_EXPERIMENT.md), [preregistration](../experiments/ATTENTION_PROTOCOL.md), and [results](../experiments/ATTENTION_RESULTS.md) document causal request selection, bounded association learning, and ordinary-memory equivalence.
+
+## Scoped support and verification
+
+[Guide](SCOPED_ATTENTION.md), [protocol](../experiments/SCOPED_ATTENTION_PROTOCOL.md), and [results](../experiments/SCOPED_ATTENTION_RESULTS.md): outgoing Fact/Confidence ablations, scoped evidence, restart and an improper-suppression counterexample.
+
+## Consistent support before suppression
+
+[Guide](CONSISTENT_SUPPORT.md), [protocol](../experiments/CONSISTENT_SUPPORT_PROTOCOL.md), and [results](../experiments/CONSISTENT_SUPPORT_RESULTS.md) report fresh cases separately from historical regressions and isolate Clarity/Fact/Confidence influence.
+
+## Correction without erasure
+
+[Guide](CORRECTION_EXPERIMENT.md), [protocol](../experiments/CORRECTION_PROTOCOL.md), and [results](../experiments/CORRECTION_RESULTS.md) separate correction authority, verification, lineage and prediction quality.

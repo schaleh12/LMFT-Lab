@@ -196,3 +196,11 @@ changing the revision equation. See its [results](experiments/COMPARATIVE_RELIAB
 The [context-dependent study](docs/CONTEXTUAL_EXPERIMENT.md) adds authored-feature
 lookup, verified clarification and evidence/context deduplication. See
 [its results](experiments/CONTEXTUAL_RESULTS.md); it makes no fuzzy-advantage claim.
+
+The bounded [attention experiment](docs/ATTENTION_EXPERIMENT.md) uses propagation to select verification requests and learns separate route weights. Its [results](experiments/ATTENTION_RESULTS.md) match ordinary memory; no fuzzy superiority is claimed.
+
+The [scoped-support study](docs/SCOPED_ATTENTION.md) tests Fact/Confidence influence with outgoing-edge ablations. Its [results](experiments/SCOPED_ATTENTION_RESULTS.md) preserve a post-hoc counterexample where ordinary memory handles conflict better.
+
+The [consistent-support experiment](docs/CONSISTENT_SUPPORT.md) separates observation coverage from task-specific consistency. Its [results](experiments/CONSISTENT_SUPPORT_RESULTS.md) reproduce the old failure and compare a revised circuit with exact ablations and ordinary memory.
+
+The [correction experiment](docs/CORRECTION_EXPERIMENT.md) preserves erroneous originals while applying authorized, verified replacements through an effective evidence view. Its [results](experiments/CORRECTION_RESULTS.md) demonstrate restart-safe repair and ordinary-memory equivalence.

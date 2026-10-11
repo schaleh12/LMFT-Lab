@@ -904,3 +904,19 @@ The authorized [context-dependent experiment](CONTEXTUAL_EXPERIMENT.md) reuses t
 separate judgment counter per authored feature value. Selection is ordinary lookup,
 not propagation. Its clarification and identity policies are fixture conventions,
 not changes to the protected seed or numerical equations above.
+
+## 27. Authored attention and verification fixture
+
+The [bounded attention experiment](ATTENTION_EXPERIMENT.md) consumes existing propagated activation to rank a finite verification menu. Only separate route weights learn from validated resolution outcomes. Its explicit mapping and bounded update are experiment conventions, not replacements for the founding seed or the equations above. Fact/Confidence selection utility remains unestablished in the first fixture.
+
+## 28. Scoped verified-support experiment
+
+The [scoped-support fixture](SCOPED_ATTENTION.md) maps an explicit evidence ledger to temporary Fact/Confidence activations and isolates their outgoing selection influences. It adds only separately authored developmental state/associations. No equation or founding geometry changes. Its results include improper suppression under cross-part disagreement; general evidence-sensitive selection remains unestablished.
+
+## 29. Consistent-support experimental mapping
+
+The [consistent-support study](CONSISTENT_SUPPORT.md) distinguishes verified observations, coverage and task-specific consistency through ordinary scoped bookkeeping, then tests their numerical use in a versioned circuit. It changes no core equation or seed node. Causal priority effects and equal ordinary-memory results are recorded separately from unchanged prediction quality.
+
+## 30. Provenance-preserving correction experiment
+
+The [correction study](CORRECTION_EXPERIMENT.md) adds explicit authorization, target eligibility and independent replacement verification around an immutable observation ledger. Existing selectors consume its effective heads without changing the consistent-support mapping, fixed routes, seed or equations. Only scoped observations are correctable; outcome-counter correction remains future work. Ordinary-memory equivalence is reported without attributing ledger integrity to propagation.

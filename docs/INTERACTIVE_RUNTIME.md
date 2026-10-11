@@ -218,3 +218,19 @@ Optional context modes use structured operation/record content, conditional judg
 verified condition replies and versioned evaluation caches. See
 [the contextual guide](CONTEXTUAL_EXPERIMENT.md). Original channel/reliability behavior
 remains available; historical records are not converted.
+
+## Attention-guided verification fixture
+
+Optional attention modes use the same inbox/outbox and commit boundary for one-request conflict verification and separately stored route association updates. See the [attention guide](ATTENTION_EXPERIMENT.md). These modes make no model calls and retain existing counter equations.
+
+## Scoped support fixture
+
+The optional [scoped-support modes](SCOPED_ATTENTION.md) reuse the same commit and communication boundaries. They retain fixed route weights and compare outgoing Fact/Confidence influences. The documented cross-part conflict failure limits the selector to experimental use.
+
+## Consistent-support fixture
+
+Optional [consistent-support modes](CONSISTENT_SUPPORT.md) preserve the supervised interface and add a versioned mapping with explicit task relations, fixed routes and outgoing-only ablations. Previous scoped modes and their known failure remain available.
+
+## Correction fixture
+
+Optional [correction modes](CORRECTION_EXPERIMENT.md) preserve the same supervised interface and atomic checkpoint boundary. A pinned authority policy, append-only lineage and effective evidence view support scoped observation correction; prior outcome counters remain unchanged.

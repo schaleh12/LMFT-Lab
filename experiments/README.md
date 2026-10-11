@@ -54,3 +54,11 @@ interactive results remain historical records.
 The [contextual protocol](CONTEXTUAL_PROTOCOL.md) and [results](CONTEXTUAL_RESULTS.md)
 test conditional judgments, linked clarification and reduced retransmission overhead
 against conditional and aggregate memory.
+
+The [attention protocol](ATTENTION_PROTOCOL.md) and [results](ATTENTION_RESULTS.md) test propagated request selection and persistent bounded association learning against frozen, disabled-pathway and competent ordinary-memory controls. [Commands](../docs/ATTENTION_EXPERIMENT.md). Complete archives remain under ignored outputs/.
+
+The [scoped-support protocol](SCOPED_ATTENTION_PROTOCOL.md) and [results](SCOPED_ATTENTION_RESULTS.md) compare full/ablated influences and ordinary memory. [Commands](../docs/SCOPED_ATTENTION.md) also reproduce the separately labeled negative cross-part audit.
+
+[Consistent-support protocol](CONSISTENT_SUPPORT_PROTOCOL.md), [results](CONSISTENT_SUPPORT_RESULTS.md), and [commands](../docs/CONSISTENT_SUPPORT.md) preserve the old counterexample and separate fresh-case performance from historical regressions.
+
+[Correction protocol](CORRECTION_PROTOCOL.md), [results](CORRECTION_RESULTS.md), and [commands](../docs/CORRECTION_EXPERIMENT.md) test immutable originals, authorized replacement, effective evidence, cache invalidation and restart against disabled acceptance and ordinary memory.
