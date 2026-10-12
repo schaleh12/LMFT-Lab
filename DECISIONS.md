@@ -128,13 +128,40 @@ Revisit evidence assumptions or accepted-set revision only under a separate expl
 
 ## D011: Passive supervised relationship-set integration
 
-**Status: proposed — assessment only, not implemented.** Before another standalone study,
-consider a new opt-in supervised mode that uses existing runtime transactions for verified
-outcomes, explicit selection, whole-set validation and consensus probes, retaining empty
-versus ambiguous support reasons. Preserve original capacity semantics and old archives.
+**Status: experimental — passive integration implemented and evaluated.** New opt-in
+relationship-set-lmft/memory modes use existing runtime transactions for verified outcomes,
+explicit selection, whole-set validation and consensus probes, retaining empty versus
+ambiguous support reasons and separate validation status. Preserve original capacity semantics
+and old archives. Rejected/duplicate inputs leave judgment unchanged, with reasons in receipts.
 Rationale: connect the isolated capacity/ambiguity/insufficiency mechanisms to an existing
 inspectable lifecycle before adding autonomous acquisition. Request/reply verification
 and atomic one-observation budgeting are a later step; no teacher or numerical overhaul.
-Source: [integration assessment and risks](experiments/INSUFFICIENCY_RESULTS.md#smallest-supervised-runtime-integration-step--assessment-only).
-Compatibility, verifier authority, phase isolation, message/evidence deduplication and
-atomic state/outbox recovery must be resolved in a frozen integration contract first.
+Sources: original [assessment](experiments/INSUFFICIENCY_RESULTS.md#smallest-supervised-runtime-integration-step--assessment-only),
+[frozen integration protocol](experiments/PASSIVE_RELATIONSHIP_PROTOCOL.md),
+[results/limitations](experiments/PASSIVE_RELATIONSHIP_RESULTS.md),
+[handler](src/lmft_lab/passive_relationship.py). All runtime/standalone/memory parity checks pass;
+prediction accuracy remains the prior negative result. No acquisition is implemented yet.
+Compatibility remains explicit: source-wide manifests reject historical checkpoints under
+new code; keep archived source/config rather than migrate silently. Policy is JSON-normalized
+and source/scenario/control changes reject. Fixture identifiers are not authentication.
+Historical local prework preservation tests must use their original source context; current
+behavioral regressions also pass in a clean matching source snapshot. Active acquisition
+requires a separately frozen contract and coordinator sequencing.
+
+## D012: Separate current regression from historical byte preservation
+
+**Status: experimental — explicit verification contexts implemented and evaluated.**
+Historical harness defaults and scientific criteria remain unchanged. Current behavioral
+tests supply a frozen NONEMPTY complete source baseline, enforced before/after each run,
+archived and pinned through restart. Added/missing/changed source or context rejects.
+Historical audit resolves all original protected bytes from archived source and the exact
+pinned Git revision, never from later working files or an absent context.
+Rationale: an authorized later runtime edit must not be mislabeled as historical preservation,
+and old output-specific prework must not conflate historical audits with current behavior.
+The earlier 485/1 failure and original archive bytes remain preserved.
+Sources: [separate contract](experiments/PRESERVATION_VERIFICATION_CONTRACT.md),
+[historical anchor](experiments/INSUFFICIENCY_HISTORICAL_CONTEXT.json),
+[verification results](experiments/PRESERVATION_VERIFICATION_RESULTS.md).
+Audit requires original archive and pinned local Git evidence; exact CRLF checkout-byte
+reconstruction is accepted only when it matches the original hash. This is an inspectable
+local anchor, not authentication/backup. No scientific criterion or runtime algorithm changed.

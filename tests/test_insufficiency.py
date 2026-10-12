@@ -196,12 +196,16 @@ def test_guard_and_checksum_failures(tmp_path):
 
 
 def test_full_frozen_study_with_actual_restarts(tmp_path):
+    from lmft_lab.preservation_context import capture_current
+    context = tmp_path / "current-source-context.json"
+    atomic_json(context, capture_current(Path.cwd()))
     root = tmp_path / "study"
-    subprocess.run([sys.executable, "experiments/run_insufficiency.py", "--output", str(root)], check=True)
+    subprocess.run([sys.executable, "experiments/run_insufficiency.py", "--output", str(root), "--preservation-context", str(context)], check=True)
     results = json.loads((root / "results.json").read_text())
     assert results["integrity_passed"] == results["integrity_total"]
     assert results["quality_passed"] == results["quality_total"] == 18
     assert results["model_calls"] == 0
+    assert results["preservation_kind"] == "current-regression-preservation-1" and results["preservation_count"] > 0
     assert not (root / "failure.json").exists()
     for mode in ("lmft", "memory"):
         p = root / (mode + "-unsupported")

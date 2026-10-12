@@ -150,3 +150,20 @@ and no-evidence controls. One informative observation resolves the tie; memory m
 and [study](../src/lmft_lab/insufficiency.py) distinguish empty from ambiguous sets,
 reject malformed/unverified evidence without contradiction, and preserve abstention
 and reasons across actual restart. Matched memory is identical; control errors remain.
+
+## Passive relationship sets in the supervised runtime
+
+[Guide](PASSIVE_RELATIONSHIP_RUNTIME.md),
+[frozen integration protocol](../experiments/PASSIVE_RELATIONSHIP_PROTOCOL.md),
+[results and preserved failures](../experiments/PASSIVE_RELATIONSHIP_RESULTS.md),
+and [handler](../src/lmft_lab/passive_relationship.py) implement new opt-in passive modes.
+Real runtime state/communication/restart matches standalone and equally equipped memory;
+no observation requests or model calls are added. Old source manifests remain incompatible.
+
+## Historical audit versus current behavioral regression
+
+[Verification contract](../experiments/PRESERVATION_VERIFICATION_CONTRACT.md),
+[results and commands](../experiments/PRESERVATION_VERIFICATION_RESULTS.md),
+and [CLI](../experiments/verify_preservation.py) separate complete nonempty current
+source preservation from original archived/versioned historical bytes. Old scientific
+criteria, failed outcomes and archives are preserved; missing/tampered evidence rejects.

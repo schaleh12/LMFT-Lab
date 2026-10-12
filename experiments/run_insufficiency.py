@@ -10,6 +10,7 @@ import subprocess
 import sys
 from lmft_lab import insufficiency as study, insufficiency_fixture as fixture
 from lmft_lab.runtime_store import Store, atomic_json, digest
+from lmft_lab import preservation_context
 
 PREWORK = Path("outputs/insufficiency-prework-001/protected-hashes.json")
 
@@ -26,10 +27,17 @@ def load_guarded(root):
     configuration = json.loads((root / "configuration.json").read_text(encoding="utf-8"))
     if digest(configuration) != digest(study.configuration()):
         raise ValueError("configuration drift")
-    return digest({"manifest": manifest, "configuration": configuration})
+    identity = {"manifest": manifest, "configuration": configuration}
+    context = preservation_context.pinned_current(root, Path.cwd())
+    if context is not None:
+        identity["current_preservation_context_sha256"] = file_hash(root / "current-preservation-context.json")
+    return digest(identity)
 
 
 def preserved(root):
+    context = preservation_context.pinned_current(root, Path.cwd())
+    if context is not None:
+        return preservation_context.verify_current(context, Path.cwd())
     expected = json.loads((root / "protected-hashes.json").read_text(encoding="utf-8-sig"))
     return all(file_hash(name) == value for name, value in expected.items())
 
@@ -110,10 +118,19 @@ def quality(predictions, identifiers):
             "accuracy": correct / decided if decided else None}
 
 
-def run(root):
+def run(root, preservation_context_path=None):
     root.mkdir(parents=True, exist_ok=False)
+    context = None
+    context_hash = None
+    if preservation_context_path is not None:
+        context = json.loads(Path(preservation_context_path).read_text(encoding="utf-8"))
+        preservation_context.verify_current(context, Path.cwd())
+        context_hash = file_hash(preservation_context_path)
+        shutil.copy2(preservation_context_path, root / "current-preservation-context.json")
     paths = set(Path("src").rglob("*.py")) | set(Path("tests").rglob("*.py")) | set(Path("config").rglob("*"))
     paths |= set(Path("experiments").glob("*.py")) | {Path("AGENTS.md"), Path("experiments/INSUFFICIENCY_PROTOCOL.md")}
+    if context is not None:
+        paths |= {Path(name) for name in context["files"]}
     manifest = {}
     for path in sorted(p for p in paths if p.is_file()):
         target = root / "archive" / path
@@ -126,13 +143,18 @@ def run(root):
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         "working_tree": subprocess.check_output(["git", "status", "--short"], text=True),
         "python": sys.version, "model_calls": 0, "random_seed": 42,
-        "protocol_sha256": file_hash("experiments/INSUFFICIENCY_PROTOCOL.md")})
+        "protocol_sha256": file_hash("experiments/INSUFFICIENCY_PROTOCOL.md"),
+        "preservation_kind": preservation_context.KIND if context is not None else "legacy-historical-prework",
+        "preservation_context_sha256": context_hash})
     # A reproduction on a checkout without the local prework directory remains
     # possible; record that preservation evidence is unavailable rather than invent it.
-    atomic_json(root / "protected-hashes.json", json.loads(PREWORK.read_text(encoding="utf-8-sig")) if PREWORK.exists() else {})
+    atomic_json(root / "protected-hashes.json", context["files"] if context is not None else json.loads(PREWORK.read_text(encoding="utf-8-sig")) if PREWORK.exists() else {})
     identity = load_guarded(root)
     results = {"conditions": {}, "checks": {}, "model_calls": 0, "parent_pid": os.getpid(),
-               "prework_available": PREWORK.exists()}
+               "prework_available": PREWORK.exists(),
+               "preservation_kind": preservation_context.KIND if context is not None else "legacy-historical-prework",
+               "preservation_context_sha256": context_hash,
+               "preservation_count": len(context["files"]) if context is not None else len(json.loads((root / "protected-hashes.json").read_text()))}
     frozen = {}; final_states = {}
     expected_ops = {"unsupported": [], "supported": ["le"], "ambiguous": ["lt", "le"]}
     try:
@@ -202,6 +224,8 @@ def run(root):
                 group: (r["decided"], r["correct"]) == expected_quality[scenario][group] for group, r in groups.items()}
         results["checks"]["archive-guard"] = load_guarded(root) == identity
         results["checks"]["protected-files-preserved"] = preserved(root)
+        if context is not None and file_hash(root / "current-preservation-context.json") != context_hash:
+            raise ValueError("current preservation context bytes changed")
         integrity = list(results["checks"].values()) + [v for r in results["conditions"].values() for v in r["checks"].values()]
         quality_checks = [v for r in results["conditions"].values() for v in r["quality_checks"].values()]
         results.update(integrity_passed=sum(integrity), integrity_total=len(integrity),
@@ -217,11 +241,12 @@ def run(root):
 
 def main():
     parser = argparse.ArgumentParser(); parser.add_argument("--output"); parser.add_argument("--restart", nargs=2)
+    parser.add_argument("--preservation-context", help="Explicit nonempty complete current-source regression context; historical default unchanged")
     args = parser.parse_args()
     if args.restart:
         restart_worker(*(Path(p) for p in args.restart))
     elif args.output:
-        run(Path(args.output).resolve())
+        run(Path(args.output).resolve(), args.preservation_context)
     else:
         parser.error("--output required")
 

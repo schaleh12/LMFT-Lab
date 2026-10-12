@@ -1,9 +1,9 @@
 # LMFT-Lab — current project state
 
 Snapshot: **2026-10-12**. Clean starting source commit:
-`5e45ab365688c7b0b0ac246fd8e7db558e509704`.
-Ambiguity work was committed before this cycle; insufficiency implementation/handoff
-changes remain uncommitted. The pre-cycle snapshot's uncommitted description was stale.
+`186c586348482eee19dc2fc8e31e9b552866eee7`.
+Ambiguity and insufficiency work were committed before this cycle; passive runtime
+integration, explicit preservation verification and handoff changes remain uncommitted.
 This identifies the starting state, not a future implementation commit. Recheck Git status.
 
 Read [AGENTS.md](AGENTS.md), this snapshot, then relevant [DECISIONS.md](DECISIONS.md)
@@ -51,8 +51,67 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
   [study](src/lmft_lab/insufficiency.py), [results/runtime assessment](experiments/INSUFFICIENCY_RESULTS.md).
   Explicit empty versus ambiguous sets, no vacuous acceptance/consensus, traced rejected
   inputs outside evidence, two-stage actual restart and equally equipped memory parity.
+- New opt-in passive runtime modes: [guide](docs/PASSIVE_RELATIONSHIP_RUNTIME.md),
+  [handler](src/lmft_lab/passive_relationship.py), [runtime](src/lmft_lab/runtime.py),
+  [protocol](experiments/PASSIVE_RELATIONSHIP_PROTOCOL.md), [results](experiments/PASSIVE_RELATIONSHIP_RESULTS.md).
+  Real inbox/outbox/receipts/checkpoints, pinned scenario policy, persisted candidate sets,
+  separate support/validation status, rejection/dedup invariance and zero-call consensus.
+- Explicit preservation contexts: [verification contract](experiments/PRESERVATION_VERIFICATION_CONTRACT.md),
+  [results](experiments/PRESERVATION_VERIFICATION_RESULTS.md),
+  [capture/audit CLI](experiments/verify_preservation.py),
+  [current helper](src/lmft_lab/preservation_context.py). Nonempty complete current-source
+  baselines for behavioral tests; separate original-byte historical audit, no fallback
+  after missing/changed current contexts and no altered scientific criteria.
 
 ## Latest completed milestone
+
+The focused verification correction separates current behavioral regression from
+historical preservation (D012). Both harness defaults keep their historical prework
+behavior; end-to-end tests EXPLICITLY use complete nonempty current contexts. Copied
+contexts are pinned, checked before/after runs, and missing/changed contexts reject
+at restart. No core learner/runtime behavior, source settings or scientific criteria changed.
+
+Historical read-only audit passed **83 archived source entries / 134 protected entries**,
+including **56 omitted source entries resolved from pinned historical Git bytes**;
+the full 137-file original tree matches. Current-context studies retained original
+**137/137 + 18/18** insufficiency and **274/274 + 36/36** passive checks. The first
+full CURRENT CHECKOUT suite passed **516 tests**; two further process-restart context
+tests bring focused coverage to 32. The final full current-checkout suite passed
+**518 tests** under `outputs/preservation-full-regression-002/`, without skips or an
+alternate checkout; exact commands/results are in the follow-up report.
+
+All **3,043** original files across six archive/failure roots remain unchanged, including
+the original **485-pass/1-failure** result. That historical failure is preserved, not
+reclassified; no no-prework snapshot is used by corrected current tests. Derivative
+audits/current studies are in fresh outputs. See [results/commands](experiments/PRESERVATION_VERIFICATION_RESULTS.md).
+
+### Passive integration milestone
+
+Passive relationship sets now use the supervised runtime in new opt-in
+relationship-set-lmft/memory modes. The unchanged insufficiency learner/fixture supplies
+registered evidence, finite selection and validation; new runtime wrapping persists
+provenance/message links and returns explicit unvalidated/supported/ambiguous/unsupported
+states. No active acquisition requests, teacher calls or numerical changes were added.
+Twelve real runtime individuals plus a disabled/compatibility control all halted.
+Standalone, memory and uninterrupted/restarted scientific state/behavior match.
+
+Evaluated [run](experiments/PASSIVE_RELATIONSHIP_RESULTS.md): **274/274 integrity**,
+**36/36 quality** checks. Quality is unchanged: unsupported 0% coverage, supported
+100% coverage/75% accuracy, ambiguous 50% coverage/75% accuracy among decisions.
+All 139 prior protected files match except the explicitly excluded runtime/handoff edits.
+Archive: `outputs/passive-runtime-001/`; prework: `outputs/passive-runtime-prework-001/`.
+
+**486 tests passed in an identical clean source snapshot**. The ordinary working-checkout
+full suite had **485 passed/1 failed** because the historical insufficiency harness loads
+an old local preservation manifest requiring runtime.py to be unchanged. That one
+preservation failure is retained; no behavior check failed and old criteria/code were
+not weakened. Snapshot/full-test paths, two earlier focused failure fixes and exact
+reproduction instructions are in the report. That was the pre-correction outcome;
+the explicit-context follow-up above now makes current behavioral tests independent
+of the old local preservation directory, while default historical runs remain guarded.
+Old checkpoints require archived source/configuration; there is no silent migration.
+
+### Previous insufficiency milestone
 
 The [insufficiency protocol](experiments/INSUFFICIENCY_PROTOCOL.md) and
 [results](experiments/INSUFFICIENCY_RESULTS.md) test a NEW deterministic device fixture
@@ -64,7 +123,7 @@ Their preregistered device-fault errors are preserved. Ordinary memory matches e
 The new task does not change historical capacity truth. An empty set does not identify
 why the family is insufficient or establish real-world theory invalidation.
 
-Verified this cycle: **461 tests pass**, primary and fresh reproduction each
+Verified in the preceding insufficiency cycle: **461 tests pass**, primary and fresh reproduction each
 **137/137 integrity** and **18/18 quality** checks. Inspected 24 checksummed stage
 states across both runs, with exact scientific-state/prediction parity; all 134
 protected prior file hashes match. Zero calls; no seed/numerical/model/runtime edits.
@@ -113,14 +172,15 @@ and persistent hypothesis sets, not an autonomous runtime acquisition loop. Whol
 checkpoints grow with history; old individuals require
 archived source/config under the existing manifest guard.
 
-Active implementation work: **none remaining in the authorized bounded cycles** (D009–D010).
-The proposed misspecified-family study is now completed. Before another standalone study,
-review the [supervised-runtime integration assessment](experiments/INSUFFICIENCY_RESULTS.md#smallest-supervised-runtime-integration-step--assessment-only):
-smallest step is a NEW opt-in passive relationship-set mode using existing verified
-outcome/select/accept/probe transactions, explicit empty/ambiguous status and atomic outbox
-communication. Acquisition/request bridging comes later. This is assessment only;
-no integration or further experiment was implemented/dispatched. Old source manifests,
-verifier authority, phase isolation, deduplication and atomic budgets remain material risks.
+Active implementation work: **passive priority and narrow verification follow-up complete;
+stopped for coordinator review** (D011–D012). The authorized next priority is bounded active acquisition, but it is NOT implemented
+or dispatched by this task. It needs explicit outbox request identity, independently
+verified reply admission, phase closure and atomic one-observation budgeting while preserving
+matched memory access. Coordinator owns sequencing until 2026-10-12 12:00 UTC (08:00
+America/New_York); this task stops at the current gate. Old source manifests, synthetic
+verifier authority and phase isolation/deduplication remain material limits; current
+versus historical preservation context is now explicitly separated and fail-closed.
+Pinned Git/archives and the local historical trust anchor are required for the audit.
 
 ## Verification and local evidence
 
@@ -132,26 +192,37 @@ $env:PYTHONPATH = 'src'
 .\.venv\Scripts\python.exe experiments/run_capacity.py --output outputs/my-capacity-study
 .\.venv\Scripts\python.exe experiments/run_ambiguity.py --output outputs/my-ambiguity-study
 .\.venv\Scripts\python.exe experiments/run_insufficiency.py --output outputs/my-insufficiency-study
+.\.venv\Scripts\python.exe experiments/run_passive_relationship.py --output outputs/my-passive-runtime-study
 ```
 
 Use a fresh output path. Model setup/reproduction is separately documented in
 [LOCAL_MODELS.md](docs/LOCAL_MODELS.md) and [LOCAL_TEACHER.md](docs/LOCAL_TEACHER.md).
+For current standalone/passive behavioral reproduction, capture a fresh nonempty
+context and supply --preservation-context; historical-default commands above retain
+old preservation checks and can legitimately reject later source. Separate historical
+audit and current regression commands are in [verification results](experiments/PRESERVATION_VERIFICATION_RESULTS.md#reproduce-separately).
 
 Reports locate complete local runs under `outputs/`, notably `capacity-001/`, `continuation-001/`,
 `outcome-correction-001/` and `teacher-briefing-001/`. This handoff checked those directories,
 results summaries, manifest-file presence and checkpoint counts; the previous handoff did
 **not** verify every historical archive/hash or reproduce historical experiments. This session
 verified the ambiguity archive hashes, checkpoint invariance and actual restarts. This
-cycle inspected and reproduced insufficiency with exact states/predictions, all stage
+preceding cycle inspected and reproduced insufficiency with exact states/predictions, all stage
 checksums, protocol/source/config guards and prior protected-file preservation.
+This cycle verified actual passive runtime restarts, standalone/memory parity,
+source/config/protocol archives, pure-probe/checkpoint invariance and all 139 protected files.
 No external backup was verified.
 [.gitignore](.gitignore) excludes outputs, logs, virtual environments, local caches, weights
 and credential files; these are not conveyed by a Git checkout. Default model cache is
 `%LOCALAPPDATA%/LMFT-Lab/cache`; its assets were not inspected in this task.
 
-Checks run for this cycle: handoff/spec/runtime/ambiguity review, actual Git/prework preservation,
-frozen insufficiency protocol, 28 targeted tests, 461-test regression suite, primary run
-and fresh reproduction (each 137 integrity/18 quality checks), state/trace/hash inspection.
-The earlier ambiguity cycle's initial sandbox-temp permission errors remain recorded in
-its report; this cycle used fresh writable-checkout test-temp paths. No inference,
-downloads, pushes, publication, discards or runtime integration.
+Checks this cycle: handoff/spec/insufficiency/runtime review, actual Git/prework preservation,
+frozen passive integration protocol, 25 new tests including eight atomic-fault cases,
+real-runtime suite, 486-test clean-source snapshot suite, compatibility/disabled controls,
+archive/protected hashes and halted-process checks. Failed focused/working-root attempts
+remain in fresh outputs and are documented. No inference, downloads, pushes, publication,
+discards, archive deletion or active acquisition. Only runtime registration/routing and
+a new opt-in handler changed executable behavior; numerical/seed/model/migration code is intact.
+Verification follow-up changed only context capture/audit and harness/test context selection.
+It preserved the prior passive dirty work and original archives, ran separate historical
+audit/current-context studies and full checkout tests; original scientific protocols are intact.
