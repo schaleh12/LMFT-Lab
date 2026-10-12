@@ -142,3 +142,11 @@ does not improve. No teacher calls or propagation are involved.
 and [isolated study](../src/lmft_lab/ambiguity.py) retain lt/le ambiguity, choose by
 predicted disagreement, and compare matched memory with non-informative, unavailable
 and no-evidence controls. One informative observation resolves the tie; memory matches.
+
+## Unsupported hypothesis family
+
+[Protocol](../experiments/INSUFFICIENCY_PROTOCOL.md),
+[results, reproduction and supervised-runtime assessment](../experiments/INSUFFICIENCY_RESULTS.md),
+and [study](../src/lmft_lab/insufficiency.py) distinguish empty from ambiguous sets,
+reject malformed/unverified evidence without contradiction, and preserve abstention
+and reasons across actual restart. Matched memory is identical; control errors remain.

@@ -1,8 +1,9 @@
 # LMFT-Lab — current project state
 
 Snapshot: **2026-10-12**. Clean starting source commit:
-`0ae2461f078757c2cb2b0300a4591f327aaff381`.
-The bounded ambiguity implementation and handoff below are uncommitted working-tree changes.
+`5e45ab365688c7b0b0ac246fd8e7db558e509704`.
+Ambiguity work was committed before this cycle; insufficiency implementation/handoff
+changes remain uncommitted. The pre-cycle snapshot's uncommitted description was stale.
 This identifies the starting state, not a future implementation commit. Recheck Git status.
 
 Read [AGENTS.md](AGENTS.md), this snapshot, then relevant [DECISIONS.md](DECISIONS.md)
@@ -46,8 +47,31 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
   [study code](src/lmft_lab/ambiguity.py), [results](experiments/AMBIGUITY_RESULTS.md).
   Retained hypothesis sets, one feature-selected verified observation, validation without
   tie breaking and read-only consensus predictions across actual process restart.
+- Isolated hypothesis-family insufficiency: [protocol](experiments/INSUFFICIENCY_PROTOCOL.md),
+  [study](src/lmft_lab/insufficiency.py), [results/runtime assessment](experiments/INSUFFICIENCY_RESULTS.md).
+  Explicit empty versus ambiguous sets, no vacuous acceptance/consensus, traced rejected
+  inputs outside evidence, two-stage actual restart and equally equipped memory parity.
 
 ## Latest completed milestone
+
+The [insufficiency protocol](experiments/INSUFFICIENCY_PROTOCOL.md) and
+[results](experiments/INSUFFICIENCY_RESULTS.md) test a NEW deterministic device fixture
+that refuses length-two payloads. Verified training contradicts all six comparisons:
+the learner retains `[]`, records `no_supported_hypothesis` and abstains on all eight
+fresh in-scope cases. Supported le and ambiguous lt/le controls prevent blanket
+abstention: respective coverage 100%/50%, accuracy among decisions 75%/75%.
+Their preregistered device-fault errors are preserved. Ordinary memory matches exactly.
+The new task does not change historical capacity truth. An empty set does not identify
+why the family is insufficient or establish real-world theory invalidation.
+
+Verified this cycle: **461 tests pass**, primary and fresh reproduction each
+**137/137 integrity** and **18/18 quality** checks. Inspected 24 checksummed stage
+states across both runs, with exact scientific-state/prediction parity; all 134
+protected prior file hashes match. Zero calls; no seed/numerical/model/runtime edits.
+Archives: `outputs/insufficiency-001/`, `outputs/insufficiency-reproduction-001/`;
+pre-cycle handoff/ambiguity preservation copies/hashes: `outputs/insufficiency-prework-001/`.
+
+### Previous ambiguity milestone
 
 The [ambiguity protocol](experiments/AMBIGUITY_PROTOCOL.md) and
 [results](experiments/AMBIGUITY_RESULTS.md) record lt/le surviving non-equality training.
@@ -59,7 +83,7 @@ coverage and 100% accuracy among decisions. Validation checked sets without elim
 The seed was preserved and inert; **zero model calls**. This standalone file-backed study
 does not integrate acquisition into the supervised runtime or change numerical mechanisms.
 
-Verified this session: **433 passing tests**, **109/109 integrity checks**, **24/24 quality
+Verified in the prior ambiguity cycle: **433 passing tests**, **109/109 integrity checks**, **24/24 quality
 checks**; eight distinct restarted processes matched uninterrupted state/predictions.
 Complete source/config/protocol/evidence/restart traces: `outputs/ambiguity-001/`.
 These are deterministic finite-family results, not fuzzy superiority or general cognition.
@@ -89,10 +113,14 @@ and persistent hypothesis sets, not an autonomous runtime acquisition loop. Whol
 checkpoints grow with history; old individuals require
 archived source/config under the existing manifest guard.
 
-Active implementation work: **none remaining in the bounded ambiguity task** (D009).
-Next experiment (**proposed only, not dispatched**): preregister a misspecified-family task
-where verified training eliminates all six candidates; compare matched memory/LMFT rejection
-and abstention across restart without expanding vocabulary after seeing outcomes.
+Active implementation work: **none remaining in the authorized bounded cycles** (D009–D010).
+The proposed misspecified-family study is now completed. Before another standalone study,
+review the [supervised-runtime integration assessment](experiments/INSUFFICIENCY_RESULTS.md#smallest-supervised-runtime-integration-step--assessment-only):
+smallest step is a NEW opt-in passive relationship-set mode using existing verified
+outcome/select/accept/probe transactions, explicit empty/ambiguous status and atomic outbox
+communication. Acquisition/request bridging comes later. This is assessment only;
+no integration or further experiment was implemented/dispatched. Old source manifests,
+verifier authority, phase isolation, deduplication and atomic budgets remain material risks.
 
 ## Verification and local evidence
 
@@ -103,6 +131,7 @@ $env:PYTHONPATH = 'src'
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe experiments/run_capacity.py --output outputs/my-capacity-study
 .\.venv\Scripts\python.exe experiments/run_ambiguity.py --output outputs/my-ambiguity-study
+.\.venv\Scripts\python.exe experiments/run_insufficiency.py --output outputs/my-insufficiency-study
 ```
 
 Use a fresh output path. Model setup/reproduction is separately documented in
@@ -112,13 +141,17 @@ Reports locate complete local runs under `outputs/`, notably `capacity-001/`, `c
 `outcome-correction-001/` and `teacher-briefing-001/`. This handoff checked those directories,
 results summaries, manifest-file presence and checkpoint counts; the previous handoff did
 **not** verify every historical archive/hash or reproduce historical experiments. This session
-verified the new ambiguity archive hashes, checkpoint invariance and actual restarts.
+verified the ambiguity archive hashes, checkpoint invariance and actual restarts. This
+cycle inspected and reproduced insufficiency with exact states/predictions, all stage
+checksums, protocol/source/config guards and prior protected-file preservation.
 No external backup was verified.
 [.gitignore](.gitignore) excludes outputs, logs, virtual environments, local caches, weights
 and credential files; these are not conveyed by a Git checkout. Default model cache is
 `%LOCALAPPDATA%/LMFT-Lab/cache`; its assets were not inspected in this task.
 
-Checks run for this implementation: source/spec/report review, clean Git preflight, frozen
-protocol, 433-test regression suite and bounded ambiguity run (109 integrity/24 quality checks).
-Initial sandbox-default test-temp atomic replacements failed with permission errors; fresh
-writable-checkout test-temp runs passed. No inference, downloads, pushes or publication.
+Checks run for this cycle: handoff/spec/runtime/ambiguity review, actual Git/prework preservation,
+frozen insufficiency protocol, 28 targeted tests, 461-test regression suite, primary run
+and fresh reproduction (each 137 integrity/18 quality checks), state/trace/hash inspection.
+The earlier ambiguity cycle's initial sandbox-temp permission errors remain recorded in
+its report; this cycle used fresh writable-checkout test-temp paths. No inference,
+downloads, pushes, publication, discards or runtime integration.

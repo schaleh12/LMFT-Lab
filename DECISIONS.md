@@ -109,3 +109,32 @@ Sources: original [proposal](experiments/CAPACITY_RESULTS.md#limits-and-smallest
 [results](experiments/AMBIGUITY_RESULTS.md), [study code](src/lmft_lab/ambiguity.py).
 Revisit noise, misspecification or further acquisition only through a separate preregistration;
 never use held-out truth or validation to select surviving hypotheses.
+
+## D010: Explicit unsupported hypothesis family
+
+**Status: experimental — implemented and evaluated in an isolated study.** Preserve an
+explicit empty surviving set and `no_supported_hypothesis`, distinct from ambiguity.
+Accept only a nonempty set that passes whole-set validation; consensus requires actual
+votes. Rejected/unverified inputs never count as candidate contradictions. No fallback,
+resurrection, vocabulary expansion or teacher repair. Matched memory shares the policy.
+Rationale: recognizing insufficient support must survive restart without claiming to
+diagnose vocabulary, context or evidence faults. Exact elimination relies on this
+noiseless registered synthetic verifier; it is not a general real-world evidence rule.
+Sources: [frozen protocol](experiments/INSUFFICIENCY_PROTOCOL.md),
+[results](experiments/INSUFFICIENCY_RESULTS.md), [study](src/lmft_lab/insufficiency.py).
+All candidates were contradicted in the unsupported condition; controls made predictions
+and preserved known held-out errors. Ordinary memory matched; seed/propagation were inert.
+Revisit evidence assumptions or accepted-set revision only under a separate explicit contract.
+
+## D011: Passive supervised relationship-set integration
+
+**Status: proposed — assessment only, not implemented.** Before another standalone study,
+consider a new opt-in supervised mode that uses existing runtime transactions for verified
+outcomes, explicit selection, whole-set validation and consensus probes, retaining empty
+versus ambiguous support reasons. Preserve original capacity semantics and old archives.
+Rationale: connect the isolated capacity/ambiguity/insufficiency mechanisms to an existing
+inspectable lifecycle before adding autonomous acquisition. Request/reply verification
+and atomic one-observation budgeting are a later step; no teacher or numerical overhaul.
+Source: [integration assessment and risks](experiments/INSUFFICIENCY_RESULTS.md#smallest-supervised-runtime-integration-step--assessment-only).
+Compatibility, verifier authority, phase isolation, message/evidence deduplication and
+atomic state/outbox recovery must be resolved in a frozen integration contract first.
