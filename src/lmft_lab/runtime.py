@@ -83,7 +83,7 @@ def initial_state(individual, learning, manifest, experiment="channel"):
             "questions": {}, "asked_issues": [], "diagnostics": []}
     if experiment in active_relationship.MODES:
         pinned = manifest.get("active_relationship_policy", active_relationship.policy("unsupported", "disagreement"))
-        result.update(experiment=experiment, judgment=active_relationship.newborn(experiment, pinned["scenario"], pinned["acquisition_policy"], individual))
+        result.update(experiment=experiment, judgment=active_relationship.newborn(experiment, pinned["scenario"], pinned["acquisition_policy"], individual, pinned.get("receiver_attempt_budget")))
         return result
     if experiment in passive_relationship.MODES:
         pinned = manifest.get("relationship_policy", passive_relationship.policy("unsupported"))
@@ -218,12 +218,14 @@ def advance(previous, queued, models):
 def run(root, *, individual=None, mode="local", config_path="config/local_models.json", offline=False,
         learning=True, experiment="channel", teacher_profile="foundational-teacher-v1",
         teacher_config="config/teacher_models.json", teacher_study="historical",
-        freeze_outcomes_after_correction=False, relationship_scenario="unsupported", acquisition_policy="disagreement"):
+        freeze_outcomes_after_correction=False, relationship_scenario="unsupported", acquisition_policy="disagreement", receiver_attempt_budget=None):
     store = Store(root)
     if experiment in active_relationship.MODES and mode != "fixture":
         raise ValueError("active relationship modes require --mode fixture; no model inference")
     if experiment not in active_relationship.MODES and acquisition_policy != "disagreement":
         raise ValueError("acquisition policy requires an active relationship mode")
+    if experiment not in active_relationship.MODES and receiver_attempt_budget is not None:
+        raise ValueError("receiver attempt budget requires an active relationship mode")
     if experiment in passive_relationship.MODES and mode != "fixture":
         raise ValueError("passive relationship modes require --mode fixture; no model inference")
     if experiment not in (*passive_relationship.MODES, *active_relationship.MODES) and relationship_scenario != "unsupported":
@@ -231,7 +233,7 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
     config = load_config(config_path) if mode == "local" else None
     manifest = software_manifest(config, mode)
     if experiment in active_relationship.MODES:
-        manifest["active_relationship_policy"] = active_relationship.policy(relationship_scenario, acquisition_policy)
+        manifest["active_relationship_policy"] = active_relationship.policy(relationship_scenario, acquisition_policy, receiver_attempt_budget)
     if experiment in passive_relationship.MODES:
         manifest["relationship_policy"] = passive_relationship.policy(relationship_scenario)
     if freeze_outcomes_after_correction:
@@ -302,6 +304,7 @@ def main(argv=None):
     start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES, *capacity.MODES, *passive_relationship.MODES, *active_relationship.MODES), default="channel")
     start.add_argument("--relationship-scenario", choices=passive_relationship.SCENARIOS, default="unsupported")
     start.add_argument("--acquisition-policy", choices=active_relationship.POLICIES, default="disagreement")
+    start.add_argument("--receiver-attempt-budget", type=int, help="Opt-in checkpoint-accounted acquisition-verifier budget 0..8; omission retains unlimited behavior")
     start.add_argument("--mode", choices=("local", "fixture"), default="local")
     start.add_argument("--config", default="config/local_models.json")
     start.add_argument("--teacher-profile", default="foundational-teacher-v1")
@@ -326,7 +329,8 @@ def main(argv=None):
                 offline=args.offline, learning=not args.learning_disabled, experiment=args.experiment,
                 teacher_profile=args.teacher_profile, teacher_config=args.teacher_config, teacher_study=args.teacher_study,
                 freeze_outcomes_after_correction=args.freeze_outcomes_after_correction,
-                relationship_scenario=args.relationship_scenario, acquisition_policy=args.acquisition_policy)
+                relationship_scenario=args.relationship_scenario, acquisition_policy=args.acquisition_policy,
+                receiver_attempt_budget=args.receiver_attempt_budget)
             return 0
         if args.command == "submit":
             message = validate_message(strict_json(Path(args.file).read_text(encoding="utf-8-sig")), contextual_content=True)

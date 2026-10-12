@@ -165,3 +165,45 @@ Sources: [separate contract](experiments/PRESERVATION_VERIFICATION_CONTRACT.md),
 Audit requires original archive and pinned local Git evidence; exact CRLF checkout-byte
 reconstruction is accepted only when it matches the original hash. This is an inspectable
 local anchor, not authentication/backup. No scientific criterion or runtime algorithm changed.
+
+## D013: One explicit active relationship investigation
+
+**Status: experimental — implemented and evaluated in new opt-in modes.** After
+complete training, investigate can issue at most one clarification_request for a
+nonempty ambiguous set. Reuse generic feature-only disagreement selection and
+declared-order ties; predefined noninformative control deliberately bypasses the
+positive-score gate. Empty/unique/no-positive-score conditions close without request.
+Persist episode/request/charged unit/question/output atomically; validate exact reply
+source/correlation/schema/features with the synthetic device before admitting/filtering.
+Original training evidence stays separate; whole-set validation never resurrects.
+No reset or automatic episode replacement; cancellation never refunds a request.
+Sources: [protocol v1.2](experiments/ACTIVE_ACQUISITION_PROTOCOL_V1_2.md),
+[results and protocol history](experiments/ACTIVE_ACQUISITION_RESULTS.md),
+[handler](src/lmft_lab/active_relationship.py). v1/v1.1 and early test outputs remain;
+cost/expectation corrections were frozen in v1.2 before its reevaluation.
+Rationale: persistent request/reply acquisition should be inspectable and equally
+available to ordinary memory. Informative evidence resolved ambiguity; controls
+did not; seed/propagation were inert and known fault errors remained.
+Request cost, admitted facts and receiver executions are distinct. The original
+unlimited default has no receiver-attempt cap; D014 adds only an explicitly opt-in
+logical cap. Do not interpret one request as bounded total computation. Timeouts,
+physical reservation and accepted-set revision need separate explicit contracts.
+
+## D014: Opt-in checkpoint-accounted receiver attempts
+
+**Status: experimental — implemented and evaluated.** Optional strict budget0..8
+charges each eligible acquisition check in its computed checkpoint transaction,
+including false labels. Committed charges persist; final false/zero-budget denial
+closes exhausted, retains uncertainty and blocks later evidence. Last-valid succeeds.
+Cheap malformed/unrelated/duplicate/conflicting inputs do not consume/check. Omission
+retains the original unlimited policy/state; budget drift refuses restart.
+Rationale: bound committed receiver work without falsely claiming a physical bound
+or redesigning the transaction engine. False claims can exhaust resources and deny
+legitimate evidence; memory has the identical policy and shares the outcome.
+Sources: [frozen protocol](experiments/RECEIVER_BUDGET_PROTOCOL.md),
+[results and physical counterexample](experiments/RECEIVER_BUDGET_RESULTS.md),
+[fault child](experiments/receiver_fault_worker.py). Budget1 before-replace replay
+made two physical calls/final logical1; after-replace replay made one. No durable
+pre-computation reservation or ingress CPU/network/storage defense is established.
+Revisit a HARD physical guarantee only through an explicit reservation/recovery
+contract and its lost-result tradeoff; do not silently strengthen this logical claim.

@@ -11,23 +11,32 @@ POLICIES = ("disagreement", "noninformative", "unavailable")
 QUERIES = {"q1": (0, 2), "q2": (5, 5), "q3": (7, 7), "q4": (7, 6)}
 
 
-def policy(scenario, acquisition_policy):
+def policy(scenario, acquisition_policy, receiver_attempt_budget=None):
     if scenario not in fixture.TRAIN or acquisition_policy not in POLICIES:
         raise ValueError("unsupported active relationship policy")
-    return json.loads(json.dumps({"rule_version": RULE, "scenario": scenario, "acquisition_policy": acquisition_policy,
+    if receiver_attempt_budget is not None and (type(receiver_attempt_budget) is not int or not 0 <= receiver_attempt_budget <= 8):
+        raise ValueError("receiver attempt budget must be a strict integer in 0..8 or omitted")
+    result = json.loads(json.dumps({"rule_version": RULE, "scenario": scenario, "acquisition_policy": acquisition_policy,
         "task": learner.configuration(), "queries": QUERIES, "request_budget": 1,
         "episode_rule": "one fixed episode per individual; no reset", "model_calls": 0}))
+    if receiver_attempt_budget is not None:
+        result.update(receiver_attempt_budget=receiver_attempt_budget, receiver_attempt_rule="checkpoint-accounted-receiver-attempts-1",
+                      receiver_guarantee="committed attempts capped; pre-commit rollback can repeat physical computation")
+    return result
 
 
-def newborn(mode, scenario, acquisition_policy, individual):
+def newborn(mode, scenario, acquisition_policy, individual, receiver_attempt_budget=None):
     if mode not in MODES: raise ValueError("unsupported active relationship mode")
-    policy(scenario, acquisition_policy)
-    return {"mode": mode, "rule_version": RULE, "candidate_space": candidates(),
+    policy(scenario, acquisition_policy, receiver_attempt_budget)
+    result = {"mode": mode, "rule_version": RULE, "candidate_space": candidates(),
         "learner": learner.newborn("memory", scenario), "survivors": [], "support_status": "untrained",
         "acceptance": None, "acquired": {}, "filter_trace": [], "evidence_links": {},
         "episode": {"id": individual + ":relationship-episode-1", "policy": acquisition_policy,
             "phase": "unselected", "request_count": 0, "request_id": None, "selection": None,
             "closed_reason": None, "verified_observations": 0}}
+    if receiver_attempt_budget is not None:
+        result["episode"].update(receiver_attempt_budget=receiver_attempt_budget, receiver_attempts=0, receiver_exhausted=False)
+    return result
 
 
 def scientific(current):
@@ -126,10 +135,28 @@ def handle(state, message, models, receipt):
             receipt.update(status="duplicate_evidence", evidence_ref=eid)
             respond("Duplicate acquisition; no revision or budget change."); return state
         question = state["questions"].get(ep["request_id"])
+        limit = ep.get("receiver_attempt_budget")
+        if limit is not None and ep["receiver_exhausted"]:
+            receipt.update(status="verification_budget_exhausted",reason="receiver verification budget exhausted; episode closed")
+            respond("Receiver verification budget exhausted; no new computation or resolution."); return state
         if ep["phase"] != "pending" or question is None or question["status"] != "pending" or question["answered_by"] is not None:
             return reject("verification requires the still-pending request")
+        def exhaust():
+            ep.update(phase="closed",closed_reason="receiver_budget_exhausted",receiver_exhausted=True)
+            question.update(status="receiver_budget_exhausted",closed_by=message["id"])
+            receipt["receiver_exhaustion_transition"] = True
+        if limit is not None:
+            receipt["eligible_verification_checks"] = 1
+            if ep["receiver_attempts"] >= limit:
+                exhaust()
+                receipt.update(status="verification_budget_exhausted",reason="receiver verification budget exhausted")
+                respond("Receiver verification budget exhausted; hypotheses remain unresolved."); return state
+            ep["receiver_attempts"] += 1
+            receipt.update(receiver_attempt_charged=1,receiver_attempts_after=ep["receiver_attempts"])
         receipt["verification_executions"] = 1
-        if evidence["success"] != fixture.execute(evidence["length"],evidence["capacity"]): return reject("unverified acquisition label")
+        if evidence["success"] != fixture.execute(evidence["length"],evidence["capacity"]):
+            if limit is not None and ep["receiver_attempts"] >= limit: exhaust()
+            return reject("unverified acquisition label; receiver budget exhausted" if limit is not None and ep["receiver_exhausted"] else "unverified acquisition label")
         before = deepcopy(current["survivors"])
         current["survivors"] = ambiguity.filter_hypotheses(before, {eid:evidence})
         current["support_status"] = learner.support_status(current["survivors"])

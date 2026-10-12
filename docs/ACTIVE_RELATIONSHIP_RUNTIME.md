@@ -96,3 +96,23 @@ fault cases. Reproduce using a fresh complete current preservation context:
 
 Keep source unchanged during a run; recapture after edits. Preserve complete local
 outputs, which are ignored by Git.
+
+## Optional checkpoint-accounted receiver cap
+
+The unlimited behavior above remains the default. To opt in, add
+`--receiver-attempt-budget 2` when creating an active individual, then use the
+same value on restart. Strict values0..8 are supported. Budget0 can issue the
+existing request, but its first eligible reply is denied without verification.
+After source changes, archived software is still required for old checkpoints.
+
+Each eligible acquisition check consumes a committed attempt, including a false
+label. Malformed/unrelated/duplicate/conflicting replies remain cheap. A false
+final attempt closes exhausted and blocks later valid evidence; a valid final
+attempt succeeds. Cancellation does not refund, and no reset operation exists.
+
+This cap bounds CHECKPOINT-accounted work, not physical calls across pre-commit
+rollback. Computation can happen before a failed checkpoint write; replay can
+compute again. It also does not bound arbitrary ingress parsing/receipt storage.
+See [frozen receiver contract](../experiments/RECEIVER_BUDGET_PROTOCOL.md) and
+[results with physical counterexample](../experiments/RECEIVER_BUDGET_RESULTS.md).
+No durable pre-computation reservation or broader transaction redesign is added.

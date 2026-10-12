@@ -5,7 +5,9 @@ its evaluation. SHA256:
 `97ed7cdf36f7af93cd81f1c61499950d983bb6187cfb5a1fbbd79e8ac0b83e0d`.
 Starting source commit `186c586348482eee19dc2fc8e31e9b552866eee7` with prior passive
 and preservation work already uncommitted. All that work was copied/hashes recorded
-before editing. No source writer besides this task was used. Changes remain uncommitted.
+before editing. Source was uncommitted at evaluation. An external commit c92d213
+appeared during final handoff; evaluated source/test/config bytes still match.
+Final handoff-document updates remain dirty. Archived starting provenance is unchanged.
 
 **One committed informative request survived restart; its independently verified
 reply resolved lt/le. Equally equipped ordinary memory matched exactly.** The
@@ -189,6 +191,7 @@ covered source during a run. Under `outputs/active-acquisition-001/`:
 
 Branches restarted/uninterrupted; modes relationship-acquire-lmft/memory; scenarios/
 policies are the ten combinations in the frozen matrix. Outputs are local and
-ignored by Git; no external backup is claimed. Changes are uncommitted. No active
+ignored by Git; no external backup is claimed. Code is now in commit c92d213,
+with final handoff edits pending. No active
 process remains in this task; stop for coordinator review. No later priority,
 research dispatch, teacher expansion, push, publication or archive deletion occurred.

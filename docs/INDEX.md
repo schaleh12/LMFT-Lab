@@ -167,3 +167,21 @@ no observation requests or model calls are added. Old source manifests remain in
 and [CLI](../experiments/verify_preservation.py) separate complete nonempty current
 source preservation from original archived/versioned historical bytes. Old scientific
 criteria, failed outcomes and archives are preserved; missing/tampered evidence rejects.
+
+## One-request active relationship investigation
+
+[Guide](ACTIVE_RELATIONSHIP_RUNTIME.md),
+[frozen protocol v1.2](../experiments/ACTIVE_ACQUISITION_PROTOCOL_V1_2.md),
+[results/costs/limits](../experiments/ACTIVE_ACQUISITION_RESULTS.md),
+and [handler](../src/lmft_lab/active_relationship.py) connect predicted disagreement
+to real outbox requests and correlated independently verified replies. Pending budgets
+survive restart; memory matches and controls preserve ambiguity. Receiver-attempt
+computation is not capped by the one-request budget.
+
+## Opt-in receiver attempt accounting
+
+[Protocol](../experiments/RECEIVER_BUDGET_PROTOCOL.md),
+[results and rollback limit](../experiments/RECEIVER_BUDGET_RESULTS.md),
+and [tests](../tests/test_receiver_budget.py) cap COMMITTED eligible acquisition
+checks while preserving the unlimited default. False claims can exhaust and deny
+later valid evidence; before-commit rollback can repeat physical computation.

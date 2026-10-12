@@ -1,10 +1,10 @@
 # LMFT-Lab — current project state
 
-Snapshot: **2026-10-12**. Clean starting source commit:
-`186c586348482eee19dc2fc8e31e9b552866eee7`.
-Ambiguity and insufficiency work were committed before this cycle; passive runtime
-integration, explicit preservation verification and handoff changes remain uncommitted.
-This identifies the starting state, not a future implementation commit. Recheck Git status.
+Snapshot: **2026-10-12**. Receiver-budget follow-up starting HEAD:
+`c92d213beab89568e10bac7f121c6c7a59c1f17b`, with four dirty handoff/report files
+preserved before editing. Receiver implementation and handoff changes remain uncommitted.
+Earlier evaluation starting commits remain in their original reports/archives; no
+provenance was rewritten. Recheck actual Git status.
 
 Read [AGENTS.md](AGENTS.md), this snapshot, then relevant [DECISIONS.md](DECISIONS.md)
 entries. These files summarize; [Minimal Specification](docs/MINIMAL_LMFT_SPEC.md) controls
@@ -62,8 +62,70 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
   [current helper](src/lmft_lab/preservation_context.py). Nonempty complete current-source
   baselines for behavioral tests; separate original-byte historical audit, no fallback
   after missing/changed current contexts and no altered scientific criteria.
+- Opt-in one-request acquisition: [guide](docs/ACTIVE_RELATIONSHIP_RUNTIME.md),
+  [handler](src/lmft_lab/active_relationship.py),
+  [protocol v1.2](experiments/ACTIVE_ACQUISITION_PROTOCOL_V1_2.md),
+  [results](experiments/ACTIVE_ACQUISITION_RESULTS.md). Real clarification requests,
+  pending budget/questions across restart, strict correlated synthetic verification,
+  separate acquisition evidence and effective hypothesis filtering; no teacher calls.
+- Optional receiver-attempt accounting: [protocol](experiments/RECEIVER_BUDGET_PROTOCOL.md),
+  [results](experiments/RECEIVER_BUDGET_RESULTS.md), [tests](tests/test_receiver_budget.py).
+  Explicit strict budget0..8; omission preserves unlimited default. Committed attempts
+  survive restart and exhaustion denies later replies without false resolution.
+  Physical rollback can repeat computation; no crash-proof physical cap is claimed.
 
 ## Latest completed milestone
+
+The [receiver accounting study](experiments/RECEIVER_BUDGET_RESULTS.md) adds an
+opt-in acquisition-verifier cap, preserving old omitted-option behavior. Twenty-eight
+actual runtime individuals (both modes, seven fixed sequences, restart/reference)
+all halted; **618/618 integrity**, **84/84 quality**, **574 full current-checkout tests**
+passed, including 22 receiver tests. Historical audit and all 3,043 original archive/
+failure bytes still pass. Source/context archive: `outputs/receiver-budget-001/`.
+
+Finite flood cap2 uses two committed/normal-process checks, then blocks the later
+valid reply and remains ambiguous (50% coverage/75% decision accuracy). Finite
+valid-first/false-valid/last-valid resolve within budget (100%/75%). A finite
+legacy replay of six false replies plus valid uses seven checks and resolves.
+Bad claims can therefore deny legitimate evidence: this tradeoff is explicit.
+Memory matches exactly; no seed/numerical/model/migration changes or model calls.
+
+Crucial scope: attempts are CHECKPOINT-accounted, not a hard physical bound. A real
+child-process before-replace fault/replay makes two physical calls while final
+committed attempts remain1 (budget1); after-replace replay makes one. Raw append-only
+call markers and state/PID traces preserve this negative result. Durable pre-computation
+reservation/recovery is NOT implemented; arbitrary ingress CPU/storage/network costs
+remain outside the cap. Changed-budget restart rejects without checkpoint changes.
+
+### Prior active acquisition milestone
+
+Active relationship-acquire-lmft/memory modes connect nonempty ambiguity to the
+existing runtime investigation transport. Generic predicted disagreement chooses
+q2 before outcome access; one charged request survives pending restart, a verified
+reply retains le, and reserved validation precedes predictions. Ordinary memory
+matches exactly. Noninformative q1 does not resolve ambiguity; unavailable, unique
+and unsupported families issue zero requests. Original training derivation is intact.
+
+[Evaluated v1.2](experiments/ACTIVE_ACQUISITION_RESULTS.md): **540/540 integrity**,
+**60/60 quality**, **34 targeted tests**, **552 full current-checkout tests**.
+Twenty main individuals plus disabled control all halted. Coverage/decision accuracy:
+informative and supported 100%/75%; noninformative/unavailable 50%/75%; unsupported
+0%/undefined. Held-out fault errors remain. No fuzzy/LMFT advantage or model calls.
+Archive `outputs/active-acquisition-001/`; complete 161-file current context and
+separate historical audit passed. All 3,043 original archive/failure bytes are intact.
+
+Requests, admitted facts and verification executions are DISTINCT: requesting
+episodes have one request/unit, one acquisition/service observation, two acquisition
+receiver checks (failed label plus valid); every condition has four training admissions
+but five training checks, and four validation admissions/checks. v1/v1.1 remain;
+v1.2 fixed cost naming and outcome-dependent expectation selection BEFORE reevaluation.
+The earlier v1.1 harness/failed unit attempts are preserved, not rewritten.
+
+That unlimited default still permits repeated eligible receiver work. The explicit
+receiver option above adds only committed-attempt accounting; there is no timeout
+or crash-proof physical reservation. The original active v1.2 result is unchanged.
+
+### Preservation verification milestone
 
 The focused verification correction separates current behavioral regression from
 historical preservation (D012). Both harness defaults keep their historical prework
@@ -172,15 +234,17 @@ and persistent hypothesis sets, not an autonomous runtime acquisition loop. Whol
 checkpoints grow with history; old individuals require
 archived source/config under the existing manifest guard.
 
-Active implementation work: **passive priority and narrow verification follow-up complete;
-stopped for coordinator review** (D011–D012). The authorized next priority is bounded active acquisition, but it is NOT implemented
-or dispatched by this task. It needs explicit outbox request identity, independently
-verified reply admission, phase closure and atomic one-observation budgeting while preserving
-matched memory access. Coordinator owns sequencing until 2026-10-12 12:00 UTC (08:00
-America/New_York); this task stops at the current gate. Old source manifests, synthetic
+Active implementation work: **passive, preservation, active acquisition and one receiver
+accounting follow-up complete; stopped for coordinator review** (D011–D014). No later task is dispatched.
+Coordinator owns sequencing toward 2026-10-12 12:00 UTC (08:00 America/New_York);
+this task stops safely at the review gate. Old source manifests, synthetic
 verifier authority and phase isolation/deduplication remain material limits; current
 versus historical preservation context is now explicitly separated and fail-closed.
 Pinned Git/archives and the local historical trust anchor are required for the audit.
+Next concrete limitation to assess is durable pre-computation reservation/recovery if a
+hard PHYSICAL call bound is needed; it must address lost-result/admission tradeoffs and
+cannot be inferred from the current logical cap. No redesign is implemented/dispatched.
+Accepted-set revision and arbitrary-ingress receipt/storage growth remain outside scope.
 
 ## Verification and local evidence
 
@@ -201,6 +265,8 @@ For current standalone/passive behavioral reproduction, capture a fresh nonempty
 context and supply --preservation-context; historical-default commands above retain
 old preservation checks and can legitimately reject later source. Separate historical
 audit and current regression commands are in [verification results](experiments/PRESERVATION_VERIFICATION_RESULTS.md#reproduce-separately).
+Active harness requires --preservation-context explicitly; [active report](experiments/ACTIVE_ACQUISITION_RESULTS.md#reproduce-and-exact-artifacts)
+records full current-checkout commands and fresh context/archive paths.
 
 Reports locate complete local runs under `outputs/`, notably `capacity-001/`, `continuation-001/`,
 `outcome-correction-001/` and `teacher-briefing-001/`. This handoff checked those directories,
@@ -216,7 +282,7 @@ No external backup was verified.
 and credential files; these are not conveyed by a Git checkout. Default model cache is
 `%LOCALAPPDATA%/LMFT-Lab/cache`; its assets were not inspected in this task.
 
-Checks this cycle: handoff/spec/insufficiency/runtime review, actual Git/prework preservation,
+Checks in the passive cycle: handoff/spec/insufficiency/runtime review, actual Git/prework preservation,
 frozen passive integration protocol, 25 new tests including eight atomic-fault cases,
 real-runtime suite, 486-test clean-source snapshot suite, compatibility/disabled controls,
 archive/protected hashes and halted-process checks. Failed focused/working-root attempts
@@ -226,3 +292,11 @@ a new opt-in handler changed executable behavior; numerical/seed/model/migration
 Verification follow-up changed only context capture/audit and harness/test context selection.
 It preserved the prior passive dirty work and original archives, ran separate historical
 audit/current-context studies and full checkout tests; original scientific protocols are intact.
+Active priority extended runtime registration/routing with a NEW handler, reused existing
+numeric selector and investigation transport, and passed 552 current-checkout tests plus
+540 integration/60 quality checks and historical audit. Prior passive/preservation dirty
+work remains preserved; no active process, push, publication, teacher expansion or later dispatch.
+Receiver follow-up passed 574 checkout tests plus 618 integration/84 quality checks,
+actual pending/exhausted restarts and child-process physical rollback counterexamples.
+Omitted-option default policy/state parity is preserved; optional budgets are pinned.
+No subsequent experiment or transaction redesign was dispatched.
