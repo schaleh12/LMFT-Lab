@@ -185,3 +185,23 @@ computation is not capped by the one-request budget.
 and [tests](../tests/test_receiver_budget.py) cap COMMITTED eligible acquisition
 checks while preserving the unlimited default. False claims can exhaust and deny
 later valid evidence; before-commit rollback can repeat physical computation.
+
+## Existing Clarity contribution under competing questions
+
+[Frozen protocol](../experiments/SEED_CONTRIBUTION_PROTOCOL.md),
+[results](../experiments/SEED_CONTRIBUTION_RESULTS.md),
+[harness](../experiments/run_seed_contribution.py) and
+[tests](../tests/test_seed_contribution.py) quantify existing single-edge ranking
+causality against question-resolution utility. Three utility hurts, tied final
+decisions and exact scalar-memory equivalence; no production or semantic changes.
+
+## Action-aware missing evidence versus eligible correction
+
+[Frozen v2](../experiments/ACTION_CORRECTION_PROTOCOL_V2.md),
+[preserved v1](../experiments/ACTION_CORRECTION_PROTOCOL.md),
+[results/work counts](../experiments/ACTION_CORRECTION_RESULTS.md),
+[harness](../experiments/run_action_correction.py) and
+[tests](../tests/test_action_correction.py) distinguish append-only gathering from
+existing authorized verified replacement. Compare exact ordinary memory, filtered
+gather-only, existing Clarity ablation and unchanged original selector. Combined
+action-policy benefit, retained wrong outcomes, no production/seed/fuzzy advantage.

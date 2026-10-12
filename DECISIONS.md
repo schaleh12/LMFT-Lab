@@ -207,3 +207,39 @@ made two physical calls/final logical1; after-replace replay made one. No durabl
 pre-computation reservation or ingress CPU/network/storage defense is established.
 Revisit a HARD physical guarantee only through an explicit reservation/recovery
 contract and its lost-result tradeoff; do not silently strengthen this logical claim.
+
+## D015: Existing Clarity ranking contribution has bounded utility limits
+
+**Status: experimental — evaluated without production changes.** Reuse the existing
+consistent_attention circuit and its single-edge Clarity ablation; compare exact
+algebraic ordinary-memory equivalents. Freeze existing initializer weights and
+historical counter replay; no fresh learning or contradiction repair.
+Rationale: previous ranking causality did not establish downstream usefulness.
+In ten authored competing-question cases, intact resolves 4 questions versus 7 ablated
+(three hurts/no helps), while all final decisions tie and scalar memory matches.
+This supports a causal ranking effect and a limitation, not semantic understanding,
+a general seed benefit or a fuzzy-tree advantage. Preserve wrong outcomes and all
+primary attempts; no theory/seed/numerical change follows automatically from this finding.
+Sources: [frozen protocol](experiments/SEED_CONTRIBUTION_PROTOCOL.md),
+[results and reproduction](experiments/SEED_CONTRIBUTION_RESULTS.md),
+[experiment tests](tests/test_seed_contribution.py). Stop for coordinator review;
+roadmap step2 and chat demonstration remain undispatched.
+
+## D016: External bounded action choice distinguishes gathering from correction
+
+**Status: experimental — standalone evaluated, no production changes.** Missing
+parts permit scoped gathering; inconsistent support permits advertised existing
+authorized operations only on current exact targets. Selection cannot read reply
+values/outcomes; unchanged correction receiver separately authorizes/checks/verifies.
+One shared lifetime request, no reset/refund/retry. No new learned policy or node meaning.
+Rationale: additional corroboration cannot supersede conflicting instrument roots.
+v1 filtered gather-only did not establish original-selector query savings; owner
+review required frozen v2 with unchanged selector and separate work/admission metrics.
+v1 remains preserved. Full/memory has2 non-resolving requests versus original8,
+avoids6 unresolved contradiction gathers, but includes an invalid repair and wrong
+predictions. Exact memory parity; combined adapter benefit is not seed/fuzzy superiority.
+Sources: [v1](experiments/ACTION_CORRECTION_PROTOCOL.md),
+[frozen v2](experiments/ACTION_CORRECTION_PROTOCOL_V2.md),
+[results/costs/limits](experiments/ACTION_CORRECTION_RESULTS.md),
+[tests](tests/test_action_correction.py). Stop for coordinator review; runtime
+integration, further learning, physical bounds and later roadmap work are undispatched.

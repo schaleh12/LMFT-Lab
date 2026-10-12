@@ -1,8 +1,8 @@
 # LMFT-Lab — current project state
 
-Snapshot: **2026-10-12**. Receiver-budget follow-up starting HEAD:
-`c92d213beab89568e10bac7f121c6c7a59c1f17b`, with four dirty handoff/report files
-preserved before editing. Receiver implementation and handoff changes remain uncommitted.
+Snapshot: **2026-10-12**. Action-aware correction starting HEAD:
+`e61372e86e2b804ab53012d6de006ed7a401663b`, preserving seven dirty seed-study/handoff
+files in a complete prework archive. Both experiments and handoff changes remain uncommitted.
 Earlier evaluation starting commits remain in their original reports/archives; no
 provenance was rewritten. Recheck actual Git status.
 
@@ -75,6 +75,26 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
   Physical rollback can repeat computation; no crash-proof physical cap is claimed.
 
 ## Latest completed milestone
+
+The [action-aware correction study](experiments/ACTION_CORRECTION_RESULTS.md) separates
+missing-part gathering from eligible verified replacement, reusing protected production
+machinery unchanged. v2 adds the unchanged original selector after owner review;
+v1 remains archived. Full/memory: 6 requests, 2 non-resolving, 6 decisions/4 correct;
+original: 9 requests, 8 non-resolving (6 unresolved contradiction gathers), 4 decisions/3
+correct. Exact scalar memory matches; combined action/eligibility policy benefit is
+not a seed advantage. **565/565 integrity**, **630 full tests**, actual pending child
+reload passed. Work/admissions/preparation costs are separate. Final archive
+`outputs/action-correction-002/`; D016. Stopped for coordinator review.
+
+The [seed-contribution study](experiments/SEED_CONTRIBUTION_RESULTS.md) reuses unchanged
+Clarity wiring and its existing ablation. Intact resolved 4 new questions versus 7
+ablated (three hurts/zero helps); all final decisions tie, four decided/three correct.
+Exact scalar-memory scores/actions/predictions match. **222/222 integrity checks**,
+actual standalone process reload and **588 checkout tests** passed. No production
+code, seed, numerics, model configuration or migration changed. Two earlier attempts
+remain preserved; final archive `outputs/seed-contribution-003/`. Full regression
+artifact reuse is disclosed in the report; current raw artifacts are the second run.
+See D015.
 
 The [receiver accounting study](experiments/RECEIVER_BUDGET_RESULTS.md) adds an
 opt-in acquisition-verifier cap, preserving old omitted-option behavior. Twenty-eight
@@ -235,7 +255,8 @@ checkpoints grow with history; old individuals require
 archived source/config under the existing manifest guard.
 
 Active implementation work: **passive, preservation, active acquisition and one receiver
-accounting follow-up complete; stopped for coordinator review** (D011–D014). No later task is dispatched.
+accounting follow-up, bounded seed-contribution and action-aware correction experiments
+complete; stopped for coordinator review** (D011–D016). No later task is dispatched.
 Coordinator owns sequencing toward 2026-10-12 12:00 UTC (08:00 America/New_York);
 this task stops safely at the review gate. Old source manifests, synthetic
 verifier authority and phase isolation/deduplication remain material limits; current
@@ -299,4 +320,8 @@ work remains preserved; no active process, push, publication, teacher expansion 
 Receiver follow-up passed 574 checkout tests plus 618 integration/84 quality checks,
 actual pending/exhausted restarts and child-process physical rollback counterexamples.
 Omitted-option default policy/state parity is preserved; optional budgets are pinned.
-No subsequent experiment or transaction redesign was dispatched.
+The subsequent owner-authorized bounded seed-contribution experiment passed 588 tests
+and 222 integrity checks. Historical audit and all 3,043 baseline archive files still
+pass. No transaction redesign, roadmap step2, chat demo or later task was dispatched.
+Owner-authorized action-aware correction v2 subsequently passed 630 full tests and
+565 integrity checks, preserving v1 and prior dirty work. No production changes.
