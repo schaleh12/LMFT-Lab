@@ -135,3 +135,10 @@ does not improve. No teacher calls or propagation are involved.
 ## Predictive relationship selection
 
 [Guide](CAPACITY_EXPERIMENT.md), [protocol](../experiments/CAPACITY_PROTOCOL.md), and [results](../experiments/CAPACITY_RESULTS.md) compare coarse counting, exact-pair lookup, finite relationship induction and an authored reference. LMFT and equally equipped memory transfer identically.
+
+## Relationship ambiguity and one-observation acquisition
+
+[Protocol](../experiments/AMBIGUITY_PROTOCOL.md), [results and reproduction](../experiments/AMBIGUITY_RESULTS.md),
+and [isolated study](../src/lmft_lab/ambiguity.py) retain lt/le ambiguity, choose by
+predicted disagreement, and compare matched memory with non-informative, unavailable
+and no-evidence controls. One informative observation resolves the tie; memory matches.

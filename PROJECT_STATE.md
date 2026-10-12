@@ -1,9 +1,9 @@
 # LMFT-Lab — current project state
 
-Snapshot: **2026-10-12**. Inspected source commit:
-`c097c987f221703b856e29d2f0c76a3935087c84`.
-The working tree was clean before this documentation-only handoff. This identifies the
-inspected state, not a future documentation commit. Recheck Git status in each session.
+Snapshot: **2026-10-12**. Clean starting source commit:
+`0ae2461f078757c2cb2b0300a4591f327aaff381`.
+The bounded ambiguity implementation and handoff below are uncommitted working-tree changes.
+This identifies the starting state, not a future implementation commit. Recheck Git status.
 
 Read [AGENTS.md](AGENTS.md), this snapshot, then relevant [DECISIONS.md](DECISIONS.md)
 entries. These files summarize; [Minimal Specification](docs/MINIMAL_LMFT_SPEC.md) controls
@@ -42,8 +42,29 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
 - Bounded relationship induction: [capacity guide](docs/CAPACITY_EXPERIMENT.md),
   [state/acceptance code](src/lmft_lab/capacity.py),
   [finite language/selector](src/lmft_lab/capacity_relations.py). No generated executable proposals.
+- Isolated ambiguity study: [protocol](experiments/AMBIGUITY_PROTOCOL.md),
+  [study code](src/lmft_lab/ambiguity.py), [results](experiments/AMBIGUITY_RESULTS.md).
+  Retained hypothesis sets, one feature-selected verified observation, validation without
+  tie breaking and read-only consensus predictions across actual process restart.
 
 ## Latest completed milestone
+
+The [ambiguity protocol](experiments/AMBIGUITY_PROTOCOL.md) and
+[results](experiments/AMBIGUITY_RESULTS.md) record lt/le surviving non-equality training.
+Predicted disagreement selected one informative observation before outcome access; its
+verified success retained le. LMFT and equally equipped ordinary memory matched exactly:
+100% coverage/accuracy on eight fresh probes. Non-informative, unavailable and no-evidence
+controls remained ambiguous: 0% equality coverage, 100% non-equality coverage, 50% overall
+coverage and 100% accuracy among decisions. Validation checked sets without eliminating ties.
+The seed was preserved and inert; **zero model calls**. This standalone file-backed study
+does not integrate acquisition into the supervised runtime or change numerical mechanisms.
+
+Verified this session: **433 passing tests**, **109/109 integrity checks**, **24/24 quality
+checks**; eight distinct restarted processes matched uninterrupted state/predictions.
+Complete source/config/protocol/evidence/restart traces: `outputs/ambiguity-001/`.
+These are deterministic finite-family results, not fuzzy superiority or general cognition.
+
+### Previous capacity milestone
 
 The [capacity protocol](experiments/CAPACITY_PROTOCOL.md) and
 [results](experiments/CAPACITY_RESULTS.md) record training selection of `length <= capacity`
@@ -62,17 +83,16 @@ hypothesis selection, not autonomous feature discovery, general understanding or
 
 No autonomous contemplation loop, general constitutional enforcement, calibrated confidence,
 or broad real-world agency is established. The capacity study is noiseless and tightly scoped;
-it has one selection/acceptance lifecycle, no interactive acquisition of missing evidence and
-no revision of an already accepted relationship. Ambiguity handling is unit-tested, not yet
-an interactive result. Whole-history checkpoints grow with history; old individuals require
+its supervised runtime has one selection/acceptance lifecycle and no revision of an already
+accepted relationship. The isolated ambiguity follow-up demonstrates bounded acquisition
+and persistent hypothesis sets, not an autonomous runtime acquisition loop. Whole-history
+checkpoints grow with history; old individuals require
 archived source/config under the existing manifest guard.
 
-Active implementation work: **none recorded**; this handoff is documentation-only.
-Next concrete task (**proposed, not implemented**, D009): preregister training that leaves
-`<` versus `<=` ambiguous, then test selection and use of at most one verified equality
-observation. Match evidence/request budgets with equally equipped memory and a no-new-evidence
-control; reserve fresh validation and held-out equality/non-equality cases. Do not default to
-`<=` or use held-out labels to break ties. See the capacity report's next-experiment rationale.
+Active implementation work: **none remaining in the bounded ambiguity task** (D009).
+Next experiment (**proposed only, not dispatched**): preregister a misspecified-family task
+where verified training eliminates all six candidates; compare matched memory/LMFT rejection
+and abstention across restart without expanding vocabulary after seeing outcomes.
 
 ## Verification and local evidence
 
@@ -82,6 +102,7 @@ From the repository root in PowerShell, when implementation verification or a ne
 $env:PYTHONPATH = 'src'
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe experiments/run_capacity.py --output outputs/my-capacity-study
+.\.venv\Scripts\python.exe experiments/run_ambiguity.py --output outputs/my-ambiguity-study
 ```
 
 Use a fresh output path. Model setup/reproduction is separately documented in
@@ -89,12 +110,15 @@ Use a fresh output path. Model setup/reproduction is separately documented in
 
 Reports locate complete local runs under `outputs/`, notably `capacity-001/`, `continuation-001/`,
 `outcome-correction-001/` and `teacher-briefing-001/`. This handoff checked those directories,
-results summaries, manifest-file presence and checkpoint counts; it did **not** verify every
-archive file/hash or reproduce the experiments. No external backup was verified.
+results summaries, manifest-file presence and checkpoint counts; the previous handoff did
+**not** verify every historical archive/hash or reproduce historical experiments. This session
+verified the new ambiguity archive hashes, checkpoint invariance and actual restarts.
+No external backup was verified.
 [.gitignore](.gitignore) excludes outputs, logs, virtual environments, local caches, weights
 and credential files; these are not conveyed by a Git checkout. Default model cache is
 `%LOCALAPPDATA%/LMFT-Lab/cache`; its assets were not inspected in this task.
 
-Checks run for this handoff: source/report review, Git status/commit inspection, local archive
-presence/summary checks, changed-document link validation and documentation diff review.
-No tests, inference, downloads or experimental runs were performed.
+Checks run for this implementation: source/spec/report review, clean Git preflight, frozen
+protocol, 433-test regression suite and bounded ambiguity run (109 integrity/24 quality checks).
+Initial sandbox-default test-temp atomic replacements failed with permission errors; fresh
+writable-checkout test-temp runs passed. No inference, downloads, pushes or publication.

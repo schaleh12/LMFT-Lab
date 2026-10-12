@@ -81,7 +81,8 @@ Rationale: inspectable transfer with an equally capable memory comparator; no de
 Sources: [capacity guide](docs/CAPACITY_EXPERIMENT.md), [selector](src/lmft_lab/capacity_relations.py),
 [protocol](experiments/CAPACITY_PROTOCOL.md).
 Revisit for ambiguity, misspecification or new scoped evidence through a new protocol, not
-post-hoc tuning of the completed study. D009 proposes the next test, not a replacement yet.
+post-hoc tuning of the completed study. D009 records the isolated ambiguity follow-up;
+this original capacity policy remains unchanged.
 
 ## D008: Evolution-first GFT direction
 
@@ -95,10 +96,16 @@ prerequisite for current implementation.
 
 ## D009: One informative equality observation
 
-**Status: proposed — not implemented.** Leave `<`/`<=` ambiguous, then test selection and use
-of one verified equality observation against equally equipped memory and a no-new-evidence
-control, with reserved validation/held-out cases.
-Rationale: test evidence-driven disambiguation beyond the completed uniquely identifiable task.
-Source: [capacity report](experiments/CAPACITY_RESULTS.md#limits-and-smallest-next-experiment).
-Revisit during preregistration if scope, budgets or acceptance cannot isolate that question;
-never use held-out truth to choose the hypothesis.
+**Status: experimental — implemented and evaluated in an isolated study.** Retain every
+training-consistent hypothesis; choose at most one observation by predicted disagreement,
+with declared-order candidate ties and no request when scores are zero. Fresh validation
+checks the entire retained set without filtering; consensus predicts and disagreement abstains.
+Matched memory, non-informative, unavailable and no-evidence controls share the same mechanisms.
+Rationale: test evidence-driven disambiguation beyond the uniquely identifiable capacity task.
+The informative observation resolved lt/le; controls did not; ordinary memory matched exactly.
+The canonical seed is inert and no numerical/runtime architecture changes follow.
+Sources: original [proposal](experiments/CAPACITY_RESULTS.md#limits-and-smallest-next-experiment),
+[frozen ambiguity protocol](experiments/AMBIGUITY_PROTOCOL.md),
+[results](experiments/AMBIGUITY_RESULTS.md), [study code](src/lmft_lab/ambiguity.py).
+Revisit noise, misspecification or further acquisition only through a separate preregistration;
+never use held-out truth or validation to select surviving hypotheses.
