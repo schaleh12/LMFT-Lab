@@ -243,3 +243,86 @@ Sources: [v1](experiments/ACTION_CORRECTION_PROTOCOL.md),
 [results/costs/limits](experiments/ACTION_CORRECTION_RESULTS.md),
 [tests](tests/test_action_correction.py). Stop for coordinator review; runtime
 integration, further learning, physical bounds and later roadmap work are undispatched.
+
+## D017: Later registered evidence can restore conflict after verified correction
+
+**Status: experimental - standalone chained restart evaluated.** Preserve the existing
+action-aware adapter and one lifetime request. Accept a separately registered later
+report through the existing ledger handler with an explicit optional evidence registry;
+default runtime registration, correction permits and receiver remain unchanged.
+Rationale: correction success must not erase later contrary evidence or count replay
+as independent support. Two existing cases restore conflict/abstention after a later
+report, across three chained actual child processes; exact scalar memory matches.
+No-later/frozen controls retain the known wrong prediction. Registered report identity
+does not certify truth; lower coverage does not prove improved judgment.
+Sources: [frozen protocol](experiments/SEQUENTIAL_CORRECTION_PROTOCOL.md),
+[results, costs and limitations](experiments/SEQUENTIAL_CORRECTION_RESULTS.md),
+[tests](tests/test_sequential_correction.py). The historical action question remains
+closed while current support can become inconsistent. No automatic reopening, second
+repair budget, live runtime mode or physical bound. Old manifests still require
+archived source. Stop for coordinator review before another bounded task.
+Review follow-up enforces the intended strict Boolean/schema registration boundary
+after discovering Python numeric/Boolean equality; canonical record digests replace
+dictionary equality. Run002 reproduces the original valid-Boolean findings, retaining
+run001 and disclosing its malformed-input defect in the results. No policy or
+scientific criterion revision follows from this implementation correction.
+
+## D018: Fixed synthetic commands reuse supervised runtime transactions
+
+**Status: experimental - opt-in integration implemented and evaluated.** Two new
+action-command modes share extracted existing policy/strict registry functions and
+the unchanged correction ledger. Exact commands and correlated replies use the
+existing inbox/outbox, receipt, dedup and checkpoint lifecycle. Explicit authored
+setup retains provenance; inspect separates current support from historical closure.
+One lifetime action request persists, without reset, automatic re-repair or freeform
+interpretation. Synthetic sender/source labels are not identity authentication.
+Rationale: test the bounded correction/later-conflict sequence at the real communication
+and persistence boundary before considering a broader interface. Twelve individuals
+match standalone references, memory and restarted controls. The known prediction error
+remains; higher final accuracy covers fewer decisions. Pre-commit fault recovery can
+repeat physical verification; no physical cap or exactly-once external effect follows.
+Sources: [protocol](experiments/ACTION_RUNTIME_PROTOCOL.md),
+[results/costs](experiments/ACTION_RUNTIME_RESULTS.md),
+[command contract](docs/ACTION_COMMAND_RUNTIME.md). Source-wide manifests reject old
+checkpoints under new code; archived source/config remain necessary. Stop for review
+before demo polish, new episodes, teacher integration or another bounded task.
+Final review enforces initialization against the already pinned permit policy and
+counts both successful and rejected gather verification attempts in the new adapter.
+Legacy receiver defaults remain unchanged; runs001/002/003 and intermediate regressions
+are preserved, with identical primary metrics and stage predictions.
+
+## D019: Thin local presentation over the existing synthetic runtime
+
+**Status: experimental - implemented; Ctrl+C incomplete at the initial gate.**
+Subsequent focused fix: D020 supersedes this initial keyboard-exit limitation;
+the observations and failed artifacts described here remain historical evidence.
+A standard-library terminal wrapper uses only existing inbox/outbox/checkpoint commands
+for r1/r8/r2. Fresh roots refuse overwrite; explicit resume preserves scenario,
+one-request budget and message identities. Public current support/history stay
+separate; internal provenance requires halt. No text interpretation or new learning.
+Rationale: make the bounded sequence inspectable by a human without adding a second
+state authority. Direct actual-runtime replay and matched-memory parity pass.
+Sources: [protocol](experiments/ACTION_DEMO_PROTOCOL.md),
+[results and retained failures](experiments/ACTION_DEMO_RESULTS.md),
+[guide](docs/ACTION_TERMINAL_DEMO.md). Real quit/EOF/resume pass, but hosted PowerShell
+Ctrl+C terminates before orderly cleanup despite process-group isolation; exception
+injection tests do not establish console-signal safety. Failed originals are retained;
+recovery of a copy preserves scientific state. Do not claim all exit criteria passed.
+Older checkpoints still require archived source. Stop for review before any later task.
+
+## D020: Handle interactive Windows Ctrl+C at a command boundary
+
+**Status: experimental - actual hosted PTY evaluated.** Temporarily read Windows
+console input without processed Ctrl+C while the wrapper owns it; restore exact
+original flags only after normal child shutdown and reaping. The exit key is queued
+during command execution and consumed at the next boundary; repeated keys cannot
+escalate the wrapper into killing its child. No persistent OS/security change.
+Rationale: a minimal hosted signal probe was terminated during cleanup even after
+SIGINT was caught; a console-input key avoids that broadcast path. D019's failed
+trials remain unchanged. Pending, instrumented in-progress reply, repeated-key,
+post-conflict, quit and EOF PTY trials pass with lifecycle/receipt/process evidence.
+Sources: [focused protocol](experiments/ACTION_INTERRUPT_PROTOCOL.md),
+[diagnosis, results and limits](experiments/ACTION_INTERRUPT_RESULTS.md),
+[reader](src/lmft_lab/action_console.py). Existing scientific/runtime rules are unchanged.
+This resolves tested interactive keystrokes only: external signals, script-mode
+interrupts, console closure and forced termination are not covered. Stop for review.

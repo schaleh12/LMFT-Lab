@@ -121,7 +121,7 @@ def correct(state,message,receipt,*,fixture=None,target_check=None,after_accept=
         "correction_id":cid,"accepted":event["accepted"],"reason":reason},message["id"])
     return state
 
-def handle(state,message,models,receipt):
+def handle(state,message,models,receipt,*,evidence_registry=None):
     from .runtime import emit
     from . import correction_fixture as fixture
     current=state["judgment"];content=message["content"]
@@ -139,7 +139,8 @@ def handle(state,message,models,receipt):
         if eid in current["ledger"]:
             if digest(record)!=digest(current["ledger"][eid]["record"]):return reject("conflicting evidence identity")
             receipt.update(status="duplicate_evidence",evidence_ref=eid);receipt.pop("message",None);return state
-        if message["source"]!=fixture.SOURCE or not fixture.admitted(record):return reject("not a registered instrument report")
+        registry=fixture if evidence_registry is None else evidence_registry
+        if message["source"]!=fixture.SOURCE or not registry.admitted(record):return reject("not a registered instrument report")
         current["ledger"][eid]={"record":deepcopy(record),"message_id":message["id"],"sender":message["sender"],
             "source":message["source"],"verification":"registered instrument log only; report may be erroneous","root":eid,"parent":None}
         current["roots"][eid]=eid;current["heads"][eid]=eid

@@ -1,8 +1,12 @@
 # LMFT-Lab — current project state
 
-Snapshot: **2026-10-12**. Action-aware correction starting HEAD:
-`e61372e86e2b804ab53012d6de006ed7a401663b`, preserving seven dirty seed-study/handoff
-files in a complete prework archive. Both experiments and handoff changes remain uncommitted.
+Snapshot: **2026-10-12**. Sequential correction and command integration starting HEAD:
+`90c1b84a4092f5f82a76debbf2e637d7da092fe9`. The sequential study began clean;
+prior action/seed work had been committed externally. Integration began with the
+preserved dirty sequential work. Sequential study/strict-schema
+work remains uncommitted and was preserved before opt-in command integration.
+The command adapter, shared policy/registry extraction and new handoff are also uncommitted.
+The thin terminal wrapper, evaluation and documentation are now uncommitted too.
 Earlier evaluation starting commits remain in their original reports/archives; no
 provenance was rewritten. Recheck actual Git status.
 
@@ -75,6 +79,75 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
   Physical rollback can repeat computation; no crash-proof physical cap is claimed.
 
 ## Latest completed milestone
+
+The [focused console interrupt fix](experiments/ACTION_INTERRUPT_RESULTS.md) now
+passes actual hosted Windows PTY Ctrl+C while pending, during an instrumented real
+reply command, after later conflict and with repeated keys. A temporary console
+reader defers exit to the next command boundary, reaps the child and restores input
+flags; no persistent OS settings or runtime transactions changed. Halt receipts,
+halted checkpoints, process exit and exact direct replay of all three PTY histories
+were verified. **20 targeted,758 full tests;116/116 smoke checks** pass. Old failures
+remain;7,572 demo/45,224 older/3,043 historical captured files are unchanged. D020.
+This resolves interactive console-key exit only, not arbitrary external signals,
+script interrupts or forced termination. Stopped for coordinator review.
+
+The [thin terminal demo](experiments/ACTION_DEMO_RESULTS.md) wraps the existing
+fixture runtime for r1/r8/r2, with explicit fresh/resume paths, readable support,
+history, budget and halt-only provenance. **116/116 scripted checks,9 targeted and
+747 full tests** pass; direct-runtime replay and exact memory parity hold. Real
+PTY walkthrough, quit, explicit resume and EOF passed. **At that initial gate, hosted
+Ctrl+C was unresolved:** two actual trials terminated before cleanup, leaving
+stale running markers; the readable checkpoints and failed originals are preserved.
+A copy recovered with identical scientific state. Thus overall exit acceptance is
+incomplete despite passing exception-injection tests. D019; superseded by D020 above.
+[Launch guide](docs/ACTION_TERMINAL_DEMO.md). Final archive002 retains194 files;
+all45,224 prior captured outputs and3,043 historical files passed preservation.
+No existing production mechanism, seed, equations, models or dependencies changed.
+
+The [fixed-command runtime integration](experiments/ACTION_RUNTIME_RESULTS.md)
+adds opt-in `action-command-lmft/memory`: explicit authored setup, inspect, one action
+request, correlated verified reply and later registered evidence through actual
+inbox/outbox/checkpoints. Existing policy and strict registry now have shared source
+modules; correction engine/default behavior and protected mechanisms are unchanged.
+Twelve real individuals match standalone references and uninterrupted/restarted
+semantics; circuit/memory match. **229/229 integrity,150 targeted,738 full tests** pass.
+Post-reply coverage/accuracy is100%/66.7%; after contrary reports33.3%/100% on one
+remaining decision. The known wrong prediction and separate historical closure are
+retained. Two actual commit interruptions preserve one committed correction; before
+replace repeats physical verification twice, after replace once. No physical cap.
+Final archive `outputs/action-runtime-003/`;001/002 remain preserved. Review tightened
+initialization against permit drift and counted rejected gather verification attempts;
+all three runs have identical scientific metrics and stage predictions. D018.
+Existing source-wide manifests require
+archived code for older checkpoints; no silent migration. All25,975 prior captured
+outputs and3,043 historical files preserved. This is fixed synthetic communication,
+not freeform chat or autonomous repair. Stopped for coordinator review before any
+demo polish or next task. [Command contract](docs/ACTION_COMMAND_RUNTIME.md).
+
+The [sequential correction study](experiments/SEQUENTIAL_CORRECTION_RESULTS.md)
+closes the bounded standalone correction -> later conflicting report -> actual
+restart gap. Two existing cases, full/scalar memory and late/no-later/frozen controls:
+correction enables success predictions (one correct/one wrong); admitting the later
+report restores conflict and abstention. Controls retain 100% coverage/50% accuracy;
+late conditions end at 0% coverage/undefined accuracy. Exact memory parity.
+Three chained child processes preserve complete semantic state, original records,
+revision heads, one-request budget and rejection/dedup history. **126/126 integrity**,
+**63 targeted tests**, **651 full checkout tests** passed. Archive
+`outputs/sequential-correction-001/`; failed first targeted run remains preserved.
+Only production change is opt-in `correction.handle(..., evidence_registry=...)`;
+default registration and correction receiver remain unchanged. Historical request
+closure is not reopened when later support conflicts. No live runtime integration,
+new permit, second repair, model call or physical-cost guarantee. D017; stopped
+for coordinator review. The late report is registered evidence, not proven truth.
+
+Review found numeric0 was accepted as Booleanfalse by Python dictionary equality in
+the study registry. The focused fix enforces exact schema/types and canonical record
+digests; protocol/scientific criteria and production code are unchanged. Fresh run
+`outputs/sequential-correction-002/` passes126/126 with identical metrics and stage
+predictions; **109 targeted /697 full tests** pass. Original valid-Boolean findings
+remain supported; the defective boundary and all original artifacts are preserved.
+See the [defect disclosure](experiments/SEQUENTIAL_CORRECTION_RESULTS.md#review-follow-up-strict-boolean-admission).
+Stopped for review; no runtime integration or next study started.
 
 The [action-aware correction study](experiments/ACTION_CORRECTION_RESULTS.md) separates
 missing-part gathering from eligible verified replacement, reusing protected production
@@ -254,11 +327,14 @@ and persistent hypothesis sets, not an autonomous runtime acquisition loop. Whol
 checkpoints grow with history; old individuals require
 archived source/config under the existing manifest guard.
 
-Active implementation work: **passive, preservation, active acquisition and one receiver
-accounting follow-up, bounded seed-contribution and action-aware correction experiments
-complete; stopped for coordinator review** (D011–D016). No later task is dispatched.
-Coordinator owns sequencing toward 2026-10-12 12:00 UTC (08:00 America/New_York);
-this task stops safely at the review gate. Old source manifests, synthetic
+Active implementation work: **passive, preservation, active acquisition, receiver
+accounting, seed-contribution, action-aware correction, sequential correction and
+fixed-command integration and terminal demo complete, with interactive hosted Ctrl+C
+verified by the focused follow-up; stopped for coordinator review** (D011-D020).
+No later task is dispatched.
+The owner authorized bounded sequential work through 2026-10-12 19:06:54 UTC;
+the coordinator reviews each task before dispatching another. This task stops at
+that review gate. Old source manifests, synthetic
 verifier authority and phase isolation/deduplication remain material limits; current
 versus historical preservation context is now explicitly separated and fail-closed.
 Pinned Git/archives and the local historical trust anchor are required for the audit.

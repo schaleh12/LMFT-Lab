@@ -197,6 +197,27 @@ decisions and exact scalar-memory equivalence; no production or semantic changes
 
 ## Action-aware missing evidence versus eligible correction
 
+Local interface: [terminal demo guide](ACTION_TERMINAL_DEMO.md),
+[frozen protocol](../experiments/ACTION_DEMO_PROTOCOL.md),
+[initial results](../experiments/ACTION_DEMO_RESULTS.md) and
+[verified console interrupt follow-up](../experiments/ACTION_INTERRUPT_RESULTS.md).
+Fixed synthetic commands only; direct-runtime/memory parity, explicit restart and
+safe quit/EOF verified. Interactive hosted Windows Ctrl+C now passes real PTY
+checks; external signals and forced termination remain outside the claim.
+
+Supervised follow-up: [fixed-command runtime guide](ACTION_COMMAND_RUNTIME.md),
+[protocol](../experiments/ACTION_RUNTIME_PROTOCOL.md),
+[results](../experiments/ACTION_RUNTIME_RESULTS.md). New opt-in circuit/memory modes
+reuse existing action/correction mechanisms with real request correlation, receipts,
+checkpoints and restart. Current support and historical request closure stay separate.
+
+Follow-up: [sequential correction protocol](../experiments/SEQUENTIAL_CORRECTION_PROTOCOL.md),
+[results](../experiments/SEQUENTIAL_CORRECTION_RESULTS.md),
+[harness](../experiments/run_sequential_correction.py),
+[tests](../tests/test_sequential_correction.py). Later registered conflicting evidence
+restores abstention after accepted correction and three chained process restarts;
+memory matches exactly. Optional evidence-registration seam only; no new runtime mode.
+
 [Frozen v2](../experiments/ACTION_CORRECTION_PROTOCOL_V2.md),
 [preserved v1](../experiments/ACTION_CORRECTION_PROTOCOL.md),
 [results/work counts](../experiments/ACTION_CORRECTION_RESULTS.md),
