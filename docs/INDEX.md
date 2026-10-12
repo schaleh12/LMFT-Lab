@@ -2,8 +2,8 @@
 
 ## Start here
 
-Fresh sessions: [AGENTS.md](../AGENTS.md) → [PROJECT_STATE.md](../PROJECT_STATE.md) → relevant
-[DECISIONS.md](../DECISIONS.md) entries → the linked authoritative specifications, implementation
+Fresh sessions: [AGENTS.md](../AGENTS.md) â†’ [PROJECT_STATE.md](../PROJECT_STATE.md) â†’ relevant
+[DECISIONS.md](../DECISIONS.md) entries â†’ the linked authoritative specifications, implementation
 and reports for the task. The snapshot summarizes current work; decisions explain material
 choices. Neither replaces the specifications or dated findings.
 
@@ -197,6 +197,13 @@ decisions and exact scalar-memory equivalence; no production or semantic changes
 
 ## Action-aware missing evidence versus eligible correction
 
+Foundations-first follow-up: [neutral attribute-binding protocol](../experiments/ATTRIBUTE_BINDING_PROTOCOL.md),
+[results and reproduction](../experiments/ATTRIBUTE_BINDING_RESULTS.md),
+[isolated harness](../experiments/run_attribute_binding.py). Learn which supplied
+numeric channels to compare under a confounded training history; one informative
+observation improves consensus coverage. Independent memory matches; no language,
+seed or causal-understanding claim and no production integration.
+
 Local interface: [terminal demo guide](ACTION_TERMINAL_DEMO.md),
 [frozen protocol](../experiments/ACTION_DEMO_PROTOCOL.md),
 [initial results](../experiments/ACTION_DEMO_RESULTS.md) and
@@ -226,3 +233,22 @@ memory matches exactly. Optional evidence-registration seam only; no new runtime
 existing authorized verified replacement. Compare exact ordinary memory, filtered
 gather-only, existing Clarity ablation and unchanged original selector. Combined
 action-policy benefit, retained wrong outcomes, no production/seed/fuzzy advantage.
+
+
+## Learned neutral binding in the supervised runtime
+
+[Guide](BINDING_RUNTIME.md), [frozen protocol](../experiments/BINDING_RUNTIME_PROTOCOL.md),
+[results and compatibility route](../experiments/BINDING_RUNTIME_RESULTS.md),
+[harness](../experiments/run_binding_runtime.py), [tests](../tests/test_binding_runtime.py).
+Fixture-only primary/memory modes use persisted learned operand binding for actual
+outbox decisions across pending and post-reply restarts. The frozen predictor control
+isolates12 changed decisions; ordinary memory matches. No seed advantage or migration.
+Old sessions retain exact matching archived source; the owner's originals stay intact.
+
+
+Binding-runtime review correction: [frozen fix criteria](../experiments/BINDING_RESTART_FIX_PROTOCOL.md),
+[blocked initial gate and corrective results](../experiments/BINDING_RESTART_FIX_RESULTS.md),
+[restart regressions](../tests/test_binding_restart_consistency.py). Nested controls
+and retained request/reply/closure history must agree across runtime state layers.
+Independent re-review accepted the narrow fix within trusted local finite-fixture
+scope. Session closed; no new study or learning feature.

@@ -17,7 +17,8 @@ from .local_models import LocalModels, load_config, strict_json
 from .model_assets import ModelError
 from .processing import process_observation
 from .runtime_store import Store, atomic_json, digest, locked
-from . import action_runtime
+from . import action_runtime, binding_runtime
+from .binding_verifier import Adapter as BindingVerifier
 
 ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,95}\Z")
 
@@ -82,6 +83,9 @@ def initial_state(individual, learning, manifest, experiment="channel"):
             "manifest": manifest, "learning": learning, "cycle": 0, "cursor": 0,
             "judgment": newborn(), "processed": {}, "receipts": [], "outbox": [],
             "questions": {}, "asked_issues": [], "diagnostics": []}
+    if experiment in binding_runtime.MODES:
+        result.update(experiment=experiment, judgment=binding_runtime.newborn(experiment, manifest["binding_policy"]["condition"]))
+        return result
     if experiment in action_runtime.MODES:
         result.update(experiment=experiment,
             judgment=correction.newborn('correction-lmft', manifest.get('correction_policy')),
@@ -110,8 +114,10 @@ def emit(state, kind, content, reply_to):
     return message["id"]
 
 
-def advance(previous, queued, models):
+def advance(previous, queued, models, *, binding_verifier=None):
     """Pure state transition apart from bounded model inference. Caller commits once."""
+    if binding_runtime.applies(previous):
+        binding_runtime.check_runtime(previous)
     state = deepcopy(previous)
     experiment = state.get("experiment", "channel")
     comparative = experiment != "channel"
@@ -123,7 +129,7 @@ def advance(previous, queued, models):
     try:
         if malformed:
             raise ValueError(malformed)
-        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES, *capacity.MODES, *passive_relationship.MODES, *active_relationship.MODES, *action_runtime.MODES))
+        validate_message(message, contextual_content=experiment in (*contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES, *capacity.MODES, *passive_relationship.MODES, *active_relationship.MODES, *action_runtime.MODES, *binding_runtime.MODES))
     except (ValueError, TypeError) as exc:
         receipt.update(status="rejected", reason=str(exc), raw=raw)
         emit(state, "response", {"text": "Inbox record rejected: invalid message format.",
@@ -140,6 +146,10 @@ def advance(previous, queued, models):
         return state
     state["processed"][message["id"]] = identity
     receipt.update(message_id=message["id"], status="processed", message=message)
+    if experiment in binding_runtime.MODES:
+        changed = binding_runtime.handle(state, message, models, receipt, binding_verifier)
+        binding_runtime.check_runtime(changed)
+        return changed
     if experiment in action_runtime.MODES:
         return action_runtime.handle(state, message, models, receipt)
     if experiment in active_relationship.MODES:
@@ -226,8 +236,22 @@ def advance(previous, queued, models):
 def run(root, *, individual=None, mode="local", config_path="config/local_models.json", offline=False,
         learning=True, experiment="channel", teacher_profile="foundational-teacher-v1",
         teacher_config="config/teacher_models.json", teacher_study="historical",
-        freeze_outcomes_after_correction=False, relationship_scenario="unsupported", acquisition_policy="disagreement", receiver_attempt_budget=None):
+        freeze_outcomes_after_correction=False, relationship_scenario="unsupported", acquisition_policy="disagreement", receiver_attempt_budget=None, binding_condition="informative", binding_registry=None):
     store = Store(root)
+    # Read-only preflight precedes locks, verifier workers and lifecycle writes.
+    # The checkpoint is read/checked again under the normal runtime lock below.
+    if (store.root / 'checkpoint.json').exists():
+        preflight = store.read()
+        if experiment in binding_runtime.MODES or binding_runtime.applies(preflight):
+            binding_runtime.check_runtime(preflight, experiment=experiment, condition=binding_condition)
+    verifier = None
+    if experiment in binding_runtime.MODES:
+        if mode != "fixture" or binding_registry is None:
+            raise ValueError("binding modes require fixture mode and a private trusted registry")
+        binding_runtime.policy(binding_condition)
+        verifier = BindingVerifier(binding_registry)
+    elif binding_registry is not None or binding_condition != "informative":
+        raise ValueError("binding controls require a binding mode")
     if experiment in action_runtime.MODES and mode != 'fixture':
         raise ValueError('action command modes require --mode fixture; no model inference')
     if experiment in active_relationship.MODES and mode != "fixture":
@@ -242,6 +266,9 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
         raise ValueError("relationship scenario requires a relationship mode")
     config = load_config(config_path) if mode == "local" else None
     manifest = software_manifest(config, mode)
+    if experiment in binding_runtime.MODES:
+        manifest["binding_policy"] = binding_runtime.policy(binding_condition)
+        manifest["binding_verifier"] = verifier.pin
     if experiment in action_runtime.MODES:
         manifest['action_runtime_policy'] = action_runtime.policy()
         manifest['correction_policy'] = correction.load_policy()
@@ -270,7 +297,7 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
     if experiment in correction.MODES:
         manifest["correction_policy"] = correction.load_policy()
     if experiment != "channel":
-        manifest.update(experiment=experiment, fixture_rule=action_runtime.RULE if experiment in action_runtime.MODES else active_relationship.RULE if experiment in active_relationship.MODES else passive_relationship.RULE if experiment in passive_relationship.MODES else capacity.RULE if experiment in capacity.MODES else outcome_correction.RULE if experiment in outcome_correction.MODES else teacher.RULE if experiment in teacher.MODES else correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
+        manifest.update(experiment=experiment, fixture_rule=binding_runtime.RULE if experiment in binding_runtime.MODES else action_runtime.RULE if experiment in action_runtime.MODES else active_relationship.RULE if experiment in active_relationship.MODES else passive_relationship.RULE if experiment in passive_relationship.MODES else capacity.RULE if experiment in capacity.MODES else outcome_correction.RULE if experiment in outcome_correction.MODES else teacher.RULE if experiment in teacher.MODES else correction.RULE if experiment in correction.MODES else consistent_attention.RULE if experiment in consistent_attention.MODES else scoped_attention.RULE if experiment in scoped_attention.MODES else attention.RULE if experiment in attention.MODES else contextual.RULE if experiment in contextual.MODES else reliability.RULE)
     with locked(store.root / "runtime.lock"):
         if (store.root / "checkpoint.json").exists():
             state = store.read()
@@ -283,6 +310,8 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
                 raise ValueError("A valid --new individual ID is required")
             state = initial_state(individual, learning, manifest, experiment)
             store.commit(state)
+        if experiment in binding_runtime.MODES:
+            binding_runtime.check_runtime(state, experiment=experiment, condition=binding_condition)
         (store.root / "stop.json").unlink(missing_ok=True)
         atomic_json(store.root / "lifecycle.json", {"status": "running", "pid": os.getpid()})
         models = LocalModels(config, offline=offline) if mode == "local" else (
@@ -295,7 +324,7 @@ def run(root, *, individual=None, mode="local", config_path="config/local_models
                     time.sleep(0.1)
                     continue
                 started = time.perf_counter()
-                changed = advance(state, queued, models)
+                changed = advance(state, queued, models, binding_verifier=verifier)
                 changed["receipts"][-1]["processing_seconds"] = time.perf_counter() - started
                 store.commit(changed)
                 state = changed
@@ -314,7 +343,9 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("start")
     start.add_argument("--new", dest="individual")
-    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES, *capacity.MODES, *passive_relationship.MODES, *active_relationship.MODES, *action_runtime.MODES), default="channel")
+    start.add_argument("--experiment", choices=("channel", "reliability", "reliability-no-propagation", "reliability-memory", *contextual.MODES, *attention.MODES, *scoped_attention.MODES, *consistent_attention.MODES, *correction.MODES, *teacher.MODES, *outcome_correction.MODES, *capacity.MODES, *passive_relationship.MODES, *active_relationship.MODES, *action_runtime.MODES, *binding_runtime.MODES), default="channel")
+    start.add_argument("--binding-condition", choices=binding_runtime.POLICIES, default="informative")
+    start.add_argument("--binding-registry", help="Private trusted registry; never supplied by inbox content")
     start.add_argument("--relationship-scenario", choices=passive_relationship.SCENARIOS, default="unsupported")
     start.add_argument("--acquisition-policy", choices=active_relationship.POLICIES, default="disagreement")
     start.add_argument("--receiver-attempt-budget", type=int, help="Opt-in checkpoint-accounted acquisition-verifier budget 0..8; omission retains unlimited behavior")
@@ -343,7 +374,7 @@ def main(argv=None):
                 teacher_profile=args.teacher_profile, teacher_config=args.teacher_config, teacher_study=args.teacher_study,
                 freeze_outcomes_after_correction=args.freeze_outcomes_after_correction,
                 relationship_scenario=args.relationship_scenario, acquisition_policy=args.acquisition_policy,
-                receiver_attempt_budget=args.receiver_attempt_budget)
+                receiver_attempt_budget=args.receiver_attempt_budget, binding_condition=args.binding_condition, binding_registry=args.binding_registry)
             return 0
         if args.command == "submit":
             message = validate_message(strict_json(Path(args.file).read_text(encoding="utf-8-sig")), contextual_content=True)
@@ -354,6 +385,10 @@ def main(argv=None):
             output = store.stop()
         else:
             state = store.inspect()
+            if args.command == 'probe' and state.get('experiment') in binding_runtime.MODES:
+                binding_runtime.check_runtime(state)
+                print(json.dumps(state['judgment'], ensure_ascii=False, indent=2))
+                return 0
             if args.command == 'probe' and state.get('experiment') in action_runtime.MODES:
                 print(json.dumps(action_runtime.snapshot(state), ensure_ascii=False, indent=2))
                 return 0

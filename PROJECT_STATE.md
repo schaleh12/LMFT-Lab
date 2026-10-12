@@ -1,12 +1,9 @@
-# LMFT-Lab — current project state
+# LMFT-Lab â€” current project state
 
-Snapshot: **2026-10-12**. Sequential correction and command integration starting HEAD:
-`90c1b84a4092f5f82a76debbf2e637d7da092fe9`. The sequential study began clean;
-prior action/seed work had been committed externally. Integration began with the
-preserved dirty sequential work. Sequential study/strict-schema
-work remains uncommitted and was preserved before opt-in command integration.
-The command adapter, shared policy/registry extraction and new handoff are also uncommitted.
-The thin terminal wrapper, evaluation and documentation are now uncommitted too.
+Snapshot: **2026-10-12**. Binding restart-consistency fix starting HEAD:
+`341b4c8281847fcf676e9aa5fa9f837de159065b`, with isolated attribute-binding work,
+initial runtime integration and handoff already uncommitted. The corrective guard,
+regression tests and handoff are also uncommitted. All previous work is preserved.
 Earlier evaluation starting commits remain in their original reports/archives; no
 provenance was rewritten. Recheck actual Git status.
 
@@ -21,7 +18,7 @@ runtime proposals, and dated experiment reports own their findings. Use the
 LMFT investigates persistent conceptual structures developing through evidence and language-model
 interaction. This is an early experimental hypothesis, not demonstrated general cognition.
 The owner-approved 40-node seed is frozen; developmental judgments and relationships remain
-separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
+separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001â€“D004.
 
 ## Implemented capabilities
 
@@ -79,6 +76,76 @@ separate. See [concept](docs/LMFT_CONCEPT.md) and decisions D001–D004.
   Physical rollback can repeat computation; no crash-proof physical cap is claimed.
 
 ## Latest completed milestone
+
+**Session closed early at the independently accepted checkpoint (2026-10-12), before
+18:40 UTC.** Re-review reproduced103 focused tests,29 unchanged-byte rejected actual
+restarts and18 valid resumes; original three defects and two Boolean substitutions
+fail closed.224 evaluated/225 handoff source hashes,8,597 corrective artifacts and
+119,159 prior hashes verified.881 full-suite XML inspected, not independently rerun.
+See [accepted closeout](experiments/BINDING_RESTART_FIX_RESULTS.md#accepted-independent-re-review-and-session-closeout).
+
+Foundational reassessment: binding modes learn finite-family selection but do not use
+seed propagation; query policy remains authored and ordinary memory matches. No seed
+advantage is established. A future decision should define propagation's authority and
+a discriminating benefit against memory/ablation controls. No automatic wiring,
+further fixture study or implementation is authorized by this recommendation. Parent
+closed the session; no monitoring or next task. Fresh documentation-only archive:
+`outputs/session-closeout-20261012-001/`.
+
+**Initial binding-runtime acceptance was blocked by independent review**, which
+reproduced checksum-valid nested mode/condition mismatches and nonexistent request
+correlation. The [narrow corrective fix](experiments/BINDING_RESTART_FIX_RESULTS.md)
+now checks nested/outer/manifest/launch agreement and selection/request/reply/closure
+history before startup and direct transitions.29 actual inconsistent copied restarts
+reject with every individual byte unchanged;18 valid pending/replied/closed resumes
+retain duplicates, frozen controls, immutable evaluation and direct parity. **103
+focused and881 full tests** pass. Independent re-review accepted this narrow fix within the trusted local finite-fixture
+scope; D023. Original positive results and negative probes are preserved.
+222 pre-fix source/config files archived before edits;224 evaluated files archived.
+All119,159 prior outputs and19 owner-demo files remain unchanged. No new study,
+learning feature, authentication, registry re-verification, model call or migration.
+Parent decision: session closed early at this accepted checkpoint, before18:40 UTC.
+No next task is dispatched.
+
+The [binding runtime integration](experiments/BINDING_RUNTIME_RESULTS.md) adds
+fixture-only `binding-primary/memory` through the existing supervised inbox/outbox
+and atomic checkpoint path. Learned persisted survivors directly determine emitted
+decisions. Informative evidence raises coverage25/37 ->37/37 with no wrong decisions;
+an explicit frozen pre-acquisition predictor admits the same evidence/budget but
+retains12 abstentions. Independent ordinary memory matches all six permutations.
+**1,530/1,530 checks**,72 arms/216 actual runtime processes; **28 focused and806 full
+tests** pass. Fresh permutation4 rerun250/250, with77/77 comparison checks including
+36 matching learning-state snapshots. Empty-family and trust-gate tests remain
+separate from primary noiseless oracle evidence. D022; [guide](docs/BINDING_RUNTIME.md).
+Only pre-existing implementation change is runtime registration/routing; five new
+modules have no experimental imports. Seed/numerical/model mechanisms unchanged;
+zero model calls. Protocol frozen before evaluation, failed initial tuple/list
+comparison preserved. All102,090 pre-existing output files, including19 owner-demo
+files, remain unchanged. Exact44-file old runtime archived before edits; a checkpoint
+copy starts/halts under it, while modified current code correctly rejects the old
+manifest. No silent migration or reopening of the owner's session.220 evaluated
+source files archived; final handoff captured separately. Stopped for independent
+review; no further task dispatched.18:40 UTC remains the session ceiling.
+
+The preceding isolated attribute-binding gate was accepted after independent review.
+Reviewer reproduced20 focused tests,248 checks and30 subprocess stages for permutation4
+via unchanged stage functions because Git-scoped CLI preflight was blocked; the
+778-test full-suite XML was inspected, not independently rerun.
+
+The foundations-first [attribute-binding study](experiments/ATTRIBUTE_BINDING_RESULTS.md)
+removes an authored operand-binding assumption in an isolated numeric comparison
+family. One informative observation reduces two behavioral classes to one; held-out
+coverage rises25/37 ->37/37, with100% accuracy among decisions at both stages.
+No-acquisition/noninformative/unavailable controls retain two classes and12 abstentions;
+already-supported needs no query. Independent truth-table memory matches all states,
+choices and predictions across six channel permutations (symmetry checks, not independent
+replications). No linguistic category learning, causal understanding or seed advantage.
+**1,125/1,125 checks;20 focused;778 full tests** pass. Targeted rerun192/192 and33/33
+comparison checks include30 byte-identical stage checkpoints. Source archive210 files,
+60 arms/180 actual child processes, strict public/oracle separation and24 indistinguishable
+history comparisons. All59,465 prior outputs,3,043 historical files and the owner's19
+demo files unchanged. D021; no production/seed/numerical/model changes or model calls.
+Stopped for independent review before any further task.
 
 The [focused console interrupt fix](experiments/ACTION_INTERRUPT_RESULTS.md) now
 passes actual hosted Windows PTY Ctrl+C while pending, during an instrumented real
@@ -329,18 +396,22 @@ archived source/config under the existing manifest guard.
 
 Active implementation work: **passive, preservation, active acquisition, receiver
 accounting, seed-contribution, action-aware correction, sequential correction and
-fixed-command integration and terminal demo complete, with interactive hosted Ctrl+C
-verified by the focused follow-up; stopped for coordinator review** (D011-D020).
+fixed-command integration, terminal demo/interrupt follow-up and isolated attribute
+binding complete; stopped for coordinator review** (D011-D021).
 No later task is dispatched.
-The owner authorized bounded sequential work through 2026-10-12 19:06:54 UTC;
-the coordinator reviews each task before dispatching another. This task stops at
-that review gate. Old source manifests, synthetic
+The current foundations-first session ceiling is **2026-10-12 18:40 UTC**, superseding
+the earlier19:06:54 ceiling. The coordinator reviews each bounded task before dispatching
+another; the latest task stops at that gate. Old source manifests, synthetic
 verifier authority and phase isolation/deduplication remain material limits; current
 versus historical preservation context is now explicitly separated and fail-closed.
 Pinned Git/archives and the local historical trust anchor are required for the audit.
-Next concrete limitation to assess is durable pre-computation reservation/recovery if a
+A remaining optional limitation is durable pre-computation reservation/recovery if a
 hard PHYSICAL call bound is needed; it must address lost-result/admission tradeoffs and
-cannot be inferred from the current logical cap. No redesign is implemented/dispatched.
+cannot be inferred from the current logical cap. It is not the current priority or a
+dispatched redesign. The finite binding gate and bounded runtime-integration contract were approved.
+The initial integration was blocked; its narrow consistency fix is now independently
+accepted within the trusted local finite-fixture scope. No larger-family study,
+additional integration or other next task is dispatched.
 Accepted-set revision and arbitrary-ingress receipt/storage growth remain outside scope.
 
 ## Verification and local evidence

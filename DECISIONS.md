@@ -1,4 +1,4 @@
-# LMFT-Lab — consequential decisions
+# LMFT-Lab â€” consequential decisions
 
 A compact, retrospective index of repository-supported choices, not new approvals or a second
 specification. **Adopted** means the working constraint/policy; **experimental** means a scoped
@@ -9,7 +9,7 @@ Current findings and next work belong in [PROJECT_STATE.md](PROJECT_STATE.md).
 
 ## D001: Frozen founding seed
 
-**Status: adopted — explicit owner constraint.** Preserve the canonical 40 nodes, names, order
+**Status: adopted â€” explicit owner constraint.** Preserve the canonical 40 nodes, names, order
 and parent-child geometry, including Contemplation. Keep learned concepts outside that inventory.
 Rationale: a stable founding scaffold permits interpretable developmental comparisons.
 Sources: [AGENTS](AGENTS.md), [Minimal Section 4](docs/MINIMAL_LMFT_SPEC.md#4-hardcoded-v01-seed-geometry).
@@ -18,7 +18,7 @@ numerical defaults do not inherit the seed's frozen status.
 
 ## D002: Persistent development separate from founding state
 
-**Status: adopted — research/specification direction.** Store judgments, memories, relationships,
+**Status: adopted â€” research/specification direction.** Store judgments, memories, relationships,
 interpretations and provenance separately from the seed; pursue bounded, evidence-backed
 persistent development rather than mandatory genetic search (replaces D008).
 Rationale: changes must be traceable without silently redefining founding principles.
@@ -29,7 +29,7 @@ founding geometry still requires D001 approval.
 
 ## D003: Model proposals require independent acceptance
 
-**Status: adopted — working boundary; specific validators are experimental.** LLM/SLM output
+**Status: adopted â€” working boundary; specific validators are experimental.** LLM/SLM output
 can propose or clarify, but prose/role claims do not authorize belief, seed or code changes.
 The teacher route fixture checks evidence and strict validation improvement before acceptance.
 Rationale: persuasiveness is not evidence; permission and truth are distinct.
@@ -40,7 +40,7 @@ justify general trust or bypassing validation.
 
 ## D004: Matched ordinary-memory comparisons
 
-**Status: adopted — research convention.** Give competent ordinary memory the same relevant
+**Status: adopted â€” research convention.** Give competent ordinary memory the same relevant
 inputs, induction access and budgets; distinguish authored references from learned conditions.
 Report equivalence/negative results and test propagation causally before crediting it.
 Rationale: avoid manufacturing LMFT wins through weaker baselines.
@@ -50,7 +50,7 @@ Revisit a comparator when capabilities/task scope change, documenting any remain
 
 ## D005: Reproducible local model assets
 
-**Status: experimental — current deployment choice.** Use configured roles, full model revision
+**Status: experimental â€” current deployment choice.** Use configured roles, full model revision
 and checksum pins, a pinned llama.cpp backend, cached reuse and explicit offline failure on
 missing/corrupt assets. Credentials come from environment, never committed tokens.
 Rationale: reproducibility and practical Windows/RTX 4080 operation without a large framework.
@@ -61,7 +61,7 @@ These are implementation choices, not permanent owner-approved model selections.
 
 ## D006: Supervised communication and recoverable state
 
-**Status: adopted — runtime boundary; single-file storage is experimental.** While running,
+**Status: adopted â€” runtime boundary; single-file storage is experimental.** While running,
 expose deliberate outbox messages and lifecycle acknowledgments; inspect full state only after
 halt. Persist evidence, dispositions and outputs together, and reject incompatible restart
 manifests. Preserve originals through correction lineage rather than overwriting evidence.
@@ -73,7 +73,7 @@ power-loss guarantee follows from the current atomic-replacement tests.
 
 ## D007: Bounded deterministic relationship induction
 
-**Status: experimental — capacity fixture only.** Select one uniquely consistent comparison
+**Status: experimental â€” capacity fixture only.** Select one uniquely consistent comparison
 from six authored candidates using training only; separate validation precedes acceptance.
 Retain uncertainty on ties, forbid arbitrary code, and keep held-out labels outside selection.
 Relation evaluation is a new explicit predictor, not a change to the existing counter equation.
@@ -96,7 +96,7 @@ prerequisite for current implementation.
 
 ## D009: One informative equality observation
 
-**Status: experimental — implemented and evaluated in an isolated study.** Retain every
+**Status: experimental â€” implemented and evaluated in an isolated study.** Retain every
 training-consistent hypothesis; choose at most one observation by predicted disagreement,
 with declared-order candidate ties and no request when scores are zero. Fresh validation
 checks the entire retained set without filtering; consensus predicts and disagreement abstains.
@@ -112,7 +112,7 @@ never use held-out truth or validation to select surviving hypotheses.
 
 ## D010: Explicit unsupported hypothesis family
 
-**Status: experimental — implemented and evaluated in an isolated study.** Preserve an
+**Status: experimental â€” implemented and evaluated in an isolated study.** Preserve an
 explicit empty surviving set and `no_supported_hypothesis`, distinct from ambiguity.
 Accept only a nonempty set that passes whole-set validation; consensus requires actual
 votes. Rejected/unverified inputs never count as candidate contradictions. No fallback,
@@ -128,7 +128,7 @@ Revisit evidence assumptions or accepted-set revision only under a separate expl
 
 ## D011: Passive supervised relationship-set integration
 
-**Status: experimental — passive integration implemented and evaluated.** New opt-in
+**Status: experimental â€” passive integration implemented and evaluated.** New opt-in
 relationship-set-lmft/memory modes use existing runtime transactions for verified outcomes,
 explicit selection, whole-set validation and consensus probes, retaining empty versus
 ambiguous support reasons and separate validation status. Preserve original capacity semantics
@@ -150,7 +150,7 @@ requires a separately frozen contract and coordinator sequencing.
 
 ## D012: Separate current regression from historical byte preservation
 
-**Status: experimental — explicit verification contexts implemented and evaluated.**
+**Status: experimental â€” explicit verification contexts implemented and evaluated.**
 Historical harness defaults and scientific criteria remain unchanged. Current behavioral
 tests supply a frozen NONEMPTY complete source baseline, enforced before/after each run,
 archived and pinned through restart. Added/missing/changed source or context rejects.
@@ -168,7 +168,7 @@ local anchor, not authentication/backup. No scientific criterion or runtime algo
 
 ## D013: One explicit active relationship investigation
 
-**Status: experimental — implemented and evaluated in new opt-in modes.** After
+**Status: experimental â€” implemented and evaluated in new opt-in modes.** After
 complete training, investigate can issue at most one clarification_request for a
 nonempty ambiguous set. Reuse generic feature-only disagreement selection and
 declared-order ties; predefined noninformative control deliberately bypasses the
@@ -191,7 +191,7 @@ physical reservation and accepted-set revision need separate explicit contracts.
 
 ## D014: Opt-in checkpoint-accounted receiver attempts
 
-**Status: experimental — implemented and evaluated.** Optional strict budget0..8
+**Status: experimental â€” implemented and evaluated.** Optional strict budget0..8
 charges each eligible acquisition check in its computed checkpoint transaction,
 including false labels. Committed charges persist; final false/zero-budget denial
 closes exhausted, retains uncertainty and blocks later evidence. Last-valid succeeds.
@@ -210,7 +210,7 @@ contract and its lost-result tradeoff; do not silently strengthen this logical c
 
 ## D015: Existing Clarity ranking contribution has bounded utility limits
 
-**Status: experimental — evaluated without production changes.** Reuse the existing
+**Status: experimental â€” evaluated without production changes.** Reuse the existing
 consistent_attention circuit and its single-edge Clarity ablation; compare exact
 algebraic ordinary-memory equivalents. Freeze existing initializer weights and
 historical counter replay; no fresh learning or contradiction repair.
@@ -227,7 +227,7 @@ roadmap step2 and chat demonstration remain undispatched.
 
 ## D016: External bounded action choice distinguishes gathering from correction
 
-**Status: experimental — standalone evaluated, no production changes.** Missing
+**Status: experimental â€” standalone evaluated, no production changes.** Missing
 parts permit scoped gathering; inconsistent support permits advertised existing
 authorized operations only on current exact targets. Selection cannot read reply
 values/outcomes; unchanged correction receiver separately authorizes/checks/verifies.
@@ -326,3 +326,93 @@ Sources: [focused protocol](experiments/ACTION_INTERRUPT_PROTOCOL.md),
 [reader](src/lmft_lab/action_console.py). Existing scientific/runtime rules are unchanged.
 This resolves tested interactive keystrokes only: external signals, script-mode
 interrupts, console closure and forced termination are not covered. Stop for review.
+
+## D021: Learn operand binding inside a supplied finite comparison family
+
+**Status: experimental - isolated study evaluated.** Use neutral numeric channels,
+36 representations grouped into18 behavioral classes, class-weighted disagreement
+and one verified observation to distinguish correlated operand bindings. The oracle
+mapping stays outside learner requests/checkpoints; held-out labels are accessed
+only after predictions freeze. No validation-based candidate elimination is hidden
+inside evaluation. An independent ordinary-memory implementation uses truth-table
+mask filtering/voting with the same information, budget and persistence.
+Rationale: earlier capacity learning supplied the operands, while subsequent studies
+emphasized evidence bookkeeping. Evidence now chooses the operands within a frozen
+experimental family, with remembered provenance and later transfer. Full memory parity
+means no seed/fuzzy advantage. Six permutations test symmetry, not independent replication.
+Sources: [frozen protocol](experiments/ATTRIBUTE_BINDING_PROTOCOL.md),
+[results, boundaries and limitations](experiments/ATTRIBUTE_BINDING_RESULTS.md),
+[primary](experiments/attribute_binding_primary.py),
+[independent memory](experiments/attribute_binding_memory.py).
+Coverage improves25/37 ->37/37 with informative evidence; accuracy remains100% among
+decisions. Ambiguous controls keep12 abstentions; supported controls avoid unnecessary
+queries. This does not learn linguistic categories, primitives or causal understanding.
+No production/seed/numerical/model contract changes. Current session ceiling18:40 UTC;
+stop for coordinator review before investigating larger surviving families or integration.
+
+## D022: Integrate fixed-family learned binding through the supervised runtime
+
+**Status: initial integration blocked by review; narrow correction under
+[D023](#d023-reject-inconsistent-binding-configuration-and-request-history) is independently accepted.** Following accepted D021, add fixture-only binding-primary and
+binding-memory modes using existing inbox, outbox, deduplication and atomic commits.
+The separately versioned persisted survivor set directly controls emitted decisions;
+no forced singleton, language-authorized revision or runtime family expansion.
+Independent truth-table memory retains its own filtering/voting/prediction logic.
+A pinned frozen pre-acquisition predictor receives the same evidence and budget to
+isolate the decision effect of updating the learned basis. It keeps12 abstentions
+while informative learning resolves them; both kernels match, with no wrong decisions.
+
+Use a receiver-invoked trusted private registry adapter; sender-computable digests
+cannot authorize evidence. Harness-private mapping and held-out labels do not enter
+the learning API. This trusts local operator fixture construction, not arbitrary
+untrusted files or OS sandboxing. One request bounds admitted information, not
+physical oracle/verifier computation. Evaluation leaves learning state unchanged.
+
+Do not relax full software_manifest checks or migrate old states. Before editing,
+match/archive the owner's exact44-file runtime; test recovery only on a fresh copy.
+Original19 demo files and102,090 prior outputs remain unchanged. Copied-checkpoint
+startup/halt under archived code passes; current-source resume correctly fails.
+New contract/source changes require fresh individuals or separately approved work.
+
+[Protocol and frozen matrix](experiments/BINDING_RUNTIME_PROTOCOL.md),
+[results/preservation/reproduction](experiments/BINDING_RUNTIME_RESULTS.md),
+[runtime guide](docs/BINDING_RUNTIME.md), [handler](src/lmft_lab/binding_runtime.py).
+1,530 checks,72 arms/216 processes;28 focused/806 full tests pass. Fresh rerun250
+checks and77 comparison checks pass. No tree/semantic/causal-world-model superiority
+claim. The original gate stopped for review; D023 records the correction and
+subsequent independent acceptance. No further task is dispatched.
+
+## D023: Reject inconsistent binding configuration and request history
+
+**Status: independently accepted within trusted local finite-fixture scope; session closed.**
+D022's initial acceptance was blocked by independently reproduced checksum-valid
+nested mode/condition mismatches and a nonexistent request ID. These are internal
+consistency defects; do not dismiss them as a hostile-filesystem threat. Preserve
+all original positive/negative evidence and exact pre-fix source/config.
+
+Validate binding identity across nested state, outer experiment, manifest and launch
+before startup and input processing. A charged request must resolve uniquely to its
+actual emitted clarification, with matching selection, query/payload, source/sender,
+sequence and correlation. Retained acquisition/closure must match accepted reply/
+close history and phase ordering. Reject before lifecycle/output writes or verifier
+construction; repeat under the existing lock. Do not relax software_manifest, add
+fields/migration/authentication or reverify all persisted registry records.
+
+[Protocol](experiments/BINDING_RESTART_FIX_PROTOCOL.md),
+[corrective report](experiments/BINDING_RESTART_FIX_RESULTS.md),
+[tests](tests/test_binding_restart_consistency.py).103 focused/881 full tests pass;
+29 invalid actual restarts preserve all copied bytes;18 valid resumes preserve
+expected decisions and parity.119,159 earlier output files and owner demo unchanged.
+No new study or foundational capability claim. Independent re-review accepted the
+narrow correction; the parent closed the session at this checkpoint.
+
+
+2026-10-12 closeout: parent accepted independent re-review (103 focused tests,
+29 unchanged-byte invalid restarts,18 valid resumes; original defects and two Boolean
+substitutions rejected pre-startup).224 evaluated/225 handoff sources,8,597 corrective
+artifacts and119,159 prior hashes verified;881 full-suite XML inspected, not rerun.
+Session ended early before18:40 UTC. The next design discussion should define a
+falsifiable propagation decision contract and its authority relative to evidence.
+Binding currently learns finite-family selection with authored query policy and no
+seed participation in decisions; memory matches. No automatic wiring, new fixture
+study, protected change or further implementation is dispatched.
