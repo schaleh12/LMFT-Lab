@@ -1,5 +1,12 @@
 # LMFT-Lab
 
+## Start here
+
+Fresh Codex sessions: [AGENTS.md](AGENTS.md) → [PROJECT_STATE.md](PROJECT_STATE.md) → relevant
+[DECISIONS.md](DECISIONS.md) entries → the authoritative specifications, code and reports
+linked there. The snapshot owns current-step guidance; the material below provides project
+background and setup.
+
 Experimental development environment for Language Model Fuzzy Tree (LMFT) based artificial intelligence.
 
 ## Research hypothesis and first milestone

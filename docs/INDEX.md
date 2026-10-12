@@ -1,6 +1,13 @@
 # LMFT-Lab Documentation
 
-## Reading order and authority
+## Start here
+
+Fresh sessions: [AGENTS.md](../AGENTS.md) → [PROJECT_STATE.md](../PROJECT_STATE.md) → relevant
+[DECISIONS.md](../DECISIONS.md) entries → the linked authoritative specifications, implementation
+and reports for the task. The snapshot summarizes current work; decisions explain material
+choices. Neither replaces the specifications or dated findings.
+
+## Authoritative references and background
 
 1. [README](../README.md): hypothesis, implemented status, environment, and examples.
 2. [LMFT Concept](LMFT_CONCEPT.md): developmental hypothesis, constitution, LLM partnership, and long-term vision.

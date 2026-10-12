@@ -2,6 +2,21 @@
 
 These rules apply throughout this repository.
 
+## Startup and completion handoff
+
+At session startup, read in this order:
+
+1. [AGENTS.md](AGENTS.md): stable working contract.
+2. [PROJECT_STATE.md](PROJECT_STATE.md): current snapshot, evidence limits and next task.
+3. Relevant [DECISIONS.md](DECISIONS.md) entries: consequential choices and their status.
+4. The authoritative specifications, implementation and experiment reports linked from those documents for the task at hand.
+
+Specifications remain authoritative for contracts; experiment reports remain authoritative
+for recorded findings. Check the actual working tree before relying on a snapshot.
+At completion, update PROJECT_STATE.md when material project state changes, and DECISIONS.md
+when a consequential design choice is made or revised. Trivial edits do not require redundant
+handoff updates. Keep summaries compact and preserve superseded choices with replacement links.
+
 ## Research purpose
 
 - Investigate Language Model Fuzzy Tree (LMFT) architectures: persistent fuzzy conceptual structures that may develop understanding, dispositions, judgments, and independent reasoning through repeated LLM interaction. This is a hypothesis, not an established capability.

@@ -1,6 +1,11 @@
-# Evidence-learning handoff
+# Evidence-learning handoff — historical context
 
-## Current status — bounded predictive relationship learned
+Current status and the next concrete task are maintained in [PROJECT_STATE.md](../PROJECT_STATE.md);
+consequential choices are indexed in [DECISIONS.md](../DECISIONS.md). This file preserves the
+earlier milestone handoffs below. Their future-tense guidance is historical context, not a
+competing active plan. Specifications and original experiment reports remain authoritative.
+
+## Historical capacity handoff — superseded as the current snapshot
 
 The [outcome-correction study](OUTCOME_CORRECTION.md) and [continuation study](CONTINUATION_EXPERIMENT.md)
 established remembered repair and later revision without improving prediction. The subsequent
