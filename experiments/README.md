@@ -71,3 +71,7 @@ The [scoped-support protocol](SCOPED_ATTENTION_PROTOCOL.md) and [results](SCOPED
 and [commands](../docs/OUTCOME_CORRECTION.md) complete that handoff in a separate zero-model
 study: immutable ancestry, one active outcome per root, exact counter recomputation, actual
 restart and ordinary-memory equivalence. Prediction quality remains unchanged.
+
+[Continuation protocol](CONTINUATION_PROTOCOL.md), [results](CONTINUATION_RESULTS.md), and [commands](../docs/CONTINUATION_EXPERIMENT.md) test fresh outcome learning after correction and restart against uninterrupted LMFT, ordinary memory and a frozen subsequent-learning control.
+
+[Capacity protocol](CAPACITY_PROTOCOL.md), [results](CAPACITY_RESULTS.md), and [commands](../docs/CAPACITY_EXPERIMENT.md) compare aggregate and pair counters against equally capable finite relationship learners and an authored diagnostic reference, with actual restart and frozen held-out predictions.

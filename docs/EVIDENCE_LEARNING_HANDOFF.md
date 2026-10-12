@@ -1,18 +1,22 @@
 # Evidence-learning handoff
 
-## Current status — outcome repair completed
+## Current status — bounded predictive relationship learned
 
-The [outcome-correction study](OUTCOME_CORRECTION.md) completed this handoff on 2026-10-11.
-Its [results](../experiments/OUTCOME_CORRECTION_RESULTS.md) record 371 passing tests and
-766/766 evaluated checks. Accepted replacements preserve ancestry, contribute once per
-event, recompute the unchanged score, and survive restart with behavioral consequences.
-Ordinary memory matches LMFT; no prediction improvement or propagation contribution was
-demonstrated. Teacher integration remains unchanged and unused.
+The [outcome-correction study](OUTCOME_CORRECTION.md) and [continuation study](CONTINUATION_EXPERIMENT.md)
+established remembered repair and later revision without improving prediction. The subsequent
+[capacity study](CAPACITY_EXPERIMENT.md), completed 2026-10-12, supplied length/capacity directly
+(no fits flag) and selected one comparison from six authored candidates using training only.
+Separate validation accepted length<=capacity. [Results](../experiments/CAPACITY_RESULTS.md):
+413 tests, 155/155 integrity checks and 40/40 quality checks passed; both LMFT and ordinary
+relation-learning memory correctly covered all sixteen in-scope probes. Exact lookup answered
+only four seen pairs. No propagation, seed activation or teacher calls participated.
 
-The smallest proposed next experiment is one independently verified contrary outcome
-after correction and restart, with a preregistered expected score and a memory control.
-Test that correction does not freeze the judgment against later eligible evidence. This
-follow-up has not been implemented.
+This establishes finite relationship selection within a strongly authored hypothesis family,
+not feature discovery or an LMFT advantage. The smallest proposed next experiment removes
+equality training cases to retain lt/le ambiguity, then permits one independently verified
+equality observation under a fixed request/acceptance budget. Compare equally equipped memory
+and a no-new-evidence control on fresh reserved validation and held-out cases. The capacity
+report details the proposed boundaries; that additional experiment is not implemented.
 
 ## Historical handoff from the teacher study
 

@@ -96,3 +96,5 @@ copy the complete halted directory to durable backup if retaining it outside thi
 workspace. The protocol, implementation, tests and human-readable report are repository
 artifacts. No power-loss, hostile-host, distributed-delivery or cloud-sync guarantee
 is inferred from the atomic fault tests.
+
+The subsequent [continuation experiment](CONTINUATION_EXPERIMENT.md) reuses this mechanism for new independent events after correction and restart. An opt-in pinned control freezes only subsequent outcome learning; historical defaults and this study remain unchanged.

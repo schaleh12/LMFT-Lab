@@ -136,6 +136,9 @@ def handle(state, message, models, receipt):
             return state
         if message["source"] != fixture.SOURCE or not fixture.admitted(record):
             return reject("not a registered outcome instrument report")
+        if (record["kind"] == "outcome" and state["manifest"].get("freeze_outcomes_after_correction", False)
+                and any(e["accepted"] for e in current["corrections"])):
+            return reject("subsequent outcome learning disabled after accepted correction")
         current["ledger"][eid] = {"record": deepcopy(record), "message_id": message["id"], "sender": message["sender"],
             "source": message["source"], "verification": "registered instrument log only; report may be erroneous", "root": eid, "parent": None}
         current["roots"][eid] = eid

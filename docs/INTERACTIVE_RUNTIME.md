@@ -249,3 +249,7 @@ permits repair of an erroneous outcome, while preserving the original and projec
 active version per independent event through the unchanged judgment rule. These modes
 make zero model calls; historical scoped-correction modes still retain their prior behavior.
 Use fresh individuals; no automatic historical checkpoint migration is added.
+
+The [continuation study](CONTINUATION_EXPERIMENT.md) adds the optional birth-pinned `--freeze-outcomes-after-correction` control to outcome modes. It accepts initial learning and correction, then blocks subsequent outcome admission; the flag must be retained on restart. Communication and storage boundaries remain unchanged.
+
+Optional [capacity modes](CAPACITY_EXPERIMENT.md) reuse the same supervised inbox/outbox and atomic checkpoint for finite relationship selection and validation. Accepted interpretations remain separate from founding nodes; no teacher bridge, propagation or generated code participates.

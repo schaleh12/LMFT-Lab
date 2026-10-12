@@ -120,3 +120,11 @@ and [results](../experiments/OUTCOME_CORRECTION_RESULTS.md) extend the shared le
 outcome repair and unchanged numerical recomputation, with exactly one active contribution
 per event. Restart-safe behavioral changes match ordinary memory; prediction accuracy
 does not improve. No teacher calls or propagation are involved.
+
+## Fresh learning after correction
+
+[Guide](CONTINUATION_EXPERIMENT.md), [protocol](../experiments/CONTINUATION_PROTOCOL.md), and [results](../experiments/CONTINUATION_RESULTS.md) verify continued revision, restart equivalence and a frozen subsequent-learning control. Prediction remains limited by branch-only conditioning.
+
+## Predictive relationship selection
+
+[Guide](CAPACITY_EXPERIMENT.md), [protocol](../experiments/CAPACITY_PROTOCOL.md), and [results](../experiments/CAPACITY_RESULTS.md) compare coarse counting, exact-pair lookup, finite relationship induction and an authored reference. LMFT and equally equipped memory transfer identically.

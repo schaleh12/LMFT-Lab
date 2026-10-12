@@ -208,3 +208,7 @@ The [correction experiment](docs/CORRECTION_EXPERIMENT.md) preserves erroneous o
 The [local teacher connection](docs/LOCAL_TEACHER.md) supports one versioned developmental profile and independently validated route lessons. The [first actual offline study](experiments/TEACHER_RESULTS.md) retained a rejected proposal and demonstrated no transfer; it is separate from mocked acceptance tests.
 
 The [bounded teacher briefing follow-up](experiments/TEACHER_BRIEFING_RESULTS.md) accepted one useful route lesson and appropriate no-change recommendations, with ordinary-memory equivalence. The subsequent [outcome-correction experiment](docs/OUTCOME_CORRECTION.md) is now implemented and [evaluated](experiments/OUTCOME_CORRECTION_RESULTS.md): one effective contribution per event, remembered repairs, ordinary-memory equivalence, and no prediction improvement. See the [handoff](docs/EVIDENCE_LEARNING_HANDOFF.md) for the next bounded step.
+
+The [continued-learning study](docs/CONTINUATION_EXPERIMENT.md) verifies fresh outcome revision after correction and restart. Its [results](experiments/CONTINUATION_RESULTS.md) match ordinary memory, with unchanged accuracy and increased abstention.
+
+The [capacity relationship study](docs/CAPACITY_EXPERIMENT.md) selects a bounded length/capacity comparison from training and validates it separately. Its [results](experiments/CAPACITY_RESULTS.md) show unseen-combination transfer equal to ordinary relation-learning memory; no seed activation participates.
