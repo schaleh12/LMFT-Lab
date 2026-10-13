@@ -11,6 +11,7 @@ Key findings:
 - **5 Grounded Behavioral Actuation Postures:** Mapped all 33 SemCor development instances into active behavioral postures (`Noble Sovereign Action`: 10, `Foundational Anchor`: 9, `Tactical Serial Progression`: 6, `Deep Flow Synthesis`: 4, `Equilibrium Mediation`: 4).
 - **Matched Ordinary-Memory Parity (Rule D004):** Evaluated in parallel with matched structured memory; achieved byte-for-byte evaluation parity (`606fb070...`). Checkpoints verified unmutated.
 - **Full Corpus & Test Suite Parity:** 6 focused tests pass. Output preserved in `outputs/meditative-regulation-corpus33-20261013-001/`. D047 records findings.
+- **Calibrated 5-Tier Abstraction Matrix & Polar Stasis (D048):** Re-aligned elemental, environmental, and chess archetypes across the 6 coordinates (`agency`: Lightning/Mammal-Light, `existence`: Water/Reptile-Sun [Sun Magic], `order`: Wind/Fish-Ocean, `chaos`: Ice/Bird-Sky [Polar Stasis Craft], `continuity`: Fire/Insect-Soil [Soil Magic], `discreteness`: Ground/Amphibian-Shadow). Full test suite (1,438 / 1,438) passing cleanly in 194.32s. Output refreshed in `outputs/`.
 
 ## Prior session - Full-Corpus Capacity Compilation & Metacognitive Priming (2026-10-13)
 

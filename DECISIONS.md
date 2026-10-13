@@ -965,3 +965,20 @@ Key findings:
   - Deep Flow Synthesis: 4 instances (continuous scale measurement for sustained clarity).
   - Equilibrium Mediation: 4 instances (balanced multi-coordinate attunement).
 - **Matched Ordinary-Memory Parity (Rule D004):** Primary learner and matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`606fb070...`). Both checkpoints remained unmutated before and after inference. 6 focused unit tests pass. Output preserved in `outputs/meditative-regulation-corpus33-20261013-001/`.
+
+
+## D048: Calibrated 5-tier hexadic abstraction matrix & polar stasis alignment
+
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D046 multi-tier stack and user ontological calibration across elemental, environmental, and chess archetypes. Re-aligns the 5 tiers across the 6 frozen Philosophical coordinates:
+1. `agency`: Red Summoning (`Lightning`), Queen (Volition), Psychosis, Mammal (*Light*).
+2. `existence`: Cyan Sun Magic (`Water`), King (Ground of Being), Paranoia, Reptile (*Sun*).
+3. `order`: Magenta Medium (`Wind`), Bishop (Prevailing currents), Prejudice, Fish (*Ocean*).
+4. `chaos`: Green Instrument (`Ice`), Knight (Brittle shatter / polar stasis craft), Corruption, Bird (*Sky*).
+5. `continuity`: Blue Soil Magic (`Fire`), Pawn (Swarm continuum), Mania/Greed, Insect (*Soil*).
+6. `discreteness`: Yellow Command (`Ground`), Rook (Quantized bastion), Narcissism, Amphibian (*Shadow*).
+
+Key findings:
+- **Polar Stasis & Aerodynamic Metaphysics:** Grounded the Wind $\longleftrightarrow$ Ice swap: high-altitude freezing void requires feather thermal stasis (penguins in Antarctica); flight operates as anti-gravitational stasis craft; Wind acts as laminar planetary medium driving oceanic circulation.
+- **Sun & Soil Magic Distinction:** Formally classified Cyan existence as Sun Magic (tranquil radiant absorption) and Blue continuity as Soil Magic (subterranean burning earth and collective swarm momentum).
+- **Parity & Regression Suite Verification:** Preserved 40-node canonical seed geometry in `birth.py` (Rule D001). 10 focused priming tests and 6 meditative regulation tests pass. Full regression suite verified (1,438 / 1,438 tests passing in 194.32s). Output updated in `outputs/metacognitive-priming-corpus33-20261013-001/` and `outputs/meditative-regulation-corpus33-20261013-001/`.
+

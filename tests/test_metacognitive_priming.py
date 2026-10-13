@@ -97,24 +97,24 @@ def test_hexadic_palette_and_chromatic_aura():
     assert materia['agency']['dimension'] == 'extra-dimensional'
 
     assert materia['existence']['color'] == 'cyan'
-    assert materia['existence']['materia'] == 'white_magic'
+    assert materia['existence']['materia'] == 'sun_magic'
     assert materia['existence']['archetype'] == 'king'
 
-    assert materia['order']['color'] == 'green'
-    assert materia['order']['materia'] == 'instrument_magic'
-    assert materia['order']['archetype'] == 'knight'
+    assert materia['order']['color'] == 'magenta'
+    assert materia['order']['materia'] == 'medium'
+    assert materia['order']['archetype'] == 'bishop'
 
-    assert materia['chaos']['color'] == 'magenta'
-    assert materia['chaos']['materia'] == 'status_poison'
-    assert materia['chaos']['archetype'] == 'bishop'
+    assert materia['chaos']['color'] == 'green'
+    assert materia['chaos']['materia'] == 'instrument'
+    assert materia['chaos']['archetype'] == 'knight'
 
     assert materia['continuity']['color'] == 'blue'
-    assert materia['continuity']['materia'] == 'support_black_magic'
-    assert materia['continuity']['archetype'] == 'rook'
+    assert materia['continuity']['materia'] == 'soil_magic'
+    assert materia['continuity']['archetype'] == 'pawn'
 
     assert materia['discreteness']['color'] == 'yellow'
-    assert materia['discreteness']['materia'] == 'command_tactics'
-    assert materia['discreteness']['archetype'] == 'pawn'
+    assert materia['discreteness']['materia'] == 'command'
+    assert materia['discreteness']['archetype'] == 'rook'
 
 
 def test_dimensional_resonance_and_epistemic_mirror():
@@ -125,7 +125,7 @@ def test_dimensional_resonance_and_epistemic_mirror():
     }
     priming = mp.compute_priming_dials(pred)
     res = priming['dimensional_resonance']
-    assert 'continuity_rook_black_magic' in res['hyper_dimensional_persistence']
+    assert 'continuity_pawn_fire' in res['hyper_dimensional_persistence']
 
     mirror = priming['epistemic_mirror']
     assert mirror['theory'] == 'a level or magnitude'
@@ -172,12 +172,18 @@ def test_shadow_pathology_and_kingdom_profiles():
     assert shadow['discreteness']['pathology'] == 'narcissism'
 
     kingdom = priming['kingdom_profile']
-    assert kingdom['agency']['kingdom'] == 'reptile'
-    assert kingdom['existence']['kingdom'] == 'mammal'
-    assert kingdom['order']['kingdom'] == 'bird'
-    assert kingdom['chaos']['kingdom'] == 'amphibian'
-    assert kingdom['continuity']['kingdom'] == 'fish'
-    assert kingdom['discreteness']['kingdom'] == 'insect'
+    assert kingdom['agency']['kingdom'] == 'mammal'
+    assert kingdom['agency']['environment'] == 'light'
+    assert kingdom['existence']['kingdom'] == 'reptile'
+    assert kingdom['existence']['environment'] == 'sun'
+    assert kingdom['order']['kingdom'] == 'fish'
+    assert kingdom['order']['environment'] == 'ocean'
+    assert kingdom['chaos']['kingdom'] == 'bird'
+    assert kingdom['chaos']['environment'] == 'sky'
+    assert kingdom['continuity']['kingdom'] == 'insect'
+    assert kingdom['continuity']['environment'] == 'soil'
+    assert kingdom['discreteness']['kingdom'] == 'amphibian'
+    assert kingdom['discreteness']['environment'] == 'shadow'
 
 
 def test_poetic_action_bid():
@@ -189,7 +195,7 @@ def test_poetic_action_bid():
     priming = mp.compute_priming_dials(pred)
     bid = priming['poetic_action_bid']
     assert 'Queen' in bid
-    assert 'Reptile' in bid or 'Bird' in bid
+    assert 'Mammal' in bid
     assert 'psychosis' in bid
     assert 'instructions from the military force' in bid
     assert priming['chromatic_aura']['hex'] in bid
