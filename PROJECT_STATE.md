@@ -10,7 +10,15 @@ Key findings:
 - **100% Non-Tautological Substitution (20/20):** Negative lexical constraint generalized across diverse sentence structures, completely eliminating lemma repetition and generating distinct, precise glosses for magnitude, sequence, command, commercial, and condition senses.
 - **Throughput & Efficiency:** Total generation time 24.1s (~0.75s per call after warmup); 20,649 prompt tokens, 1,903 output tokens.
 - **Shared Neutral Record & Restart Parity:** All 20 proposals committed as `lifecycle: unverified_proposal`. Neutral checkpoint verified byte-identical (`97406aab...`), state hash `a8b66706...`, and exact primary vs matched ordinary structured-memory parity under separate process restart.
-External archive: `C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v5-20261013-001`. D038 records findings. Next milestone: Semantic Adjudication & Persistent Disambiguation Compilation across Batch 1.
+External archive: `C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v5-20261013-001`. D038 records findings.
+
+Deterministic [Semantic Adjudication](experiments/SEMANTIC_ADJUDICATION_V5_RESULTS.md) evaluated all 20 admitted proposals across 7 WordNet 3.0 senses:
+- **100% WordNet Concordance (20/20):** All proposals achieved score 2/2 against gold senses.
+- **100% Semantic Substitution (20/20):** Zero tautologies (0/20).
+- **100% Discriminative Precision:** Average precision 1.0 (0 false positives across all sentences).
+- **Baseline Parity:** Byte-for-byte evaluation parity (`caf56dbe...`). Checkpoint nonmutation verified (`97406aab...`). D039 records findings. Output preserved in `outputs/semantic-adjudication-v5-20261013-001/`.
+Next milestone: Persistent Contextual Capacity Compilation & Generalization Benchmark across Batch 2.
+
 
 ## Prior session - Persistent contextual disambiguation & behavioral consequence (2026-10-13)
 

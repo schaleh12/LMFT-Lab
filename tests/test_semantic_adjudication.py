@@ -142,3 +142,26 @@ def test_run_adjudication_on_v3_results(tmp_path):
     assert summary['aggregate_metrics']['average_discriminative_precision'] == 1.0
     assert summary['aggregate_metrics']['total_false_positives'] == 0
     assert (tmp_path / 'adjudication_summary.json').exists()
+
+
+def test_run_adjudication_on_v5_batch1_results(tmp_path):
+    checkpoint = Path(r'C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v5-20261013-001\neutral-state\checkpoint.json')
+    dev_export = Path(r'C:\Users\schal\AppData\Local\Temp\lmft-semcor-order-development-v1-dzil94yr\development.json')
+
+    if not checkpoint.exists() or not dev_export.exists():
+        pytest.skip('External archive files not found on local path')
+
+    summary = sa.run_adjudication(checkpoint, dev_export, output_dir=tmp_path)
+
+    assert summary['kind'] == 'semantic-adjudication-1'
+    assert summary['total_cases_adjudicated'] == 20
+    assert summary['consumer_parity'] is True
+    assert summary['aggregate_metrics']['concordant_cases'] == 20
+    assert summary['aggregate_metrics']['partially_concordant_cases'] == 0
+    assert summary['aggregate_metrics']['discordant_cases'] == 0
+    assert summary['aggregate_metrics']['substituted_glosses'] == 20
+    assert summary['aggregate_metrics']['tautological_glosses'] == 0
+    assert summary['aggregate_metrics']['average_discriminative_precision'] == 1.0
+    assert summary['aggregate_metrics']['total_false_positives'] == 0
+    assert (tmp_path / 'adjudication_summary.json').exists()
+

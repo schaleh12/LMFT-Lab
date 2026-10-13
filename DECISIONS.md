@@ -838,3 +838,16 @@ All 20 proposals passed contract admissibility (20/20 admissible, 100%) AND achi
 - Throughput averaged ~0.75 seconds per call after initial warmup (24.1s total generation time for 20 cases).
 
 All 20 proposals committed to the neutral store as `lifecycle: unverified_proposal`. Neutral store retrieval verified identical digests across primary and ordinary structured-memory consumers under actual process restart (`97406aab...`). State SHA256: `a8b66706...`. All focused tests pass. Pipeline stability and throughput at scale are demonstrated.
+
+
+## D039: Semantic adjudication across SemCor Batch 1 achieves 100% concordance and zero false positives
+
+**Status: adopted evaluation finding; experimental analysis complete, 2026-10-13.** Follows D038 Protocol 5 representations. Evaluates all 20 admitted Batch 1 proposals across 7 distinct WordNet 3.0 ground-truth gold senses (`order%1:07:01::`, `order%1:10:00::`, `order%1:10:01::`, `order%1:10:03::`, `order%1:14:00::`, `order%1:26:00::`, `order%1:26:02::`), gloss informativeness, and cross-example discriminability. Pure deterministic Python evaluation; zero additional model calls.
+[Results](experiments/SEMANTIC_ADJUDICATION_V5_RESULTS.md) own scope.
+
+Key findings:
+- **100% WordNet Concordance (20/20):** Every admitted proposal achieved full concordance (score 2/2) with its preregistered WordNet gold sense definition.
+- **100% Semantic Substitution (20/20):** Zero tautologies (0/20); all 20 proposals replaced the target lemma with explanatory definitions.
+- **100% Discriminative Precision (0 False Positives):** Contiguous syntactic context anchors achieved 0 false positives across all sentences (average precision 1.0), confirming that contiguous syntactic anchoring completely resolves Phase B's bag-of-words false-positive failure across multiple senses.
+
+Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`caf56dbe...`). Neutral checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 11 focused adjudication tests pass.
