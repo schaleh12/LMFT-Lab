@@ -935,4 +935,20 @@ Key findings:
 - **Frozen Seed Geometry & Parity (Rules D001, D004):** Canonical 40-node seed geometry preserved. Matched ordinary-memory baseline achieved byte-for-byte evaluation parity (`0f2d80d216...`). 8 focused tests pass. Output preserved in `outputs/metacognitive-priming-corpus33-20261013-001/`.
 
 
+## D046: Multi-tier hexadic abstraction stack expands metacognitive console with Shadow Pathologies, Creature Kingdoms, and Poetic Action Bids
+
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D045 full-corpus metacognitive priming and user ontological specification of multi-tiered hexadic abstraction ladders. Expands the Metacognitive Priming Console across 5 structured tiers of triplet dyads:
+1. Tier 1: Canonical Ontology (Agency/Existence, Order/Chaos, Continuity/Discreteness)
+2. Tier 2: Elemental Materia (Summoning/Fire, White Magic/Ice-Water, Instrument/Wind, Status/Poison, Support/Deep Flow, Command/Earth-Steps)
+3. Tier 3: Chess Archetypes (Queen, King, Knight, Bishop, Rook, Pawn)
+4. Tier 4: Shadow Pathologies (Psychosis ↔ Paranoia, Prejudice ↔ Corruption, Mania/Greed ↔ Narcissism)
+5. Tier 5: Creature Kingdoms (Reptile/Sun, Mammal/Ground, Bird/Sky, Amphibian/Threshold, Fish/Deep Ocean, Insect/Soil)
+
+Key findings:
+- **Schizophrenic Dyad Alignment:** Anchored Extra-dimensional Being with Psychosis (Agentive ungrounded volition) ↔ Paranoia (Existential siege under external threat).
+- **Poetic Action Bids:** Synthesizes structured, textured poetic action bids for each primed stance (e.g., *"A Knight of Bird (Instrument Magic) chord in #4CB991 aura: enacting stable ontological equilibrium via wind; guarded against prejudice; grounding theory 'arrangement' into observed fact"*).
+- **Frozen Seed & Baseline Invariant (Rules D001, D004):** Verified 40-node canonical seed preservation in `birth.py`. Full regression suite verified (1,432 / 1,432 passed in 184.65s). 10 focused tests pass.
+
+
+
 

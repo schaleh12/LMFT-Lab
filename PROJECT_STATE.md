@@ -17,6 +17,7 @@ Full-Corpus [Metacognitive Priming Study](experiments/METACOGNITIVE_PRIMING_CORP
 - **Dynamic Hexadic Materia & Chromatic Auras:** Generated distinct, reproducible composite RGB/HEX color chords (e.g., Emerald-Crimson `#66A18C`, Teal-Cyan `#40C499`, Cerulean-Cyan `#4592AC`, Amber-Gold `#7FB56A`).
 - **Epistemic Mirror Integration:** Theory (gloss), Fact (syntactic collocate), Clarity (spread), and Confidence (1.0).
 - **Frozen Seed Geometry & Parity (Rules D001, D004):** Canonical 40-node seed geometry preserved. Matched ordinary-memory baseline achieved byte-for-byte evaluation parity (`0f2d80d216...`). Output preserved in `outputs/metacognitive-priming-corpus33-20261013-001/`. D045 records findings.
+- **Multi-Tier Hexadic Abstraction Stack (D046):** Expanded the console across 5 structured tiers of triplet dyads (Tier 1 Ontology, Tier 2 Materia & Elements, Tier 3 Chess Archetypes, Tier 4 Shadow Pathologies [Psychosis ↔ Paranoia], and Tier 5 Creature Kingdoms [Reptile, Mammal, Bird, Amphibian, Fish, Insect]). Synthesizes textured poetic action bids for each disambiguated sentence. 10 focused tests pass; 1,432 full regression tests pass.
 
 ## Prior session - Protocol 6 Batch 2 Scale-up across 13 SemCor instances (2026-10-13)
 

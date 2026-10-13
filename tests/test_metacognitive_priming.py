@@ -155,3 +155,44 @@ def test_full_corpus_multi_checkpoint_priming(tmp_path):
     assert summary['stance_distribution']['balanced_contextual_stance'] == 4
 
 
+def test_shadow_pathology_and_kingdom_profiles():
+    pred = {
+        'decision': 'single',
+        'selected_sense': 'order%1:10:03::',
+        'explanation': 'instructions from the military force',
+    }
+    priming = mp.compute_priming_dials(pred)
+
+    shadow = priming['shadow_profile']
+    assert shadow['agency']['pathology'] == 'psychosis'
+    assert shadow['existence']['pathology'] == 'paranoia'
+    assert shadow['order']['pathology'] == 'prejudice'
+    assert shadow['chaos']['pathology'] == 'corruption'
+    assert shadow['continuity']['pathology'] == 'mania_greed'
+    assert shadow['discreteness']['pathology'] == 'narcissism'
+
+    kingdom = priming['kingdom_profile']
+    assert kingdom['agency']['kingdom'] == 'reptile'
+    assert kingdom['existence']['kingdom'] == 'mammal'
+    assert kingdom['order']['kingdom'] == 'bird'
+    assert kingdom['chaos']['kingdom'] == 'amphibian'
+    assert kingdom['continuity']['kingdom'] == 'fish'
+    assert kingdom['discreteness']['kingdom'] == 'insect'
+
+
+def test_poetic_action_bid():
+    pred = {
+        'decision': 'single',
+        'selected_sense': 'order%1:10:03::',
+        'explanation': 'instructions from the military force',
+    }
+    priming = mp.compute_priming_dials(pred)
+    bid = priming['poetic_action_bid']
+    assert 'Queen' in bid
+    assert 'Reptile' in bid or 'Bird' in bid
+    assert 'psychosis' in bid
+    assert 'instructions from the military force' in bid
+    assert priming['chromatic_aura']['hex'] in bid
+
+
+

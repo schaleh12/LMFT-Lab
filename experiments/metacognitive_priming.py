@@ -34,6 +34,10 @@ HEXADIC_PALETTE = {
         'materia_type': 'summoning',
         'chess_archetype': 'queen',
         'element': 'fire',
+        'shadow_pathology': 'psychosis',
+        'shadow_description': 'Agentive ungrounded projection; hallucinated volition',
+        'creature_kingdom': 'reptile',
+        'kingdom_description': 'Creature of the sun; cold-blooded volitional basking',
         'archetype_role': 'Volition, directive command, telekinetic movement',
     },
     'existence': {
@@ -44,6 +48,10 @@ HEXADIC_PALETTE = {
         'materia_type': 'white_magic',
         'chess_archetype': 'king',
         'element': 'ice/water',
+        'shadow_pathology': 'paranoia',
+        'shadow_description': 'Existential siege; persecutory stasis under external threat',
+        'creature_kingdom': 'mammal',
+        'kingdom_description': 'Warmth, communal bond, light, embodied ground of being',
         'archetype_role': 'Ground of being, ontological stasis, essential reality',
     },
     'order': {
@@ -54,6 +62,10 @@ HEXADIC_PALETTE = {
         'materia_type': 'instrument_magic',
         'chess_archetype': 'knight',
         'element': 'wind',
+        'shadow_pathology': 'prejudice',
+        'shadow_description': 'Rigid distorted order; unbending preconception',
+        'creature_kingdom': 'bird',
+        'kingdom_description': 'Master of wind, aerial geometry, flock flight of law',
         'archetype_role': 'Harmonic structure, medium mobility, law of organization',
     },
     'chaos': {
@@ -64,6 +76,10 @@ HEXADIC_PALETTE = {
         'materia_type': 'status_poison',
         'chess_archetype': 'bishop',
         'element': 'poison',
+        'shadow_pathology': 'corruption',
+        'shadow_description': 'Structural rot, systemic entropy, moral and institutional decay',
+        'creature_kingdom': 'amphibian',
+        'kingdom_description': 'Creature of the shadow/twilight threshold, shifting boundaries',
         'archetype_role': 'Entropy, absurdity, corruption, disruptive anomaly',
     },
     'continuity': {
@@ -74,6 +90,10 @@ HEXADIC_PALETTE = {
         'materia_type': 'support_black_magic',
         'chess_archetype': 'rook',
         'element': 'deep_flow',
+        'shadow_pathology': 'mania_greed',
+        'shadow_description': 'Unstoppable runaway momentum; insatiable accumulation',
+        'creature_kingdom': 'fish',
+        'kingdom_description': 'Creature of deep oceanic flow, unbroken continuous currents',
         'archetype_role': 'Continuous scale, scientific continuum, sustained duration',
     },
     'discreteness': {
@@ -84,6 +104,10 @@ HEXADIC_PALETTE = {
         'materia_type': 'command_tactics',
         'chess_archetype': 'pawn',
         'element': 'earth/steps',
+        'shadow_pathology': 'narcissism',
+        'shadow_description': 'Discrete self-enclosure; hyper-isolated ego fixation',
+        'creature_kingdom': 'insect',
+        'kingdom_description': 'Creature of the soil and swarm; quantized burning earth',
         'archetype_role': 'Discrete steps, tactical command, serial succession',
     },
 }
@@ -132,6 +156,23 @@ def compute_priming_dials(prediction):
                 'inter_dimensional_structure': 'unactivated',
                 'hyper_dimensional_persistence': 'unactivated',
             },
+            'shadow_profile': {
+                k: {
+                    'pathology': HEXADIC_PALETTE[k]['shadow_pathology'],
+                    'description': HEXADIC_PALETTE[k]['shadow_description'],
+                    'vulnerability_score': 0.0,
+                }
+                for k in HEXADIC_PALETTE
+            },
+            'kingdom_profile': {
+                k: {
+                    'kingdom': HEXADIC_PALETTE[k]['creature_kingdom'],
+                    'description': HEXADIC_PALETTE[k]['kingdom_description'],
+                    'resonance_level': 0.0,
+                }
+                for k in HEXADIC_PALETTE
+            },
+            'poetic_action_bid': 'Resting in quiet contemplation: zero active collocate bids; neutral slate aura (#808080); kingdoms silent.',
             'epistemic_mirror': {
                 'theory': 'Hypothesis withheld due to unobserved context',
                 'fact': 'Zero matching syntactic context anchors observed',
@@ -158,6 +199,23 @@ def compute_priming_dials(prediction):
                 'inter_dimensional_structure': 'split',
                 'hyper_dimensional_persistence': 'split',
             },
+            'shadow_profile': {
+                k: {
+                    'pathology': HEXADIC_PALETTE[k]['shadow_pathology'],
+                    'description': HEXADIC_PALETTE[k]['shadow_description'],
+                    'vulnerability_score': 0.5,
+                }
+                for k in HEXADIC_PALETTE
+            },
+            'kingdom_profile': {
+                k: {
+                    'kingdom': HEXADIC_PALETTE[k]['creature_kingdom'],
+                    'description': HEXADIC_PALETTE[k]['kingdom_description'],
+                    'resonance_level': 0.5,
+                }
+                for k in HEXADIC_PALETTE
+            },
+            'poetic_action_bid': 'Deliberative split across competing interpretations: balanced gray aura (#AAAAAA); dual kingdom threshold; awaiting clarity.',
             'epistemic_mirror': {
                 'theory': 'Competing hypotheses detected',
                 'fact': 'Ambiguous syntactic context anchors observed',
@@ -171,11 +229,11 @@ def compute_priming_dials(prediction):
 
     # 1. Being Dyad: Agency vs Existence (Extra-dimensional)
     if sense in ('order%1:10:03::', 'order%1:10:01::'):
-        # Directive action / commercial execution (Red / Summoning / Queen)
+        # Directive action / commercial execution (Red / Summoning / Queen / Reptile)
         dials['agency'] = 0.85
         dials['existence'] = 0.40
     elif sense == 'order%1:26:00::':
-        # Condition of society / established state (Cyan / White Magic / King)
+        # Condition of society / established state (Cyan / White Magic / King / Mammal)
         dials['agency'] = 0.20
         dials['existence'] = 0.85
     elif sense == 'order%1:26:02::':
@@ -188,7 +246,7 @@ def compute_priming_dials(prediction):
 
     # 2. Structure Dyad: Order vs Chaos (Inter-dimensional)
     if sense in ('order%1:26:00::', 'order%1:26:02::'):
-        # Social stability, cosmic order, logical arrangement (Green / Wind / Knight)
+        # Social stability, cosmic order, logical arrangement (Green / Wind / Knight / Bird)
         dials['order'] = 0.85
         dials['chaos'] = 0.05
     elif sense == 'order%1:10:03::':
@@ -205,11 +263,11 @@ def compute_priming_dials(prediction):
 
     # 3. Persistence Dyad: Continuity vs Discreteness (Hyper-dimensional)
     if sense == 'order%1:07:01::':
-        # Degree / magnitude on a continuous scale (Blue / Black Magic / Rook)
+        # Degree / magnitude on a continuous scale (Blue / Black Magic / Rook / Fish)
         dials['continuity'] = 0.85
         dials['discreteness'] = 0.15
     elif sense in ('order%1:14:00::', 'order%1:10:02::'):
-        # Sequential steps / discrete succession (Yellow / Command / Pawn)
+        # Sequential steps / discrete succession (Yellow / Command / Pawn / Insect)
         dials['continuity'] = 0.15
         dials['discreteness'] = 0.85
     else:
@@ -254,10 +312,44 @@ def compute_priming_dials(prediction):
         'hyper_dimensional_persistence': f"{'continuity_rook_black_magic' if b_persistence > 0 else 'discreteness_pawn_command'} (bias: {round(b_persistence, 2)})",
     }
 
+    shadow_profile = {
+        k: {
+            'pathology': HEXADIC_PALETTE[k]['shadow_pathology'],
+            'description': HEXADIC_PALETTE[k]['shadow_description'],
+            'vulnerability_score': round(dials[k] * (1.0 - min(dials.values())), 3),
+        }
+        for k in dials
+    }
+
+    kingdom_profile = {
+        k: {
+            'kingdom': HEXADIC_PALETTE[k]['creature_kingdom'],
+            'description': HEXADIC_PALETTE[k]['kingdom_description'],
+            'resonance_level': dials[k],
+        }
+        for k in dials
+    }
+
+    sorted_dials = sorted(dials.items(), key=lambda x: x[1], reverse=True)
+    top_key = sorted_dials[0][0]
+    top_arch = HEXADIC_PALETTE[top_key]['chess_archetype'].title()
+    top_king = HEXADIC_PALETTE[top_key]['creature_kingdom'].title()
+    top_elem = HEXADIC_PALETTE[top_key]['element']
+    top_shadow = HEXADIC_PALETTE[top_key]['shadow_pathology']
+    top_materia = HEXADIC_PALETTE[top_key]['materia_type'].replace('_', ' ').title()
+
+    theory_text = prediction.get('explanation', '')
+    poetic_bid = (
+        f"A {top_arch} of {top_king} ({top_materia}) chord in {aura['hex']} aura: "
+        f"enacting {stance.replace('_', ' ')} via {top_elem}; "
+        f"guarded against {top_shadow}; "
+        f"grounding theory '{theory_text}' into observed fact."
+    )
+
     # Epistemic Mirror (Psychological: Truth & Contemplation)
     clarity = round(max(dials.values()) - min(dials.values()), 3)
     epistemic_mirror = {
-        'theory': prediction.get('explanation', ''),
+        'theory': theory_text,
         'fact': f"Observed syntactic collocate for sense {sense}",
         'clarity': clarity,
         'confidence': 1.0,
@@ -276,6 +368,9 @@ def compute_priming_dials(prediction):
         'chromatic_aura': aura,
         'materia_profile': materia_profile,
         'dimensional_resonance': dimensional_res,
+        'shadow_profile': shadow_profile,
+        'kingdom_profile': kingdom_profile,
+        'poetic_action_bid': poetic_bid,
         'epistemic_mirror': epistemic_mirror,
     }
 
