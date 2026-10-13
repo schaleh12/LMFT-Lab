@@ -982,3 +982,21 @@ Key findings:
 - **Sun & Soil Magic Distinction:** Formally classified Cyan existence as Sun Magic (tranquil radiant absorption) and Blue continuity as Soil Magic (subterranean burning earth and collective swarm momentum).
 - **Parity & Regression Suite Verification:** Preserved 40-node canonical seed geometry in `birth.py` (Rule D001). 10 focused priming tests and 6 meditative regulation tests pass. Full regression suite verified (1,438 / 1,438 tests passing in 194.32s). Output updated in `outputs/metacognitive-priming-corpus33-20261013-001/` and `outputs/meditative-regulation-corpus33-20261013-001/`.
 
+
+## D049: Tripartite psychological funnel engine formalizes causal convergence into Will, Truth, and Contemplation
+
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D048 calibrated 5-tier matrix and formalizes the causal convergence of the three founding domains into the Psychological leaf node cluster:
+1. Cultural (Efficiency, Justice, Freedom) $\rightarrow$ Will (`intention`, `execution`).
+2. Philosophical (Being, Structure, Persistence) $\rightarrow$ Truth (`theory`, `fact`).
+3. Experiential (Reflection, Phase, Synchronization) $\rightarrow$ Contemplation (`clarity`, `confidence`).
+[Results](experiments/TRIPARTITE_FUNNEL_RESULTS.md) own scope. Zero runtime LLM calls during unassisted evaluation.
+
+Key findings:
+- **Mathematical Transformation Functions:** Formally implemented and evaluated deterministic mappings for all three psychological fulcrums without modifying the canonical 40-node seed geometry (Rule D001).
+- **100% Grounded Corpus Convergence:** Evaluated across all 33 SemCor development instances:
+  - Will Postures: 12 Noble Resolute Action, 21 Prudent Deliberation.
+  - Epistemic Grades: 33/33 Empirically Grounded Truth.
+  - Contemplation States: 33/33 Luminous Clarity.
+- **Matched Ordinary-Memory Parity (Rule D004):** Primary learner and matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`f086b976...`). Both checkpoints remained unmutated before and after inference. 6 focused unit tests pass. Output preserved in `outputs/tripartite-funnel-corpus33-20261013-001/`.
+
+
