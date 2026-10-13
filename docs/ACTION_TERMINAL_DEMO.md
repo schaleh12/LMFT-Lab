@@ -1,71 +1,34 @@
-# Local synthetic terminal demonstration
+# Retired local synthetic terminal demonstration
 
-From the repository root in PowerShell:
+Retired on 2026-10-12 at the owner's request. The fixed-command terminal wrapper,
+its console reader, two dedicated test files (20 collected cases), scripted demo
+harness and interrupt probe are no longer active supported entrypoints.
+The shared [action runtime](ACTION_COMMAND_RUNTIME.md), capacity/binding learning,
+and shared regression infrastructure remain available and unchanged.
 
-```powershell
-$env:PYTHONPATH='src'
-.\.venv\Scripts\python.exe -m lmft_lab.action_demo --scenario r1
-```
+Historical [demo protocol](../experiments/ACTION_DEMO_PROTOCOL.md),
+[results and failures](../experiments/ACTION_DEMO_RESULTS.md), and
+[interrupt follow-up](../experiments/ACTION_INTERRUPT_RESULTS.md) remain evidence
+of the implementation at that time. Their source links and reproduction commands
+refer to archived versions, not current launch instructions.
 
-This creates and prints a unique session directory under `outputs`. Choose r1 or r8
-for correction followed by a later conflicting report, or r2 for missing evidence
-gathering. Add `--mode memory` for the equally equipped scalar baseline. There is
-no language model, freeform chat, network service or new learning rule. Registered
-synthetic reports can be wrong; typed claims never become verified evidence.
+## Recovery and checkpoint compatibility
 
-Try these commands, one per line:
+The exact pre-cleanup checkout (225 files, including source, configuration, tests
+and original guide) is saved at `outputs/terminal-demo-retirement-20261012-001/source/`.
+`source-hashes.json` records SHA-256 hashes of the original working bytes.
+Git HEAD `583071f857a9912c83ac06429dca0fe9d67e8aa1` also retains the retired files;
+the archive is preferred for exact checkout bytes and line endings.
 
-```text
-inspect
-request
-stop
-resume
-reply
-late
-inspect
-stop
-provenance
-quit
-```
+The original owner session `outputs/action-demo-20261012T150026-75a8489b` remains
+untouched. Its matching old executable/config snapshot remains
+`outputs/binding-runtime-prework-001/source/`; later binding fixes remain archived
+in `outputs/session-closeout-20261012-001/source/`. The new pre-cleanup archive is
+not a substitute for an older checkpoint's matching software manifest.
 
-For r1, the explicit synthetic reply permits a success prediction. The later report
-restores conflict and abstention, while the historical request remains resolved.
-r8 retains the known wrong post-correction prediction before later conflict. r2 has
-no registered later report. Each session has one lifetime request, including across
-restart; there is no reset or automatic second request.
-
-`inspect` displays public current support, evidence IDs, prediction/abstention,
-remaining budget and historical closure. `reply` fetches only the registered fixture
-reply to the existing request; the runtime checks it independently. `late` submits
-only the registered later report. `repeat` retransmits the last message with its
-same ID to exercise deduplication. `help` lists commands. Full internal provenance
-is available only after `stop`, with retained originals, current heads, sources and
-verification metadata. The append-only `demo-transcript.jsonl` is an audit, not a
-second truth store.
-
-Explicit fresh paths must not exist, even as empty directories:
-
-```powershell
-.\.venv\Scripts\python.exe -m lmft_lab.action_demo --root outputs/my-new-demo --scenario r2
-.\.venv\Scripts\python.exe -m lmft_lab.action_demo --resume outputs/my-new-demo
-```
-
-Resume uses the stored mode/scenario and refuses overrides. `--script commands.txt`
-feeds the same command interface from a UTF-8 file. Unknown/oversized commands do
-not submit evidence. The wrapper owns its child runtime and uses the existing
-inbox/outbox/checkpoints; it does not edit scientific state directly.
-
-Use `quit`, EOF (Windows Ctrl+Z), or Ctrl+C to exit the interactive Windows console.
-These paths were verified in a real hosted terminal. Ctrl+C is read as an exit key:
-the current command finishes, then the wrapper requests a normal stop and reaps its
-child. Repeated keys do not force termination. Temporary console input flags are
-restored after shutdown, and abandoned queued keys are discarded before returning
-to the shell. No persistent OS setting changes. External signals, script-mode
-interrupts, console closure and forced termination are outside this guarantee.
-The [interrupt follow-up](../experiments/ACTION_INTERRUPT_RESULTS.md) records the
-fix, real PTY evidence and preserved earlier failures.
-
-Older checkpoints require their archived source/configuration because the existing
-source manifest includes the new wrapper module. There is no silent migration.
-See [protocol](../experiments/ACTION_DEMO_PROTOCOL.md) and
-[initial results and evidence](../experiments/ACTION_DEMO_RESULTS.md).
+Removing modules changes the source-wide runtime manifest. Existing checkpoints
+must use their exact matching source/config in an isolated recovery checkout, with
+a COPY of the checkpoint/session. Do not overlay retired files on current source,
+relax the manifest, silently migrate, or reopen the original owner session.
+All archives under `outputs/` are local and Git-ignored; no external backup was
+verified. No historical results, failures or output files were pruned.

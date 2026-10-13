@@ -1,0 +1,22 @@
+{
+  "kind": "approved-development-binding-1",
+  "split_id": "d93748820546e844b16a77b611b37b34556ca890845cd957db76fb9deae02d30",
+  "development_sha256": "77782985661f8426b3095e1573ae540da988a81c9d4e3b7b6c5c36280dd46c90",
+  "export_manifest_sha256": "56700731466e4fc2a5efa6a27d2b2a1af9a9f7890ec23ed039a70c675e0067a8",
+  "archive_sha256": "126fa2e829ab63edd5b3fd9de45ef1d60d6880e01e25abc55b5ac7918a824655",
+  "batch_examples": [20, 13],
+  "batch_documents": [10, 10],
+  "batch_sentences": [18, 13],
+  "mapping": {
+    "id": "example_id unchanged",
+    "document_id": "document_id unchanged; audit only",
+    "tokens": "surface_tokens unchanged, punctuation and space-containing compounds retained",
+    "target_indices": "single-element list of zero-based target_index",
+    "sense": "target_sense_key unchanged; training only",
+    "provenance.source": "annotation_version unchanged",
+    "provenance.locator": "archive_member + ':' + sentence_id + ':' + decimal target_index",
+    "provenance.source_sha256": "archive_sha256 unchanged",
+    "batch": "development_batch_1 -> 1; development_batch_2 -> 2"
+  },
+  "custody_limits": "Procedural only. Aggregate held-out distribution may be inferable from full/development counts. No held-out per-example inputs or labels authorized for writer access. Original export with full provenance is retained externally."
+}

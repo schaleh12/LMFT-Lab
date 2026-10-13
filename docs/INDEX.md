@@ -204,13 +204,25 @@ numeric channels to compare under a confounded training history; one informative
 observation improves consensus coverage. Independent memory matches; no language,
 seed or causal-understanding claim and no production integration.
 
-Local interface: [terminal demo guide](ACTION_TERMINAL_DEMO.md),
-[frozen protocol](../experiments/ACTION_DEMO_PROTOCOL.md),
+New isolated follow-up: [context-applicability protocol](../experiments/CONTEXT_APPLICABILITY_PROTOCOL.md),
+[results and reproduction](../experiments/CONTEXT_APPLICABILITY_RESULTS.md), and
+[runner](../experiments/run_context_applicability.py). Calibration narrows a supplied
+binary interpretation family across two context bits. Some genuine unseen-context
+transfer occurs without losing original-context behavior; ordinary memory matches,
+and 40/48 arms remain ambiguous. No seed/propagation or production runtime changes.
+Independently accepted within the frozen scope (D025); review limits are recorded
+in the results and current handoff.
+
+[Investigation-priority design review](INVESTIGATION_PRIORITY_DESIGN.md) reads the
+existing x1-x3/r9 traces and separates permission from utility. No learned selector
+or experiment is approved; the partial-information versus budget objective remains
+an owner decision (D026).
+
+The terminal demo was **retired at the owner's request on 2026-10-12**.
+[Retirement and recovery](ACTION_TERMINAL_DEMO.md) supersedes its launch guide.
+The [demo protocol](../experiments/ACTION_DEMO_PROTOCOL.md),
 [initial results](../experiments/ACTION_DEMO_RESULTS.md) and
-[verified console interrupt follow-up](../experiments/ACTION_INTERRUPT_RESULTS.md).
-Fixed synthetic commands only; direct-runtime/memory parity, explicit restart and
-safe quit/EOF verified. Interactive hosted Windows Ctrl+C now passes real PTY
-checks; external signals and forced termination remain outside the claim.
+[interrupt follow-up](../experiments/ACTION_INTERRUPT_RESULTS.md) remain historical.
 
 Supervised follow-up: [fixed-command runtime guide](ACTION_COMMAND_RUNTIME.md),
 [protocol](../experiments/ACTION_RUNTIME_PROTOCOL.md),
@@ -252,3 +264,23 @@ Binding-runtime review correction: [frozen fix criteria](../experiments/BINDING_
 and retained request/reply/closure history must agree across runtime state layers.
 Independent re-review accepted the narrow fix within trusted local finite-fixture
 scope. Session closed; no new study or learning feature.
+
+
+## Investigation-priority engineering comparison
+
+[Protocol](../experiments/INVESTIGATION_PRIORITY_PROTOCOL.md),
+[results and reproduction](../experiments/INVESTIGATION_PRIORITY_RESULTS.md),
+[experiment-local runner](../experiments/run_investigation_priority.py).
+Parent-approved comparison following D026's design and the user's provisional
+preference; initial review blocked on the experiment-local malformed-value guard.
+The comparison and narrow correction are now independently accepted (D027); see
+the versioned review history in the results addendum. Separate partial information,
+question resolution, final decisions and costs; no learned policy or production
+default change. x2 is decision-only; existing r-case receivers are unchanged.
+
+
+[Consistent-support audit assessment](CONSISTENT_SUPPORT_AUDIT_ASSESSMENT.md)
+separates trusted report provenance, reference verification and predictive validity.
+Documentation-only D028 recommends retaining the accepted checkpoint pending a
+concrete audit trigger/value contract; no audit implementation or applicability
+runtime integration is dispatched.

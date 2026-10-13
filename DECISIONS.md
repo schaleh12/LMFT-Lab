@@ -416,3 +416,313 @@ falsifiable propagation decision contract and its authority relative to evidence
 Binding currently learns finite-family selection with authored query policy and no
 seed participation in decisions; memory matches. No automatic wiring, new fixture
 study, protected change or further implementation is dispatched.
+
+## D024: Retire the fixed-command terminal demo only
+
+**Status: owner-requested retirement, 2026-10-12; awaiting parent review.**
+Supersedes active support for the D019 terminal wrapper and D020 console helper;
+their recorded results, failures and protocols remain historical and unchanged.
+Remove the two demo modules, two dedicated test files (20 cases), scripted demo
+harness and interrupt probe from active paths. Retain shared action runtime,
+action policy, capacity/binding learning and all shared regression infrastructure.
+No seed, numerical mechanism, model configuration or dependency changes.
+
+Archive exact current source/config before removal, rather than assuming older
+archives match: `outputs/terminal-demo-retirement-20261012-001/source/` contains
+225 files with SHA-256 hashes, from clean HEAD
+`583071f857a9912c83ac06429dca0fe9d67e8aa1`. No commit was made by this cleanup.
+Source-wide manifests intentionally reject incompatible old checkpoints; retain
+matching historical archives and original owner session unchanged. No relaxed
+manifest, silent migration or restart of the owner session. Historical executable
+links/commands are to be interpreted in their matching archived checkout.
+[Retirement and recovery](docs/ACTION_TERMINAL_DEMO.md) replaces active launch guidance.
+Stop for parent review; no follow-on implementation or experiment is dispatched.
+
+Cleanup validation: 861 remaining tests pass; 20 demo-only cases were deliberately
+retired. The first run omitted the documented child-process PYTHONPATH and is
+retained alongside the corrected passing run. All 215 unrelated tracked files and
+19 owner-demo files remain byte-identical; 225 pre-cleanup archive hashes verify.
+Final system-wide process query found no Python workers. No further work dispatched.
+
+## D025: Learn measurement-interpretation applicability in a fixed family
+
+**Status: independently accepted within the frozen isolated scope, 2026-10-13.**
+Following owner approval of the direction, independent review narrowed the study to
+six fixed binary normalization hypotheses and independently referenced synthetic
+calibration. The original [draft](experiments/CONTEXT_APPLICABILITY_PROTOCOL_DRAFT.md)
+is preserved unchanged; the parent approved one bounded study, and its
+[final protocol](experiments/CONTEXT_APPLICABILITY_PROTOCOL.md) was pinned before
+evaluation. It fixes worlds, two context bits, schedule, held-out grid, controls and
+integrity gates; later scientific changes require a new version and preregistration.
+Only calibration narrows hypotheses; agreement-seeking normalization is not evidence.
+Ordinary memory receives identical evidence and independently filters/predicts.
+No propagation diagnostics, acquisition-policy learning, runtime integration or
+philosophical naming. Narrowing uncertainty is not revising an accepted global belief.
+The [results](experiments/CONTEXT_APPLICABILITY_RESULTS.md) show 192 -> 352 correct
+support decisions of 2,688, zero wrong/unsafe, including 64 gains on genuinely unseen
+contexts and unchanged original-context behavior. Memory matches; 40/48 arms remain
+ambiguous. No family repair or additional budget. Global replacement loses some
+original-context behavior despite unchanged aggregate correct counts.
+
+7,821 study checks, 115 targeted and 976 full tests pass; actual restart and journal/
+configuration rejection checks preserve witnesses and raw evidence. All production,
+seed/numerical/model mechanisms and dependencies remain byte-identical. The old demo
+and historical evidence stay preserved. Parent accepted independent review: 115
+focused tests, 24 arms at flip0 across all worlds/schedules and five controllers,
+360 worker invocations, 3,937 checks and 18 pipe checks reproduced. Full traces
+recounted (352/0/2336; 64 unseen-context and 96 newly calibrated gains; retention
+unchanged; 40/48 ambiguous). 229 source, 480 prediction, 10,564 artifact, 135,271
+prior hashes and 57 unchanged production/config/dependency files verified.
+976 full tests and 7,821 study checks were inspected, not independently rerun.
+Session ceiling 2026-10-13 02:40 UTC does not authorize self-dispatch.
+
+
+## D026: Defer learned investigation priority pending a task utility objective
+
+**Status: original design-only decision; bounded comparison subsequently approved in D027.**
+[Evidence and candidate contract](docs/INVESTIGATION_PRIORITY_DESIGN.md) distinguishes
+permission from attainable information, cost, error risk and abstention. Existing
+missing-part eligibility would filter the x1/x3 wasted gathers, but mixed missing
+and contradictory support in x2 remains eligible. A structural feasibility check
+can address that remaining one-step resolution limitation without learned context.
+This is code inspection, not a new evaluation of those fixtures under the adapter.
+r9 full/memory scores tie; correction wins by action ID. Correction and gathering
+each resolve one question and still abstain, with no established cost advantage.
+
+Do not manufacture a learned selector or seed-weight change from those cases.
+First choose whether useful partial resolution merits spending the only request
+when no immediate final decision can follow. Any future implementation must compare
+a competent direct controller and memory with identical permission, information,
+budget and feedback; distinguish single-edge ablation from propagation disabled.
+No protected geometry, executable, numerical, model or dependency change follows.
+Parent/owner review is next; no experiment or runtime integration dispatched.
+
+
+## D027: Compare provisional investigation objectives without changing defaults
+
+**Status: comparison and narrow domain-guard correction independently accepted, 2026-10-13.**
+Owner provisionally favored useful partial learning with visible costs; this does
+not authorize a permanent or always-investigate policy. Freeze current, target-
+resolution and final-support-gate selection with matching scalar controls, existing
+eligibility/positive priorities/ties/receivers and lifetime budget. x2 is annotation/
+decision-only, never a new service. Six existing r-cases retain wrong/rejected results.
+[Protocol](experiments/INVESTIGATION_PRIORITY_PROTOCOL.md) precedes implementation;
+[results](experiments/INVESTIGATION_PRIORITY_RESULTS.md) report separate information,
+resolution, decisions/correctness, work and remaining-uncertainty vectors.
+
+Boolean enumeration is a complete public effect overapproximation, not access to
+actual permitted replacements: possibility is conditional on unknown admission.
+Current/target match on executable cases. Final saves one r9 request at the cost
+of one unresolved question; final answers tie. x2 exposes foregone missing-part
+information. No universal objective, learned selector or seed advantage follows.
+331 checks, 179 focused/1,113 full tests pass; independent support truth-table tests
+validate annotations beyond shared scalar parity. Production/configuration and all
+historical evidence preserved. No runtime/default change, model call or commit.
+Stop for independent review; no follow-on work dispatched.
+
+
+D027 corrective follow-up, 2026-10-13: reviewer reproduced list/dict TypeError before
+unknown-domain handling. Preserve its negative probe and exact 235-file pre-fix
+snapshot. Move raw active scoped Boolean-domain validation ahead of preflight and
+selection; malformed values return unknown/no action, with no coercion. This is
+experiment-local contract repair, not a new priority policy. Run002 matches all
+known-case predictions/vectors/rows except outbox timestamps; 331 checks, 229 focused
+and 1,163 full tests pass. Original179/331 results were independently reproduced;
+original1,113 full XML inspected only. Source/history/production preservation holds.
+[Versioned addendum](experiments/INVESTIGATION_PRIORITY_RESULTS.md) records failure,
+fix, hashes and limits. Read-only r8/r10 diagnosis remains separate; no broader fix.
+Stop for independent re-review.
+
+
+D027 accepted corrective review: parent reports 35 direct malformed probes with
+sentinel guards, 229 focused tests and 331 comparison checks independently reproduced;
+known-case outputs unchanged except timestamps. Pre-fix/original/corrected source
+hashes, protocol and 57 production/configuration/dependency files verified. 1,163
+full-suite XML inspected, not independently rerun. Original rejection and correction
+history remain preserved. No new default or broader cognitive claim follows.
+
+## D028: Audit-policy assessment recommends retaining the accepted checkpoint
+
+**Status: parent accepted stopping at the checkpoint; session completed early, 2026-10-13.**
+[Assessment](docs/CONSISTENT_SUPPORT_AUDIT_ASSESSMENT.md) distinguishes report identity,
+consistent support, exact operation permission, coordinate verification and outcome
+prediction. Original c3 already demonstrates revising consistent erroneous reports;
+r10's selector declines that operation as already resolved. A separately scoped,
+explicitly operator-requested audit could use existing correction verification, but
+would demonstrate capability rather than learning when to audit. No matched
+cost-only resolved-support controls or task-grounded trigger currently establish
+benefit. The r8 prediction error is a distinct information/induction limitation.
+Applicability inference requires missing runtime context/calibration inputs and
+cannot be assumed to repair both bad agreeing reports or missing outcome features.
+Recommend stopping at the accepted checkpoint rather than implementing either
+an audit policy or applicability integration. No institution/source/nationality
+weights, philosophical authority, seed/configuration or executable changes. Parent
+review is next; no further experiment or task dispatched.
+
+
+D028 final closeout: parent agreed to end the up-to-three-hour session early, before
+02:40 UTC, rather than invent a favorable audit fixture. No further task is queued;
+no monitoring or autonomous continuation. Preserve accepted D025/D027 findings,
+reviewer reproduction-versus-inspection limits, r8/r10 diagnoses and all negative
+history. Next design need: representative contexts, observable pre-action cues,
+and costs/outcomes for deciding when to audit fallible but consistent reports.
+No learned audit policy or seed utility is established. Recent Jev discussion is
+research-only, with no integration/model-call/teacher authorization. Only current
+handoff documentation changed at closeout; all executable/configuration/protocol/
+test files match the reviewed snapshot. No rerun, model call, commit or push.
+Final compact manifest: `outputs/session-closeout-20261013-001/`.
+
+
+## D029: Assess coordination before extending the seed circuit
+
+**Status: proposed next increment; documentation-only first task, awaiting parent review.**
+New bounded session authorized 01:25–05:25 UTC; earlier closeout remains historical.
+[Assessment and candidate protocol](docs/WHOLE_ARCHITECTURE_COORDINATION_ASSESSMENT.md)
+traces r8 through the real seven-leaf scratch circuit, external eligibility, verified
+correction and historical branch prediction. Full Cultural/Philosophical/Experiential
+coordination is not implemented; the owner's proposed dependencies are not silently
+converted into equations. Prior local negative findings do not refute every possible
+whole architecture, and activating all nodes would not validate one.
+
+Recommend one isolated learned-interpretation-to-action handoff using the accepted
+applicability mechanism and existing device family, with persistent authority/history/
+consequence linkage, competent equal-information memory and explicit partial controls.
+This would test a missing engineering connection, not seed semantics or superiority.
+Reversible task defaults and falsification are stated; no hidden-label audit schedule,
+new morality/trust weights, seed/numerical edits or production integration. No
+implementation/evaluation is authorized by this proposal. Stop for parent review.
+
+
+D029 parent-review refinement: factual assessment accepted; initial sensor-bench
+handoff recommendation withdrawn as the strongest next task because binding/action
+runtime integrations already establish most of its persistence/permission/receipt
+capabilities. Specified proposed v2 freezes identities, synthetic device/verifier,
+transactions/restarts, stale-permission handling, counterfactual receipts and isolation,
+five comparators, 10,752 main dispositions per controller and separate probes; it
+is parked, not implementation approval. Revised next-step recommendation is one
+interpretive-scope-status to Contemplation-agenda contract using existing evidence,
+with direct-memory and raw-support-only causal controls. Context evidence must
+precede a candidate philosophical distinction, measurable effect and then faithful
+verbalization. Presence versus capacity-to-act is only an illustrative parent example,
+not canonical Agency/Existence semantics. No equations/seed/code/model changes.
+Operationalization and causal authority remain prerequisites; stop for parent review.
+
+
+D029 final linguistic refinement: supplied fixed numeric families do not establish
+new linguistic memberships or contextual working definitions. Recommended first
+prerequisite is now a tiny candidate-interpretation/evidence contract, with existing
+node links, scoped examples/counterexamples, revision/abstention and independent
+held-out linguistic assessment. This precedes the proposed agenda connection.
+Parent 'order' examples remain illustrative, not canonical definitions or gold
+labels. Model-assisted candidate generation, if needed, requires separate approval;
+no model call, teacher expansion, corpus collection or implementation occurred.
+See assessment section7. Stop for parent review; no more scope added to this task.
+
+D029 representation limit: do not force lexical concepts into abstract binary seed
+extremes. Overlapping scoped associations may require revisable examples,
+relationships, conditions and exceptions outside the protected inventory, with
+unknown/unrepresented outcomes. Six philosophical leaves are not a demonstrated
+encoding of full lexical meaning. Future weighted proposals must justify robustness
+to perturbation; no seed expansion or weight tuning is authorized here.
+
+D029 geometry provenance clarification: owner intends middle-diagonal/cross-cutting
+Philosophical relations, distinguished from Cultural top-down and Experiential
+bottom-up framing, as an abstract contextual game-controller landscape. This came
+from a prior ChatGPT conceptual description, not verified model internals, formal
+game theory or validated equations. Lexical application tests one grounding
+component only and cannot validate this geometry. See assessment section 7; no
+implementation or protocol expansion authorized.
+
+
+## D030: Development-only supervised linguistic application prerequisite
+
+**Status: Phase A implemented/tested; held-out execution blocked pending parent and
+independent custodian review, 2026-10-13.** This supersedes D029's documentation-only
+stop solely for the newly authorized experiment-local increment. Freeze the
+[protocol](experiments/LINGUISTIC_APPLICATION_PROTOCOL.md) before implementation;
+[results and CLI](experiments/LINGUISTIC_APPLICATION_PHASE_A_RESULTS.md) own findings.
+Use only the custodian-pinned SemCor development export, immutable document split,
+supplied labels and exact metadata-to-input adapter. No corpus in source archives.
+
+Each observed sense independently learns surface unigrams/unordered token pairs:
+at least two positive documents and no admitted counterexample. Retain immutable
+examples, all witnesses, rejected/invalidated cues and numbered revisions; preserve
+zero/one/multiple matches with abstention and no primary majority fallback. Reuse
+Store/checksum/atomic persistence, not a new transaction framework. Compare against
+independently recomputed same-rule memory, frozen batch 1 and majority diagnostic.
+No weights, new founding identifiers, seed links, philosophical meanings or production
+runtime changes. Corpus supplied categories are not autonomous conceptual admission.
+
+Technical checks pass: 63 focused/1,226 full tests, actual process restart, exact
+replay/prediction nonmutation and expected memory parity. Initial sandbox temporary
+path failure retained; no threshold tuning. Development revision gains three and
+loses two correct classifications on the original 20 items. All 33 development
+items: 15 correct/18 abstain updated; frozen 8 correct/3 wrong/22 abstain. Preserve
+negative outcomes; these are training diagnostics, not held-out improvement.
+Source-family independence, lexical overlap/unknown gold and rights remain unresolved;
+procedural custody is not security isolation. No held-out inputs/labels inspected,
+models called, teacher expansion, dependencies, commits, pushes or publication.
+Stop for parent/custodian review of pinned code/protocol before evaluation.
+
+
+D030 narrow corrective follow-up: parent review blocked evaluation because ordinary
+Python reconstructed-state equality accepted Boolean/float substitutions for cached
+integer values despite valid checksums. Require exact integer schema version and
+type-sensitive canonical JSON reconstruction comparison in the experiment only.
+No shared Store/protocol/scientific rule changes. Preserve reviewer evidence and
+20-failure pre-fix restart reproduction. Added 28 actual inspect/predict regressions;
+91 focused/1,254 full tests pass. Recreated development predictions/reports are
+identical; source pins alone change checkpoint state. Original checkpoints/source
+remain recoverable; no silent migration. Corrective addendum records exact hashes.
+STOP for parent/custodian re-review before held-out execution; no new study or scope.
+
+
+## D031: Preserve failed linguistic generalization; assess representation next
+
+**Status: Phase B completed independently; negative result preserved, read-only
+failure diagnosis complete; future proposal only, 2026-10-13.** D030's correction
+was independently accepted before evaluation. [Phase B report](experiments/LINGUISTIC_APPLICATION_PHASE_B_RESULTS.md)
+records committed predictions, independent verification limits and diagnosis.
+14 held-out uses/11 documents: updated primary/memory0 correct,3 wrong singletons,
+10 abstentions,1 ambiguity with two wrong labels;5 wrong inclusions/14 gold exclusions.
+Frozen abstains14;majority7 correct/7 wrong. Improvement criterion FAILED. Zero strict
+correct gains/losses does not hide newly introduced errors. This split is consumed.
+
+All three firing cues are function-word pairs supported by two examples in two
+separate documents, zero admitted counterexamples; two share identical witnesses.
+No active gold cue matches. Evidence indicates sparse, target-insensitive lexical
+co-occurrence; no new contract bug identified by bounded trace audit. No stop-word,
+threshold, candidate or tokenization tuning against evaluation is permitted by this
+work. All scientific source/protocol and negative history remain unchanged.
+
+Recommend only a separately authorized bounded local-SLM context-representation
+contract with evidence anchors and independent fresh data, matched against the same
+SLM with ordinary structured memory. More hand-tuned lexical exclusions would patch
+this consumed test. Richer extraction remains unproven and adds model/provenance
+risks; no model call or integration occurred. Existing records can support an honest
+status view; no self-talk renderer implemented. Cross-cutting philosophical framing
+is not six-bin sorting and no seed benefit is established. Stop for parent review.
+
+
+## D032: Four-call development-only local-SLM representation interface check
+
+**Status: bounded authorized check completed; negative admissibility outcome;
+awaiting independent parent review, 2026-10-13.** Separate from D031's consumed
+14-case evaluation. Freeze protocol/schema/prompts/mechanical four-input selection
+before calls. Use existing offline Qwen3-4B interpretation transport/settings only;
+one owned server, four attempts maximum, no retries/repairs/teacher or activation.
+[Results](experiments/SLM_REPRESENTATION_INTERFACE_RESULTS.md) retain exact hashes.
+
+One neutral source-anchored record is shared by primary/memory consumers rather
+than duplicate wrappers. Exact quotes/schema do not confer semantic truth or
+permanent meaning; no canonical seed mapping or action authority. Four responses
+finished normally but all were rejected: three count/status mismatches, all four
+without non-target evidence anchors. 26 exact anchor occurrences were target-only.
+Context-containing paraphrase is observed, not validated semantic representation.
+All raw negatives retained in the new nonpublished research archive with notices.
+
+42 focused/1,296 full tests pass; restart retrieval identical and nonmutating. Four
+calls exhausted; owned server closed. No protected source/config/seed/scientific
+protocol changes. The next gap is a minimally reliable contextual reading/anchor
+interface, then independent semantics; no automatic further prompt/model calls,
+self-talk renderer or integration. Stop for independent parent review.
