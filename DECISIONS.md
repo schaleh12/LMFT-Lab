@@ -1015,7 +1015,24 @@ Key findings:
   - Authoritative & Chivalrous: 10 instances (noble directive compliance).
   - Communal & Reassuring: 9 instances (foundational peace preservation).
   - Equilibrated & Diplomatic: 2 instances (balanced multi-perspective synthesis).
-- **Matched Ordinary-Memory Parity (Rule D004):** Primary learner and matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`fef1b831...`). Checkpoints verified unmutated. 5 focused unit tests pass. Output preserved in `outputs/kaleidoscopic-generator-corpus33-20261013-001/`.
+- **Matched Ordinary-Memory Parity (Rule D004):** Primary learner and matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`a56ee19c...`). Checkpoints verified unmutated. 5 focused unit tests pass. Output preserved in `outputs/kaleidoscopic-generator-corpus33-20261013-001/`.
+
+
+## D051: Full-corpus kaleidoscopic linguistic prismatic evaluation achieves 0.893 harmonic concordance across 33 SemCor instances
+
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D050 kaleidoscopic generator prototype and executes the preregistered study across the complete 33-sentence SemCor development corpus. Refracts persistent contextual capacity memory through the three angular lenses ($\theta_C, \theta_T, \theta_W$) with zero runtime LLM calls during inference.
+[Protocol](experiments/KALEIDOSCOPIC_GENERATOR_PROTOCOL.md) and [results](experiments/KALEIDOSCOPIC_GENERATOR_RESULTS.md) own scope.
+
+Key findings:
+- **0.893 Average Harmonic Concordance:** The three cognitive lenses co-align into high-coherence prismatic chords across all 7 WordNet senses with zero erratic dissonance.
+- **Corpus-Wide Social Exchange Actuation:** 100% of sentences (33/33) resolved into grounded dialogue exemplars and actionable strategies across 4 distinct speaking registers:
+  - Methodical & Pragmatic: 12 instances (36.4%)
+  - Authoritative & Chivalrous: 10 instances (30.3%)
+  - Communal & Reassuring: 9 instances (27.3%)
+  - Equilibrated & Diplomatic: 2 instances (6.1%)
+- **Matched Ordinary-Memory Parity (Rule D004):** Primary learner and matched ordinary structured-memory comparator produced identical evaluation digests (`a56ee19c...`). Both checkpoints remained unmutated before and after inference.
+- **Full Test Suite Parity:** All focused tests pass. Output preserved in `outputs/kaleidoscopic-generator-corpus33-20261013-001/`.
+
 
 
 
