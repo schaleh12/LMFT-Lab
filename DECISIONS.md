@@ -767,3 +767,23 @@ under actual process restart (`fddbfbb9...`). 27 focused V3 tests pass. Interfac
 subsequent semantic adjudication remains an independent research step.
 
 
+## D035: Semantic adjudication demonstrates 100% precision and isolates gloss tautology limit
+
+**Status: adopted evaluation finding; experimental analysis complete, 2026-10-13.** Follows D034 interface
+admissibility. Evaluates the four admitted proposals against WordNet 3.0 ground-truth definitions, gloss informativeness,
+and cross-example discriminability across the 33 development sentences in SemCor.
+[Protocol](experiments/SEMANTIC_ADJUDICATION_PROTOCOL.md) and
+[results](experiments/SEMANTIC_ADJUDICATION_RESULTS.md) own scope. Pure deterministic Python evaluation; zero additional
+model calls.
+
+Contiguous context anchors achieved 100% precision (0 false positives) across the 33 development sentences, completely
+remedying the catastrophic false-positive failure of Phase B's bag-of-words co-occurrence rules. Case 04 achieved true
+semantic substitution ("in the sequence of award creation"), while cases 01–03 were partially concordant clause
+paraphrases that repeated the target lemma ("order").
+
+Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`c89232ec...`). Neutral
+checkpoint SHA256 remained completely invariant (`fddbfbb9...`). 10 focused adjudication tests pass. The remaining
+prompting frontier is prompting for target lemma substitution in the gloss.
+
+
+

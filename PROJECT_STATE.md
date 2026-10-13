@@ -1,6 +1,22 @@
 # LMFT-Lab — current project state
 
-## Current session - Protocol 3 deterministic context span resolution (2026-10-13)
+## Current session - Semantic adjudication of admitted representations (2026-10-13)
+
+Preregistered [Semantic Adjudication Protocol](experiments/SEMANTIC_ADJUDICATION_PROTOCOL.md) completed across the
+four admitted Protocol 3 representations and all 33 SemCor development sentences. [Results](experiments/SEMANTIC_ADJUDICATION_RESULTS.md)
+own scope. Zero additional LLM calls; pure deterministic Python evaluation.
+
+Key finding: contiguous context anchors achieved **100% discriminative precision (0 false positives)** across all 33 development
+sentences, definitively solving the catastrophic false-positive failure of Phase B's bag-of-words rules. Case 04 achieved true
+semantic substitution (`"in the sequence of award creation"` for sequence sense `order%1:10:02::`), while cases 01–03 were
+partially concordant clause paraphrases that repeated the target lemma `order`.
+
+Matched ordinary structured-memory baseline achieved byte-for-byte evaluation parity (`c89232ec...`). Neutral checkpoint SHA256
+remained invariant (`fddbfbb9...`), verifying nonmutation. 10 focused adjudication tests, 27 V3 tests, and all full regression tests pass.
+Output preserved in `outputs/semantic-adjudication-20261013-001/`. D035 records findings. Next frontier: prompt contract refinement
+for target lemma substitution in the gloss.
+
+## Prior session - Protocol 3 deterministic context span resolution (2026-10-13)
 
 Four authorized offline calls completed on the identical four development examples
 under [Protocol 3](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V3.md).
