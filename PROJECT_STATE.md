@@ -1,6 +1,25 @@
-# LMFT-Lab â€” current project state
+# LMFT-Lab — current project state
 
-## Current session - four-call local-SLM interface check (2026-10-13)
+## Current session - Protocol 2 local-SLM interface check (2026-10-13)
+
+Four authorized offline calls completed on the identical four development examples
+under [Protocol 2](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V2.md).
+[Results](experiments/SLM_REPRESENTATION_INTERFACE_V2_RESULTS.md) own scope. Exactly
+4 calls/one owned offline server (PID 17752); stopped normally, **0/4 admissible**.
+Grammar-constrained `maxItems: 1` **100% eliminated status/count mismatch** (4/4 returned
+exactly one reading). Singular `context_anchor` **100% eliminated target-only copying**
+(4/4 cited surrounding context words).
+New boundary identified: **source quotation mismatch** across all 4 cases due to 4B SLM
+zero-based half-open token slice index arithmetic (`[start, end)`) errors despite correct
+surface-string extraction.
+
+Neutral store contract verified under actual separate process restart with exact primary
+and ordinary structured-memory parity; nonmutation verified. 44 focused V2 tests, 42 V1 tests,
+and 1,340 full regression tests pass. External archive:
+`C:/Users/schal/AppData/Local/LMFT-Lab/research-archives/slm-representation-interface-v2-20261013-001`.
+D033 records findings.
+
+## Prior session - four-call local-SLM interface check (2026-10-13)
 
 New separate parent authorization allowed at most four existing interpretation-model
 calls on four mechanically selected DEVELOPMENT examples. [Results](experiments/SLM_REPRESENTATION_INTERFACE_RESULTS.md)

@@ -726,3 +726,24 @@ calls exhausted; owned server closed. No protected source/config/seed/scientific
 protocol changes. The next gap is a minimally reliable contextual reading/anchor
 interface, then independent semantics; no automatic further prompt/model calls,
 self-talk renderer or integration. Stop for independent parent review.
+
+
+## D033: Protocol 2 local-SLM context-anchor check eliminates count and target-copying limits
+
+**Status: bounded authorized check completed; negative admissibility outcome (token arithmetic);
+awaiting review, 2026-10-13.** Follows D032 negative results. Prunes relations/conditions, enforces
+`maxItems: 1` in grammar sampling, and introduces singular `context_anchor` requiring non-target context tokens.
+[Protocol 2](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V2.md) and
+[results](experiments/SLM_REPRESENTATION_INTERFACE_V2_RESULTS.md) own scope. Exactly 4 offline calls on the
+identical development cases; owned server closed.
+
+Status/reading count mismatch was 100% eliminated (4/4 returned exactly one reading). Target-only copying
+was 100% eliminated (4/4 anchors identified surrounding context words). However, all 4 were rejected due to
+`source quotation mismatch`: the 4B SLM accurately extracted string words but miscalculated 0-based half-open
+token slice indices (`[start:end)`). 
+
+Neutral store retrieval verified identical digests across primary and ordinary structured-memory consumers
+under actual process restart (`7b20af56...`). 44 focused V2 tests, 42 V1 tests, and 1,340 full regression tests
+pass. No seed, numerical mechanism, or production integration changes. All artifacts preserved in external
+archive `C:/Users/schal/AppData/Local/LMFT-Lab/research-archives/slm-representation-interface-v2-20261013-001`.
+
