@@ -1,6 +1,18 @@
 # LMFT-Lab — current project state
 
-## Current session - Protocol 5 Batch 1 Scale-up across 20 SemCor instances (2026-10-13)
+## Current session - Protocol 6 Batch 2 Scale-up across 13 SemCor instances (2026-10-13)
+
+Preregistered [Protocol 6](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V6.md) completed across the entirety of
+SemCor Development Batch 2 (all 13 remaining polysemous instances of *order* / *orders*). [Results](experiments/SLM_REPRESENTATION_INTERFACE_V6_RESULTS.md) own scope. Exactly 13 offline calls on pinned local Qwen3-4B Q4_K_M; owned loopback server terminated cleanly.
+
+Key findings:
+- **100% Admissibility (13/13):** Every proposal satisfied the contract and literal quotation checks with zero retries. Python deterministic slice resolution located all multi-token context anchors cleanly.
+- **100% Non-Tautological Substitution (13/13):** Negative lexical constraint generalized across all 13 instances; 0 lemmas repeated in glosses.
+- **Full Corpus Coverage (33/33, 100% Cumulative):** Across Batch 1 (20) and Batch 2 (13), all 33 SemCor development instances have now been extracted as high-quality, non-tautological representations.
+- **Shared Neutral Record & Restart Parity:** All 13 proposals committed as `lifecycle: unverified_proposal`. Neutral checkpoint verified byte-identical (`6da29752...`), state hash `fb28ee99...`, and exact primary vs matched ordinary structured-memory parity under separate process restart.
+External archive: `C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v6-20261013-001`. D043 records findings.
+
+## Prior session - Protocol 5 Batch 1 Scale-up across 20 SemCor instances (2026-10-13)
 
 Preregistered [Protocol 5](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V5.md) completed across the entirety of
 SemCor Development Batch 1 (20 polysemous instances of *order* / *orders*). [Results](experiments/SLM_REPRESENTATION_INTERFACE_V5_RESULTS.md) own scope. Exactly 20 offline calls on pinned local Qwen3-4B Q4_K_M; owned loopback server terminated cleanly.

@@ -892,3 +892,17 @@ Key findings:
 - **Frozen Seed Geometry Preservation (Rule D001):** Verified that all 6 targeted leaf nodes exist in `birth.py` without modifying, renaming, removing, or rearranging the 40 canonical founding nodes.
 - **Baseline Parity (Rule D004):** Primary capacity reader and ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`8bb94ceb...`). Checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 5 focused tests pass.
 
+
+## D043: Protocol 6 extracts representations across SemCor Batch 2 with 100% admissibility and substitution
+
+**Status: bounded authorized check completed; positive scale-up outcome (13/13 admissible, 13/13 non-tautological substitution), 2026-10-13.** Follows D038 Protocol 5 Batch 1 extraction and D042 metacognitive priming console prototype. Expands representation extraction across all 13 remaining development instances of SemCor Development Batch 2 (`development_batch_2`, polysemous noun *order* / *orders*).
+[Protocol 6](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V6.md) and [results](experiments/SLM_REPRESENTATION_INTERFACE_V6_RESULTS.md) own scope. Exactly 13 offline calls on the pinned local Qwen3-4B Q4_K_M SLM; owned loopback server closed cleanly.
+
+Key findings:
+- **100% Contract Admissibility (13/13):** All 13 proposals passed the contract without manual intervention, repair, or retries.
+- **100% Non-Tautological Semantic Substitution (13/13):** Zero instances repeated the target lemma `order` or `orders` in their explanatory gloss.
+- **Deterministic Syntactic Anchor Resolution:** Python slice resolution successfully located exact multi-token context anchors for all 13 instances without token arithmetic errors.
+- **Full Corpus Coverage (33/33, 100% Cumulative):** Cumulatively across Batch 1 (20) and Batch 2 (13), the representation pipeline has now extracted high-quality, non-tautological representations for all 33 SemCor development instances.
+- **Shared Neutral Record & Parity:** All 13 proposals committed to neutral store (`lifecycle: unverified_proposal`). Under process restart, primary and ordinary-memory retrieval verified exact parity across all 13 record hashes (`6da29752...`). State SHA256: `fb28ee99...`. 5 focused tests pass.
+
+
