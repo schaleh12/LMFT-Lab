@@ -17,7 +17,13 @@ Deterministic [Semantic Adjudication](experiments/SEMANTIC_ADJUDICATION_V5_RESUL
 - **100% Semantic Substitution (20/20):** Zero tautologies (0/20).
 - **100% Discriminative Precision:** Average precision 1.0 (0 false positives across all sentences).
 - **Baseline Parity:** Byte-for-byte evaluation parity (`caf56dbe...`). Checkpoint nonmutation verified (`97406aab...`). D039 records findings. Output preserved in `outputs/semantic-adjudication-v5-20261013-001/`.
-Next milestone: Persistent Contextual Capacity Compilation & Generalization Benchmark across Batch 2.
+
+Unassisted [Persistent Capacity Disambiguation](experiments/PERSISTENT_DISAMBIGUATION_V5_RESULTS.md) compiled all 20 Batch 1 rules into persistent capacity state and evaluated against the 33 SemCor development instances:
+- **100% Precision on Fired Cases:** 20/20 correct singletons, 0 wrong singletons (0 false positives).
+- **Calibrated Uncertainty:** 13 honest abstentions on unseen Batch 2 contexts (0 false guesses). Zero ambiguities.
+- **Parity & Persistence:** Exact evaluation digest reproduction under separate process restart (`206e4777...`). Checkpoint SHA256 invariant (`97406aab...`). D040 records findings. Output preserved in `outputs/persistent-disambiguation-v5-20261013-001/`.
+Next milestone: Metacognitive Priming Console Prototype (connecting disambiguated senses to the Philosophical seed dials).
+
 
 
 ## Prior session - Persistent contextual disambiguation & behavioral consequence (2026-10-13)

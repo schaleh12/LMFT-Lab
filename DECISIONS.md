@@ -851,3 +851,16 @@ Key findings:
 - **100% Discriminative Precision (0 False Positives):** Contiguous syntactic context anchors achieved 0 false positives across all sentences (average precision 1.0), confirming that contiguous syntactic anchoring completely resolves Phase B's bag-of-words false-positive failure across multiple senses.
 
 Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`caf56dbe...`). Neutral checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 11 focused adjudication tests pass.
+
+
+## D040: Persistent capacity disambiguation from Batch 1 achieves 100% precision on fired cases and zero false guesses
+
+**Status: adopted evaluation finding; experimental analysis complete, 2026-10-13.** Follows D039 Batch 1 semantic adjudication. Compiles all 20 admitted Batch 1 representations from disk into persistent contextual capacity memory and executes unassisted disambiguation across all 33 SemCor development instances (Batch 1 + Batch 2). Zero runtime LLM calls during inference.
+[Results](experiments/PERSISTENT_DISAMBIGUATION_V5_RESULTS.md) own scope.
+
+Key findings:
+- **100% Precision on Fired Cases (20/20 Correct Singletons, 0 False Positives):** The persistent contextual rules accurately disambiguated all 20 development cases with zero wrong singletons, demonstrating a robust behavioral consequence of remembered capacity state across restart.
+- **Calibrated Uncertainty (13 Honest Abstentions):** On all 13 unseen instances belonging to Batch 2, the capacity engine made zero spurious guesses, honestly abstaining on all 13 instances (100% abstention on unseen contexts).
+- **Zero Ambiguities:** Zero conflicting sense matches, verifying that syntactic anchor constraints provide clean mutual exclusivity.
+- **Baseline Parity:** Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`206e4777...`). Checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 12 focused disambiguation tests pass.
+

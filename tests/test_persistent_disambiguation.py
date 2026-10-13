@@ -121,3 +121,29 @@ def test_run_disambiguation_study_integration(tmp_path):
     assert core['precision_on_fired'] == 1.0
     assert core['correct_singletons'] >= 4
     assert (tmp_path / 'persistent_disambiguation_summary.json').exists()
+
+
+def test_run_disambiguation_study_v5_batch1_integration(tmp_path):
+    checkpoint = Path(r'C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v5-20261013-001\neutral-state\checkpoint.json')
+    dev_export = Path(r'C:\Users\schal\AppData\Local\Temp\lmft-semcor-order-development-v1-dzil94yr\development.json')
+
+    if not checkpoint.exists() or not dev_export.exists():
+        pytest.skip('Research archives not available')
+
+    summary = pd.run_disambiguation_study(checkpoint, dev_export, output_dir=tmp_path)
+
+    assert summary['kind'] == 'persistent-disambiguation-1'
+    assert summary['consumer_parity'] is True
+    assert summary['compiled_rules_count'] == 20
+
+    core = summary['eval_core_strategy']
+    assert core['total_cases'] == 33
+    assert core['correct_singletons'] == 20
+    assert core['wrong_singletons'] == 0
+    assert core['abstentions'] == 13
+    assert core['ambiguities'] == 0
+    assert core['precision_on_fired'] == 1.0
+    assert core['accuracy'] == 20 / 33
+    assert (tmp_path / 'persistent_disambiguation_summary.json').exists()
+    assert (tmp_path / 'full_predictions.json').exists()
+
