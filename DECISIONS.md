@@ -827,6 +827,14 @@ Matched ordinary structured-memory comparator achieved byte-for-byte evaluation 
 checkpoint SHA256 was unchanged (`4adbea15...`), confirming nonmutation. 11 focused disambiguation tests pass.
 
 
+## D038: Protocol 5 extracts representations across entire SemCor Batch 1 with 100% admissibility and substitution
 
+**Status: bounded authorized check completed; positive scale-up outcome (20/20 admissible, 20/20 non-tautological substitution), 2026-10-13.** Follows D036 Protocol 4 contract and D037 persistent disambiguation findings. Expands representation extraction from 4 calibration samples to the full 20 development instances of SemCor Development Batch 1 (polysemous noun *order* / *orders*).
+[Protocol 5](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V5.md) and [results](experiments/SLM_REPRESENTATION_INTERFACE_V5_RESULTS.md) own scope. Exactly 20 offline calls on the pinned local Qwen3-4B Q4_K_M SLM; owned loopback server closed cleanly.
 
+All 20 proposals passed contract admissibility (20/20 admissible, 100%) AND achieved complete non-tautological semantic substitution (20/20, 100% target lemma eliminated):
+- Zero quotation or token slice errors across 20 sentences via Python deterministic anchor resolution.
+- Zero tautologies: negative lexical constraint generalized across diverse sentence structures, producing distinct glosses for magnitude, sequence, command, commercial, and condition senses.
+- Throughput averaged ~0.75 seconds per call after initial warmup (24.1s total generation time for 20 cases).
 
+All 20 proposals committed to the neutral store as `lifecycle: unverified_proposal`. Neutral store retrieval verified identical digests across primary and ordinary structured-memory consumers under actual process restart (`97406aab...`). State SHA256: `a8b66706...`. All focused tests pass. Pipeline stability and throughput at scale are demonstrated.

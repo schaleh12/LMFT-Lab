@@ -1,6 +1,18 @@
 # LMFT-Lab — current project state
 
-## Current session - Persistent contextual disambiguation & behavioral consequence (2026-10-13)
+## Current session - Protocol 5 Batch 1 Scale-up across 20 SemCor instances (2026-10-13)
+
+Preregistered [Protocol 5](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V5.md) completed across the entirety of
+SemCor Development Batch 1 (20 polysemous instances of *order* / *orders*). [Results](experiments/SLM_REPRESENTATION_INTERFACE_V5_RESULTS.md) own scope. Exactly 20 offline calls on pinned local Qwen3-4B Q4_K_M; owned loopback server terminated cleanly.
+
+Key findings:
+- **100% Admissibility (20/20):** Every instance satisfied the schema and literal quotation contract with zero retries. Python deterministic context span resolution eliminated all SLM token arithmetic errors.
+- **100% Non-Tautological Substitution (20/20):** Negative lexical constraint generalized across diverse sentence structures, completely eliminating lemma repetition and generating distinct, precise glosses for magnitude, sequence, command, commercial, and condition senses.
+- **Throughput & Efficiency:** Total generation time 24.1s (~0.75s per call after warmup); 20,649 prompt tokens, 1,903 output tokens.
+- **Shared Neutral Record & Restart Parity:** All 20 proposals committed as `lifecycle: unverified_proposal`. Neutral checkpoint verified byte-identical (`97406aab...`), state hash `a8b66706...`, and exact primary vs matched ordinary structured-memory parity under separate process restart.
+External archive: `C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v5-20261013-001`. D038 records findings. Next milestone: Semantic Adjudication & Persistent Disambiguation Compilation across Batch 1.
+
+## Prior session - Persistent contextual disambiguation & behavioral consequence (2026-10-13)
 
 Preregistered [Persistent Disambiguation Protocol](experiments/PERSISTENT_DISAMBIGUATION_PROTOCOL.md) completed across
 all 33 SemCor development instances, evaluating the first unassisted behavioral consequence of remembered Protocol 4
