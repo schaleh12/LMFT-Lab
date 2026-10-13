@@ -2,7 +2,7 @@
 
 ## Start here
 
-Fresh Codex sessions: [AGENTS.md](AGENTS.md) → [PROJECT_STATE.md](PROJECT_STATE.md) → relevant
+Fresh development sessions: [AGENTS.md](AGENTS.md) → [PROJECT_STATE.md](PROJECT_STATE.md) → relevant
 [DECISIONS.md](DECISIONS.md) entries → the authoritative specifications, code and reports
 linked there. The snapshot owns current-step guidance; the material below provides project
 background and setup.
@@ -15,7 +15,7 @@ LMFT investigates whether persistent fuzzy conceptual relationships can develop
 understanding, dispositions, judgments, and independent reasoning through repeated
 interaction with language models. The newborn initially depends on a founding
 LLM; later internalization into structures, classifiers, procedures, or specialized
-small models must be demonstrated experimentally. Codex assists development
+small models must be demonstrated experimentally. Antigravity assists development
 externally and is not currently integrated as a runtime teacher.
 
 The seed acts like a philosophical or religious constitution, without supernatural
