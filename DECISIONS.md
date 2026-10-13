@@ -786,4 +786,27 @@ checkpoint SHA256 remained completely invariant (`fddbfbb9...`). 10 focused adju
 prompting frontier is prompting for target lemma substitution in the gloss.
 
 
+## D036: Protocol 4 achieves 4/4 semantic substitution and 100% WordNet concordance
+
+**Status: bounded authorized check completed; positive outcome (4/4 admissible, 4/4 non-tautological substitution),
+2026-10-13.** Follows D035 findings on gloss tautology. Introduces an explicit negative lexical constraint forbidding
+the target lemma (`order` / `orders`) in the gloss and requiring explanatory substitution/definition.
+[Protocol 4](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V4.md) and
+[results](experiments/SLM_REPRESENTATION_INTERFACE_V4_RESULTS.md) own scope. Exactly 4 offline calls on the
+identical development cases; owned server closed cleanly.
+
+All four proposals passed contract admissibility (4/4 admissible, 100%) AND achieved complete non-tautological
+semantic substitution (4/4, 100% target lemma eliminated):
+- `representation-01` (`order%1:07:01::`): `"a level or magnitude"` (100% magnitude concordance).
+- `representation-02` (`order%1:10:00::`): `"the sequence in which things are handled or the priority given to actions"`.
+- `representation-03` (`order%1:10:01::`): `"a command or instruction he had anticipated but did not receive"`.
+- `representation-04` (`order%1:10:02::`): `"sequence in which the awards are created"` (100% sequence concordance).
+
+Subsequent semantic adjudication confirmed 4/4 fully concordant (score 2/2), 0 tautological glosses, and 100% average
+discriminative precision (0 false positives across 33 development sentences). Neutral store retrieval verified
+identical digests across primary and ordinary structured-memory consumers under actual process restart (`4adbea15...`).
+15 focused V4 tests pass. Both interface admissibility and semantic substitution boundaries are resolved.
+
+
+
 

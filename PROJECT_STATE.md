@@ -1,6 +1,29 @@
 # LMFT-Lab — current project state
 
-## Current session - Semantic adjudication of admitted representations (2026-10-13)
+## Current session - Protocol 4 complete semantic substitution & adjudication (2026-10-13)
+
+Four authorized offline calls completed on the identical four development examples
+under [Protocol 4](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V4.md).
+[Results](experiments/SLM_REPRESENTATION_INTERFACE_V4_RESULTS.md) own scope. Exactly
+4 calls/one owned offline server; stopped normally, **4/4 admissible (100%) AND 4/4 NON-TAUTOLOGICAL
+SEMANTIC SUBSTITUTION (100%)**.
+Introduced a negative lexical constraint forbidding the target lemma (`order` / `orders`) in the gloss,
+requiring explanatory substitution. All 4 produced rich, non-target context phrase anchors (`[19:23]`,
+`[45:53]`, `[5:12]`, `[13:19]`) and substituted target meanings:
+- `representation-01`: `"a level or magnitude"` (WordNet degree/magnitude)
+- `representation-02`: `"the sequence in which things are handled or the priority given to actions"`
+- `representation-03`: `"a command or instruction he had anticipated but did not receive"`
+- `representation-04`: `"sequence in which the awards are created"` (WordNet succession)
+
+Subsequent semantic adjudication confirmed 4/4 fully concordant (score 2/2), 0 tautological glosses,
+and 100% average discriminative precision (0 false positives across 33 development sentences).
+Neutral store contract verified under actual separate process restart with exact primary and ordinary
+structured-memory parity (`4adbea15...`); nonmutation verified. 15 focused V4 tests, 10 adjudication tests,
+and all regression tests pass. External archive:
+`C:/Users/schal/AppData/Local/LMFT-Lab/research-archives/slm-representation-interface-v4-20261013-002`.
+D036 records findings. Interface admissibility and non-tautological semantic substitution are resolved.
+
+## Prior session - Semantic adjudication of admitted representations (2026-10-13)
 
 Preregistered [Semantic Adjudication Protocol](experiments/SEMANTIC_ADJUDICATION_PROTOCOL.md) completed across the
 four admitted Protocol 3 representations and all 33 SemCor development sentences. [Results](experiments/SEMANTIC_ADJUDICATION_RESULTS.md)
