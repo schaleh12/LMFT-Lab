@@ -138,7 +138,7 @@ def compute_chromatic_aura(dials):
 
 def compute_priming_dials(prediction):
     """Computes continuous fuzzy priming activations on the Philosophical dials."""
-    if prediction['decision'] == 'abstain':
+    if prediction.get('decision') == 'abstain' or not prediction.get('selected_sense'):
         return {
             'epistemic_abstention': True,
             'dominant_stance': 'neutral_open',

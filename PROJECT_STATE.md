@@ -1,6 +1,18 @@
 # LMFT-Lab — current project state
 
-## Current session - Full-Corpus Capacity Compilation & Metacognitive Priming (2026-10-13)
+## Current session - Meditative Homeostatic Regulation & Android Heartbeat (2026-10-13)
+
+Preregistered [Meditative Regulation Protocol](experiments/MEDITATIVE_REGULATION_PROTOCOL.md) completed across the complete
+33-instance SemCor development corpus. [Results](experiments/MEDITATIVE_REGULATION_RESULTS.md) own scope. Zero runtime LLM calls during unassisted evaluation.
+
+Key findings:
+- **Complete Canonical Leaf Node Verification (24/24 Leaf Nodes):** Dynamically populated all 24 leaf nodes across all 4 canonical founding branches (`Cultural`, `Philosophical`, `Experiential`, `Psychological`) from frozen `birth.py` without mutating or expanding the 40-node scaffold (Rule D001).
+- **Homeostatic Shadow Damping (21 Damping Events):** Mitigated extreme dyadic skews (volitional overextension/psychosis, existential siege/paranoia, and prejudice/hyper-rigidity) by dynamically applying counterbalancing compensatory adjustments (+0.10 to +0.15) on opposing leaf nodes.
+- **5 Grounded Behavioral Actuation Postures:** Mapped all 33 SemCor development instances into active behavioral postures (`Noble Sovereign Action`: 10, `Foundational Anchor`: 9, `Tactical Serial Progression`: 6, `Deep Flow Synthesis`: 4, `Equilibrium Mediation`: 4).
+- **Matched Ordinary-Memory Parity (Rule D004):** Evaluated in parallel with matched structured memory; achieved byte-for-byte evaluation parity (`606fb070...`). Checkpoints verified unmutated.
+- **Full Corpus & Test Suite Parity:** 6 focused tests pass. Output preserved in `outputs/meditative-regulation-corpus33-20261013-001/`. D047 records findings.
+
+## Prior session - Full-Corpus Capacity Compilation & Metacognitive Priming (2026-10-13)
 
 Preregistered [Unified Capacity Corpus Protocol](experiments/UNIFIED_CAPACITY_CORPUS_PROTOCOL.md) completed across the complete
 33-instance SemCor development corpus, uniting rules compiled from Batch 1 (Protocol 5) and Batch 2 (Protocol 6).
@@ -17,7 +29,7 @@ Full-Corpus [Metacognitive Priming Study](experiments/METACOGNITIVE_PRIMING_CORP
 - **Dynamic Hexadic Materia & Chromatic Auras:** Generated distinct, reproducible composite RGB/HEX color chords (e.g., Emerald-Crimson `#66A18C`, Teal-Cyan `#40C499`, Cerulean-Cyan `#4592AC`, Amber-Gold `#7FB56A`).
 - **Epistemic Mirror Integration:** Theory (gloss), Fact (syntactic collocate), Clarity (spread), and Confidence (1.0).
 - **Frozen Seed Geometry & Parity (Rules D001, D004):** Canonical 40-node seed geometry preserved. Matched ordinary-memory baseline achieved byte-for-byte evaluation parity (`0f2d80d216...`). Output preserved in `outputs/metacognitive-priming-corpus33-20261013-001/`. D045 records findings.
-- **Multi-Tier Hexadic Abstraction Stack (D046):** Expanded the console across 5 structured tiers of triplet dyads (Tier 1 Ontology, Tier 2 Materia & Elements, Tier 3 Chess Archetypes, Tier 4 Shadow Pathologies [Psychosis ↔ Paranoia], and Tier 5 Creature Kingdoms [Reptile, Mammal, Bird, Amphibian, Fish, Insect]). Synthesizes textured poetic action bids for each disambiguated sentence. 10 focused tests pass; 1,432 full regression tests pass.
+- **Multi-Tier Hexadic Abstraction Stack (D046):** Expanded the console across 5 structured tiers of triplet dyads (Tier 1 Ontology, Tier 2 Materia & Elements, Tier 3 Chess Archetypes, Tier 4 Shadow Pathologies [Psychosis ↔ Paranoia], and Tier 5 Creature Kingdoms [Reptile, Mammal, Bird, Amphibian, Fish, Insect]). Synthesizes textured poetic action bids for each disambiguated sentence. 10 focused tests pass.
 
 ## Prior session - Protocol 6 Batch 2 Scale-up across 13 SemCor instances (2026-10-13)
 

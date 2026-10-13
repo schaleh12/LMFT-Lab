@@ -950,5 +950,18 @@ Key findings:
 - **Frozen Seed & Baseline Invariant (Rules D001, D004):** Verified 40-node canonical seed preservation in `birth.py`. Full regression suite verified (1,432 / 1,432 passed in 184.65s). 10 focused tests pass.
 
 
+## D047: Meditative homeostatic regulation closes multi-domain loop with shadow damping and grounded behavioral actuation
 
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D046 multi-tier hexadic abstraction stack and connects persistent contextual disambiguation to all 4 canonical founding branches of the frozen LMFT seed (`Cultural`, `Philosophical`, `Experiential`, `Psychological`). Closes the multi-domain loop with homeostatic shadow damping and grounded behavioral actuation across the complete 33-instance SemCor development corpus. Zero runtime LLM calls during unassisted evaluation.
+[Protocol](experiments/MEDITATIVE_REGULATION_PROTOCOL.md) and [results](experiments/MEDITATIVE_REGULATION_RESULTS.md) own scope.
 
+Key findings:
+- **Complete Canonical Leaf Node Coverage (24/24 Leaf Nodes Verified):** Verified exact alignment with frozen seed inventory in `birth.py`. Populates all 24 leaf nodes dynamically without modifying or expanding the canonical 40-node scaffold.
+- **Homeostatic Shadow Damping (21 Damping Events):** Mitigates extreme dyadic skew (e.g. Being skew > 0.40 triggers damping of volitional overextension/psychosis or existential siege/paranoia; Structure skew > 0.70 triggers damping of prejudice/hyper-rigidity) by dynamically reinforcing the opposing counterweight (+0.10 to +0.15) to maintain developmental equilibrium.
+- **5 Grounded Behavioral Actuation Postures:** Mapped all 33 SemCor development instances into active behavioral postures:
+  - Noble Sovereign Action: 10 instances (authoritative directive execution tempered by honor).
+  - Foundational Anchor: 9 instances (societal order preserved via harmonic peace).
+  - Tactical Serial Progression: 6 instances (step-by-step organization minimizing waste).
+  - Deep Flow Synthesis: 4 instances (continuous scale measurement for sustained clarity).
+  - Equilibrium Mediation: 4 instances (balanced multi-coordinate attunement).
+- **Matched Ordinary-Memory Parity (Rule D004):** Primary learner and matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`606fb070...`). Both checkpoints remained unmutated before and after inference. 6 focused unit tests pass. Output preserved in `outputs/meditative-regulation-corpus33-20261013-001/`.
