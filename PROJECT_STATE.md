@@ -1,6 +1,23 @@
 # LMFT-Lab — current project state
 
-## Current session - Protocol 4 complete semantic substitution & adjudication (2026-10-13)
+## Current session - Persistent contextual disambiguation & behavioral consequence (2026-10-13)
+
+Preregistered [Persistent Disambiguation Protocol](experiments/PERSISTENT_DISAMBIGUATION_PROTOCOL.md) completed across
+all 33 SemCor development instances, evaluating the first unassisted behavioral consequence of remembered Protocol 4
+representations. [Results](experiments/PERSISTENT_DISAMBIGUATION_RESULTS.md) own scope. Zero runtime LLM calls during inference.
+
+Key finding: unassisted persistent capacity rules achieved **100% precision on fired cases (5/5 correct singletons,
+0 wrong singletons, 0 false positives)**, definitively remedying the catastrophic 100% false-positive rate from Phase B's
+bag-of-words rules. Successfully generalized the degree/magnitude rule to a second development instance (`example-7d87...`),
+predicting `order%1:07:01::` with explanatory gloss `"a level or magnitude"` and 100% accuracy. Honestly abstained on all
+28 unseen contextual sentences without false guessing.
+
+Matched ordinary structured-memory baseline achieved byte-for-byte prediction and evaluation parity (`5e63d902...`).
+Checkpoint SHA256 was invariant (`4adbea15...`), confirming nonmutation. Exact evaluation digest reproduced under fresh
+process restart. 11 focused disambiguation tests, 15 V4 tests, 10 adjudication tests, and all regression tests pass.
+Output preserved in `outputs/persistent-disambiguation-20261013-001/`. D037 records findings.
+
+## Prior session - Protocol 4 complete semantic substitution & adjudication (2026-10-13)
 
 Four authorized offline calls completed on the identical four development examples
 under [Protocol 4](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V4.md).

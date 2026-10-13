@@ -808,5 +808,25 @@ identical digests across primary and ordinary structured-memory consumers under 
 15 focused V4 tests pass. Both interface admissibility and semantic substitution boundaries are resolved.
 
 
+## D037: Persistent contextual disambiguation demonstrates first behavioral consequence and 100% precision
+
+**Status: adopted evaluation finding; experimental analysis complete, 2026-10-13.** Follows D036 semantic
+representations. Investigates unassisted contextual disambiguation across all 33 SemCor development instances
+driven purely by remembered Protocol 4 representations compiled from disk into persistent capacity state.
+Zero runtime LLM calls during inference.
+[Protocol](experiments/PERSISTENT_DISAMBIGUATION_PROTOCOL.md) and
+[results](experiments/PERSISTENT_DISAMBIGUATION_RESULTS.md) own scope.
+
+Persistent syntactic context anchors achieved 100% precision on fired cases (5/5 correct singletons, 0 wrong singletons,
+0 false positives), demonstrating a successful behavioral consequence of remembered evidence across process restarts.
+This directly remedies Phase B's bag-of-words failure (which suffered 100% false positives). The engine correctly
+generalized the magnitude rule to a second development instance, while honestly abstaining on all 28 sentences with
+unseen context.
+
+Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`5e63d902...`). Neutral
+checkpoint SHA256 was unchanged (`4adbea15...`), confirming nonmutation. 11 focused disambiguation tests pass.
+
+
+
 
 
