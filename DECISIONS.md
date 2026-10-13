@@ -875,3 +875,20 @@ Key findings:
 - **Calibrated Epistemic Abstention (13/13 Honest Abstentions):** The engine correctly identified that none of the 13 Batch 2 sentences matched known Batch 1 syntactic collocates, returning calibrated abstentions rather than ungrounded guesses.
 - **Baseline Parity:** Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`212bcfd4...`). Neutral checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 2 focused tests pass.
 
+
+## D042: Metacognitive priming prototype connects disambiguations to Philosophical seed dials
+
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D041 generalization benchmark and user conceptual specification of the Philosophical seed branch as a metacognitive stance console for an autonomous helper android. Connects unassisted persistent capacity disambiguations to continuous fuzzy priming activations on the 6 canonical Philosophical leaf nodes (`Agency`/`Existence`, `Order`/`Chaos`, `Continuity`/`Discreteness`). Zero runtime LLM calls during inference.
+[Protocol](experiments/METACOGNITIVE_PRIMING_PROTOCOL.md) and [results](experiments/METACOGNITIVE_PRIMING_RESULTS.md) own scope.
+
+Key findings:
+- **End-to-End Grounded Stance Priming:** Successfully maps natural language inputs into distinct dispositional clusters:
+  - `authoritative_directive_execution` (5 instances): high Agency (0.85), high Order (0.75).
+  - `stable_ontological_equilibrium` (7 instances): high Existence (0.85), high Order (0.85).
+  - `quantitative_continuum_awareness` (3 instances): high Continuity (0.85).
+  - `discrete_sequential_operation` (2 instances): high Discreteness (0.85).
+  - `balanced_contextual_stance` (3 instances): balanced agency/structure.
+  - `neutral_open` (13 instances): calibrated neutral stance on honest abstentions.
+- **Frozen Seed Geometry Preservation (Rule D001):** Verified that all 6 targeted leaf nodes exist in `birth.py` without modifying, renaming, removing, or rearranging the 40 canonical founding nodes.
+- **Baseline Parity (Rule D004):** Primary capacity reader and ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`8bb94ceb...`). Checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 5 focused tests pass.
+

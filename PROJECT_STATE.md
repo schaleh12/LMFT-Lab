@@ -27,7 +27,12 @@ Frozen [Generalization Benchmark on Batch 2](experiments/GENERALIZATION_BATCH2_R
 - **Zero False Positives:** 0/13 wrong singletons (0.0% false positive rate).
 - **100% Honest Abstention:** Calibrated abstention across all 13 unseen contexts. Zero hallucinations.
 - **Baseline Parity:** Byte-for-byte evaluation parity (`212bcfd4...`). Checkpoint nonmutation verified (`97406aab...`). D041 records findings. Output preserved in `outputs/generalization-batch2-20261013-001/`.
-Next milestone: Metacognitive Priming Console Prototype (connecting disambiguated senses to the Philosophical seed dials).
+
+Prototype [Metacognitive Priming Console](experiments/METACOGNITIVE_PRIMING_RESULTS.md) connected unassisted persistent disambiguations directly to the frozen Philosophical seed dials (`Agency`/`Existence`, `Order`/`Chaos`, `Continuity`/`Discreteness`):
+- **Grounded Stance Clustering:** Clustered 33 sentences into 5 active dispositions (`authoritative_directive_execution`, `stable_ontological_equilibrium`, `quantitative_continuum_awareness`, `discrete_sequential_operation`, `balanced_contextual_stance`) plus 13 calibrated neutral-open states.
+- **Frozen Seed Invariant Preserved:** Exact path IDs verified against `birth.py` without mutating the canonical 40 nodes.
+- **Baseline Parity:** Byte-for-byte evaluation parity (`8bb94ceb...`). Checkpoint nonmutation verified (`97406aab...`). D042 records findings. Output preserved in `outputs/metacognitive-priming-20261013-001/`.
+
 
 
 
