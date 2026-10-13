@@ -20,6 +20,69 @@ PHILOSOPHICAL_LEAF_NODES = {
     'discreteness': 'philosophical/persistence/discreteness',
 }
 
+HEXADIC_PALETTE = {
+    'agency': {
+        'node_id': 'philosophical/being/agency',
+        'color_name': 'red',
+        'rgb': [255, 0, 68],
+        'dimension': 'extra-dimensional',
+        'materia_type': 'summoning',
+        'chess_archetype': 'queen',
+        'element': 'fire',
+        'archetype_role': 'Volition, directive command, telekinetic movement',
+    },
+    'existence': {
+        'node_id': 'philosophical/being/existence',
+        'color_name': 'cyan',
+        'rgb': [0, 240, 255],
+        'dimension': 'extra-dimensional',
+        'materia_type': 'white_magic',
+        'chess_archetype': 'king',
+        'element': 'ice/water',
+        'archetype_role': 'Ground of being, ontological stasis, essential reality',
+    },
+    'order': {
+        'node_id': 'philosophical/structure/order',
+        'color_name': 'green',
+        'rgb': [0, 255, 102],
+        'dimension': 'inter-dimensional',
+        'materia_type': 'instrument_magic',
+        'chess_archetype': 'knight',
+        'element': 'wind',
+        'archetype_role': 'Harmonic structure, medium mobility, law of organization',
+    },
+    'chaos': {
+        'node_id': 'philosophical/structure/chaos',
+        'color_name': 'magenta',
+        'rgb': [255, 0, 170],
+        'dimension': 'inter-dimensional',
+        'materia_type': 'status_poison',
+        'chess_archetype': 'bishop',
+        'element': 'poison',
+        'archetype_role': 'Entropy, absurdity, corruption, disruptive anomaly',
+    },
+    'continuity': {
+        'node_id': 'philosophical/persistence/continuity',
+        'color_name': 'blue',
+        'rgb': [0, 102, 255],
+        'dimension': 'hyper-dimensional',
+        'materia_type': 'support_black_magic',
+        'chess_archetype': 'rook',
+        'element': 'deep_flow',
+        'archetype_role': 'Continuous scale, scientific continuum, sustained duration',
+    },
+    'discreteness': {
+        'node_id': 'philosophical/persistence/discreteness',
+        'color_name': 'yellow',
+        'rgb': [255, 215, 0],
+        'dimension': 'hyper-dimensional',
+        'materia_type': 'command_tactics',
+        'chess_archetype': 'pawn',
+        'element': 'earth/steps',
+        'archetype_role': 'Discrete steps, tactical command, serial succession',
+    },
+}
+
 
 def verify_canonical_nodes():
     """Verify that all philosophical target nodes exist in the frozen seed inventory."""
@@ -30,6 +93,18 @@ def verify_canonical_nodes():
 
 
 verify_canonical_nodes()
+
+
+def compute_chromatic_aura(dials):
+    """Computes composite RGB/HEX color aura from dial activations."""
+    total = sum(dials.values())
+    if total <= 1e-6:
+        return {'hex': '#808080', 'rgb': [128, 128, 128], 'tone': 'neutral_slate'}
+    r = int(sum(HEXADIC_PALETTE[k]['rgb'][0] * dials[k] for k in dials) / total)
+    g = int(sum(HEXADIC_PALETTE[k]['rgb'][1] * dials[k] for k in dials) / total)
+    b = int(sum(HEXADIC_PALETTE[k]['rgb'][2] * dials[k] for k in dials) / total)
+    hex_code = f'#{r:02X}{g:02X}{b:02X}'
+    return {'hex': hex_code, 'rgb': [r, g, b]}
 
 
 def compute_priming_dials(prediction):
@@ -45,6 +120,19 @@ def compute_priming_dials(prediction):
                 'persistence_continuity_vs_discreteness': 0.0,
             },
             'confidence': 0.0,
+            'materia_profile': {k: 0.0 for k in HEXADIC_PALETTE},
+            'chromatic_aura': {'hex': '#808080', 'rgb': [128, 128, 128], 'tone': 'neutral_slate'},
+            'dimensional_resonance': {
+                'extra_dimensional_being': 'unactivated',
+                'inter_dimensional_structure': 'unactivated',
+                'hyper_dimensional_persistence': 'unactivated',
+            },
+            'epistemic_mirror': {
+                'theory': 'Hypothesis withheld due to unobserved context',
+                'fact': 'Zero matching syntactic context anchors observed',
+                'clarity': 1.0,
+                'confidence': 0.0,
+            },
         }
     elif prediction['decision'] == 'ambiguous':
         return {
@@ -58,18 +146,31 @@ def compute_priming_dials(prediction):
                 'persistence_continuity_vs_discreteness': 0.0,
             },
             'confidence': 0.50,
+            'materia_profile': {k: 0.50 for k in HEXADIC_PALETTE},
+            'chromatic_aura': {'hex': '#AAAAAA', 'rgb': [170, 170, 170], 'tone': 'deliberative_gray'},
+            'dimensional_resonance': {
+                'extra_dimensional_being': 'split',
+                'inter_dimensional_structure': 'split',
+                'hyper_dimensional_persistence': 'split',
+            },
+            'epistemic_mirror': {
+                'theory': 'Competing hypotheses detected',
+                'fact': 'Ambiguous syntactic context anchors observed',
+                'clarity': 0.0,
+                'confidence': 0.50,
+            },
         }
 
     sense = prediction['selected_sense']
     dials = {}
 
-    # 1. Being Dyad: Agency vs Existence
+    # 1. Being Dyad: Agency vs Existence (Extra-dimensional)
     if sense in ('order%1:10:03::', 'order%1:10:01::'):
-        # Directive action / commercial execution
+        # Directive action / commercial execution (Red / Summoning / Queen)
         dials['agency'] = 0.85
         dials['existence'] = 0.40
     elif sense == 'order%1:26:00::':
-        # Condition of society / established state
+        # Condition of society / established state (Cyan / White Magic / King)
         dials['agency'] = 0.20
         dials['existence'] = 0.85
     elif sense == 'order%1:26:02::':
@@ -80,9 +181,9 @@ def compute_priming_dials(prediction):
         dials['agency'] = 0.45
         dials['existence'] = 0.55
 
-    # 2. Structure Dyad: Order vs Chaos
+    # 2. Structure Dyad: Order vs Chaos (Inter-dimensional)
     if sense in ('order%1:26:00::', 'order%1:26:02::'):
-        # Social stability, cosmic order, logical arrangement
+        # Social stability, cosmic order, logical arrangement (Green / Wind / Knight)
         dials['order'] = 0.85
         dials['chaos'] = 0.05
     elif sense == 'order%1:10:03::':
@@ -97,13 +198,13 @@ def compute_priming_dials(prediction):
         dials['order'] = 0.60
         dials['chaos'] = 0.15
 
-    # 3. Persistence Dyad: Continuity vs Discreteness
+    # 3. Persistence Dyad: Continuity vs Discreteness (Hyper-dimensional)
     if sense == 'order%1:07:01::':
-        # Degree / magnitude on a continuous scale
+        # Degree / magnitude on a continuous scale (Blue / Black Magic / Rook)
         dials['continuity'] = 0.85
         dials['discreteness'] = 0.15
     elif sense in ('order%1:14:00::', 'order%1:10:02::'):
-        # Sequential steps / discrete succession
+        # Sequential steps / discrete succession (Yellow / Command / Pawn)
         dials['continuity'] = 0.15
         dials['discreteness'] = 0.85
     else:
@@ -128,6 +229,35 @@ def compute_priming_dials(prediction):
     else:
         stance = 'balanced_contextual_stance'
 
+    # Compute chromatic aura and archetypal profiles
+    aura = compute_chromatic_aura(dials)
+    materia_profile = {
+        k: {
+            'activation': dials[k],
+            'color': HEXADIC_PALETTE[k]['color_name'],
+            'materia': HEXADIC_PALETTE[k]['materia_type'],
+            'archetype': HEXADIC_PALETTE[k]['chess_archetype'],
+            'dimension': HEXADIC_PALETTE[k]['dimension'],
+            'element': HEXADIC_PALETTE[k]['element'],
+        }
+        for k in dials
+    }
+
+    dimensional_res = {
+        'extra_dimensional_being': f"{'agency_queen_fire' if b_agency > 0 else 'existence_king_water'} (bias: {round(b_agency, 2)})",
+        'inter_dimensional_structure': f"{'order_knight_wind' if b_order > 0 else 'chaos_bishop_poison'} (bias: {round(b_order, 2)})",
+        'hyper_dimensional_persistence': f"{'continuity_rook_black_magic' if b_persistence > 0 else 'discreteness_pawn_command'} (bias: {round(b_persistence, 2)})",
+    }
+
+    # Epistemic Mirror (Psychological: Truth & Contemplation)
+    clarity = round(max(dials.values()) - min(dials.values()), 3)
+    epistemic_mirror = {
+        'theory': prediction.get('explanation', ''),
+        'fact': f"Observed syntactic collocate for sense {sense}",
+        'clarity': clarity,
+        'confidence': 1.0,
+    }
+
     return {
         'epistemic_abstention': False,
         'dominant_stance': stance,
@@ -138,7 +268,12 @@ def compute_priming_dials(prediction):
             'persistence_continuity_vs_discreteness': round(b_persistence, 3),
         },
         'confidence': 1.0,
+        'chromatic_aura': aura,
+        'materia_profile': materia_profile,
+        'dimensional_resonance': dimensional_res,
+        'epistemic_mirror': epistemic_mirror,
     }
+
 
 
 def evaluate_priming(compiled_rules, examples):
