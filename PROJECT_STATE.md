@@ -1,6 +1,24 @@
 # LMFT-Lab — current project state
 
-## Current session - Protocol 2 local-SLM interface check (2026-10-13)
+## Current session - Protocol 3 deterministic context span resolution (2026-10-13)
+
+Four authorized offline calls completed on the identical four development examples
+under [Protocol 3](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V3.md).
+[Results](experiments/SLM_REPRESENTATION_INTERFACE_V3_RESULTS.md) own scope. Exactly
+4 calls/one owned offline server; stopped normally, **4/4 admissible (100%)**.
+Relieved the 4B model of integer slice arithmetic by accepting surface `context_quote`
+and resolving `(start, end)` token boundaries deterministically in Python with proximity
+prioritization. All 4 produced rich, non-target context phrase anchors (`[16:23]`, `[46:53]`,
+`[5:12]`, `[10:19]`) and were admitted to the neutral store under `lifecycle: unverified_proposal`.
+
+Neutral store contract verified under actual separate process restart with exact primary
+and ordinary structured-memory parity (`fddbfbb9...`); nonmutation verified. 27 focused V3 tests,
+44 V2 tests, 42 V1 tests, and all full regression tests pass. External archive:
+`C:/Users/schal/AppData/Local/LMFT-Lab/research-archives/slm-representation-interface-v3-20261013-001`.
+D034 records findings. Interface admissibility gap resolved; next milestone is semantic
+adjudication of admitted representations against matched baselines.
+
+## Prior session - Protocol 2 local-SLM interface check (2026-10-13)
 
 Four authorized offline calls completed on the identical four development examples
 under [Protocol 2](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V2.md).

@@ -747,3 +747,23 @@ under actual process restart (`7b20af56...`). 44 focused V2 tests, 42 V1 tests, 
 pass. No seed, numerical mechanism, or production integration changes. All artifacts preserved in external
 archive `C:/Users/schal/AppData/Local/LMFT-Lab/research-archives/slm-representation-interface-v2-20261013-001`.
 
+
+## D034: Protocol 3 deterministic context span resolution achieves interface admissibility
+
+**Status: bounded authorized check completed; positive interface admissibility outcome (4/4 admissible),
+2026-10-13.** Follows D033 token-arithmetic findings. Relieves the 4B model of integer slice arithmetic:
+model outputs `context_quote` as a plain string snippet from the sentence, and Python deterministically
+resolves the contiguous token slice `(start, end)` in `tokens` prioritizing proximity to target.
+[Protocol 3](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V3.md) and
+[results](experiments/SLM_REPRESENTATION_INTERFACE_V3_RESULTS.md) own scope. Exactly 4 offline calls on the
+identical development cases; owned server closed.
+
+All four proposals passed contract admissibility (4/4 admissible, 100%). Each case produced a concise
+reading with rich, non-target context phrase anchors (`[16:23]`, `[46:53]`, `[5:12]`, `[10:19]`).
+All four were admitted as `lifecycle: unverified_proposal` to the neutral store.
+
+Neutral store retrieval verified identical digests across primary and ordinary structured-memory consumers
+under actual process restart (`fddbfbb9...`). 27 focused V3 tests pass. Interface admissibility is established;
+subsequent semantic adjudication remains an independent research step.
+
+
