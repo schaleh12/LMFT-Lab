@@ -864,3 +864,14 @@ Key findings:
 - **Zero Ambiguities:** Zero conflicting sense matches, verifying that syntactic anchor constraints provide clean mutual exclusivity.
 - **Baseline Parity:** Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`206e4777...`). Checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 12 focused disambiguation tests pass.
 
+
+## D041: Generalization benchmark on SemCor Batch 2 verifies zero false positives and honest abstention
+
+**Status: adopted evaluation finding; experimental analysis complete, 2026-10-13.** Follows D040 persistent capacity compilation. Evaluates the 20 persistent capacity rules compiled from Batch 1 across all 13 unseen development instances of SemCor Development Batch 2 (`development_batch_2`). Unassisted execution; zero runtime LLM calls.
+[Protocol](experiments/GENERALIZATION_BATCH2_PROTOCOL.md) and [results](experiments/GENERALIZATION_BATCH2_RESULTS.md) own scope.
+
+Key findings:
+- **Zero False Positives (0/13, 0.0% FP Rate):** Unlike Phase B's bag-of-words co-occurrence failure (which produced 100% false positives across unseen sentences), the persistent syntactic context rules produced 0 wrong singletons.
+- **Calibrated Epistemic Abstention (13/13 Honest Abstentions):** The engine correctly identified that none of the 13 Batch 2 sentences matched known Batch 1 syntactic collocates, returning calibrated abstentions rather than ungrounded guesses.
+- **Baseline Parity:** Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`212bcfd4...`). Neutral checkpoint SHA256 was unchanged (`97406aab...`), confirming nonmutation. 2 focused tests pass.
+

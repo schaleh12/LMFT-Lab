@@ -22,7 +22,13 @@ Unassisted [Persistent Capacity Disambiguation](experiments/PERSISTENT_DISAMBIGU
 - **100% Precision on Fired Cases:** 20/20 correct singletons, 0 wrong singletons (0 false positives).
 - **Calibrated Uncertainty:** 13 honest abstentions on unseen Batch 2 contexts (0 false guesses). Zero ambiguities.
 - **Parity & Persistence:** Exact evaluation digest reproduction under separate process restart (`206e4777...`). Checkpoint SHA256 invariant (`97406aab...`). D040 records findings. Output preserved in `outputs/persistent-disambiguation-v5-20261013-001/`.
+
+Frozen [Generalization Benchmark on Batch 2](experiments/GENERALIZATION_BATCH2_RESULTS.md) evaluated Batch 1 capacity memory on the 13 unseen SemCor instances:
+- **Zero False Positives:** 0/13 wrong singletons (0.0% false positive rate).
+- **100% Honest Abstention:** Calibrated abstention across all 13 unseen contexts. Zero hallucinations.
+- **Baseline Parity:** Byte-for-byte evaluation parity (`212bcfd4...`). Checkpoint nonmutation verified (`97406aab...`). D041 records findings. Output preserved in `outputs/generalization-batch2-20261013-001/`.
 Next milestone: Metacognitive Priming Console Prototype (connecting disambiguated senses to the Philosophical seed dials).
+
 
 
 
