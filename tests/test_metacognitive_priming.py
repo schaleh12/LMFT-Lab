@@ -133,3 +133,25 @@ def test_dimensional_resonance_and_epistemic_mirror():
     assert mirror['clarity'] > 0.0
     assert mirror['confidence'] == 1.0
 
+
+def test_full_corpus_multi_checkpoint_priming(tmp_path):
+    cp1 = Path(r'C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v5-20261013-001\neutral-state\checkpoint.json')
+    cp2 = Path(r'C:\Users\schal\AppData\Local\LMFT-Lab\research-archives\slm-representation-interface-v6-20261013-001\neutral-state\checkpoint.json')
+    dev_export = Path(r'C:\Users\schal\AppData\Local\Temp\lmft-semcor-order-development-v1-dzil94yr\development.json')
+
+    if not (cp1.exists() and cp2.exists() and dev_export.exists()):
+        pytest.skip('External archive files not found on local path')
+
+    summary = mp.run_priming_study([cp1, cp2], dev_export, output_dir=tmp_path)
+
+    assert summary['total_instances_primed'] == 33
+    assert summary['consumer_parity'] is True
+    # In full corpus, zero abstentions
+    assert 'neutral_open' not in summary['stance_distribution']
+    assert summary['stance_distribution']['authoritative_directive_execution'] == 10
+    assert summary['stance_distribution']['stable_ontological_equilibrium'] == 9
+    assert summary['stance_distribution']['discrete_sequential_operation'] == 6
+    assert summary['stance_distribution']['quantitative_continuum_awareness'] == 4
+    assert summary['stance_distribution']['balanced_contextual_stance'] == 4
+
+

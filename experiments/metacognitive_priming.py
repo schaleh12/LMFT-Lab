@@ -4,6 +4,11 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'src'))
+sys.path.insert(0, str(ROOT / 'experiments'))
 
 from lmft_lab.birth import _inventory
 from lmft_lab.runtime_store import Store, digest, atomic_json
@@ -296,11 +301,16 @@ def evaluate_priming(compiled_rules, examples):
     return priming_results
 
 
-def run_priming_study(checkpoint_path, dev_path, output_dir=None):
+def run_priming_study(checkpoints, dev_path, output_dir=None):
     """Full study execution enforcing Rule D004 baseline parity."""
-    checkpoint_file = Path(checkpoint_path)
-    if not checkpoint_file.is_file():
-        raise FileNotFoundError(f'checkpoint missing: {checkpoint_path}')
+    if isinstance(checkpoints, (str, Path)):
+        checkpoint_list = [Path(checkpoints)]
+    else:
+        checkpoint_list = [Path(p) for p in checkpoints]
+
+    for cp in checkpoint_list:
+        if not cp.is_file():
+            raise FileNotFoundError(f'checkpoint missing: {cp}')
 
     dev_file = Path(dev_path)
     if not dev_file.is_file():
@@ -308,16 +318,25 @@ def run_priming_study(checkpoint_path, dev_path, output_dir=None):
 
     all_rows = json.loads(dev_file.read_text(encoding='utf-8'))
 
-    # Load from primary and ordinary memory
-    store = Store(checkpoint_file.parent)
-    primary_state = store.read()
-    memory_state = json.loads(checkpoint_file.read_text(encoding='utf-8'))['state']
+    # Load from primary and ordinary memory across all checkpoints
+    all_primary_records = []
+    all_memory_records = []
+    checkpoint_hashes = {}
 
-    if digest(primary_state) != digest(memory_state):
-        raise ValueError('consumer parity failure at state read')
+    for cp in checkpoint_list:
+        store = Store(cp.parent)
+        primary_state = store.read()
+        memory_state = json.loads(cp.read_text(encoding='utf-8'))['state']
 
-    primary_rules = pd.compile_rules(primary_state['records'], all_rows)
-    memory_rules = pd.compile_rules(memory_state['records'], all_rows)
+        if digest(primary_state) != digest(memory_state):
+            raise ValueError(f'consumer parity failure at state read for {cp}')
+
+        all_primary_records.extend(primary_state['records'])
+        all_memory_records.extend(memory_state['records'])
+        checkpoint_hashes[str(cp)] = hashlib.sha256(cp.read_bytes()).hexdigest()
+
+    primary_rules = pd.compile_rules(all_primary_records, all_rows)
+    memory_rules = pd.compile_rules(all_memory_records, all_rows)
 
     if digest(primary_rules) != digest(memory_rules):
         raise ValueError('consumer parity failure at rule compilation')
@@ -336,7 +355,8 @@ def run_priming_study(checkpoint_path, dev_path, output_dir=None):
 
     summary = {
         'kind': KIND,
-        'checkpoint_sha256': hashlib.sha256(checkpoint_file.read_bytes()).hexdigest(),
+        'checkpoint_hashes': checkpoint_hashes,
+        'checkpoint_sha256': list(checkpoint_hashes.values())[0] if len(checkpoint_hashes) == 1 else None,
         'development_sha256': hashlib.sha256(dev_file.read_bytes()).hexdigest(),
         'total_instances_primed': len(primary_priming),
         'consumer_parity': True,
@@ -357,7 +377,7 @@ def run_priming_study(checkpoint_path, dev_path, output_dir=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--checkpoint', required=True)
+    parser.add_argument('--checkpoint', nargs='+', required=True, help='One or more checkpoint files')
     parser.add_argument('--dev-export', required=True)
     parser.add_argument('--output-dir')
     args = parser.parse_args()

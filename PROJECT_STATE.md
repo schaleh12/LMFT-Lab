@@ -1,6 +1,24 @@
 # LMFT-Lab — current project state
 
-## Current session - Protocol 6 Batch 2 Scale-up across 13 SemCor instances (2026-10-13)
+## Current session - Full-Corpus Capacity Compilation & Metacognitive Priming (2026-10-13)
+
+Preregistered [Unified Capacity Corpus Protocol](experiments/UNIFIED_CAPACITY_CORPUS_PROTOCOL.md) completed across the complete
+33-instance SemCor development corpus, uniting rules compiled from Batch 1 (Protocol 5) and Batch 2 (Protocol 6).
+[Results](experiments/UNIFIED_CAPACITY_CORPUS_RESULTS.md) own scope. Zero runtime LLM calls during inference.
+
+Key findings:
+- **100.0% Corpus Accuracy (33/33 Correct Singletons):** Every single sentence in the 33-instance development corpus was correctly disambiguated without a single error.
+- **Zero False Positives & Zero Ambiguities:** 0 wrong singletons (0.0% FP rate) and 0 ambiguities across both exact and core matching strategies, definitively resolving Phase B's bag-of-words co-occurrence failure across all 7 WordNet senses.
+- **Matched Ordinary-Memory Parity:** Primary capacity engine and matched structured-memory comparator achieved byte-for-byte evaluation parity (`fa6e23cadd...`). Both checkpoints remained unchanged before and after inference.
+- **Restart Invariance:** Fresh child process execution reproduced the evaluation digest identically. Output preserved in `outputs/corpus33-disambiguation-20261013-001/`. D044 records findings.
+
+Full-Corpus [Metacognitive Priming Study](experiments/METACOGNITIVE_PRIMING_CORPUS33_RESULTS.md) evaluated all 33 sentences through the Hexadic Metacognitive Priming Console across the 6 frozen Philosophical seed dials (`Agency`/`Existence`, `Order`/`Chaos`, `Continuity`/`Discreteness`):
+- **Corpus-Wide Grounded Stance Resolution (0 Abstentions):** All 33 sentences resolved into 5 active operational dispositions (`authoritative_directive_execution`: 10, `stable_ontological_equilibrium`: 9, `discrete_sequential_operation`: 6, `quantitative_continuum_awareness`: 4, `balanced_contextual_stance`: 4). Zero neutral abstentions.
+- **Dynamic Hexadic Materia & Chromatic Auras:** Generated distinct, reproducible composite RGB/HEX color chords (e.g., Emerald-Crimson `#66A18C`, Teal-Cyan `#40C499`, Cerulean-Cyan `#4592AC`, Amber-Gold `#7FB56A`).
+- **Epistemic Mirror Integration:** Theory (gloss), Fact (syntactic collocate), Clarity (spread), and Confidence (1.0).
+- **Frozen Seed Geometry & Parity (Rules D001, D004):** Canonical 40-node seed geometry preserved. Matched ordinary-memory baseline achieved byte-for-byte evaluation parity (`0f2d80d216...`). Output preserved in `outputs/metacognitive-priming-corpus33-20261013-001/`. D045 records findings.
+
+## Prior session - Protocol 6 Batch 2 Scale-up across 13 SemCor instances (2026-10-13)
 
 Preregistered [Protocol 6](experiments/SLM_REPRESENTATION_INTERFACE_PROTOCOL_V6.md) completed across the entirety of
 SemCor Development Batch 2 (all 13 remaining polysemous instances of *order* / *orders*). [Results](experiments/SLM_REPRESENTATION_INTERFACE_V6_RESULTS.md) own scope. Exactly 13 offline calls on pinned local Qwen3-4B Q4_K_M; owned loopback server terminated cleanly.

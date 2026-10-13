@@ -49,6 +49,7 @@ def compile_rules(records, dev_examples):
         context_quote = reading.get('context_quote', '')
         gloss = reading.get('gloss', '')
         context_anchor = reading.get('context_anchor', {})
+        anchor_quote = context_anchor.get('quote', context_quote) if context_anchor else context_quote
 
         # Align with gold sense in dev_examples
         matching_dev = [e for e in dev_examples if e['target_index'] == source['target']['start'] and
@@ -65,13 +66,13 @@ def compile_rules(records, dev_examples):
 
         gold_sense_key = matching_dev[0]['target_sense_key']
         original_example_id = matching_dev[0]['example_id']
-        core_pat = derive_core_pattern(context_quote)
+        core_pat = derive_core_pattern(anchor_quote)
 
         compiled.append({
             'rule_id': f'rule-{case_id}',
             'source_record_id': case_id,
             'target_sense_key': gold_sense_key,
-            'exact_quote': context_quote,
+            'exact_quote': anchor_quote,
             'core_pattern': core_pat,
             'gloss': gloss,
             'witnesses': [case_id, original_example_id],

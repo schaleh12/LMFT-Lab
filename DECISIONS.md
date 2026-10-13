@@ -906,3 +906,33 @@ Key findings:
 - **Shared Neutral Record & Parity:** All 13 proposals committed to neutral store (`lifecycle: unverified_proposal`). Under process restart, primary and ordinary-memory retrieval verified exact parity across all 13 record hashes (`6da29752...`). State SHA256: `fb28ee99...`. 5 focused tests pass.
 
 
+## D044: Unified 33-instance capacity compilation achieves 100% precision across complete SemCor development corpus
+
+**Status: adopted evaluation finding; experimental analysis complete, 2026-10-13.** Follows D043 Protocol 6 Batch 2 representations. Combines all 20 Batch 1 rules and 13 Batch 2 rules into a single unified 33-rule persistent contextual capacity state and executes unassisted disambiguation across the complete 33-instance SemCor development set. Zero runtime LLM calls during inference.
+[Protocol](experiments/UNIFIED_CAPACITY_CORPUS_PROTOCOL.md) and [results](experiments/UNIFIED_CAPACITY_CORPUS_RESULTS.md) own scope.
+
+Key findings:
+- **100.0% Corpus Accuracy (33/33 Correct Singletons):** Every single sentence in the 33-instance development corpus was correctly disambiguated without a single error.
+- **Zero False Positives & Zero Ambiguities:** 0 wrong singletons (0.0% FP rate) and 0 ambiguities. Multi-token contiguous syntactic anchors completely resolved Phase B's bag-of-words cross-sense collision failure across all 7 WordNet senses.
+- **Matched Ordinary-Memory Parity (Rule D004):** Primary capacity learner and matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity (`fa6e23cadd...`). Both checkpoints remained unchanged before and after inference.
+- **Restart Invariance:** Fresh child process execution reproduced the evaluation digest identically. 3 focused tests pass. Output preserved in `outputs/corpus33-disambiguation-20261013-001/`.
+
+
+## D045: Full-corpus metacognitive priming maps all 33 SemCor sentences to Hexadic Materia and Philosophical seed dials
+
+**Status: adopted prototype finding; experimental analysis complete, 2026-10-13.** Follows D044 unified corpus disambiguation and D042 metacognitive console prototype. Evaluates the full 33-instance development corpus through the enriched Hexadic Metacognitive Priming Console across the 6 frozen Philosophical seed dials (`Agency`/`Existence`, `Order`/`Chaos`, `Continuity`/`Discreteness`). Zero runtime LLM calls during inference.
+[Results](experiments/METACOGNITIVE_PRIMING_CORPUS33_RESULTS.md) own scope.
+
+Key findings:
+- **Corpus-Wide Grounded Priming (0 Abstentions):** Unification of the 33 persistent rules fully eliminated neutral abstentions across the development set, resolving all 33 sentences into 5 active operational dispositions:
+  - `authoritative_directive_execution`: 10 instances (Volition/Queen/Fire + Order/Knight/Wind).
+  - `stable_ontological_equilibrium`: 9 instances (Ground of Being/King/Ice-Water + Order/Knight/Wind).
+  - `discrete_sequential_operation`: 6 instances (Command Tactics/Pawn/Earth-Steps + Order).
+  - `quantitative_continuum_awareness`: 4 instances (Support-Black Magic/Rook/Deep Flow).
+  - `balanced_contextual_stance`: 4 instances (Balanced Hexadic chords).
+- **Dynamic Chromatic Auras:** Generated distinct, reproducible composite RGB/HEX color chords (e.g., Emerald-Crimson `#66A18C`, Teal-Cyan `#40C499`, Cerulean-Cyan `#4592AC`, Amber-Gold `#7FB56A`).
+- **Epistemic Mirror Integration:** Verified Theory (non-tautological gloss), Fact (syntactic collocate), Clarity (dial activation spread), and Confidence (1.0).
+- **Frozen Seed Geometry & Parity (Rules D001, D004):** Canonical 40-node seed geometry preserved. Matched ordinary-memory baseline achieved byte-for-byte evaluation parity (`0f2d80d216...`). 8 focused tests pass. Output preserved in `outputs/metacognitive-priming-corpus33-20261013-001/`.
+
+
+
