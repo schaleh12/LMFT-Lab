@@ -1230,6 +1230,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`4676efb1432b5bd2...`). 6 focused unit tests pass in `tests/test_prerequisite_gate.py`. Output preserved in `outputs/prerequisite-gate-benchmark-20261014-001/`.
 
 
+## D069: Dual-Coded Episodic Saliency Journal maintains autobiographical memory and narrative reflection
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D068 and executes Phase 2 of the Autobiographical Memory & Epistemic Coherence Milestone. Implements `src/lmft_lab/episodic_journal.py` providing a bounded FIFO ring buffer of dual-coded experiences (24-leaf continuous activations under `Truth/Fact` and natural English narrative reflections) gated by experiential salience ($\ge 0.65$ or disruption) without mutating the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/EPISODIC_JOURNAL_PROTOCOL.md) and [results](experiments/EPISODIC_JOURNAL_RESULTS.md) own scope.
+
+Key findings:
+- **Saliency Admission & Bloat Prevention (H1 Confirmed)**: Admitted 100% (4/4) of high-salience, high-novelty, and disrupted episodes while filtering out 100% (1/1) of mundane ambient events (salience $0.45 < 0.65$).
+- **Dual-Coded Narrative Synthesis (H2 Confirmed)**: Synthesized coherent first-person narrative prose paired with 24-leaf mathematical state coordinates, capturing both harmonious resolution and cognitive conflict.
+- **Precedent Retrieval (H3 Confirmed)**: Retrieved relevant autobiographical episodes reverse-chronologically with 100% target lemma precision.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all episodes (`e639b9646bb3b9f9...`). 7 focused unit tests pass in `tests/test_episodic_journal.py`. Output preserved in `outputs/episodic-journal-benchmark-20261014-001/`.
+
+
+
 
 
 
