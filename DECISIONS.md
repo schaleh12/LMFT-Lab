@@ -1088,3 +1088,16 @@ Key findings:
 - **Calibrated Honest Abstention (H4 Confirmed)**: 100% (2/2) unanchored and out-of-domain control sentences triggered epistemic abstention (*Neutral Observant Silence*).
 - **Matched Ordinary-Memory Parity (Rule D004)**: Primary capacity arbiter and matched ordinary-memory baseline achieved byte-for-byte decision parity. Checkpoints unmutated. 4 focused unit tests pass in `tests/test_multi_lemma_arbiter.py`. Output preserved in `outputs/multi-lemma-arbiter-corpus9-20261014-001/`.
 
+
+## D057: Persistent Capacity Memory Decay and Reinforcement dynamics maintain bounded fuzzy habituation
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D056 and executes Phase 2 of the Foundational Architecture Reinforcement Milestone. Implements `src/lmft_lab/capacity_decay.py` to evaluate continuous, bounded fuzzy habituation and reinforcement dynamics on learned non-seed capacity associations without mutating the frozen 40-node seed geometry (Rule D001).
+[Protocol](experiments/CAPACITY_DECAY_PROTOCOL.md) and [results](experiments/CAPACITY_DECAY_RESULTS.md) own scope.
+
+Key findings:
+- **Asymptotic Fuzzy Reinforcement**: Consistently confirmed rules converge smoothly towards the ceiling ($1.00$) with snapping tolerance ($\epsilon = 0.0005$), avoiding runaway over-saturation.
+- **Monotonic Habituation Decay**: Unvisited rules undergo gentle, bounded decay during idle epochs down to stability floor ($0.10$), preventing obsolete associations from dominating retrieval.
+- **Immediate Contradiction Damping**: Conflicting feedback triggers rapid proportional damping ($-35\%$), temporarily quarantining suspicious associations until subsequent verification.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator running parallel transitions achieved 100% byte-for-byte state digest parity across all 10 epochs. 6 focused unit tests pass in `tests/test_capacity_decay.py`. Output preserved in `outputs/capacity-decay-benchmark-20261014-001/`.
+
+
