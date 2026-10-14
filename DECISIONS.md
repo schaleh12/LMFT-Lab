@@ -1182,6 +1182,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`3159146f781f60c3...`). 6 focused unit tests pass in `tests/test_lateral_coupling.py`. Output preserved in `outputs/lateral-coupling-benchmark-20261014-001/`.
 
 
+## D065: Affective Plasticity Regulation dynamically adapts learning rates to novelty and certainty
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D064 and executes Phase 2 of the Holonomic Cross-Domain Recurrence & Cohesion Milestone. Implements `src/lmft_lab/affective_plasticity.py` to dynamically modulate learning plasticity ($\alpha$), habituation decay ($\lambda$), and contradiction damping ($\delta$) as a function of live Experiential (Novelty, Arousal, Valence, Retention) and Psychological (Contemplation Clarity, Confidence) states without mutating the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/AFFECTIVE_PLASTICITY_PROTOCOL.md) and [results](experiments/AFFECTIVE_PLASTICITY_RESULTS.md) own scope.
+
+Key findings:
+- **Surprise-Driven Hyper-Adaptation (H1 Confirmed)**: High novelty ($0.95$) and arousal ($0.90$) spiked learning plasticity by $+79.0\%$ ($\alpha = 0.358$), accelerating adaptation to unfamiliar contexts.
+- **Mastery-Driven Protection (H2 Confirmed)**: High contemplation clarity ($0.95$) and confidence ($0.95$) throttled plasticity down by $-55.5\%$ ($\alpha = 0.089$), shielding established memory against transient noise.
+- **Memory Retention Modulation (H3 Confirmed)**: High retention and positive valence slowed habituation decay down to $\lambda = 0.0278$, while volatile ungrounded contexts accelerated decay to $\lambda = 0.061$.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`61b76a2375566abf...`). 6 focused unit tests pass in `tests/test_affective_plasticity.py`. Output preserved in `outputs/affective-plasticity-benchmark-20261014-001/`.
+
+
+
 
 
 
