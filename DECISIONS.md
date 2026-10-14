@@ -1123,5 +1123,17 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all 4 cycles. 4 focused unit tests pass in `tests/test_clarification_bridge.py`. Output preserved in `outputs/clarification-bridge-benchmark-20261014-001/`.
 
 
+## D060: Inverted Lemma Index & Context Trie delivers 63x retrieval speedup across 1,000 capacity rules
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D059 and executes Phase 1 of the Curriculum Readiness & Scalability Milestone. Implements `src/lmft_lab/inverted_trie.py` combining an inverted lemma/token hash index with a longest-prefix collocation trie to eliminate $O(N)$ linear rule search over large-scale capacity memory with zero runtime LLM calls.
+[Protocol](experiments/INVERTED_TRIE_PROTOCOL.md) and [results](experiments/INVERTED_TRIE_RESULTS.md) own scope.
+
+Key findings:
+- **63.0x Retrieval Speedup (H1 Confirmed)**: Reduced sentence matching latency from 4.221 ms (linear scan) down to **0.067 ms** (67 microseconds) across 1,000 capacity rules. Index construction for 1,000 rules required only 5.64 ms.
+- **100% Equivalence (H2 Confirmed)**: Returned byte-for-byte identical rule candidate sets compared against exhaustive linear scanning across all multi-target and negative distractor queries (0 false positives, 0 false negatives).
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary-memory baseline comparator confirmed exact parity across all queries. 5 focused unit tests pass in `tests/test_inverted_trie.py`. Output preserved in `outputs/inverted-trie-benchmark-corpus1000-20261014-001/`.
+
+
+
 
 
