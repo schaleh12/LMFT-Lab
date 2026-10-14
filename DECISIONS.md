@@ -1062,3 +1062,15 @@ Key findings:
 Key findings:
 - **Clean Dependency Snapshot:** The runtime dependencies now consist solely of the verified active stack: `numpy==2.5.3`, `scipy==1.18.1`, `scikit-fuzzy==0.5.0`, `networkx==3.6.1`, and dev group `pytest==9.1.1`.
 - **Full Test Suite Regression:** All 1,457 unit and integration tests pass cleanly with 100% green coverage in 179.46s. Documentation updated across `README.md` and `AGENTS.md`.
+
+
+## D055: Cross-lemma generalization on polysemous noun 'bank' achieves 100% precision and zero false positives
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D054 and executes Phase 2 cross-lemma generalization on the polysemous noun *bank*. Evaluates unassisted capacity rules, homeostatic regulation across all 24 canonical leaves, the Tripartite Psychological Funnel, and Kaleidoscopic Prism rotation across 11 standardized benchmark instances with zero runtime LLM calls.
+[Protocol](experiments/SECOND_LEMMA_BANK_PROTOCOL.md) and [results](experiments/SECOND_LEMMA_BANK_RESULTS.md) own scope.
+
+Key findings:
+- **100% Precision on Fired Cases (H1 Confirmed)**: All 9 target sentences correctly disambiguated across financial, river embankment, and reserve senses with 0 wrong singletons (0.0% false-positive rate).
+- **Calibrated Honest Abstention (H2 Confirmed)**: 100% (2/2) unanchored and out-of-distribution control sentences cleanly triggered epistemic abstention (*Neutral Observant Silence*, zeroed angles, concordance 1.0) with zero hallucinated guesses.
+- **Cross-Lemma Prismatic Refraction (H3 Confirmed)**: Financial bank mapped to *Methodical & Pragmatic*, river bank mapped to *Communal & Reassuring*, and reserve bank mapped to *Authoritative & Chivalrous*.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Primary learner and matched ordinary structured-memory comparator produced identical evaluation digests. Checkpoints unmutated. 4 focused unit tests pass. Output preserved in `outputs/second-lemma-bank-corpus11-20261014-001/`.
