@@ -8,6 +8,20 @@
 
 ---
 
+## Quick-Launch Executables (Double-Click in Windows Explorer)
+
+To make developer inspection completely seamless without manual command typing, double-clickable Windows `.bat` executables are provided:
+
+| Launcher Script | Action |
+| :--- | :--- |
+| **`launch_tools.bat`** | **Master Interactive Menu** — Select and launch any tool from a clean console menu. |
+| **`run_observatory.bat`** | Instantly launches the **Brain Observatory** in your default web browser. |
+| **`run_talk.bat`** | Launches the **Interactive Pair-Interaction Console** (`talk_to_lmft.py`). |
+| **`run_diagnostic.bat`** | Runs the **Sandboxed Mindprint Diagnostic Battery** and displays the report card. |
+| **`run_symposium.bat`** | Runs the **Dual-LMFT Intersubjective Symposium** dialogue chamber. |
+
+---
+
 ## Tool Roster
 
 ### 1. The Brain Observatory (`observatory.html`)
