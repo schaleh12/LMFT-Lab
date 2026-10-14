@@ -1218,6 +1218,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all turns. 6 focused unit tests pass in `tests/test_dispositional_momentum.py`. Output preserved in `outputs/dispositional-momentum-benchmark-20261014-001/`.
 
 
+## D068: Fuzzy Prerequisite Coherence Gate unmasks epistemic distortions and enforces conditional virtue
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D067 and executes Phase 1 of the Autobiographical Memory & Epistemic Coherence Milestone. Implements `src/lmft_lab/prerequisite_gate.py` evaluating symbolic conditional dependencies (Freedom $\rightarrow$ Justice, Clarity $\rightarrow$ Confidence, Agency $\rightarrow$ Intention, Persistence $\rightarrow$ Order) without mutating the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/PREREQUISITE_GATE_PROTOCOL.md) and [results](experiments/PREREQUISITE_GATE_RESULTS.md) own scope.
+
+Key findings:
+- **100% Distortion Detection (H1 Confirmed)**: Unmasked and flagged all four simulated distortions: Coerced Compliance (Justice without Freedom), Dogmatic Hallucination (Confidence without Clarity), Unanchored Volition (Intention without Agency), and Ephemeral Symmetry (Order without Persistence).
+- **Substantial Score Attenuation (H2 Confirmed)**: Damped inauthentic nominal claims by $>50\%$ (e.g. nominal Justice $0.90 \rightarrow 0.4140$, nominal Confidence $0.95 \rightarrow 0.3182$).
+- **Harmonic Alignment Verification (H3 Confirmed)**: Authentic fulfillment of prerequisites achieved a Global Coherence Index of $0.9429$ with zero distortions.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`4676efb1432b5bd2...`). 6 focused unit tests pass in `tests/test_prerequisite_gate.py`. Output preserved in `outputs/prerequisite-gate-benchmark-20261014-001/`.
+
+
+
 
 
 
