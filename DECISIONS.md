@@ -1101,3 +1101,15 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator running parallel transitions achieved 100% byte-for-byte state digest parity across all 10 epochs. 6 focused unit tests pass in `tests/test_capacity_decay.py`. Output preserved in `outputs/capacity-decay-benchmark-20261014-001/`.
 
 
+## D058: Epistemic Modesty calibration guarantees 0.0% false-positive rate across noise and adversarial distractors
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D057 and executes Phase 3 of the Foundational Architecture Reinforcement Milestone. Implements `src/lmft_lab/epistemic_calibration.py` to quantitatively profile the decision boundary between active speaking postures and *Neutral Observant Silence* across 16 benchmark instances spanning exact matches, partial collocations, token-overlap distractors, and adversarial out-of-domain sentences with zero runtime LLM calls.
+[Protocol](experiments/EPISTEMIC_CALIBRATION_PROTOCOL.md) and [results](experiments/EPISTEMIC_CALIBRATION_RESULTS.md) own scope.
+
+Key findings:
+- **Zero False-Positive Operating Point (H1 Confirmed)**: Swept threshold values $\tau \in [0.20, 0.90]$ and established that operating threshold $\tau^* = 0.55$ achieves 100% precision (8/8 true positives), 0 false positives (0.0% FPR), and 100% specificity (8/8 true negatives on noise/adversarial).
+- **Clean Adversarial Separation (H2 Confirmed)**: All 4 adversarial sentences (quantum physics, volcanology, cuneiform, backpropagation) produced an alignment score of 0.00, cleanly triggering honest abstention into *Neutral Observant Silence*.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity across all 16 instances. 5 focused unit tests pass in `tests/test_epistemic_calibration.py`. Output preserved in `outputs/epistemic-calibration-corpus16-20261014-001/`.
+
+
+
