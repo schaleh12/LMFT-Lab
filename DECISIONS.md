@@ -1194,6 +1194,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`61b76a2375566abf...`). 6 focused unit tests pass in `tests/test_affective_plasticity.py`. Output preserved in `outputs/affective-plasticity-benchmark-20261014-001/`.
 
 
+## D066: Recurrent Post-Action Echo closes cybernetic loop between executive action and affective roots
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D065 and executes Phase 3 of the Holonomic Cross-Domain Recurrence & Cohesion Milestone. Implements `src/lmft_lab/recurrent_feedback.py` to feed emitted speaking registers and behavioral postures back into Experiential leaves without mutating or expanding the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/RECURRENT_FEEDBACK_PROTOCOL.md) and [results](experiments/RECURRENT_FEEDBACK_RESULTS.md) own scope.
+
+Key findings:
+- **Arousal Resolution & Volitional Satisfaction (H1 Confirmed)**: Decisive action damped sensory arousal by $-0.15$ ($0.65 \rightarrow 0.50$), elevated emotional valence by $+0.12$ ($0.50 \rightarrow 0.62$), and reinforced resonance ($0.50 \rightarrow 0.65$).
+- **Epistemic Modesty Relief (H2 Confirmed)**: Honest silence/abstention relieved cognitive tension (arousal $-0.10$) while preserving investigative salience ($+0.10$) for future contemplation.
+- **Cognitive Conflict Alert Amplification (H3 Confirmed)**: Epistemic conflict and low clarity spiked alertness (arousal $+0.15$, salience $+0.25$), actively priming the system for clarification.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`f3afdd200d87a261...`). 6 focused unit tests pass in `tests/test_recurrent_feedback.py`. Output preserved in `outputs/recurrent-feedback-benchmark-20261014-001/`.
+
+
+
 
 
 
