@@ -1074,3 +1074,17 @@ Key findings:
 - **Calibrated Honest Abstention (H2 Confirmed)**: 100% (2/2) unanchored and out-of-distribution control sentences cleanly triggered epistemic abstention (*Neutral Observant Silence*, zeroed angles, concordance 1.0) with zero hallucinated guesses.
 - **Cross-Lemma Prismatic Refraction (H3 Confirmed)**: Financial bank mapped to *Methodical & Pragmatic*, river bank mapped to *Communal & Reassuring*, and reserve bank mapped to *Authoritative & Chivalrous*.
 - **Matched Ordinary-Memory Parity (Rule D004)**: Primary learner and matched ordinary structured-memory comparator produced identical evaluation digests. Checkpoints unmutated. 4 focused unit tests pass. Output preserved in `outputs/second-lemma-bank-corpus11-20261014-001/`.
+
+
+## D056: Multi-Lemma Polysemy Arbiter eliminates cross-anchor contamination and composes harmonic postures
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D055 and executes Phase 1 of the Foundational Architecture Reinforcement Milestone. Implements `src/lmft_lab/multi_lemma_arbiter.py` to process complex sentences containing multiple polysemous target lemmas (*bank* and *order*) simultaneously without cross-anchor contamination, and composes harmonic multi-register postures through the Tripartite Funnel with zero runtime LLM calls.
+[Protocol](experiments/MULTI_LEMMA_ARBITER_PROTOCOL.md) and [results](experiments/MULTI_LEMMA_ARBITER_RESULTS.md) own scope.
+
+Key findings:
+- **100% Precision on Multi-Target Occurrences (H1 Confirmed)**: Disambiguated all 12 target occurrences across compound and single-target sentences with 100.0% precision (12/12) and zero wrong singletons (0.0% false-positive rate).
+- **Zero Cross-Anchor Bleed (H2 Confirmed)**: Bounded token radius ($\pm 4$ tokens) isolated collocates so that financial terms near *bank* did not distort judicial *orders*, and waterway terms near *bank* did not distort sequence *orders*.
+- **Harmonic Multi-Register Composition (H3 Confirmed)**: Compound sentences synthesized balanced speaking registers (e.g. *Authoritative & Methodical Synthesis*, *Communal & Methodical Synthesis*, *Equilibrated & Methodical Synthesis*).
+- **Calibrated Honest Abstention (H4 Confirmed)**: 100% (2/2) unanchored and out-of-domain control sentences triggered epistemic abstention (*Neutral Observant Silence*).
+- **Matched Ordinary-Memory Parity (Rule D004)**: Primary capacity arbiter and matched ordinary-memory baseline achieved byte-for-byte decision parity. Checkpoints unmutated. 4 focused unit tests pass in `tests/test_multi_lemma_arbiter.py`. Output preserved in `outputs/multi-lemma-arbiter-corpus9-20261014-001/`.
+
