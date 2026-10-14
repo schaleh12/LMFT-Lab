@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMFT Brain Observatory - Developer Diagnostic Suite</title>
+  <style>
+    :root {
+      --bg-dark: #0a0e14;
+      --bg-card: #131924;
+      --bg-card-hover: #1b2333;
+      --border-color: #232d3f;
+      --text-main: #e6edf3;
+      --text-muted: #8b949e;
+      --cultural: #e3b341;
+      --philosophical: #58a6ff;
+      --experiential: #3fb950;
+      --psychological: #bc8cff;
+      --accent: #58a6ff;
+      --danger: #f85149;
+      --warning: #d29922;
+      --success: #3fb950;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .title-group h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-dev {
+      font-size: 0.7rem;
+      background: rgba(227, 179, 65, 0.2);
+      color: var(--cultural);
+      border: 1px solid var(--cultural);
+      padding: 3px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: #238636;
+      border-color: rgba(240, 246, 252, 0.1);
+    }
+    .btn-primary:hover {
+      background: #2ea043;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+    }
+
+    @media (max-width: 1000px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Gauges */
+    .gauge-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .gauge-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .gauge-val {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 8px 0;
+      font-family: monospace;
+    }
+
+    .gauge-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .gauge-sub {
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    /* Radar Canvas & Tree SVG */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, rgba(35, 45, 63, 0.4) 0%, transparent 70%);
+    }
+
+    /* Leaves List */
+    .leaf-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 460px;
+      overflow-y: auto;
+    }
+
+    .leaf-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      padding: 4px 6px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.01);
+    }
+
+    .leaf-name {
+      font-family: monospace;
+      color: var(--text-main);
+    }
+
+    .leaf-bar-wrap {
+      width: 100px;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+
+    .leaf-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    /* Journal & Memory Feed */
+    .feed-container {
+      max-height: 280px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feed-item {
+      padding: 12px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem;
+    }
+
+    .feed-header {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+    }
+
+    .feed-narrative {
+      font-style: italic;
+      color: #7ee787;
+      margin-top: 6px;
+    }
+
+    .domain-tag-cultural { color: var(--cultural); }
+    .domain-tag-philosophical { color: var(--philosophical); }
+    .domain-tag-experiential { color: var(--experiential); }
+    .domain-tag-psychological { color: var(--psychological); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="title-group">
+      <h1>LMFT Brain Observatory <span class="badge-dev">Dev Tool</span></h1>
+      <div class="subtitle">Standalone Epistemic & Affective Introspection Dashboard | Rule D001 Verified</div>
+    </div>
+    <div class="controls">
+      <input type="file" id="fileInput" accept=".json,.lmft.json">
+      <button class="btn" onclick="document.getElementById('fileInput').click()">Upload .lmft.json</button>
+      <button class="btn btn-primary" onclick="loadDefaultState()">Load Default Mind</button>
+    </div>
+  </header>
+
+  <!-- Gauges -->
+  <div class="gauge-row">
+    <div class="gauge-box">
+      <div class="gauge-label">Affective Plasticity (&alpha;)</div>
+      <div class="gauge-val" id="gaugePlasticity" style="color: var(--psychological)">0.142</div>
+      <div class="gauge-sub" id="regimePlasticity">Protected Mastery</div>
+    </div>
+    <div class="gauge-box">
+      <div class="gauge-label">Epistemic Coherence</div>
+      <div class="gauge-val" id="gaugeCoherence" style="color: var(--philosophical)">0.943</div>
+      <div class="gauge-sub" id="statusCoherence">Prerequisite Gate: PASS</div>
+    </div>
+    <div class="gauge-box">
+      <div class="gauge-label">Affective Homeostasis</div>
+      <div class="gauge-val" id="gaugeHomeostasis" style="color: var(--experiential)">0.912</div>
+      <div class="gauge-sub" id="statusHomeostasis">Calm Dynamic Equilibrium</div>
+    </div>
+    <div class="gauge-box">
+      <div class="gauge-label">Active Capacity Rules</div>
+      <div class="gauge-val" id="gaugeRules" style="color: var(--cultural)">2</div>
+      <div class="gauge-sub" id="statusRules">Consolidated in Long-Term Memory</div>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <!-- Main Left: Visual Constellation & Radar -->
+    <div class="main-column">
+      <div class="card">
+        <div class="card-title">
+          <span>24-Leaf Mindprint Disposition Radar</span>
+          <span style="font-size:0.75rem; color:var(--text-muted)">Normalized [0.0 - 1.0]</span>
+        </div>
+        <div class="canvas-container">
+          <canvas id="radarCanvas" width="500" height="460"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Autobiographical Episodic Saliency Journal</div>
+        <div class="feed-container" id="journalFeed">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Leaf Inspection & Long-Term Memory -->
+    <div class="side-column">
+      <div class="card">
+        <div class="card-title">24 Canonical Leaves</div>
+        <div class="leaf-list" id="leafList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Graduated Capacity Rules</div>
+        <div class="feed-container" id="ruleFeed">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Canonical 24 Leaves Inventory
+    const CANONICAL_LEAVES = [
+      { id: "cultural/efficiency/power", domain: "cultural", label: "Power" },
+      { id: "cultural/efficiency/wastelessness", domain: "cultural", label: "Wastelessness" },
+      { id: "cultural/justice/honor", domain: "cultural", label: "Honor" },
+      { id: "cultural/justice/fairness", domain: "cultural", label: "Fairness" },
+      { id: "cultural/freedom/self-sufficiency", domain: "cultural", label: "Self-Sufficiency" },
+      { id: "cultural/freedom/needlessness", domain: "cultural", label: "Needlessness" },
+      { id: "philosophical/being/agency", domain: "philosophical", label: "Agency" },
+      { id: "philosophical/being/existence", domain: "philosophical", label: "Existence" },
+      { id: "philosophical/structure/order", domain: "philosophical", label: "Order" },
+      { id: "philosophical/structure/chaos", domain: "philosophical", label: "Chaos" },
+      { id: "philosophical/persistence/continuity", domain: "philosophical", label: "Continuity" },
+      { id: "philosophical/persistence/discreteness", domain: "philosophical", label: "Discreteness" },
+      { id: "experiential/reflection/novelty", domain: "experiential", label: "Novelty" },
+      { id: "experiential/reflection/salience", domain: "experiential", label: "Salience" },
+      { id: "experiential/phase/valence", domain: "experiential", label: "Valence" },
+      { id: "experiential/phase/arousal", domain: "experiential", label: "Arousal" },
+      { id: "experiential/synchronization/resonance", domain: "experiential", label: "Resonance" },
+      { id: "experiential/synchronization/retention", domain: "experiential", label: "Retention" },
+      { id: "psychological/will/intention", domain: "psychological", label: "Intention" },
+      { id: "psychological/will/execution", domain: "psychological", label: "Execution" },
+      { id: "psychological/truth/theory", domain: "psychological", label: "Theory" },
+      { id: "psychological/truth/fact", domain: "psychological", label: "Fact" },
+      { id: "psychological/contemplation/clarity", domain: "psychological", label: "Clarity" },
+      { id: "psychological/contemplation/confidence", domain: "psychological", label: "Confidence" },
+    ];
+
+    let currentMind = null;
+
+    function getDomainColor(domain) {
+      if (domain === "cultural") return "var(--cultural)";
+      if (domain === "philosophical") return "var(--philosophical)";
+      if (domain === "experiential") return "var(--experiential)";
+      return "var(--psychological)";
+    }
+
+    function loadDefaultState() {
+      const defaultState = {
+        individual_id: "lmft-individual-01",
+        cycle_count: 6,
+        disposition_vector: {
+          dials: {
+            "cultural/efficiency/power": 0.52,
+            "cultural/efficiency/wastelessness": 0.55,
+            "cultural/justice/honor": 0.58,
+            "cultural/justice/fairness": 0.62,
+            "cultural/freedom/self-sufficiency": 0.54,
+            "cultural/freedom/needlessness": 0.50,
+            "philosophical/being/agency": 0.60,
+            "philosophical/being/existence": 0.70,
+            "philosophical/structure/order": 0.72,
+            "philosophical/structure/chaos": 0.28,
+            "philosophical/persistence/continuity": 0.75,
+            "philosophical/persistence/discreteness": 0.35,
+            "experiential/reflection/novelty": 0.38,
+            "experiential/reflection/salience": 0.65,
+            "experiential/phase/valence": 0.56,
+            "experiential/phase/arousal": 0.48,
+            "experiential/synchronization/resonance": 0.62,
+            "experiential/synchronization/retention": 0.74,
+            "psychological/will/intention": 0.58,
+            "psychological/will/execution": 0.56,
+            "psychological/truth/theory": 0.45,
+            "psychological/truth/fact": 0.82,
+            "psychological/contemplation/clarity": 0.84,
+            "psychological/contemplation/confidence": 0.80,
+          }
+        },
+        episodic_journal: {
+          entries: [
+            {
+              cycle: 1,
+              sentence: "The national bank issued an executive credit guarantee.",
+              target_lemmas: ["bank"],
+              action_bid: "Execute financial transaction",
+              speaking_register: "Authoritative & Chivalrous",
+              english_narrative_reflection: "Understood 'bank' as depository financial institution; affirmed stability through authoritative action.",
+              is_conflict: false,
+            },
+            {
+              cycle: 2,
+              sentence: "Conflicting orders were received simultaneously from competing officers.",
+              target_lemmas: ["order"],
+              action_bid: "Halt and issue clarification request",
+              speaking_register: "Methodical & Pragmatic",
+              english_narrative_reflection: "Encountered epistemic conflict; clarity fell to 0.20; halted action to preserve prerequisite coherence.",
+              is_conflict: true,
+            }
+          ]
+        },
+        memory_consolidation: {
+          long_term_rules: {
+            "rule-bank-01": {
+              lemma: "bank",
+              core_pattern: "national bank",
+              weight: 0.68,
+              speaking_register: "Authoritative & Chivalrous",
+              action_bid: "Execute financial transaction"
+            },
+            "rule-order-01": {
+              lemma: "order",
+              core_pattern: "court order",
+              weight: 0.68,
+              speaking_register: "Authoritative & Chivalrous",
+              action_bid: "Enforce sovereign decree"
+            }
+          }
+        }
+      };
+
+      renderMind(defaultState);
+    }
+
+    function renderMind(pkg) {
+      currentMind = pkg;
+
+      // Extract dials
+      let dials = {};
+      if (pkg.disposition_vector && pkg.disposition_vector.dials) {
+        dials = pkg.disposition_vector.dials;
+      } else if (pkg.disposition_dials) {
+        dials = pkg.disposition_dials;
+      } else {
+        CANONICAL_LEAVES.forEach(l => { dials[l.id] = 0.50; });
+      }
+
+      // 1. Calculate & Render Gauges
+      const clarity = dials["psychological/contemplation/clarity"] || 0.50;
+      const confidence = dials["psychological/contemplation/confidence"] || 0.50;
+      const order = dials["philosophical/structure/order"] || 0.50;
+      const arousal = dials["experiential/phase/arousal"] || 0.50;
+
+      // Dynamic alpha approximation
+      const alpha = Math.max(0.05, Math.min(0.40, 0.35 - (clarity * 0.15 + confidence * 0.10)));
+      document.getElementById("gaugePlasticity").innerText = alpha.toFixed(3);
+      document.getElementById("regimePlasticity").innerText = alpha < 0.15 ? "Protected Mastery" : "Adaptive Plasticity";
+
+      // Coherence calculation
+      const coherence = Math.min(1.0, 0.40 * clarity + 0.35 * order + 0.25 * (1.0 - Math.abs(arousal - 0.5) * 2));
+      document.getElementById("gaugeCoherence").innerText = coherence.toFixed(3);
+      document.getElementById("statusCoherence").innerText = coherence >= 0.70 ? "Prerequisite Gate: PASS" : "Prerequisite Gate: CAUTION";
+
+      // Homeostasis
+      const balance = Math.max(0.1, 1.0 - Math.abs(arousal - 0.5) * 1.5);
+      document.getElementById("gaugeHomeostasis").innerText = balance.toFixed(3);
+      document.getElementById("statusHomeostasis").innerText = balance > 0.80 ? "Calm Dynamic Equilibrium" : "Active Regulation";
+
+      // Rules count
+      const rules = pkg.memory_consolidation?.long_term_rules || {};
+      document.getElementById("gaugeRules").innerText = Object.keys(rules).length;
+
+      // 2. Render 24-Leaf List
+      const leafListEl = document.getElementById("leafList");
+      leafListEl.innerHTML = "";
+      CANONICAL_LEAVES.forEach(leaf => {
+        const val = dials[leaf.id] !== undefined ? dials[leaf.id] : 0.50;
+        const color = getDomainColor(leaf.domain);
+        const item = document.createElement("div");
+        item.className = "leaf-item";
+        item.innerHTML = `
+          <span class="leaf-name domain-tag-${leaf.domain}">${leaf.label}</span>
+          <div style="display:flex; align-items:center;">
+            <span style="font-family:monospace; font-size:0.75rem;">${val.toFixed(2)}</span>
+            <div class="leaf-bar-wrap">
+              <div class="leaf-bar" style="width: ${val * 100}%; background: ${color};"></div>
+            </div>
+          </div>
+        `;
+        leafListEl.appendChild(item);
+      });
+
+      // 3. Render Radar Canvas
+      renderRadar(dials);
+
+      // 4. Render Journal
+      const journalEl = document.getElementById("journalFeed");
+      journalEl.innerHTML = "";
+      const entries = pkg.episodic_journal?.entries || [];
+      if (entries.length === 0) {
+        journalEl.innerHTML = `<div style="color:var(--text-muted); font-size:0.8rem;">No episodic memories recorded yet.</div>`;
+      } else {
+        entries.slice().reverse().forEach(ep => {
+          const item = document.createElement("div");
+          item.className = "feed-item";
+          if (ep.is_conflict) item.style.borderLeftColor = "var(--danger)";
+          item.innerHTML = `
+            <div class="feed-header">
+              <span>Cycle #${ep.cycle} | ${ep.speaking_register || 'Standard'}</span>
+              <span>Action: ${ep.action_bid || 'Observe'}</span>
+            </div>
+            <div><strong>Input:</strong> "${ep.sentence}"</div>
+            <div class="feed-narrative">${ep.english_narrative_reflection || 'Processed without reflection.'}</div>
+          `;
+          journalEl.appendChild(item);
+        });
+      }
+
+      // 5. Render Rules Feed
+      const ruleFeedEl = document.getElementById("ruleFeed");
+      ruleFeedEl.innerHTML = "";
+      const ruleKeys = Object.keys(rules);
+      if (ruleKeys.length === 0) {
+        ruleFeedEl.innerHTML = `<div style="color:var(--text-muted); font-size:0.8rem;">No rules in long-term memory.</div>`;
+      } else {
+        ruleKeys.forEach(k => {
+          const r = rules[k];
+          const item = document.createElement("div");
+          item.className = "feed-item";
+          item.style.borderLeftColor = "var(--cultural)";
+          item.innerHTML = `
+            <div class="feed-header">
+              <span>${r.lemma} &bull; weight: ${r.weight}</span>
+              <span>${r.speaking_register}</span>
+            </div>
+            <div><strong>Pattern:</strong> "${r.core_pattern}"</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Bid: ${r.action_bid}</div>
+          `;
+          ruleFeedEl.appendChild(item);
+        });
+      }
+    }
+
+    function renderRadar(dials) {
+      const canvas = document.getElementById("radarCanvas");
+      const ctx = canvas.getContext("2d");
+      const width = canvas.width;
+      const height = canvas.height;
+      const cx = width / 2;
+      const cy = height / 2;
+      const maxRadius = Math.min(cx, cy) - 50;
+
+      ctx.clearRect(0, 0, width, height);
+
+      const numAxes = CANONICAL_LEAVES.length;
+      const angleStep = (Math.PI * 2) / numAxes;
+
+      // Draw concentric guide circles
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+      ctx.lineWidth = 1;
+      for (let r = 0.25; r <= 1.0; r += 0.25) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, maxRadius * r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Draw radial axis lines
+      CANONICAL_LEAVES.forEach((leaf, i) => {
+        const angle = i * angleStep - Math.PI / 2;
+        const x = cx + Math.cos(angle) * maxRadius;
+        const y = cy + Math.sin(angle) * maxRadius;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        // Label outer tips
+        const lx = cx + Math.cos(angle) * (maxRadius + 18);
+        const ly = cy + Math.sin(angle) * (maxRadius + 18);
+        ctx.font = "9px monospace";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = leaf.domain === "cultural" ? "#e3b341" :
+                         leaf.domain === "philosophical" ? "#58a6ff" :
+                         leaf.domain === "experiential" ? "#3fb950" : "#bc8cff";
+        ctx.fillText(leaf.label.substring(0, 4), lx, ly);
+      });
+
+      // Plot Polygon
+      ctx.beginPath();
+      CANONICAL_LEAVES.forEach((leaf, i) => {
+        const val = dials[leaf.id] !== undefined ? dials[leaf.id] : 0.50;
+        const angle = i * angleStep - Math.PI / 2;
+        const r = maxRadius * val;
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = "rgba(88, 166, 255, 0.25)";
+      ctx.fill();
+      ctx.strokeStyle = "#58a6ff";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Draw points
+      CANONICAL_LEAVES.forEach((leaf, i) => {
+        const val = dials[leaf.id] !== undefined ? dials[leaf.id] : 0.50;
+        const angle = i * angleStep - Math.PI / 2;
+        const r = maxRadius * val;
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = leaf.domain === "cultural" ? "#e3b341" :
+                         leaf.domain === "philosophical" ? "#58a6ff" :
+                         leaf.domain === "experiential" ? "#3fb950" : "#bc8cff";
+        ctx.fill();
+      });
+    }
+
+    // File Input Listener
+    document.getElementById("fileInput").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          renderMind(parsed);
+        } catch (err) {
+          alert("Failed to parse JSON file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Auto-load default state on launch
+    window.addEventListener("DOMContentLoaded", loadDefaultState);
+  </script>
+</body>
+</html>

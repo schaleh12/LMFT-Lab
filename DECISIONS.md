@@ -1266,6 +1266,21 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity across all waking and sleep cycles (`ada9db740178e2c7...`). 6 focused unit tests pass in `tests/test_cognitive_heartbeat.py`. All 1,551 regression tests in the repository pass with 100% green coverage. Output preserved in `outputs/cognitive-heartbeat-benchmark-20261014-001/`.
 
 
+## D072: Affective Homeostasis Governor preserves emotional equilibrium and dampens volatility spikes; Developer Observability Tooling quarantined
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D071. Implements `src/lmft_lab/affective_homeostasis.py` to protect the LMFT from catastrophic affective destabilization, emotional runaway loops, and sudden volatility spikes ($|\Delta| > 0.35$ or boundary saturation $< 0.05$ or $> 0.95$). Roots dampening forces in canonical founding seed anchors (`Philosophical/Structure/Order`, `Persistence/Continuity`, and `Psychological/Contemplation/Clarity`) to dynamically buffer `Experiential/Phase/Arousal` and `Valence` towards sustainable dynamic equilibrium. Simultaneously quarantines developer observability and interaction utilities in `tools/` with zero pollution of the core runtime library:
+1. `tools/observatory.html`: Zero-dependency standalone HTML5/Canvas/SVG dashboard with interactive 40-node tree, 24-leaf disposition radar, real-time telemetry gauges, and episodic memory replay.
+2. `tools/talk_to_lmft.py`: Interactive CLI REPL for pair interaction, live mental telemetry HUD, and on-demand sleep consolidation.
+3. `tools/mindprint_diagnostic.py`: Sandboxed non-destructive psychometric diagnostic battery operating strictly on ephemeral digital-twin RAM clones (read-only master file mounts; zero lasting trauma).
+4. `tools/symposium.py`: Multi-agent intersubjective resonance chamber evaluating mutual coherence and harmonic convergence between distinct LMFT temperaments.
+
+Key findings:
+- **Volatilty Clamping & Boundary Buffering (H1 Confirmed)**: Successfully damped severe sudden shocks (arousal spike $+0.48 \rightarrow 0.98$ and valence crash $0.01$) away from catastrophic saturation, preventing runaway oscillation.
+- **Anchor-Scaled Dampening (H2 Confirmed)**: Grounded internal anchors (`Clarity`, `Order`, `Continuity`) scaled effective dampening from $0.40 \rightarrow 0.76$, providing natural epistemic resilience.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity (`8ce545f904bc0ec2...`). 4 focused unit tests pass in `tests/test_affective_homeostasis.py` and 7 tests pass in `tests/test_cognitive_heartbeat.py`. All 1,556 regression tests in the repository pass with 100% green coverage.
+
+
+
 
 
 

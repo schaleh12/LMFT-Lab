@@ -19,6 +19,7 @@ from copy import deepcopy
 import re
 from typing import Any, Dict, List, Optional, Tuple
 
+from lmft_lab.affective_homeostasis import AffectiveHomeostasisGovernor
 from lmft_lab.affective_plasticity import AffectivePlasticityEngine
 from lmft_lab.anchor_deduplication import normalize_anchor_text
 from lmft_lab.birth import _inventory, create_birth_state
@@ -79,6 +80,7 @@ class CognitiveHeartbeat:
         self.prerequisite_gate = PrerequisiteCoherenceGate()
         self.recurrent_feedback = RecurrentFeedbackEngine()
         self.plasticity_engine = AffectivePlasticityEngine()
+        self.homeostasis_governor = AffectiveHomeostasisGovernor()
 
     def interact(
         self,
@@ -165,20 +167,29 @@ class CognitiveHeartbeat:
         for k, v in echo_result["echoed_experiential"].items():
             candidate_dials[k] = v
 
-        # 6. Dynamic Affective Plasticity Regulation
+        # 6. Affective Homeostasis Governor & Volatility Dampening
+        homeostasis_result = self.homeostasis_governor.stabilize(
+            candidate_dials=candidate_dials,
+            previous_dials=self.disposition.dials,
+        )
+        candidate_dials = homeostasis_result["stabilized_dials"]
+
+        # 7. Dynamic Affective Plasticity Regulation
+        exp_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("experiential/")}
+        psy_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("psychological/")}
         plasticity_result = self.plasticity_engine.compute_dynamic_rates(
             experiential_dials=exp_dials,
             psychological_dials=psy_dials,
         )
         effective_alpha = plasticity_result["dynamic_alpha"]
 
-        # 7. Persistent Dispositional Momentum Update
+        # 8. Persistent Dispositional Momentum Update
         momentum_result = self.disposition.incorporate_situational_stimulus(
             situational_dials=candidate_dials,
             gamma_override=effective_alpha,
         )
 
-        # 8. Dual-Coded Episodic Journal Recording
+        # 9. Dual-Coded Episodic Journal Recording
         journal_res = self.journal.record_episode(
             cycle=current_cycle,
             sentence=sentence,
@@ -199,7 +210,9 @@ class CognitiveHeartbeat:
             "speaking_register": speaking_register,
             "action_bid": action_bid,
             "coherence": coherence_result,
+            "homeostasis": homeostasis_result,
             "plasticity": plasticity_result,
+            "momentum": momentum_result,
             "post_action_echo": echo_result["echo_deltas"],
             "journal_result": journal_res,
             "disposition_dials": deepcopy(self.disposition.dials),
@@ -283,6 +296,7 @@ class OrdinaryMemoryHeartbeatComparator:
         self.prerequisite_gate = PrerequisiteCoherenceGate()
         self.recurrent_feedback = RecurrentFeedbackEngine()
         self.plasticity_engine = AffectivePlasticityEngine()
+        self.homeostasis_governor = AffectiveHomeostasisGovernor()
 
     def interact(
         self,
@@ -363,6 +377,15 @@ class OrdinaryMemoryHeartbeatComparator:
         for k, v in echo_result["echoed_experiential"].items():
             candidate_dials[k] = v
 
+        # Affective Homeostasis Governor & Volatility Dampening
+        homeostasis_result = self.homeostasis_governor.stabilize(
+            candidate_dials=candidate_dials,
+            previous_dials=self.disposition.dials,
+        )
+        candidate_dials = homeostasis_result["stabilized_dials"]
+
+        exp_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("experiential/")}
+        psy_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("psychological/")}
         plasticity_result = self.plasticity_engine.compute_dynamic_rates(
             experiential_dials=exp_dials,
             psychological_dials=psy_dials,
@@ -394,7 +417,9 @@ class OrdinaryMemoryHeartbeatComparator:
             "speaking_register": speaking_register,
             "action_bid": action_bid,
             "coherence": coherence_result,
+            "homeostasis": homeostasis_result,
             "plasticity": plasticity_result,
+            "momentum": momentum_result,
             "post_action_echo": echo_result["echo_deltas"],
             "journal_result": journal_res,
             "disposition_dials": deepcopy(self.disposition.dials),

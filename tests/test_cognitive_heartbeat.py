@@ -122,3 +122,22 @@ def test_ordinary_memory_comparator_parity():
     h_sleep = heartbeat.sleep(prune_buffer=True)
     c_sleep = comparator.sleep(prune_buffer=True)
     assert digest(h_sleep) == digest(c_sleep)
+
+
+def test_affective_homeostasis_in_heartbeat():
+    """Verify heartbeat invokes AffectiveHomeostasisGovernor and buffers sudden shock."""
+    heartbeat = CognitiveHeartbeat()
+
+    # Induce massive sudden shock via custom dials
+    res = heartbeat.interact(
+        "A sudden catastrophic tremor shook the foundations.",
+        custom_dials={"experiential/phase/arousal": 0.99, "experiential/phase/valence": 0.01},
+    )
+
+    assert "homeostasis" in res
+    homeostasis = res["homeostasis"]
+    assert homeostasis["interventions_count"] >= 1
+    assert homeostasis["homeostatic_regime"] in ("Active Volatility Clamping", "Boundary Saturation Buffering")
+    assert res["disposition_dials"]["experiential/phase/arousal"] < 0.99
+    assert res["disposition_dials"]["experiential/phase/valence"] > 0.01
+
