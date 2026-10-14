@@ -141,3 +141,23 @@ def test_affective_homeostasis_in_heartbeat():
     assert res["disposition_dials"]["experiential/phase/arousal"] < 0.99
     assert res["disposition_dials"]["experiential/phase/valence"] > 0.01
 
+
+def test_value_consonance_in_heartbeat():
+    """Verify heartbeat invokes ValueConsonanceEngine and triggers Curious Inquiry on novel lesson."""
+    heartbeat = CognitiveHeartbeat()
+
+    # Present completely novel lesson without conflict (unanchored lemma)
+    res = heartbeat.interact(
+        "Luminescent aurora particles danced across the high polar atmosphere.",
+        custom_dials={"experiential/reflection/novelty": 0.85},
+    )
+
+    assert "consonance" in res
+    consonance = res["consonance"]
+    assert consonance["epistemic_mode"] == "Curious Inquiry"
+    assert consonance["is_curious"] is True
+    assert res["speaking_register"] == "Inquisitive & Contemplative"
+    assert res["action_bid"] == "Explore and formulate inquisitive inquiry"
+    assert consonance["consonance_index"] >= 0.80
+
+

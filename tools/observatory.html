@@ -287,8 +287,13 @@
       <div class="gauge-sub" id="statusHomeostasis">Calm Dynamic Equilibrium</div>
     </div>
     <div class="gauge-box">
+      <div class="gauge-label">Value Consonance</div>
+      <div class="gauge-val" id="gaugeConsonance" style="color: var(--cultural)">1.000</div>
+      <div class="gauge-sub" id="statusConsonance">Harmonic Integrity</div>
+    </div>
+    <div class="gauge-box">
       <div class="gauge-label">Active Capacity Rules</div>
-      <div class="gauge-val" id="gaugeRules" style="color: var(--cultural)">2</div>
+      <div class="gauge-val" id="gaugeRules" style="color: var(--text-muted)">2</div>
       <div class="gauge-sub" id="statusRules">Consolidated in Long-Term Memory</div>
     </div>
   </div>
@@ -480,6 +485,17 @@
       const balance = Math.max(0.1, 1.0 - Math.abs(arousal - 0.5) * 1.5);
       document.getElementById("gaugeHomeostasis").innerText = balance.toFixed(3);
       document.getElementById("statusHomeostasis").innerText = balance > 0.80 ? "Calm Dynamic Equilibrium" : "Active Regulation";
+
+      // Value Consonance
+      const power = dials["cultural/efficiency/power"] || 0.50;
+      const freedom = dials["cultural/freedom/self-sufficiency"] || 0.50;
+      const fairness = dials["cultural/justice/fairness"] || 0.50;
+      let consonance = 1.0;
+      if (power > 0.75 && freedom < 0.40) consonance -= 0.15;
+      if (order > 0.80 && fairness < 0.40) consonance -= 0.10;
+      consonance = Math.max(0.20, Math.min(1.0, consonance));
+      document.getElementById("gaugeConsonance").innerText = consonance.toFixed(3);
+      document.getElementById("statusConsonance").innerText = consonance >= 0.90 ? "Harmonic Integrity" : (consonance >= 0.75 ? "Balanced Moral Synthesis" : "Active Value Accommodation");
 
       // Rules count
       const rules = pkg.memory_consolidation?.long_term_rules || {};

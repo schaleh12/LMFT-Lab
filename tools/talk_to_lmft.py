@@ -48,6 +48,11 @@ def print_hud(turn_res: dict):
     homeo_score = turn_res["homeostasis"]["emotional_balance_score"]
     homeo_regime = turn_res["homeostasis"]["homeostatic_regime"]
 
+    cons = turn_res.get("consonance", {})
+    mode = cons.get("epistemic_mode", "Standard")
+    cons_idx = cons.get("consonance_index", 1.0)
+    cons_regime = cons.get("consonance_regime", "Harmonic Integrity")
+
     journal = turn_res["journal_result"]
     if journal.get("admitted") and journal.get("episode"):
         narrative = journal["episode"].get("english_narrative_reflection", "No reflection generated.")
@@ -57,6 +62,7 @@ def print_hud(turn_res: dict):
     print(f"\n+{HUD_BORDER}+")
     print(f"| Turn: {cycle:<3} | alpha: {plasticity:.3f} ({regime:<18}) | Coherence: {coherence:.3f} [{coh_status}] |")
     print(f"| Homeostasis: {homeo_score:.3f} ({homeo_regime:<24}) | Register: {reg:<16} |")
+    print(f"| Mode: {mode:<23} | Value Consonance: {cons_idx:.3f} ({cons_regime:<18}) |")
     print(f"| Action Bid: {bid:<56} |")
     print(f"+{HUD_BORDER}+")
     print(f"| Reflection: {narrative[:66]:<66} |")

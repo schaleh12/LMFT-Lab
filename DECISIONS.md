@@ -1280,6 +1280,20 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity (`8ce545f904bc0ec2...`). 4 focused unit tests pass in `tests/test_affective_homeostasis.py` and 7 tests pass in `tests/test_cognitive_heartbeat.py`. All 1,556 regression tests in the repository pass with 100% green coverage.
 
 
+## D073: Epistemic Curiosity and Value Consonance Engine arbitrates Socratic wonder and cross-domain moral equilibria
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D072. Implements `src/lmft_lab/value_consonance.py` to resolve two fundamental systemic boundary challenges before deployment to educational environments:
+1. **The Socratic Paradox (Curiosity vs. Threat Classifier)**: Distinguishes between hostile contradiction (adversarial distortions triggering epistemic defense) and benevolent novelty (unanchored mysteries triggering Socratic wonder, curious inquiry, and receptive question-asking rather than defensive paralysis).
+2. **Cross-Domain Value Consonance**: Arbitrates internal moral and philosophical tensions when virtues pull in opposite directions across the 4 canonical domains (Truth vs. Comfort, Power vs. Freedom, Order vs. Fairness, Honor vs. Chaos), preventing cognitive thrashing and synthesizing harmonic equilibria.
+
+Key findings:
+- **Socratic Wonder Activation (H1 Confirmed)**: Successfully classified high-novelty, distortion-free experiences into `Curious Inquiry` mode, modulating arousal from panic to calm engagement ($0.52$), elevating `Will/Intention` ($\ge 0.68$) and `Resonance` ($\ge 0.65$), and engaging the `Inquisitive & Contemplative` register.
+- **Epistemic Defense Integrity (H2 Confirmed)**: Successfully routed direct contradictions and prerequisite distortions into `Epistemic Defense`, upholding the `Halt and issue clarification request` posture.
+- **Cross-Domain Moral Arbitration (H3 Confirmed)**: Resolved Truth vs. Comfort (anchoring valence through contemplative fortitude without compromising truth), Power vs. Freedom (subordinating efficiency to preserve self-sufficiency), and Order vs. Fairness (tempering rigid structure with equitable fairness).
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity across all interactions (`0008447817eb4f...`). 6 focused unit tests pass in `tests/test_value_consonance.py` and 8 tests pass in `tests/test_cognitive_heartbeat.py`. All 1,563 regression tests in the repository pass with 100% green coverage.
+
+
+
 
 
 

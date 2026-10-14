@@ -31,6 +31,7 @@ from lmft_lab.memory_consolidation import MemoryConsolidationEngine
 from lmft_lab.prerequisite_gate import PrerequisiteCoherenceGate
 from lmft_lab.recurrent_feedback import RecurrentFeedbackEngine
 from lmft_lab.runtime_store import digest
+from lmft_lab.value_consonance import ValueConsonanceEngine
 
 
 DEFAULT_INITIAL_RULES = [
@@ -81,6 +82,7 @@ class CognitiveHeartbeat:
         self.recurrent_feedback = RecurrentFeedbackEngine()
         self.plasticity_engine = AffectivePlasticityEngine()
         self.homeostasis_governor = AffectiveHomeostasisGovernor()
+        self.consonance_engine = ValueConsonanceEngine()
 
     def interact(
         self,
@@ -156,7 +158,18 @@ class CognitiveHeartbeat:
         # 4. Prerequisite Coherence Gate & Distortion Detection
         coherence_result = self.prerequisite_gate.evaluate_coherence(candidate_dials)
 
-        # 5. Recurrent Post-Action Echo
+        # 5. Epistemic Curiosity & Value Consonance Engine
+        consonance_result = self.consonance_engine.evaluate(
+            candidate_dials=candidate_dials,
+            is_conflict=is_conflict,
+            distortions_count=len(coherence_result["distortions_detected"]),
+        )
+        candidate_dials = consonance_result["harmonized_dials"]
+        if consonance_result["is_curious"] and action_bid == "Process statement":
+            speaking_register = consonance_result["recommended_register"]
+            action_bid = consonance_result["inquiry_posture"]
+
+        # 6. Recurrent Post-Action Echo
         exp_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("experiential/")}
         psy_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("psychological/")}
         echo_result = self.recurrent_feedback.compute_echo(
@@ -167,14 +180,14 @@ class CognitiveHeartbeat:
         for k, v in echo_result["echoed_experiential"].items():
             candidate_dials[k] = v
 
-        # 6. Affective Homeostasis Governor & Volatility Dampening
+        # 7. Affective Homeostasis Governor & Volatility Dampening
         homeostasis_result = self.homeostasis_governor.stabilize(
             candidate_dials=candidate_dials,
             previous_dials=self.disposition.dials,
         )
         candidate_dials = homeostasis_result["stabilized_dials"]
 
-        # 7. Dynamic Affective Plasticity Regulation
+        # 8. Dynamic Affective Plasticity Regulation
         exp_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("experiential/")}
         psy_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("psychological/")}
         plasticity_result = self.plasticity_engine.compute_dynamic_rates(
@@ -183,13 +196,13 @@ class CognitiveHeartbeat:
         )
         effective_alpha = plasticity_result["dynamic_alpha"]
 
-        # 8. Persistent Dispositional Momentum Update
+        # 9. Persistent Dispositional Momentum Update
         momentum_result = self.disposition.incorporate_situational_stimulus(
             situational_dials=candidate_dials,
             gamma_override=effective_alpha,
         )
 
-        # 9. Dual-Coded Episodic Journal Recording
+        # 10. Dual-Coded Episodic Journal Recording
         journal_res = self.journal.record_episode(
             cycle=current_cycle,
             sentence=sentence,
@@ -210,6 +223,7 @@ class CognitiveHeartbeat:
             "speaking_register": speaking_register,
             "action_bid": action_bid,
             "coherence": coherence_result,
+            "consonance": consonance_result,
             "homeostasis": homeostasis_result,
             "plasticity": plasticity_result,
             "momentum": momentum_result,
@@ -297,6 +311,7 @@ class OrdinaryMemoryHeartbeatComparator:
         self.recurrent_feedback = RecurrentFeedbackEngine()
         self.plasticity_engine = AffectivePlasticityEngine()
         self.homeostasis_governor = AffectiveHomeostasisGovernor()
+        self.consonance_engine = ValueConsonanceEngine()
 
     def interact(
         self,
@@ -367,6 +382,16 @@ class OrdinaryMemoryHeartbeatComparator:
 
         coherence_result = self.prerequisite_gate.evaluate_coherence(candidate_dials)
 
+        consonance_result = self.consonance_engine.evaluate(
+            candidate_dials=candidate_dials,
+            is_conflict=is_conflict,
+            distortions_count=len(coherence_result["distortions_detected"]),
+        )
+        candidate_dials = consonance_result["harmonized_dials"]
+        if consonance_result["is_curious"] and action_bid == "Process statement":
+            speaking_register = consonance_result["recommended_register"]
+            action_bid = consonance_result["inquiry_posture"]
+
         exp_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("experiential/")}
         psy_dials = {k: candidate_dials[k] for k in candidate_dials if k.startswith("psychological/")}
         echo_result = self.recurrent_feedback.compute_echo(
@@ -417,6 +442,7 @@ class OrdinaryMemoryHeartbeatComparator:
             "speaking_register": speaking_register,
             "action_bid": action_bid,
             "coherence": coherence_result,
+            "consonance": consonance_result,
             "homeostasis": homeostasis_result,
             "plasticity": plasticity_result,
             "momentum": momentum_result,
