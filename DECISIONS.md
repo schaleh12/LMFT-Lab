@@ -1242,6 +1242,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all episodes (`e639b9646bb3b9f9...`). 7 focused unit tests pass in `tests/test_episodic_journal.py`. Output preserved in `outputs/episodic-journal-benchmark-20261014-001/`.
 
 
+## D070: Dual-Speed Memory Consolidation mirrors hippocampal replay and graduates recurring patterns
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D069 and executes Phase 3 of the Autobiographical Memory & Epistemic Coherence Milestone. Implements `src/lmft_lab/memory_consolidation.py` to replay episodic buffer records during offline sleep cycles, graduating recurring patterns ($N \ge 2$) into persistent capacity rules with habituated weights and pruning transient noise without mutating the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/MEMORY_CONSOLIDATION_PROTOCOL.md) and [results](experiments/MEMORY_CONSOLIDATION_RESULTS.md) own scope.
+
+Key findings:
+- **Offline Pattern Graduation (H1 Confirmed)**: Promoted 100% of recurring candidate patterns ($N \ge 2$) into persistent capacity rules (`national bank` and `river bank`) with initial habituated weight ($w = 0.60$) and structured witness provenance.
+- **Cumulative Asymptotic Reinforcement (H2 Confirmed)**: Habituated existing rules upon recurrence across cycles ($0.50 \rightarrow 0.60$ for `court order`, $0.60 \rightarrow 0.68$ for `national bank`).
+- **Anti-Bloat Buffer Pruning & Conflict Retention (H3 Confirmed)**: Filtered out transient singleton noise while preserving unresolved cognitive conflict episodes in the buffer for waking resolution.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all sleep cycles (`65c85b8f0e34bb34...`). 7 focused unit tests pass in `tests/test_memory_consolidation.py`. Output preserved in `outputs/memory-consolidation-benchmark-20261014-001/`.
+
+
+
 
 
 
