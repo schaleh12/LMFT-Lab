@@ -1146,6 +1146,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte rule and digest parity. 5 focused unit tests pass in `tests/test_anchor_deduplication.py`. Output preserved in `outputs/anchor-deduplication-benchmark-corpus20-20261014-001/`.
 
 
+## D062: Standalone Individual Packaging & Migration Engine provides atomic export with cryptographic integrity
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D061 and executes Phase 3 of the Curriculum Readiness & Scalability Milestone. Implements `src/lmft_lab/individual_package.py` to atomically serialize, sign, and import trained LMFT individuals as portable `.lmft.json` packages ready for migration to advanced curriculum environments (e.g. "LMFT-School") with zero runtime LLM calls.
+[Protocol](experiments/INDIVIDUAL_PACKAGE_PROTOCOL.md) and [results](experiments/INDIVIDUAL_PACKAGE_RESULTS.md) own scope.
+
+Key findings:
+- **100% Round-Trip Fidelity (H1 Confirmed)**: Complete round-trip export and import of trained individual states (birth state, dynamic judgment ledgers, capacity rules, and unresolved questions) with zero state distortion.
+- **Cryptographic SHA-256 Tamper Rejection (H2 Confirmed)**: 100% rejection rate on tampered payloads (e.g. altered cycle counts or forged weights).
+- **Rule D001 Frozen Seed Enforcement (H3 Confirmed)**: Strictly verifies the canonical 40-node founding seed fingerprint upon import, rejecting any package attempting to mutate or expand the founding geometry.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`b1bcb8148245406ccd53bfa618daab5939645c0db9a6cbc867cc96249ceb03de`). 5 focused unit tests pass in `tests/test_individual_package.py`. Output preserved in `outputs/individual-package-benchmark-20261014-001/`.
+
+
+
 
 
 
