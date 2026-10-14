@@ -1112,4 +1112,16 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation parity across all 16 instances. 5 focused unit tests pass in `tests/test_epistemic_calibration.py`. Output preserved in `outputs/epistemic-calibration-corpus16-20261014-001/`.
 
 
+## D059: Closed-Loop Supervised Clarification Bridge automates end-to-end question resolution under strict validation gates
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D058 and executes Phase 4 of the Foundational Architecture Reinforcement Milestone. Implements `src/lmft_lab/clarification_bridge.py` to automate the interactive feedback loop connecting runtime outbox `clarification_request` messages to local model candidate proposals and deterministic validation gates (Rule D003) with zero runtime LLM calls during unassisted evaluation.
+[Protocol](experiments/CLARIFICATION_BRIDGE_PROTOCOL.md) and [results](experiments/CLARIFICATION_BRIDGE_RESULTS.md) own scope.
+
+Key findings:
+- **Autonomous Outbox Resolution (H1 Confirmed)**: Scanned and autonomously resolved 100% (2/2) of triggered ambiguity scenarios (`missing-evidence` resolved via `sample-a` to score $1/3$, and `conflicting-evidence` resolved via `sample-c` to score $0.2$). Zero unanswered questions remained.
+- **Strict Validation Gate Immunity (H2 Confirmed)**: Enforced Rule D003; unverified or hallucinated proposals were rejected before envelope submission and prevented from mutating runtime state or the judgment ledger.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all 4 cycles. 4 focused unit tests pass in `tests/test_clarification_bridge.py`. Output preserved in `outputs/clarification-bridge-benchmark-20261014-001/`.
+
+
+
 
