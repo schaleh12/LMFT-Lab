@@ -79,7 +79,7 @@ root on Windows, run:
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe -m pip check
-.\.venv\Scripts\python.exe -c "import numpy, scipy, deap, skfuzzy, networkx, pytest; print('Imports OK')"
+.\.venv\Scripts\python.exe -c "import numpy, scipy, skfuzzy, networkx, pytest; print('Imports OK')"
 ```
 
 On macOS/Linux, use `python3.12 -m venv .venv` and replace
@@ -87,7 +87,7 @@ On macOS/Linux, use `python3.12 -m venv .venv` and replace
 Activation is optional because these commands use the virtual environment's
 Python explicitly. The local `.venv` directory is ignored by Git.
 
-`pyproject.toml` declares Python 3.12 compatibility and the five direct runtime
+`pyproject.toml` declares Python 3.12 compatibility and the four direct runtime
 dependencies, with pytest in a separate development dependency group. The
 requirements files pin the installed direct and transitive package versions:
 `requirements.txt` is runtime-only; `requirements-dev.txt` includes runtime and

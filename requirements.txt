@@ -2,7 +2,6 @@
 # Keep direct pins consistent with pyproject.toml when deliberately updating.
 numpy==2.5.3
 scipy==1.18.1
-deap==1.4.4
 scikit-fuzzy==0.5.0
 networkx==3.6.1
 

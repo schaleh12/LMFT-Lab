@@ -49,7 +49,7 @@ handoff updates. Keep summaries compact and preserve superseded choices with rep
 
 - Python is the primary implementation language.
 - The current local environment uses Python 3.12.
-- The existing dependency snapshot includes NumPy, SciPy, DEAP, scikit-fuzzy, NetworkX, and pytest. DEAP is a legacy dependency, not an LMFT requirement. This documentation migration does not alter pins or mandate using any package; dependency cleanup is separate work.
+- The existing dependency snapshot includes NumPy, SciPy, scikit-fuzzy, NetworkX, and pytest. DEAP has been retired and removed from active requirements; genetic algorithms are superseded.
 
 ## Current stage
 

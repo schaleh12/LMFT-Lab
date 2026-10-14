@@ -1053,3 +1053,12 @@ Key findings:
 - **Bag-of-Words Ambiguity (H2 Confirmed)**: Baseline B suffered a 6.06% ambiguity rate (2/33) due to overlapping token sets across distinct senses, demonstrating the necessity of syntactic context bounds.
 - **Continuous Stance & Register Differentiation (H3 Confirmed)**: Establishes the clear empirical boundary: the LMFT architecture's unique contribution is not superior classification over an exact dictionary, but continuous homeostatic posture regulation across all 24 canonical leaves, harmonic multi-lens alignment (0.893 concordance), and speaking register modulation.
 - **Matched Ordinary-Memory Parity (Rule D004)**: Primary learner and matched ordinary structured-memory comparator produced identical evaluation digests. Checkpoints unmutated. 3 focused unit tests pass. Output preserved in `outputs/comparative-baseline-corpus33-20261014-001/`.
+
+
+## D054: Retirement of legacy DEAP dependency and cleanup of runtime manifests
+
+**Status: adopted environment cleanup; implementation and regression verified, 2026-10-14.** Follows D053 and executes Phase 1 environment hygiene. Removes the legacy `deap==1.4.4` dependency from `pyproject.toml` and `requirements.txt`. Genetic evolution, breeding, and crossover were formally superseded in early project specs; DEAP was never imported or used by any executable code in `src/`, `experiments/`, or `tests/`.
+
+Key findings:
+- **Clean Dependency Snapshot:** The runtime dependencies now consist solely of the verified active stack: `numpy==2.5.3`, `scipy==1.18.1`, `scikit-fuzzy==0.5.0`, `networkx==3.6.1`, and dev group `pytest==9.1.1`.
+- **Full Test Suite Regression:** All 1,457 unit and integration tests pass cleanly with 100% green coverage in 179.46s. Documentation updated across `README.md` and `AGENTS.md`.
