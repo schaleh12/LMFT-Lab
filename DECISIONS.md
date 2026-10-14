@@ -1041,3 +1041,15 @@ Key findings:
   - Unseen inputs without matching anchors gracefully trigger calibrated epistemic modesty (*Neutral Observant Silence*, zeroed angles, concordance 1.0).
 - **Matched Ordinary-Memory Parity (Rule D004):** Primary runtime store and matched ordinary structured-memory checkpoint produce byte-for-byte identical projection digests (`590318b1...`).
 - **Full Test Parity:** 5 focused unit tests pass in `tests/test_interactive_dialogue_prism.py`.
+
+
+## D053: Comparative baseline benchmark rigorously evaluates LMFT against Key-Value and Bag-of-Words controls
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D052 and executes the preregistered comparative study across all 33 SemCor development instances as mandated by Rule D004. Compares unassisted LMFT capacity representation against Baseline A (Exact Key-Value Dictionary Store) and Baseline B (Naive Bag-of-Words Matcher) with zero runtime LLM calls during inference.
+[Protocol](experiments/COMPARATIVE_BASELINE_PROTOCOL.md) and [results](experiments/COMPARATIVE_BASELINE_RESULTS.md) own scope.
+
+Key findings:
+- **Classification Parity with Key-Value Store (H1 Confirmed)**: Baseline A achieved 100% accuracy (33/33) and 100% precision on fired cases, exactly matching the LMFT capacity engine. Confirms that discrete sense labeling alone is fully solvable by a simple associative hash table.
+- **Bag-of-Words Ambiguity (H2 Confirmed)**: Baseline B suffered a 6.06% ambiguity rate (2/33) due to overlapping token sets across distinct senses, demonstrating the necessity of syntactic context bounds.
+- **Continuous Stance & Register Differentiation (H3 Confirmed)**: Establishes the clear empirical boundary: the LMFT architecture's unique contribution is not superior classification over an exact dictionary, but continuous homeostatic posture regulation across all 24 canonical leaves, harmonic multi-lens alignment (0.893 concordance), and speaking register modulation.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Primary learner and matched ordinary structured-memory comparator produced identical evaluation digests. Checkpoints unmutated. 3 focused unit tests pass. Output preserved in `outputs/comparative-baseline-corpus33-20261014-001/`.
