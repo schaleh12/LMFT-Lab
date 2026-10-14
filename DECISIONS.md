@@ -1170,6 +1170,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity (`c30f37f8b47b4104da9495df089db56f28e1efe3ad6f19955bee9890fc468ccf`). 6 focused unit tests pass in `tests/test_taxonomic_generalization.py`. Output preserved in `outputs/taxonomic-generalization-corpus12-20261014-001/`.
 
 
+## D064: Lateral Ethical-Ontological Coupling Matrix enforces mutual cross-domain regulation
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D063 and executes Phase 1 of the Holonomic Cross-Domain Recurrence & Cohesion Milestone. Implements `src/lmft_lab/lateral_coupling.py` cross-coupling the 6 Cultural leaves (Ethics/Governance) with the 6 Philosophical leaves (Metaphysics/Ontology), establishing continuous bidirectional regulation without mutating or expanding the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/LATERAL_COUPLING_PROTOCOL.md) and [results](experiments/LATERAL_COUPLING_RESULTS.md) own scope.
+
+Key findings:
+- **Compensatory Ethical-Ontological Regulation (H1 Confirmed)**: High Cultural Power induces compensatory Philosophical Order (+0.08) and elevates Agency (+0.10) to prevent volitional overreach; high Philosophical Chaos triggers moral ballast (+0.1125 on Honor, +0.09 on Self-Sufficiency).
+- **Strict Neutral Quiescence (H2 Confirmed)**: Coordinates at baseline $0.50$ evaluate to exact $0.0000$ deltas, guaranteeing zero synthetic baseline drift.
+- **Continuous Bound Enforcement (H3 Confirmed)**: All coupled dial activations strictly respect $[0.0, 1.0]$ bounds under extreme gain inputs.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`3159146f781f60c3...`). 6 focused unit tests pass in `tests/test_lateral_coupling.py`. Output preserved in `outputs/lateral-coupling-benchmark-20261014-001/`.
+
+
+
 
 
 
