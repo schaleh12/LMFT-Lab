@@ -1158,6 +1158,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`b1bcb8148245406ccd53bfa618daab5939645c0db9a6cbc867cc96249ceb03de`). 5 focused unit tests pass in `tests/test_individual_package.py`. Output preserved in `outputs/individual-package-benchmark-20261014-001/`.
 
 
+## D063: Taxonomic Hypernym Generalization bridges fine senses to canonical leaf activations
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D062 and executes Phase 4 of the Curriculum Readiness & Scalability Milestone. Implements `src/lmft_lab/taxonomic_generalization.py` to traverse WordNet hypernym paths from fine-grained senses to abstract ontological categories, propagating continuous modulation into canonical leaf dials across the 4 canonical founding branches without mutating or expanding the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/TAXONOMIC_GENERALIZATION_PROTOCOL.md) and [results](experiments/TAXONOMIC_GENERALIZATION_RESULTS.md) own scope.
+
+Key findings:
+- **100% Hypernym Path Resolution (H1 Confirmed)**: Successfully traversed complete hypernym ancestry paths up to root `entity` across all 11 registered WordNet senses for *bank* and *order*, identifying 11 distinct primary categories (e.g. `organization`, `geological_formation`, `facility_artifact`, `legal_instrument`, `sequence_structure`).
+- **Principled Leaf Dial Modulation (H2 Confirmed)**: Applied 33 continuous modulations into the canonical 24 leaf inventory of `birth.py`, strictly honoring $[0.0, 1.0]$ bounds and demonstrating cross-lemma conceptual convergence (e.g. organizational senses across distinct lemmas activating common structural/justice leaves).
+- **Calibrated Unregistered Handling (H3 Confirmed)**: Out-of-domain control instances honestly returned `found = False`, applied 0 affinities, and left canonical dials untouched.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity (`c30f37f8b47b4104da9495df089db56f28e1efe3ad6f19955bee9890fc468ccf`). 6 focused unit tests pass in `tests/test_taxonomic_generalization.py`. Output preserved in `outputs/taxonomic-generalization-corpus12-20261014-001/`.
+
+
+
 
 
 
