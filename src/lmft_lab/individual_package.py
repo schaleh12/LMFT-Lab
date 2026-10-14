@@ -51,6 +51,9 @@ def export_individual(
     capacity_data = deepcopy(runtime_state.get("capacity", {}))
     judgment_data = deepcopy(runtime_state.get("judgment", {}))
     questions_data = deepcopy(runtime_state.get("questions", {}))
+    disposition_data = deepcopy(runtime_state.get("disposition", {}))
+    episodic_data = deepcopy(runtime_state.get("episodic_journal", {}))
+    consolidation_data = deepcopy(runtime_state.get("memory_consolidation", {}))
     
     payload = {
         "schema_version": PACKAGE_SCHEMA_VERSION,
@@ -64,6 +67,9 @@ def export_individual(
         "judgment": judgment_data,
         "capacity": capacity_data,
         "questions": questions_data,
+        "disposition": disposition_data,
+        "episodic_journal": episodic_data,
+        "memory_consolidation": consolidation_data,
         "cycle": runtime_state.get("cycle", 0),
         "cursor": runtime_state.get("cursor", 0),
     }
@@ -121,6 +127,9 @@ def import_individual(filepath: Path, verify_seed: bool = True) -> Dict[str, Any
         "judgment": package["judgment"],
         "capacity": package.get("capacity", {}),
         "questions": package.get("questions", {}),
+        "disposition": package.get("disposition", {}),
+        "episodic_journal": package.get("episodic_journal", {}),
+        "memory_consolidation": package.get("memory_consolidation", {}),
         "cycle": package.get("cycle", 0),
         "cursor": package.get("cursor", 0),
         "package_provenance": {

@@ -52,18 +52,20 @@ class MemoryConsolidationEngine:
         if explicit_pattern:
             norm_pattern = normalize_anchor_text(explicit_pattern)
         else:
-            # Extract key words around lemma in sentence
-            words = [re.sub(r"^[^\w]+|[^\w]+$", "", w.lower()) for w in sentence.split()]
+            words = [re.sub(r"^[^\w]+|[^\w]+$", "", w.lower()) for w in sentence.split() if w.strip()]
             lemma_idx = -1
             for i, w in enumerate(words):
                 if clean_lemma in w:
                     lemma_idx = i
                     break
             if lemma_idx >= 0:
-                start = max(0, lemma_idx - 2)
-                end = min(len(words), lemma_idx + 3)
-                window_words = words[start:end]
-                norm_pattern = normalize_anchor_text(" ".join(window_words))
+                if lemma_idx > 0 and normalize_anchor_text(words[lemma_idx - 1]):
+                    collocate = f"{words[lemma_idx - 1]} {words[lemma_idx]}"
+                elif lemma_idx + 1 < len(words) and normalize_anchor_text(words[lemma_idx + 1]):
+                    collocate = f"{words[lemma_idx]} {words[lemma_idx + 1]}"
+                else:
+                    collocate = words[lemma_idx]
+                norm_pattern = normalize_anchor_text(collocate)
             else:
                 norm_pattern = normalize_anchor_text(sentence)
 
@@ -265,17 +267,20 @@ class OrdinaryMemoryConsolidationComparator:
         if explicit_pattern:
             norm_pattern = normalize_anchor_text(explicit_pattern)
         else:
-            words = [re.sub(r"^[^\w]+|[^\w]+$", "", w.lower()) for w in sentence.split()]
+            words = [re.sub(r"^[^\w]+|[^\w]+$", "", w.lower()) for w in sentence.split() if w.strip()]
             lemma_idx = -1
             for i, w in enumerate(words):
                 if clean_lemma in w:
                     lemma_idx = i
                     break
             if lemma_idx >= 0:
-                start = max(0, lemma_idx - 2)
-                end = min(len(words), lemma_idx + 3)
-                window_words = words[start:end]
-                norm_pattern = normalize_anchor_text(" ".join(window_words))
+                if lemma_idx > 0 and normalize_anchor_text(words[lemma_idx - 1]):
+                    collocate = f"{words[lemma_idx - 1]} {words[lemma_idx]}"
+                elif lemma_idx + 1 < len(words) and normalize_anchor_text(words[lemma_idx + 1]):
+                    collocate = f"{words[lemma_idx]} {words[lemma_idx + 1]}"
+                else:
+                    collocate = words[lemma_idx]
+                norm_pattern = normalize_anchor_text(collocate)
             else:
                 norm_pattern = normalize_anchor_text(sentence)
 

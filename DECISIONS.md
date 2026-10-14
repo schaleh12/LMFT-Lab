@@ -1254,6 +1254,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all sleep cycles (`65c85b8f0e34bb34...`). 7 focused unit tests pass in `tests/test_memory_consolidation.py`. Output preserved in `outputs/memory-consolidation-benchmark-20261014-001/`.
 
 
+## D071: Unified Cognitive Heartbeat integrates developmental faculties into standalone packaging
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D070 and completes Phase 4 of the Autobiographical Memory & Epistemic Coherence Milestone. Implements `src/lmft_lab/cognitive_heartbeat.py` and upgrades `src/lmft_lab/individual_package.py` to orchestrate polysemous capacity lookup, lateral ethical-ontological coupling, prerequisite coherence gating, dynamic affective plasticity, post-action echoes, dispositional momentum drift, dual-coded episodic journaling, and offline sleep consolidation into a seamless cognitive loop without mutating the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/COGNITIVE_HEARTBEAT_PROTOCOL.md) and [results](experiments/COGNITIVE_HEARTBEAT_RESULTS.md) own scope.
+
+Key findings:
+- **Unified Multi-Turn Waking Cycle (H1 Confirmed)**: Coherently executed all 10 developmental faculties across 6 sequential waking cycles, dynamically adjusting learning plasticity ($\alpha = 0.2039 \rightarrow 0.2750$) and maintaining continuous dispositional momentum.
+- **Dual-Speed Sleep Consolidation (H2 Confirmed)**: Offline replay across 2 sleep cycles habituated established capacity weights ($0.60 \rightarrow 0.68 \rightarrow 0.744$), pruned transient buffer noise, and relaxed dispositional dials toward neutral equilibrium via idle drift.
+- **Standalone Individual Packaging (.lmft.json) (H3 Confirmed)**: Successfully packaged the complete developmental individual state, achieving 100% cryptographic SHA-256 signature verification, strict Rule D001 seed invariant enforcement, and 100% round-trip restoration fidelity.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity across all waking and sleep cycles (`ada9db740178e2c7...`). 6 focused unit tests pass in `tests/test_cognitive_heartbeat.py`. All 1,551 regression tests in the repository pass with 100% green coverage. Output preserved in `outputs/cognitive-heartbeat-benchmark-20261014-001/`.
+
+
+
 
 
 

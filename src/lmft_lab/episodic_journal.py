@@ -44,6 +44,7 @@ class EpisodicSaliencyJournal:
         post_action_echo: Optional[Dict[str, Any]] = None,
         is_conflict: bool = False,
         custom_id: Optional[str] = None,
+        core_pattern: Optional[str] = None,
     ) -> Dict[str, Any]:
         """Evaluates saliency admission and pens dual-coded journal entry if criteria met."""
         salience = float(leaf_dials.get("experiential/reflection/salience", 0.50))
@@ -85,14 +86,18 @@ class EpisodicSaliencyJournal:
 
         echo = post_action_echo or {"arousal_delta": -0.05, "valence_delta": +0.05}
 
+        factual = {
+            "sentence": sentence,
+            "target_lemmas": list(target_lemmas),
+            "resolved_senses": dict(resolved_senses),
+        }
+        if core_pattern:
+            factual["core_pattern"] = core_pattern
+
         entry = {
             "episode_id": ep_id,
             "cycle": int(cycle),
-            "factual_anchor": {
-                "sentence": sentence,
-                "target_lemmas": list(target_lemmas),
-                "resolved_senses": dict(resolved_senses),
-            },
+            "factual_anchor": factual,
             "affective_snapshot": {
                 "arousal": round(arousal, 4),
                 "valence": round(float(leaf_dials.get("experiential/phase/valence", 0.50)), 4),
@@ -167,6 +172,7 @@ class OrdinaryMemoryJournalComparator:
         post_action_echo: Optional[Dict[str, Any]] = None,
         is_conflict: bool = False,
         custom_id: Optional[str] = None,
+        core_pattern: Optional[str] = None,
     ) -> Dict[str, Any]:
         salience = float(leaf_dials.get("experiential/reflection/salience", 0.50))
         novelty = float(leaf_dials.get("experiential/reflection/novelty", 0.50))
@@ -205,14 +211,18 @@ class OrdinaryMemoryJournalComparator:
 
         echo = post_action_echo or {"arousal_delta": -0.05, "valence_delta": +0.05}
 
+        factual = {
+            "sentence": sentence,
+            "target_lemmas": list(target_lemmas),
+            "resolved_senses": dict(resolved_senses),
+        }
+        if core_pattern:
+            factual["core_pattern"] = core_pattern
+
         entry = {
             "episode_id": ep_id,
             "cycle": int(cycle),
-            "factual_anchor": {
-                "sentence": sentence,
-                "target_lemmas": list(target_lemmas),
-                "resolved_senses": dict(resolved_senses),
-            },
+            "factual_anchor": factual,
             "affective_snapshot": {
                 "arousal": round(arousal, 4),
                 "valence": round(float(leaf_dials.get("experiential/phase/valence", 0.50)), 4),
