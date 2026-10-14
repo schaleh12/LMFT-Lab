@@ -1206,6 +1206,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity (`f3afdd200d87a261...`). 6 focused unit tests pass in `tests/test_recurrent_feedback.py`. Output preserved in `outputs/recurrent-feedback-benchmark-20261014-001/`.
 
 
+## D067: Persistent Dispositional State Vector & Momentum Drift maintains temporal cognitive continuum
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D066 and executes Phase 4 of the Holonomic Cross-Domain Recurrence & Cohesion Milestone. Implements `src/lmft_lab/dispositional_momentum.py` to maintain a continuous temporal disposition across sequential interactions for all 24 canonical leaves in `birth.py`, combining exponential moving average (EMA) momentum updates ($\gamma = 0.35$) with idle equilibrium drift ($\mu = 0.05$) without mutating or expanding the frozen 40-node founding seed (Rule D001).
+[Protocol](experiments/DISPOSITIONAL_MOMENTUM_PROTOCOL.md) and [results](experiments/DISPOSITIONAL_MOMENTUM_RESULTS.md) own scope.
+
+Key findings:
+- **Living Dispositional Momentum (H1 Confirmed)**: Situational stimuli produce smooth continuous trajectory drift across turns; Turn 4 retained elevated Order ($0.5682$) under a neutral stimulus rather than resetting abruptly to $0.50$.
+- **Equilibrium Relaxation (H2 Confirmed)**: Across 5 consecutive idle drift steps, elevated activations relaxed smoothly toward neutral baseline ($0.5682 \rightarrow 0.5528$).
+- **Atomic Serialization & Seed Guardrails (H3 Confirmed)**: 100% round-trip restoration fidelity (`1762c7793f537b28...`) with immediate rejection (`ValueError: Seed geometry violation`) of tampered seed geometries.
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte state digest parity across all turns. 6 focused unit tests pass in `tests/test_dispositional_momentum.py`. Output preserved in `outputs/dispositional-momentum-benchmark-20261014-001/`.
+
+
+
 
 
 
