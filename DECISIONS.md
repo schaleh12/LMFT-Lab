@@ -1134,6 +1134,19 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary-memory baseline comparator confirmed exact parity across all queries. 5 focused unit tests pass in `tests/test_inverted_trie.py`. Output preserved in `outputs/inverted-trie-benchmark-corpus1000-20261014-001/`.
 
 
+## D061: Anchor Normalization & Deduplication eliminates 60% rule redundancy and reinforces confidence
+
+**Status: adopted prototype finding; experimental evaluation complete, 2026-10-14.** Follows D060 and executes Phase 2 of the Curriculum Readiness & Scalability Milestone. Implements `src/lmft_lab/anchor_deduplication.py` to standardize surface phrasing variations and merge duplicate candidate proposals into canonical capacity rules with zero runtime LLM calls.
+[Protocol](experiments/ANCHOR_DEDUPLICATION_PROTOCOL.md) and [results](experiments/ANCHOR_DEDUPLICATION_RESULTS.md) own scope.
+
+Key findings:
+- **60.0% Redundancy Elimination (H1 Confirmed)**: Condensed 20 raw candidate proposals with varying determiners and punctuation into 8 canonical rules, merging 12 redundant variants (compression ratio 40.0%).
+- **Witness Aggregation & Richest Gloss (H2 Confirmed)**: Preserved all empirical evidence by unioning witness identifier sets and retaining the longest explanatory gloss.
+- **Progressive Confidence Reinforcement (H3 Confirmed)**: Boosted confidence weights asymptotically upon repeated observations ($w = 0.50 \rightarrow 0.6387 \rightarrow 0.6929$).
+- **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte rule and digest parity. 5 focused unit tests pass in `tests/test_anchor_deduplication.py`. Output preserved in `outputs/anchor-deduplication-benchmark-corpus20-20261014-001/`.
+
+
+
 
 
 
