@@ -116,3 +116,38 @@ def test_ordinary_memory_baseline_parity():
         comparator_res = comparator.modulate(sense_key, weight=0.85)
 
         assert digest(primary_res) == digest(comparator_res)
+
+
+def test_dynamic_lemma_extraction_and_alias_resolution():
+    """Extracts open-world vocabulary and maps aliases to canonical hypernym senses."""
+    generalizer = TaxonomicGeneralizer()
+
+    # Dynamic extraction of registered concepts from natural text
+    lemmas = generalizer.extract_lemmas("The library preserved truth and philosophical wisdom during the crisis.")
+    assert "library" in lemmas
+    assert "truth" in lemmas
+    assert "crisis" in lemmas
+
+    # Alias resolution to canonical sense
+    res_lib = generalizer.compute_taxonomic_modulation("library")
+    assert res_lib["found"] is True
+    assert res_lib["primary_category"] == "knowledge_truth"
+    assert res_lib["applied_affinities"]["psychological/truth/theory"] > 0
+
+    res_crisis = generalizer.compute_taxonomic_modulation("crisis")
+    assert res_crisis["found"] is True
+    assert res_crisis["primary_category"] == "conflict_threat"
+    assert res_crisis["applied_affinities"]["experiential/phase/arousal"] > 0
+
+
+def test_comparator_extended_parity():
+    """Comparator and generalizer achieve digest parity across aliases and sentences (Rule D004)."""
+    generalizer = TaxonomicGeneralizer()
+    comparator = OrdinaryMemoryTaxonomicComparator()
+
+    test_words = ["library", "peace", "threat", "craft", "treaty", "bread", "freedom", "anomaly"]
+    for word in test_words:
+        p_res = generalizer.compute_taxonomic_modulation(word, weight=0.7)
+        c_res = comparator.compute_taxonomic_modulation(word, weight=0.7)
+        assert digest(p_res) == digest(c_res)
+

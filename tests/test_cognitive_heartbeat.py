@@ -161,3 +161,30 @@ def test_value_consonance_in_heartbeat():
     assert consonance["consonance_index"] >= 0.80
 
 
+def test_open_world_vocabulary_taxonomic_modulation():
+    """Verify open-world sentences dynamically engage taxonomic hypernyms and preserve Rule D004 parity."""
+    heartbeat = CognitiveHeartbeat()
+    comparator = OrdinaryMemoryHeartbeatComparator()
+
+    sentences = [
+        "In the quiet library, philosophers debated the theory of truth.",
+        "The sovereign decree enforced strict justice and lawful honor.",
+        "A sudden enemy attack threatened the fortress in war.",
+        "Gentle friends shared warm bread by the hearth in peace.",
+    ]
+
+    for sent in sentences:
+        h_res = heartbeat.interact(sent)
+        c_res = comparator.interact(sent)
+
+        # Confirm lemmas extracted and modulated
+        assert len(h_res["target_lemmas"]) > 0
+        assert len(h_res["taxonomic_modulations"]) > 0
+        assert len(h_res["coherence"]["distortions_detected"]) == 0
+        assert h_res["coherence"]["global_coherence_index"] > 0.50
+
+        # Rule D004 byte-for-byte baseline parity
+        assert digest(h_res) == digest(c_res)
+
+
+

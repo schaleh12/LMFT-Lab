@@ -31,6 +31,10 @@ from lmft_lab.memory_consolidation import MemoryConsolidationEngine
 from lmft_lab.prerequisite_gate import PrerequisiteCoherenceGate
 from lmft_lab.recurrent_feedback import RecurrentFeedbackEngine
 from lmft_lab.runtime_store import digest
+from lmft_lab.taxonomic_generalization import (
+    TaxonomicGeneralizer,
+    OrdinaryMemoryTaxonomicComparator,
+)
 from lmft_lab.value_consonance import ValueConsonanceEngine
 
 
@@ -83,6 +87,7 @@ class CognitiveHeartbeat:
         self.plasticity_engine = AffectivePlasticityEngine()
         self.homeostasis_governor = AffectiveHomeostasisGovernor()
         self.consonance_engine = ValueConsonanceEngine()
+        self.taxonomic_generalizer = TaxonomicGeneralizer()
 
     def interact(
         self,
@@ -96,13 +101,21 @@ class CognitiveHeartbeat:
         self.cycle_count += 1
         current_cycle = self.cycle_count
 
-        # 1. Extract Target Lemmas & Resolve Senses via Capacity Rules
+        # 1. Extract Target Lemmas & Resolve Senses via Capacity Rules & Taxonomy
         norm_sent = normalize_anchor_text(sentence)
-        lemmas = target_lemmas or []
+        lemmas = list(target_lemmas) if target_lemmas is not None else []
         if not lemmas:
-            for l in ["bank", "order"]:
-                if l in sentence.lower():
+            for r in self.consolidator.long_term_rules.values():
+                l = r.get("lemma")
+                if l and (l in norm_sent or l in sentence.lower()) and l not in lemmas:
                     lemmas.append(l)
+            for l in self.taxonomic_generalizer.extract_lemmas(sentence):
+                if l not in lemmas:
+                    lemmas.append(l)
+            if not lemmas:
+                for l in ["bank", "order"]:
+                    if l in sentence.lower() and l not in lemmas:
+                        lemmas.append(l)
 
         resolved_senses: Dict[str, str] = {}
         speaking_register = "Methodical & Pragmatic"
@@ -124,7 +137,11 @@ class CognitiveHeartbeat:
                     speaking_register = matched_rule.get("speaking_register", speaking_register)
                     action_bid = matched_rule.get("action_bid", action_bid)
                 else:
-                    resolved_senses[l] = "unanchored_general_sense"
+                    tax_sense = self.taxonomic_generalizer.resolve_default_sense(l)
+                    if tax_sense:
+                        resolved_senses[l] = tax_sense
+                    else:
+                        resolved_senses[l] = "unanchored_general_sense"
 
         # 2. Formulate Candidate Dials
         candidate_dials = deepcopy(self.disposition.dials)
@@ -133,6 +150,18 @@ class CognitiveHeartbeat:
             candidate_dials["experiential/reflection/salience"] = 0.78
             candidate_dials["psychological/contemplation/clarity"] = 0.85
             candidate_dials["philosophical/structure/order"] = 0.75
+
+        # Apply taxonomic hypernym modulation for resolved senses
+        taxonomic_modulations = []
+        for l, sense_k in resolved_senses.items():
+            if sense_k != "unanchored_general_sense" and self.taxonomic_generalizer.has_sense(sense_k):
+                mod = self.taxonomic_generalizer.compute_taxonomic_modulation(
+                    sense_key=sense_k,
+                    base_dials=candidate_dials,
+                    weight=0.35,
+                )
+                candidate_dials = mod["modulated_dials"]
+                taxonomic_modulations.append(mod)
 
         if is_conflict:
             candidate_dials["psychological/contemplation/clarity"] = 0.20
@@ -230,6 +259,7 @@ class CognitiveHeartbeat:
             "post_action_echo": echo_result["echo_deltas"],
             "journal_result": journal_res,
             "disposition_dials": deepcopy(self.disposition.dials),
+            "taxonomic_modulations": taxonomic_modulations,
         }
 
     def sleep(self, prune_buffer: bool = True) -> Dict[str, Any]:
@@ -312,6 +342,7 @@ class OrdinaryMemoryHeartbeatComparator:
         self.plasticity_engine = AffectivePlasticityEngine()
         self.homeostasis_governor = AffectiveHomeostasisGovernor()
         self.consonance_engine = ValueConsonanceEngine()
+        self.taxonomic_generalizer = OrdinaryMemoryTaxonomicComparator()
 
     def interact(
         self,
@@ -325,11 +356,19 @@ class OrdinaryMemoryHeartbeatComparator:
         current_cycle = self.cycle_count
 
         norm_sent = normalize_anchor_text(sentence)
-        lemmas = target_lemmas or []
+        lemmas = list(target_lemmas) if target_lemmas is not None else []
         if not lemmas:
-            for l in ["bank", "order"]:
-                if l in sentence.lower():
+            for r in self.consolidator.long_term_rules.values():
+                l = r.get("lemma")
+                if l and (l in norm_sent or l in sentence.lower()) and l not in lemmas:
                     lemmas.append(l)
+            for l in self.taxonomic_generalizer.extract_lemmas(sentence):
+                if l not in lemmas:
+                    lemmas.append(l)
+            if not lemmas:
+                for l in ["bank", "order"]:
+                    if l in sentence.lower() and l not in lemmas:
+                        lemmas.append(l)
 
         resolved_senses: Dict[str, str] = {}
         speaking_register = "Methodical & Pragmatic"
@@ -351,7 +390,11 @@ class OrdinaryMemoryHeartbeatComparator:
                     speaking_register = matched_rule.get("speaking_register", speaking_register)
                     action_bid = matched_rule.get("action_bid", action_bid)
                 else:
-                    resolved_senses[l] = "unanchored_general_sense"
+                    tax_sense = self.taxonomic_generalizer.resolve_default_sense(l)
+                    if tax_sense:
+                        resolved_senses[l] = tax_sense
+                    else:
+                        resolved_senses[l] = "unanchored_general_sense"
 
         candidate_dials = deepcopy(self.disposition.dials)
 
@@ -359,6 +402,17 @@ class OrdinaryMemoryHeartbeatComparator:
             candidate_dials["experiential/reflection/salience"] = 0.78
             candidate_dials["psychological/contemplation/clarity"] = 0.85
             candidate_dials["philosophical/structure/order"] = 0.75
+
+        taxonomic_modulations = []
+        for l, sense_k in resolved_senses.items():
+            if sense_k != "unanchored_general_sense" and self.taxonomic_generalizer.has_sense(sense_k):
+                mod = self.taxonomic_generalizer.compute_taxonomic_modulation(
+                    sense_key=sense_k,
+                    base_dials=candidate_dials,
+                    weight=0.35,
+                )
+                candidate_dials = mod["modulated_dials"]
+                taxonomic_modulations.append(mod)
 
         if is_conflict:
             candidate_dials["psychological/contemplation/clarity"] = 0.20
@@ -449,6 +503,7 @@ class OrdinaryMemoryHeartbeatComparator:
             "post_action_echo": echo_result["echo_deltas"],
             "journal_result": journal_res,
             "disposition_dials": deepcopy(self.disposition.dials),
+            "taxonomic_modulations": taxonomic_modulations,
         }
 
     def sleep(self, prune_buffer: bool = True) -> Dict[str, Any]:
