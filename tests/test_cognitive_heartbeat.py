@@ -187,4 +187,55 @@ def test_open_world_vocabulary_taxonomic_modulation():
         assert digest(h_res) == digest(c_res)
 
 
+def test_long_horizon_100_cycles_no_dial_saturation():
+    """Verify 100 consecutive waking interactions without custom_dials do not ratchet dials into 0.8640 saturation."""
+    heartbeat = CognitiveHeartbeat()
+    prompts = [
+        "The national bank approved the financial reserve.",
+        "A court order enforced lawful justice.",
+        "In the quiet library philosophers studied truth and theory.",
+        "Gentle friends shared warm bread by the hearth in peace.",
+    ]
+    for i in range(100):
+        res = heartbeat.interact(prompts[i % len(prompts)])
 
+    dials = heartbeat.disposition.dials
+    pegged_high = [k for k, v in dials.items() if v >= 0.86]
+    pegged_low = [k for k, v in dials.items() if v <= 0.14]
+    assert len(pegged_high) == 0, f"Dials ratcheted into upper clamp: {pegged_high}"
+    assert len(pegged_low) == 0, f"Dials ratcheted into lower clamp: {pegged_low}"
+    assert len(res["tree_hierarchy"]["all_40_nodes"]) == 40
+
+
+def test_word_boundary_and_weight_prioritized_rule_matching():
+    """Verify substring false positives ('border' -> 'order') are prevented and higher-weight rules win."""
+    rules = [
+        {
+            "rule_id": "rule-order-low",
+            "lemma": "order",
+            "target_sense_key": "order_low_sense",
+            "core_pattern": "sovereign order",
+            "weight": 0.55,
+            "speaking_register": "Methodical & Pragmatic",
+            "action_bid": "Low weight bid",
+        },
+        {
+            "rule_id": "rule-order-high",
+            "lemma": "order",
+            "target_sense_key": "order_high_sense",
+            "core_pattern": "sovereign order",
+            "weight": 0.90,
+            "speaking_register": "Authoritative & Chivalrous",
+            "action_bid": "High weight bid",
+        },
+    ]
+    heartbeat = CognitiveHeartbeat(initial_rules=rules)
+
+    # 'border' must not falsely trigger lemma 'order'
+    res_border = heartbeat.interact("The northern border remained quiet at dusk.")
+    assert "order" not in res_border["target_lemmas"]
+
+    # When 'sovereign order' matches, the 0.90 weight rule must win over the 0.55 weight rule
+    res_order = heartbeat.interact("The sovereign order was proclaimed.")
+    assert res_order["resolved_senses"]["order"] == "order_high_sense"
+    assert res_order["action_bid"] == "High weight bid"

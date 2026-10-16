@@ -31,8 +31,9 @@ def normalize_anchor_text(text: str) -> str:
     # Strip leading/trailing punctuation
     cleaned = re.sub(r"^[^\w]+|[^\w]+$", "", text.strip().lower())
     
-    # Split into words
-    words = [re.sub(r"^[^\w]+|[^\w]+$", "", w) for w in cleaned.split() if w.strip()]
+    # Split into words and filter out standalone punctuation tokens that strip to empty
+    raw_words = [re.sub(r"^[^\w]+|[^\w]+$", "", w) for w in cleaned.split() if w.strip()]
+    words = [w for w in raw_words if w]
     
     # Strip leading determiners
     while words and words[0] in DETERMINERS:

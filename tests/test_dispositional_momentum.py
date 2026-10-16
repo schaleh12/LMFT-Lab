@@ -112,3 +112,19 @@ def test_ordinary_memory_comparator_parity():
 
     # Export parity
     assert digest(vec.export_state()) == digest(comparator.export_state())
+
+
+def test_hierarchical_40_node_tree_rollup():
+    """Verifies 24 leaves roll up into 12 branches and 4 domains covering all 40 canonical seed nodes."""
+    vec = PersistentDispositionalVector(initial_dials={
+        "psychological/contemplation/clarity": 0.90,
+        "psychological/contemplation/confidence": 0.70,
+    })
+    tree = vec.compute_hierarchical_tree()
+    assert len(tree["leaf_dials"]) == 24
+    assert len(tree["branch_dials"]) == 12
+    assert len(tree["domain_dials"]) == 4
+    assert len(tree["all_40_nodes"]) == 40
+    assert tree["branch_dials"]["psychological/contemplation"] == 0.80
+    assert set(tree["all_40_nodes"].keys()) == {node_id for node_id, _, _, _, _ in _inventory()}
+

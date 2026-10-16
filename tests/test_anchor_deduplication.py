@@ -26,6 +26,9 @@ def test_normalize_anchor_text_variations():
     assert normalize_anchor_text("  commercial bank  ") == "commercial bank"
     assert normalize_anchor_text("a strict court order") == "strict court order"
     assert normalize_anchor_text("the river bank") == "river bank"
+    assert normalize_anchor_text("Order & Chaos") == "order chaos"
+    assert normalize_anchor_text("A - B / C") == "b c"
+    assert normalize_anchor_text(normalize_anchor_text("The Sovereign & The Hearth - A")) == normalize_anchor_text("The Sovereign & The Hearth - A")
 
 
 def test_merge_duplicate_rules_aggregation():

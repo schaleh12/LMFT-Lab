@@ -211,3 +211,38 @@ def test_ordinary_memory_comparator_parity():
     assert digest(e_summary) == digest(c_summary)
     assert digest(e_rem) == digest(c_rem)
     assert digest(engine.export_state()) == digest(comparator.export_state())
+
+
+def test_retain_unconfirmed_across_sleep_and_empty_pattern_safety():
+    """Verifies retain_unconfirmed preserves singletons across sleep and empty patterns do not collide."""
+    initial_rule = {
+        "rule_id": "rule-order-cmd-01",
+        "lemma": "order",
+        "target_sense_key": "order%1:10:00::",
+        "core_pattern": "court order",
+        "weight": 0.50,
+    }
+    engine = MemoryConsolidationEngine(initial_rules=[initial_rule], min_confirmations=2)
+    # Empty normalized pattern ("the") should NOT match "court order"
+    assert engine._find_matching_long_term_rule("order", "order%1:10:00::", "the") is None
+
+    day1_ep = [{
+        "episode_id": "ep-day1",
+        "cycle": 1,
+        "factual_anchor": {"sentence": "River bank ferns.", "target_lemmas": ["bank"], "resolved_senses": {"bank": "river"}, "core_pattern": "river bank"},
+        "is_conflict": False,
+    }]
+    s1, rem1 = engine.consolidate_sleep_cycle(day1_ep, prune_buffer=True, retain_unconfirmed=True)
+    assert s1["promoted_rules_count"] == 0
+    assert len(rem1) == 1
+
+    day2_ep = rem1 + [{
+        "episode_id": "ep-day2",
+        "cycle": 2,
+        "factual_anchor": {"sentence": "River bank moss.", "target_lemmas": ["bank"], "resolved_senses": {"bank": "river"}, "core_pattern": "river bank"},
+        "is_conflict": False,
+    }]
+    s2, rem2 = engine.consolidate_sleep_cycle(day2_ep, prune_buffer=True, retain_unconfirmed=True)
+    assert s2["promoted_rules_count"] == 1
+    assert len(rem2) == 0
+

@@ -64,6 +64,22 @@ DEFAULT_INITIAL_RULES = [
 ]
 
 
+def _phrase_in_text(phrase: str, text_lower: str, norm_text: str) -> bool:
+    """Checks whether a lemma or pattern appears at word boundaries in the sentence."""
+    if not phrase:
+        return False
+    p_low = phrase.strip().lower()
+    if not p_low:
+        return False
+    # Check token-padded containment on normalized text first
+    norm_p = normalize_anchor_text(p_low)
+    if norm_p and f" {norm_p} " in f" {norm_text} ":
+        return True
+    # Word-boundary regex on lowercase raw sentence
+    pattern_re = r"(?<![a-z0-9_])" + re.escape(p_low) + r"(?![a-z0-9_])"
+    return bool(re.search(pattern_re, text_lower))
+
+
 class CognitiveHeartbeat:
     """Integrated cognitive heartbeat pipeline orchestrating all developmental faculties."""
 
@@ -103,18 +119,30 @@ class CognitiveHeartbeat:
 
         # 1. Extract Target Lemmas & Resolve Senses via Capacity Rules & Taxonomy
         norm_sent = normalize_anchor_text(sentence)
+        sent_lower = sentence.lower()
         lemmas = list(target_lemmas) if target_lemmas is not None else []
+
+        # Sort long-term rules by descending weight and pattern specificity
+        sorted_rules = sorted(
+            self.consolidator.long_term_rules.values(),
+            key=lambda r: (
+                -float(r.get("weight", 0.50)),
+                -len(normalize_anchor_text(r.get("core_pattern", ""))),
+                str(r.get("rule_id", "")),
+            ),
+        )
+
         if not lemmas:
-            for r in self.consolidator.long_term_rules.values():
+            for r in sorted_rules:
                 l = r.get("lemma")
-                if l and (l in norm_sent or l in sentence.lower()) and l not in lemmas:
+                if l and _phrase_in_text(l, sent_lower, norm_sent) and l not in lemmas:
                     lemmas.append(l)
             for l in self.taxonomic_generalizer.extract_lemmas(sentence):
                 if l not in lemmas:
                     lemmas.append(l)
             if not lemmas:
                 for l in ["bank", "order"]:
-                    if l in sentence.lower() and l not in lemmas:
+                    if _phrase_in_text(l, sent_lower, norm_sent) and l not in lemmas:
                         lemmas.append(l)
 
         resolved_senses: Dict[str, str] = {}
@@ -126,10 +154,10 @@ class CognitiveHeartbeat:
         else:
             for l in lemmas:
                 matched_rule = None
-                for r in self.consolidator.long_term_rules.values():
+                for r in sorted_rules:
                     if r.get("lemma") == l:
                         pat = normalize_anchor_text(r.get("core_pattern", ""))
-                        if pat in norm_sent or pat in sentence.lower():
+                        if pat and _phrase_in_text(pat, sent_lower, norm_sent):
                             matched_rule = r
                             break
                 if matched_rule:
@@ -143,12 +171,13 @@ class CognitiveHeartbeat:
                     else:
                         resolved_senses[l] = "unanchored_general_sense"
 
-        # 2. Formulate Candidate Dials
-        candidate_dials = deepcopy(self.disposition.dials)
+        # 2. Formulate Situational Candidate Dials around Neutral 0.50 Baseline
+        # (Preventing positive coupling/echo deltas from ratcheting D_{t-1} into saturation)
+        candidate_dials = {k: 0.50 for k in sorted(CANONICAL_LEAF_IDS)}
 
         if forced_senses or any(v != "unanchored_general_sense" for v in resolved_senses.values()):
             candidate_dials["experiential/reflection/salience"] = 0.78
-            candidate_dials["psychological/contemplation/clarity"] = 0.85
+            candidate_dials["psychological/contemplation/clarity"] = 0.74
             candidate_dials["philosophical/structure/order"] = 0.75
 
         # Apply taxonomic hypernym modulation for resolved senses
@@ -259,14 +288,16 @@ class CognitiveHeartbeat:
             "post_action_echo": echo_result["echo_deltas"],
             "journal_result": journal_res,
             "disposition_dials": deepcopy(self.disposition.dials),
+            "tree_hierarchy": self.disposition.compute_hierarchical_tree(),
             "taxonomic_modulations": taxonomic_modulations,
         }
 
-    def sleep(self, prune_buffer: bool = True) -> Dict[str, Any]:
+    def sleep(self, prune_buffer: bool = True, retain_unconfirmed: bool = False) -> Dict[str, Any]:
         """Executes offline memory consolidation and equilibrium drift ('sleep')."""
         summary, remaining = self.consolidator.consolidate_sleep_cycle(
             episodic_buffer=list(self.journal.entries),
             prune_buffer=prune_buffer,
+            retain_unconfirmed=retain_unconfirmed,
         )
         if prune_buffer:
             self.journal.entries.clear()
@@ -356,18 +387,29 @@ class OrdinaryMemoryHeartbeatComparator:
         current_cycle = self.cycle_count
 
         norm_sent = normalize_anchor_text(sentence)
+        sent_lower = sentence.lower()
         lemmas = list(target_lemmas) if target_lemmas is not None else []
+
+        sorted_rules = sorted(
+            self.consolidator.long_term_rules.values(),
+            key=lambda r: (
+                -float(r.get("weight", 0.50)),
+                -len(normalize_anchor_text(r.get("core_pattern", ""))),
+                str(r.get("rule_id", "")),
+            ),
+        )
+
         if not lemmas:
-            for r in self.consolidator.long_term_rules.values():
+            for r in sorted_rules:
                 l = r.get("lemma")
-                if l and (l in norm_sent or l in sentence.lower()) and l not in lemmas:
+                if l and _phrase_in_text(l, sent_lower, norm_sent) and l not in lemmas:
                     lemmas.append(l)
             for l in self.taxonomic_generalizer.extract_lemmas(sentence):
                 if l not in lemmas:
                     lemmas.append(l)
             if not lemmas:
                 for l in ["bank", "order"]:
-                    if l in sentence.lower() and l not in lemmas:
+                    if _phrase_in_text(l, sent_lower, norm_sent) and l not in lemmas:
                         lemmas.append(l)
 
         resolved_senses: Dict[str, str] = {}
@@ -379,10 +421,10 @@ class OrdinaryMemoryHeartbeatComparator:
         else:
             for l in lemmas:
                 matched_rule = None
-                for r in self.consolidator.long_term_rules.values():
+                for r in sorted_rules:
                     if r.get("lemma") == l:
                         pat = normalize_anchor_text(r.get("core_pattern", ""))
-                        if pat in norm_sent or pat in sentence.lower():
+                        if pat and _phrase_in_text(pat, sent_lower, norm_sent):
                             matched_rule = r
                             break
                 if matched_rule:
@@ -396,11 +438,11 @@ class OrdinaryMemoryHeartbeatComparator:
                     else:
                         resolved_senses[l] = "unanchored_general_sense"
 
-        candidate_dials = deepcopy(self.disposition.dials)
+        candidate_dials = {k: 0.50 for k in sorted(CANONICAL_LEAF_IDS)}
 
         if forced_senses or any(v != "unanchored_general_sense" for v in resolved_senses.values()):
             candidate_dials["experiential/reflection/salience"] = 0.78
-            candidate_dials["psychological/contemplation/clarity"] = 0.85
+            candidate_dials["psychological/contemplation/clarity"] = 0.74
             candidate_dials["philosophical/structure/order"] = 0.75
 
         taxonomic_modulations = []
@@ -503,13 +545,15 @@ class OrdinaryMemoryHeartbeatComparator:
             "post_action_echo": echo_result["echo_deltas"],
             "journal_result": journal_res,
             "disposition_dials": deepcopy(self.disposition.dials),
+            "tree_hierarchy": self.disposition.compute_hierarchical_tree(),
             "taxonomic_modulations": taxonomic_modulations,
         }
 
-    def sleep(self, prune_buffer: bool = True) -> Dict[str, Any]:
+    def sleep(self, prune_buffer: bool = True, retain_unconfirmed: bool = False) -> Dict[str, Any]:
         summary, remaining = self.consolidator.consolidate_sleep_cycle(
             episodic_buffer=list(self.journal.entries),
             prune_buffer=prune_buffer,
+            retain_unconfirmed=retain_unconfirmed,
         )
         if prune_buffer:
             self.journal.entries.clear()

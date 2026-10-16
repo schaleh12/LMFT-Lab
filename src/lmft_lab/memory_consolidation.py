@@ -72,21 +72,36 @@ class MemoryConsolidationEngine:
         return (clean_lemma, clean_sense, norm_pattern)
 
     def _find_matching_long_term_rule(self, lemma: str, sense: str, pattern: str) -> Optional[str]:
-        """Finds existing long-term rule matching the canonical pattern."""
+        """Finds existing long-term rule matching the canonical pattern using token boundaries."""
+        norm_pat = normalize_anchor_text(pattern)
+        best_rule_id = None
+        best_weight = -1.0
         for rule_id, rule in self.long_term_rules.items():
             r_lemma = rule.get("lemma", "").strip().lower()
             r_sense = rule.get("target_sense_key", "").strip()
             r_pattern = normalize_anchor_text(rule.get("core_pattern", ""))
 
             if r_lemma == lemma and r_sense == sense:
-                if r_pattern == pattern or r_pattern in pattern or pattern in r_pattern:
-                    return rule_id
-        return None
+                matched = False
+                if r_pattern == norm_pat and norm_pat != "":
+                    matched = True
+                elif r_pattern and norm_pat:
+                    padded_r = f" {r_pattern} "
+                    padded_p = f" {norm_pat} "
+                    if padded_r in padded_p or padded_p in padded_r:
+                        matched = True
+                if matched:
+                    w = float(rule.get("weight", 0.50))
+                    if w > best_weight:
+                        best_weight = w
+                        best_rule_id = rule_id
+        return best_rule_id
 
     def consolidate_sleep_cycle(
         self,
         episodic_buffer: List[Dict[str, Any]],
         prune_buffer: bool = True,
+        retain_unconfirmed: bool = False,
     ) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
         """Replays episodic buffer, reinforces/promotes rules, and prunes transient noise."""
         self.sleep_cycles_completed += 1
@@ -186,14 +201,16 @@ class MemoryConsolidationEngine:
 
         # 3. Buffer pruning
         if prune_buffer:
-            # Retain only episodes that were NOT consolidated into long term, or keep conflicts
-            remaining_buffer = [
-                deepcopy(ep) for ep in episodic_buffer
-                if ep.get("episode_id") not in admitted_episode_ids
-                and not (ep.get("is_conflict") is False and ep.get("episode_id") in admitted_episode_ids)
-            ]
-            # Further filter out transient non-conflict noise if pruned
-            remaining_buffer = [ep for ep in remaining_buffer if ep.get("is_conflict", False)]
+            if retain_unconfirmed:
+                remaining_buffer = [
+                    deepcopy(ep) for ep in episodic_buffer
+                    if ep.get("is_conflict", False) or ep.get("episode_id") not in admitted_episode_ids
+                ]
+            else:
+                remaining_buffer = [
+                    deepcopy(ep) for ep in episodic_buffer
+                    if ep.get("is_conflict", False) and ep.get("episode_id") not in admitted_episode_ids
+                ]
         else:
             remaining_buffer = deepcopy(episodic_buffer)
 
@@ -287,20 +304,35 @@ class OrdinaryMemoryConsolidationComparator:
         return (clean_lemma, clean_sense, norm_pattern)
 
     def _find_matching_long_term_rule(self, lemma: str, sense: str, pattern: str) -> Optional[str]:
+        norm_pat = normalize_anchor_text(pattern)
+        best_rule_id = None
+        best_weight = -1.0
         for rule_id, rule in self.long_term_rules.items():
             r_lemma = rule.get("lemma", "").strip().lower()
             r_sense = rule.get("target_sense_key", "").strip()
             r_pattern = normalize_anchor_text(rule.get("core_pattern", ""))
 
             if r_lemma == lemma and r_sense == sense:
-                if r_pattern == pattern or r_pattern in pattern or pattern in r_pattern:
-                    return rule_id
-        return None
+                matched = False
+                if r_pattern == norm_pat and norm_pat != "":
+                    matched = True
+                elif r_pattern and norm_pat:
+                    padded_r = f" {r_pattern} "
+                    padded_p = f" {norm_pat} "
+                    if padded_r in padded_p or padded_p in padded_r:
+                        matched = True
+                if matched:
+                    w = float(rule.get("weight", 0.50))
+                    if w > best_weight:
+                        best_weight = w
+                        best_rule_id = rule_id
+        return best_rule_id
 
     def consolidate(
         self,
         episodic_buffer: List[Dict[str, Any]],
         prune_buffer: bool = True,
+        retain_unconfirmed: bool = False,
     ) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
         self.sleep_cycles_completed += 1
         current_sleep_cycle = self.sleep_cycles_completed
@@ -390,12 +422,16 @@ class OrdinaryMemoryConsolidationComparator:
                 transient_noise_count += len(eps)
 
         if prune_buffer:
-            remaining_buffer = [
-                deepcopy(ep) for ep in episodic_buffer
-                if ep.get("episode_id") not in admitted_episode_ids
-                and not (ep.get("is_conflict") is False and ep.get("episode_id") in admitted_episode_ids)
-            ]
-            remaining_buffer = [ep for ep in remaining_buffer if ep.get("is_conflict", False)]
+            if retain_unconfirmed:
+                remaining_buffer = [
+                    deepcopy(ep) for ep in episodic_buffer
+                    if ep.get("is_conflict", False) or ep.get("episode_id") not in admitted_episode_ids
+                ]
+            else:
+                remaining_buffer = [
+                    deepcopy(ep) for ep in episodic_buffer
+                    if ep.get("is_conflict", False) and ep.get("episode_id") not in admitted_episode_ids
+                ]
         else:
             remaining_buffer = deepcopy(episodic_buffer)
 

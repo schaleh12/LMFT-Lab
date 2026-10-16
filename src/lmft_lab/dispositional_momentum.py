@@ -90,6 +90,39 @@ class PersistentDispositionalVector:
             "current_dials": deepcopy(self.dials),
         }
 
+    def compute_hierarchical_tree(self) -> Dict[str, Any]:
+        """Aggregates the 24 leaf dials up into the 12 Depth-1 Branches and 4 Depth-0 Domains (40 nodes total)."""
+        inv = list(_inventory())
+        leaves_by_branch: Dict[str, List[float]] = {}
+        branches_by_domain: Dict[str, List[str]] = {}
+        for node_id, _label, domain, parent_id, depth in inv:
+            if depth == 1:
+                leaves_by_branch.setdefault(node_id, [])
+                branches_by_domain.setdefault(domain, []).append(node_id)
+            elif depth == 2 and parent_id:
+                leaves_by_branch.setdefault(parent_id, []).append(float(self.dials.get(node_id, 0.50)))
+
+        branch_dials: Dict[str, float] = {}
+        for branch_id in sorted(leaves_by_branch.keys()):
+            vals = leaves_by_branch[branch_id]
+            branch_dials[branch_id] = round(sum(vals) / max(1, len(vals)), 4)
+
+        domain_dials: Dict[str, float] = {}
+        for domain_id in sorted(branches_by_domain.keys()):
+            b_vals = [branch_dials[b_id] for b_id in branches_by_domain[domain_id]]
+            domain_dials[domain_id] = round(sum(b_vals) / max(1, len(b_vals)), 4)
+
+        all_40_nodes: Dict[str, float] = {}
+        all_40_nodes.update(domain_dials)
+        all_40_nodes.update(branch_dials)
+        all_40_nodes.update(deepcopy(self.dials))
+        return {
+            "domain_dials": domain_dials,
+            "branch_dials": branch_dials,
+            "leaf_dials": deepcopy(self.dials),
+            "all_40_nodes": all_40_nodes,
+        }
+
     def export_state(self) -> Dict[str, Any]:
         """Serializes dispositional vector for packaging and persistence."""
         payload = {

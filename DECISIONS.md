@@ -1293,19 +1293,21 @@ Key findings:
 - **Matched Ordinary-Memory Parity (Rule D004)**: Matched ordinary structured-memory comparator achieved byte-for-byte evaluation digest parity across all interactions (`0008447817eb4f...`). 6 focused unit tests pass in `tests/test_value_consonance.py` and 8 tests pass in `tests/test_cognitive_heartbeat.py`. All 1,563 regression tests in the repository pass with 100% green coverage.
 
 
+## D074: Era-2 Firmware Forensic Audit & Remediation (Situational Baseline, Word-Boundary Rule Matching, Hierarchical 40-Node Rollup, and Idempotent Anchor Normalization)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Status: adopted firmware remediation; experimental evaluation complete, 2026-10-16.** Follows D073. Conducted a comprehensive forensic audit of all Era-2 developmental firmware modules in `src/lmft_lab/` and remediated five actionable defects while preserving 100% matched ordinary-memory digest parity (Rule D004) and the frozen 40-node founding seed (Rule D001):
+1. **Default Situational Stimulus Baseline Neutralization (`src/lmft_lab/cognitive_heartbeat.py`)**:
+   - Previously, `CognitiveHeartbeat.interact()` and `OrdinaryMemoryHeartbeatComparator.interact()` initialized situational `candidate_dials` as a copy of `self.disposition.dials` ($D_{t-1}$) whenever `custom_dials` was `None`, causing `LateralCouplingEngine`, `RecurrentFeedbackEngine`, and `TaxonomicGeneralizer` to compound positive deltas onto $D_{t-1}$ and saturate 9 of 24 dials against the `0.864` / `0.136` governor clamps within 100 unassisted turns.
+   - Remediated by initializing default situational `candidate_dials` from a neutral `0.50` baseline (`{k: 0.50 for k in sorted(CANONICAL_LEAF_IDS)}`) and calibrating default resolved-sense clarity to `0.74`, ensuring zero dial saturation over 100+ continuous unassisted turns while preserving $D_{t-1}$ temporal persistence in `self.disposition.update(post_dials)`.
+2. **Word-Boundary Rule Matching & Weight-Prioritized Rule Order (`src/lmft_lab/cognitive_heartbeat.py`)**:
+   - Replaced raw substring matching (`l in sentence.lower()`) with word-boundary phrase matching (`_phrase_in_text()`) so short lemmas/patterns no longer false-fire inside superstrings (e.g., `"border"` no longer triggers `"order"`, `"warm"` no longer triggers `"war"`).
+   - Sorted `self.long_term_rules` by descending `weight` and pattern specificity prior to matching so higher-weight, more specific rules take precedence.
+3. **Token-Bounded Sleep Consolidation & Optional Singleton Retention (`src/lmft_lab/memory_consolidation.py`)**:
+   - Fixed `_find_matching_long_term_rule()` so empty normalized patterns (`""`) never match via substring `in`, enforced token-padded matching (`f" {r_pattern} " in f" {norm_pat} "`), and prioritized the highest-weight matching rule.
+   - Cleaned up redundant boolean logic in `consolidate_sleep_cycle()` buffer pruning and added `retain_unconfirmed: bool = False` (plumbed through `CognitiveHeartbeat.sleep()`) so unconfirmed singleton episodes can optionally persist across sleep cycles for multi-day learning while preserving default `prune_buffer=True` behavior.
+4. **Idempotent First-Pass Anchor Normalization (`src/lmft_lab/anchor_deduplication.py`)**:
+   - Filtered out standalone punctuation tokens (`"&"`, `"-"`, `"/"`) that strip to `""` (`words = [w for w in raw_words if w]`), making `normalize_anchor_text()` strictly idempotent on the first pass (`normalize_anchor_text(t) == normalize_anchor_text(normalize_anchor_text(t))`).
+5. **Hierarchical 40-Node Tree Rollup (`src/lmft_lab/dispositional_momentum.py` & `src/lmft_lab/cognitive_heartbeat.py`)**:
+   - Added `compute_hierarchical_tree()` to `PersistentDispositionalVector`, computing the 12 Depth-1 branch dials and 4 Depth-0 domain dials from the 24 Depth-2 leaf dials (`40` canonical nodes total) and exposing `"tree_hierarchy"` in `CognitiveHeartbeat.interact()` output.
+   - Added focused regression tests across `tests/test_anchor_deduplication.py`, `tests/test_dispositional_momentum.py`, `tests/test_memory_consolidation.py`, and `tests/test_cognitive_heartbeat.py` (85/85 Era-2 firmware tests pass in 0.78s).
 
