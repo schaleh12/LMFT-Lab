@@ -1311,3 +1311,19 @@ Key findings:
    - Added `compute_hierarchical_tree()` to `PersistentDispositionalVector`, computing the 12 Depth-1 branch dials and 4 Depth-0 domain dials from the 24 Depth-2 leaf dials (`40` canonical nodes total) and exposing `"tree_hierarchy"` in `CognitiveHeartbeat.interact()` output.
    - Added focused regression tests across `tests/test_anchor_deduplication.py`, `tests/test_dispositional_momentum.py`, `tests/test_memory_consolidation.py`, and `tests/test_cognitive_heartbeat.py` (85/85 Era-2 firmware tests pass in 0.78s).
 
+
+## D075: 24-Leaf Fuzzy Membership Vector Preservation in Sleep Consolidation & Natural-Language Contextual Overlap Resolution
+
+**Status: adopted firmware remediation; experimental evaluation complete, 2026-10-16.** Follows D074. Completes the second stage of the Era-2 firmware surgical remediation across `src/lmft_lab/episodic_journal.py`, `src/lmft_lab/memory_consolidation.py`, and `src/lmft_lab/cognitive_heartbeat.py`, eliminating the 6-scalar summary bottleneck on consolidated neocortical rules and enabling natural-language contextual rule activation while preserving 100% matched ordinary-memory digest parity (Rule D004) and the frozen 40-node founding seed (Rule D001):
+1. **Full 24-Leaf Episodic Preservation (`src/lmft_lab/episodic_journal.py`)**:
+   - Upgraded `EpisodicSaliencyJournal.record_episode()` to store the complete 24-leaf `leaf_dials` coordinate dictionary on every admitted autobiographical episode (`{k: round(float(dials.get(k, 0.5)), 4) for k in sorted(CANONICAL_LEAF_IDS)}`) alongside the 6 summary scalars (`clarity`, `confidence`, `valence`, `arousal`, `salience`, `gci`).
+2. **Multi-Witness 24-Leaf Rule Centroids & Signed Affinities (`src/lmft_lab/memory_consolidation.py`)**:
+   - Upgraded `MemoryConsolidationEngine.consolidate_sleep_cycle()` so every newly promoted or reinforced long-term rule computes and persists:
+     - `leaf_dials`: the multi-witness 24-leaf centroid averaged across all confirming episodic traces.
+     - `leaf_dial_affinities`: the signed directional pull ($\text{val} - 0.50$) for every canonical leaf where $|\text{val} - 0.50| \ge 0.02$.
+3. **Consolidated Rule Leaf-Affinity Modulation & Natural-Language Contextual Overlap (`src/lmft_lab/cognitive_heartbeat.py`)**:
+   - Wired rule-level `leaf_dial_affinities` directly into `CognitiveHeartbeat.interact()` and `OrdinaryMemoryHeartbeatComparator.interact()` so resolved consolidated concepts modulate `candidate_dials` (`0.55 * rule_weight`) prior to lateral coupling, prerequisite gating, and recurrent echo.
+   - Added `_lemma_matches()` (normalizing optional leading `"the "` articles so rules like `"the phoenix"` match `"phoenix"`) and contextual token-overlap resolution (`len(overlapping_tokens) >= 2` or single distinctive token $\ge 6$ chars) across `core_pattern` tokens so natural English sentences resolve learned capacity rules without requiring contiguous 5-word synthetic strings.
+   - Verified 100% regression pass across all 90 developmental and firmware tests (`0.49s`) and synced identical `src/lmft_lab/*.py` firmware across `LMFT-Lab`, `LMFT-School`, and `LMFT-Trainee`.
+
+
