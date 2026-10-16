@@ -192,6 +192,22 @@ class MemoryConsolidationEngine:
                     "last_consolidated_cycle": current_sleep_cycle,
                 }
 
+                # Consolidate 24-leaf fuzzy membership centroid and affinities if present on episodes
+                ep_leaf_vectors = [ep["leaf_dials"] for ep in eps if isinstance(ep.get("leaf_dials"), dict) and ep["leaf_dials"]]
+                if ep_leaf_vectors:
+                    all_keys = sorted({k for vec in ep_leaf_vectors for k in vec.keys()})
+                    centroid = {
+                        k: round(sum(float(vec.get(k, 0.50)) for vec in ep_leaf_vectors) / len(ep_leaf_vectors), 4)
+                        for k in all_keys
+                    }
+                    affinities = {
+                        k: round(val - 0.50, 4)
+                        for k, val in centroid.items()
+                        if abs(val - 0.50) >= 0.02
+                    }
+                    new_rule["leaf_dials"] = centroid
+                    new_rule["leaf_dial_affinities"] = affinities
+
                 self.long_term_rules[new_rule_id] = new_rule
                 promoted_rules.append(deepcopy(new_rule))
 
@@ -414,6 +430,21 @@ class OrdinaryMemoryConsolidationComparator:
                     "promoted_at_sleep_cycle": current_sleep_cycle,
                     "last_consolidated_cycle": current_sleep_cycle,
                 }
+
+                ep_leaf_vectors = [ep["leaf_dials"] for ep in eps if isinstance(ep.get("leaf_dials"), dict) and ep["leaf_dials"]]
+                if ep_leaf_vectors:
+                    all_keys = sorted({k for vec in ep_leaf_vectors for k in vec.keys()})
+                    centroid = {
+                        k: round(sum(float(vec.get(k, 0.50)) for vec in ep_leaf_vectors) / len(ep_leaf_vectors), 4)
+                        for k in all_keys
+                    }
+                    affinities = {
+                        k: round(val - 0.50, 4)
+                        for k, val in centroid.items()
+                        if abs(val - 0.50) >= 0.02
+                    }
+                    new_rule["leaf_dials"] = centroid
+                    new_rule["leaf_dial_affinities"] = affinities
 
                 self.long_term_rules[new_rule_id] = new_rule
                 promoted_rules.append(deepcopy(new_rule))

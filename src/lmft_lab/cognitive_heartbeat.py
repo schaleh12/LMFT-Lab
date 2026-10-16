@@ -80,6 +80,17 @@ def _phrase_in_text(phrase: str, text_lower: str, norm_text: str) -> bool:
     return bool(re.search(pattern_re, text_lower))
 
 
+def _lemma_matches(rule_lemma: Optional[str], query_lemma: str) -> bool:
+    """Matches a rule lemma against a query lemma, normalizing case and optional leading 'the '."""
+    if not rule_lemma:
+        return False
+    rl = rule_lemma.strip().lower()
+    ql = query_lemma.strip().lower()
+    if rl == ql:
+        return True
+    return rl.removeprefix("the ").strip() == ql.removeprefix("the ").strip()
+
+
 class CognitiveHeartbeat:
     """Integrated cognitive heartbeat pipeline orchestrating all developmental faculties."""
 
@@ -146,8 +157,10 @@ class CognitiveHeartbeat:
                         lemmas.append(l)
 
         resolved_senses: Dict[str, str] = {}
+        matched_rules_by_lemma: Dict[str, Dict[str, Any]] = {}
         speaking_register = "Methodical & Pragmatic"
         action_bid = "Process statement"
+        sent_tokens = set(norm_sent.split())
 
         if forced_senses:
             resolved_senses = dict(forced_senses)
@@ -155,13 +168,24 @@ class CognitiveHeartbeat:
             for l in lemmas:
                 matched_rule = None
                 for r in sorted_rules:
-                    if r.get("lemma") == l:
+                    if _lemma_matches(r.get("lemma"), l):
                         pat = normalize_anchor_text(r.get("core_pattern", ""))
                         if pat and _phrase_in_text(pat, sent_lower, norm_sent):
                             matched_rule = r
                             break
+                if matched_rule is None and l not in ("bank", "order"):
+                    lemma_candidates = [r for r in sorted_rules if _lemma_matches(r.get("lemma"), l)]
+                    if lemma_candidates:
+                        best_overlap = -1
+                        for r in lemma_candidates:
+                            pat_tokens = set(normalize_anchor_text(r.get("core_pattern", "")).split())
+                            overlap = len(pat_tokens.intersection(sent_tokens))
+                            if overlap > best_overlap:
+                                best_overlap = overlap
+                                matched_rule = r
                 if matched_rule:
                     resolved_senses[l] = matched_rule["target_sense_key"]
+                    matched_rules_by_lemma[l] = matched_rule
                     speaking_register = matched_rule.get("speaking_register", speaking_register)
                     action_bid = matched_rule.get("action_bid", action_bid)
                 else:
@@ -180,7 +204,7 @@ class CognitiveHeartbeat:
             candidate_dials["psychological/contemplation/clarity"] = 0.74
             candidate_dials["philosophical/structure/order"] = 0.75
 
-        # Apply taxonomic hypernym modulation for resolved senses
+        # Apply taxonomic hypernym modulation or consolidated rule 24-leaf fuzzy membership vector
         taxonomic_modulations = []
         for l, sense_k in resolved_senses.items():
             if sense_k != "unanchored_general_sense" and self.taxonomic_generalizer.has_sense(sense_k):
@@ -191,6 +215,23 @@ class CognitiveHeartbeat:
                 )
                 candidate_dials = mod["modulated_dials"]
                 taxonomic_modulations.append(mod)
+            elif l in matched_rules_by_lemma and matched_rules_by_lemma[l].get("leaf_dial_affinities"):
+                rule_obj = matched_rules_by_lemma[l]
+                affinities = rule_obj["leaf_dial_affinities"]
+                applied_aff: Dict[str, float] = {}
+                for leaf_id, aff_score in affinities.items():
+                    if leaf_id in candidate_dials:
+                        delta = round(float(aff_score) * 0.35, 4)
+                        candidate_dials[leaf_id] = round(min(1.0, max(0.0, candidate_dials[leaf_id] + delta)), 4)
+                        applied_aff[leaf_id] = delta
+                taxonomic_modulations.append({
+                    "sense_key": sense_k,
+                    "found": True,
+                    "primary_category": "consolidated_fuzzy_membership_rule",
+                    "hypernym_path": [rule_obj.get("lemma", l), sense_k, "consolidated_concept"],
+                    "applied_affinities": applied_aff,
+                    "modulated_dials": deepcopy(candidate_dials),
+                })
 
         if is_conflict:
             candidate_dials["psychological/contemplation/clarity"] = 0.20
@@ -413,8 +454,10 @@ class OrdinaryMemoryHeartbeatComparator:
                         lemmas.append(l)
 
         resolved_senses: Dict[str, str] = {}
+        matched_rules_by_lemma: Dict[str, Dict[str, Any]] = {}
         speaking_register = "Methodical & Pragmatic"
         action_bid = "Process statement"
+        sent_tokens = set(norm_sent.split())
 
         if forced_senses:
             resolved_senses = dict(forced_senses)
@@ -422,13 +465,24 @@ class OrdinaryMemoryHeartbeatComparator:
             for l in lemmas:
                 matched_rule = None
                 for r in sorted_rules:
-                    if r.get("lemma") == l:
+                    if _lemma_matches(r.get("lemma"), l):
                         pat = normalize_anchor_text(r.get("core_pattern", ""))
                         if pat and _phrase_in_text(pat, sent_lower, norm_sent):
                             matched_rule = r
                             break
+                if matched_rule is None and l not in ("bank", "order"):
+                    lemma_candidates = [r for r in sorted_rules if _lemma_matches(r.get("lemma"), l)]
+                    if lemma_candidates:
+                        best_overlap = -1
+                        for r in lemma_candidates:
+                            pat_tokens = set(normalize_anchor_text(r.get("core_pattern", "")).split())
+                            overlap = len(pat_tokens.intersection(sent_tokens))
+                            if overlap > best_overlap:
+                                best_overlap = overlap
+                                matched_rule = r
                 if matched_rule:
                     resolved_senses[l] = matched_rule["target_sense_key"]
+                    matched_rules_by_lemma[l] = matched_rule
                     speaking_register = matched_rule.get("speaking_register", speaking_register)
                     action_bid = matched_rule.get("action_bid", action_bid)
                 else:
@@ -455,6 +509,23 @@ class OrdinaryMemoryHeartbeatComparator:
                 )
                 candidate_dials = mod["modulated_dials"]
                 taxonomic_modulations.append(mod)
+            elif l in matched_rules_by_lemma and matched_rules_by_lemma[l].get("leaf_dial_affinities"):
+                rule_obj = matched_rules_by_lemma[l]
+                affinities = rule_obj["leaf_dial_affinities"]
+                applied_aff: Dict[str, float] = {}
+                for leaf_id, aff_score in affinities.items():
+                    if leaf_id in candidate_dials:
+                        delta = round(float(aff_score) * 0.35, 4)
+                        candidate_dials[leaf_id] = round(min(1.0, max(0.0, candidate_dials[leaf_id] + delta)), 4)
+                        applied_aff[leaf_id] = delta
+                taxonomic_modulations.append({
+                    "sense_key": sense_k,
+                    "found": True,
+                    "primary_category": "consolidated_fuzzy_membership_rule",
+                    "hypernym_path": [rule_obj.get("lemma", l), sense_k, "consolidated_concept"],
+                    "applied_affinities": applied_aff,
+                    "modulated_dials": deepcopy(candidate_dials),
+                })
 
         if is_conflict:
             candidate_dials["psychological/contemplation/clarity"] = 0.20

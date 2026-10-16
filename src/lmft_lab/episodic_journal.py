@@ -94,6 +94,11 @@ class EpisodicSaliencyJournal:
         if core_pattern:
             factual["core_pattern"] = core_pattern
 
+        full_leaf_dials = {
+            k: round(float(leaf_dials.get(k, 0.50)), 4)
+            for k in sorted(CANONICAL_LEAF_IDS)
+        }
+
         entry = {
             "episode_id": ep_id,
             "cycle": int(cycle),
@@ -106,6 +111,7 @@ class EpisodicSaliencyJournal:
                 "clarity": round(clarity, 4),
                 "order": round(float(leaf_dials.get("philosophical/structure/order", 0.50)), 4),
             },
+            "leaf_dials": full_leaf_dials,
             "actuation_enacted": {
                 "speaking_register": speaking_register,
                 "action_bid": action_bid,
@@ -219,6 +225,11 @@ class OrdinaryMemoryJournalComparator:
         if core_pattern:
             factual["core_pattern"] = core_pattern
 
+        full_leaf_dials = {
+            k: round(float(leaf_dials.get(k, 0.50)), 4)
+            for k in sorted(CANONICAL_LEAF_IDS)
+        }
+
         entry = {
             "episode_id": ep_id,
             "cycle": int(cycle),
@@ -231,6 +242,7 @@ class OrdinaryMemoryJournalComparator:
                 "clarity": round(clarity, 4),
                 "order": round(float(leaf_dials.get("philosophical/structure/order", 0.50)), 4),
             },
+            "leaf_dials": full_leaf_dials,
             "actuation_enacted": {
                 "speaking_register": speaking_register,
                 "action_bid": action_bid,
