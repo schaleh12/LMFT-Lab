@@ -321,6 +321,34 @@ class QuadSeedQuaternionOctonionHarmonizer:
         self.psych_6x8 = deepcopy(psychological_6x8 or DEFAULT_PSYCHOLOGICAL_6X8_MATRIX)
         self.resonant_buffer = float(resonant_buffer)
 
+    def set_matrices(
+        self,
+        philosophical_6x8: Optional[List[List[float]]] = None,
+        cultural_6x8: Optional[List[List[float]]] = None,
+        experiential_6x8: Optional[List[List[float]]] = None,
+        psychological_6x8: Optional[List[List[float]]] = None,
+    ) -> None:
+        """Updates the live 4x(6x8) Seed SLM weight matrices in place."""
+        if philosophical_6x8 is not None and len(philosophical_6x8) == 6 and len(philosophical_6x8[0]) == 8:
+            self.phil_6x8 = [[round(float(v), 4) for v in row] for row in philosophical_6x8]
+        if cultural_6x8 is not None and len(cultural_6x8) == 6 and len(cultural_6x8[0]) == 8:
+            self.cult_6x8 = [[round(float(v), 4) for v in row] for row in cultural_6x8]
+        if experiential_6x8 is not None and len(experiential_6x8) == 6 and len(experiential_6x8[0]) == 8:
+            self.exp_6x8 = [[round(float(v), 4) for v in row] for row in experiential_6x8]
+        if psychological_6x8 is not None and len(psychological_6x8) == 6 and len(psychological_6x8[0]) == 8:
+            self.psych_6x8 = [[round(float(v), 4) for v in row] for row in psychological_6x8]
+
+    def export_matrices(self) -> Dict[str, Any]:
+        """Returns a deep copy of all 4 active 6x8 Seed SLM weight matrices (192 floats)."""
+        return {
+            "kaleidoscope_abandoned": True,
+            "total_quad_seed_instinct_floats": 192,
+            "philosophical_6x8": deepcopy(self.phil_6x8),
+            "cultural_6x8": deepcopy(self.cult_6x8),
+            "experiential_6x8": deepcopy(self.exp_6x8),
+            "psychological_6x8": deepcopy(self.psych_6x8),
+        }
+
     def harmonize(
         self,
         leaf_dials: Dict[str, float],

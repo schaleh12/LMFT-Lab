@@ -74,3 +74,24 @@ def test_quad_seed_harmonizer_and_d004_parity():
     assert "Quad-Seed 4x(6x8) Quaternion-Octonion Harmonizer" in prompt_block
     assert "Kaleidoscope Retired" in prompt_block
     assert "[QUAD-SEED MUSICAL COMPLEXITY & APPRECIATION DIRECTIVE]" in prompt_block
+
+
+def test_quad_seed_live_matrix_configuration_and_heartbeat_sync():
+    """QuadSeedQuaternionOctonionHarmonizer and CognitiveHeartbeat support live bred 4x(6x8) matrix updates."""
+    from lmft_lab.cognitive_heartbeat import CognitiveHeartbeat
+
+    hb = CognitiveHeartbeat()
+    custom_6x8 = [[0.28 + 0.01 * ((r + c) % 5) for c in range(8)] for r in range(6)]
+    exported = hb.configure_quad_seed_matrices(
+        philosophical_6x8=custom_6x8,
+        cultural_6x8=custom_6x8,
+        experiential_6x8=custom_6x8,
+        psychological_6x8=custom_6x8,
+    )
+    assert exported["total_quad_seed_instinct_floats"] == 192
+    assert exported["kaleidoscope_abandoned"] is True
+    assert exported["psychological_6x8"][0][0] == custom_6x8[0][0]
+    cycle = hb.interact(sentence="Testing live bred 4x(6x8) matrix configuration in CognitiveHeartbeat.")
+    assert cycle["quad_seed_harmony"]["kaleidoscope_abandoned"] is True
+    assert cycle["quad_seed_harmony"]["total_active_instinct_floats"] == 192
+

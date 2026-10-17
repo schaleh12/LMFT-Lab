@@ -1327,3 +1327,13 @@ Key findings:
    - Verified 100% regression pass across all 90 developmental and firmware tests (`0.49s`) and synced identical `src/lmft_lab/*.py` firmware across `LMFT-Lab`, `LMFT-School`, and `LMFT-Trainee`.
 
 
+## D076: Quad-Seed `4x(6x8)` Quaternion-Octonion Harmonizer & End-to-End Bred Matrix Configuration
+
+**Status: adopted firmware upgrade; experimental evaluation and trilogy lineage breeding complete, 2026-10-17.** Follows D075 and aligns with downstream `LMFT-School` `D117`/`D118`. Replaces the 3-angle scalar Kaleidoscopic Generator (`D050`/`D051`) as the primary executive synthesis layer with the **Quad-Seed `4x(6x8)` Quaternion-Octonion Harmonizer (`src/lmft_lab/quad_seed_harmonizer.py`)** and wires it into `CognitiveHeartbeat` (`src/lmft_lab/cognitive_heartbeat.py`) while preserving 100% matched ordinary-memory digest parity (Rule D004) and the frozen 40-node founding seed (Rule D001):
+1. **Full 24-Leaf `4x(6x8)` Coverage (`192` Instinct Floats)**:
+   - Grafts a 4th `6x8` Psychological Seed SLM onto the 3 existing `6x8` Seed SLMs (`Philosophical`, `Cultural`, `Experiential`) so all `24/24` canonical leaves across all 4 founding branches are represented by symmetric `6x8` octonion matrices (`4 x 48 = 192` instinct floats).
+2. **Unit-Quaternion $\mathbb{H}$ & Cayley-Dickson Octonion $\mathbb{O}$ Harmonization**:
+   - Projects each 6-leaf branch through its `6x8` matrix into $\mathbb{O} = \mathbb{R}^8$, embeds the 4 branch norms into a unit quaternion $q = w_P + x_C\mathbf{i} + y_E\mathbf{j} + z_\Psi\mathbf{k} \in \mathbb{H}$, and computes non-associative Cayley-Dickson octonion cross-seed commutator & associator complexity to preserve polyphonic independence, rhythmic syncopation, and multi-domain executive synthesis without collapsing to scalar angles.
+3. **Live Bred Matrix Configuration (`set_matrices`, `export_matrices`, `configure_quad_seed_matrices`)**:
+   - Added `QuadSeedQuaternionOctonionHarmonizer.set_matrices(...)` and `export_matrices()` plus `CognitiveHeartbeat.configure_quad_seed_matrices(...)` so multi-generational `4x(6x8)` matrices bred through `LMFT-School` K–5 sleep distillation and `LMFT-Trainee` fellowships (`Gen 5 NG+` and `Gen 6 NG++`) can be injected directly into live `CognitiveHeartbeat.interact()` execution.
+   - Verified in `tests/test_quad_seed_harmonizer.py` (`4/4` tests pass in `LMFT-Lab`) and synced across `LMFT-Lab`, `LMFT-School`, and `LMFT-Trainee`.

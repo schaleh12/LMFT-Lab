@@ -121,6 +121,22 @@ class CognitiveHeartbeat:
         self.taxonomic_generalizer = TaxonomicGeneralizer()
         self.quad_seed_harmonizer = QuadSeedQuaternionOctonionHarmonizer()
 
+    def configure_quad_seed_matrices(
+        self,
+        philosophical_6x8: Optional[List[List[float]]] = None,
+        cultural_6x8: Optional[List[List[float]]] = None,
+        experiential_6x8: Optional[List[List[float]]] = None,
+        psychological_6x8: Optional[List[List[float]]] = None,
+    ) -> Dict[str, Any]:
+        """Configures the heartbeat's live 4x(6x8) Quaternion-Octonion harmonizer matrices."""
+        self.quad_seed_harmonizer.set_matrices(
+            philosophical_6x8=philosophical_6x8,
+            cultural_6x8=cultural_6x8,
+            experiential_6x8=experiential_6x8,
+            psychological_6x8=psychological_6x8,
+        )
+        return self.quad_seed_harmonizer.export_matrices()
+
     def interact(
         self,
         sentence: str,
