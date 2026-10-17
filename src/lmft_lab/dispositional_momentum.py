@@ -119,14 +119,20 @@ class PersistentDispositionalVector:
             "current_dials": deepcopy(self.dials),
         }
 
-    def apply_idle_equilibrium_drift(self, steps: int = 1) -> Dict[str, Any]:
-        """Gently relaxes activations towards neutral equilibrium 0.50 during idle intervals."""
+    def apply_idle_equilibrium_drift(
+        self,
+        steps: int = 1,
+        anchor_dials: Optional[Dict[str, float]] = None,
+    ) -> Dict[str, Any]:
+        """Gently relaxes activations towards equilibrium (0.50 or sovereign `anchor_dials`) during idle intervals."""
         steps = max(1, int(steps))
         prior_state = deepcopy(self.dials)
+        norm_anchor = normalize_leaf_dials_dict(anchor_dials) if anchor_dials else {}
 
         for _ in range(steps):
             for k in sorted(CANONICAL_LEAF_IDS):
-                diff = 0.50 - self.dials[k]
+                target = float(norm_anchor.get(k, 0.50))
+                diff = target - self.dials[k]
                 self.dials[k] = round(self.dials[k] + self.mu * diff, 4)
 
         return {
