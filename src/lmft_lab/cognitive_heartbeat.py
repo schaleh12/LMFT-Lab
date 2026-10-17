@@ -333,7 +333,12 @@ class CognitiveHeartbeat:
             "taxonomic_modulations": taxonomic_modulations,
         }
 
-    def sleep(self, prune_buffer: bool = True, retain_unconfirmed: bool = False) -> Dict[str, Any]:
+    def sleep(
+        self,
+        prune_buffer: bool = True,
+        retain_unconfirmed: bool = False,
+        anchor_dials: Optional[Dict[str, float]] = None,
+    ) -> Dict[str, Any]:
         """Executes offline memory consolidation and equilibrium drift ('sleep')."""
         summary, remaining = self.consolidator.consolidate_sleep_cycle(
             episodic_buffer=list(self.journal.entries),
@@ -345,8 +350,11 @@ class CognitiveHeartbeat:
             for ep in remaining:
                 self.journal.entries.append(ep)
 
-        # Gentle equilibrium relaxation during rest
-        drift_res = self.disposition.apply_idle_equilibrium_drift(steps=1)
+        # Gentle equilibrium relaxation during rest (around 0.50 or sovereign anchor_dials)
+        drift_res = self.disposition.apply_idle_equilibrium_drift(
+            steps=1,
+            anchor_dials=anchor_dials,
+        )
 
         return {
             "consolidation_summary": summary,
@@ -620,7 +628,12 @@ class OrdinaryMemoryHeartbeatComparator:
             "taxonomic_modulations": taxonomic_modulations,
         }
 
-    def sleep(self, prune_buffer: bool = True, retain_unconfirmed: bool = False) -> Dict[str, Any]:
+    def sleep(
+        self,
+        prune_buffer: bool = True,
+        retain_unconfirmed: bool = False,
+        anchor_dials: Optional[Dict[str, float]] = None,
+    ) -> Dict[str, Any]:
         summary, remaining = self.consolidator.consolidate_sleep_cycle(
             episodic_buffer=list(self.journal.entries),
             prune_buffer=prune_buffer,
@@ -631,7 +644,10 @@ class OrdinaryMemoryHeartbeatComparator:
             for ep in remaining:
                 self.journal.entries.append(ep)
 
-        drift_res = self.disposition.apply_idle_equilibrium_drift(steps=1)
+        drift_res = self.disposition.apply_idle_equilibrium_drift(
+            steps=1,
+            anchor_dials=anchor_dials,
+        )
 
         return {
             "consolidation_summary": summary,

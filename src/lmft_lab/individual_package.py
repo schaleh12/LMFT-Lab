@@ -73,6 +73,14 @@ def export_individual(
         "cycle": runtime_state.get("cycle", 0),
         "cursor": runtime_state.get("cursor", 0),
     }
+    for ext_key in (
+        "autobiography",
+        "new_game_plus_heirloom_metadata",
+        "new_game_double_plus_heirloom",
+        "new_game_plus_heirloom",
+    ):
+        if ext_key in runtime_state and runtime_state[ext_key] is not None:
+            payload[ext_key] = deepcopy(runtime_state[ext_key])
     
     # Compute cryptographic integrity signature across payload
     signature = digest({k: v for k, v in payload.items() if k != "integrity_signature"})
@@ -138,6 +146,14 @@ def import_individual(filepath: Path, verify_seed: bool = True) -> Dict[str, Any
             "integrity_signature": package["integrity_signature"],
         },
     }
+    for ext_key in (
+        "autobiography",
+        "new_game_plus_heirloom_metadata",
+        "new_game_double_plus_heirloom",
+        "new_game_plus_heirloom",
+    ):
+        if ext_key in package and package[ext_key] is not None:
+            restored_state[ext_key] = deepcopy(package[ext_key])
     return restored_state
 
 
