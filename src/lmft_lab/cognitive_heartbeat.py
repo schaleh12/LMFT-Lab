@@ -29,6 +29,10 @@ from lmft_lab.judgment import newborn
 from lmft_lab.lateral_coupling import LateralCouplingEngine
 from lmft_lab.memory_consolidation import MemoryConsolidationEngine
 from lmft_lab.prerequisite_gate import PrerequisiteCoherenceGate
+from lmft_lab.quad_seed_harmonizer import (
+    OrdinaryMemoryQuadSeedComparator,
+    QuadSeedQuaternionOctonionHarmonizer,
+)
 from lmft_lab.recurrent_feedback import RecurrentFeedbackEngine
 from lmft_lab.runtime_store import digest
 from lmft_lab.taxonomic_generalization import (
@@ -115,6 +119,7 @@ class CognitiveHeartbeat:
         self.homeostasis_governor = AffectiveHomeostasisGovernor()
         self.consonance_engine = ValueConsonanceEngine()
         self.taxonomic_generalizer = TaxonomicGeneralizer()
+        self.quad_seed_harmonizer = QuadSeedQuaternionOctonionHarmonizer()
 
     def interact(
         self,
@@ -314,6 +319,9 @@ class CognitiveHeartbeat:
             is_conflict=is_conflict,
         )
 
+        # 11. Quad-Seed 4x(6x8) Quaternion-Octonion Cross-Seed Harmonization (Kaleidoscope Retired)
+        quad_seed_harmony = self.quad_seed_harmonizer.harmonize(self.disposition.dials)
+
         return {
             "cycle": current_cycle,
             "sentence": sentence,
@@ -331,6 +339,7 @@ class CognitiveHeartbeat:
             "disposition_dials": deepcopy(self.disposition.dials),
             "tree_hierarchy": self.disposition.compute_hierarchical_tree(),
             "taxonomic_modulations": taxonomic_modulations,
+            "quad_seed_harmony": quad_seed_harmony,
         }
 
     def sleep(
@@ -423,6 +432,7 @@ class OrdinaryMemoryHeartbeatComparator:
         self.homeostasis_governor = AffectiveHomeostasisGovernor()
         self.consonance_engine = ValueConsonanceEngine()
         self.taxonomic_generalizer = OrdinaryMemoryTaxonomicComparator()
+        self.quad_seed_harmonizer = OrdinaryMemoryQuadSeedComparator()
 
     def interact(
         self,
@@ -609,6 +619,8 @@ class OrdinaryMemoryHeartbeatComparator:
             is_conflict=is_conflict,
         )
 
+        quad_seed_harmony = self.quad_seed_harmonizer.harmonize(self.disposition.dials)
+
         return {
             "cycle": current_cycle,
             "sentence": sentence,
@@ -626,6 +638,7 @@ class OrdinaryMemoryHeartbeatComparator:
             "disposition_dials": deepcopy(self.disposition.dials),
             "tree_hierarchy": self.disposition.compute_hierarchical_tree(),
             "taxonomic_modulations": taxonomic_modulations,
+            "quad_seed_harmony": quad_seed_harmony,
         }
 
     def sleep(
