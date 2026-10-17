@@ -84,7 +84,7 @@ LMFT V0.1 SEED GEOMETRY
 │   │   └── Arousal
 │   └── Synchronization
 │       ├── Resonance
-│       └── Retention
+│       └── Entrainment
 │
 └── PSYCHOLOGICAL
     ├── Will
@@ -346,7 +346,7 @@ GFT V0.1 SEED GEOMETRY
 │   │   └── Arousal
 │   └── Synchronization
 │       ├── Resonance
-│       └── Retention
+│       └── Entrainment
 │
 └── PSYCHOLOGICAL
     ├── Will

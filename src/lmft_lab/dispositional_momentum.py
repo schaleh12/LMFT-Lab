@@ -18,6 +18,50 @@ from lmft_lab.runtime_store import digest
 CANONICAL_LEAF_IDS = {node_id for node_id, _, _, _, depth in _inventory() if depth == 2}
 assert len(CANONICAL_LEAF_IDS) == 24, f"Expected 24 canonical leaves, found {len(CANONICAL_LEAF_IDS)}"
 
+# Canonical Leaf Alias Map (D109):
+# In birth.py, Experiential -> Synchronization pairs Resonance with Entrainment
+# (`experiential/synchronization/entrainment`). Legacy `retention` or `attunement` keys
+# map automatically to `experiential/synchronization/entrainment` with zero silent dial drops.
+LEAF_ALIASES: Dict[str, str] = {
+    "experiential/synchronization/retention": "experiential/synchronization/entrainment",
+    "experiential/attunement/entrainment": "experiential/synchronization/entrainment",
+    "experiential/attunement/retention": "experiential/synchronization/entrainment",
+    "experiential/attunement/resonance": "experiential/synchronization/resonance",
+    "experiential/aesthetic/harmony": "experiential/synchronization/resonance",
+    "experiential/affect/valence": "experiential/phase/valence",
+    "experiential/aesthetic/beauty": "experiential/phase/valence",
+    "experiential/affect/arousal": "experiential/phase/arousal",
+    "cultural/utility/power": "cultural/efficiency/power",
+    "cultural/material/power": "cultural/efficiency/power",
+    "cultural/utility/wastelessness": "cultural/efficiency/wastelessness",
+    "cultural/material/wastelessness": "cultural/efficiency/wastelessness",
+}
+
+CANONICAL_LEAF_DISPLAY_LABELS: Dict[str, str] = {
+    "experiential/synchronization/entrainment": "Entrainment (Synchronization/Entrainment)",
+    "experiential/synchronization/resonance": "Resonance (Synchronization/Resonance)",
+}
+
+
+def normalize_leaf_dial_key(key: str) -> str:
+    """Normalizes any legacy or musical leaf alias (e.g. `entrainment`) to its canonical `birth.py` key."""
+    k = str(key).strip().lower()
+    return LEAF_ALIASES.get(k, k)
+
+
+def normalize_leaf_dials_dict(dials: Optional[Dict[str, float]]) -> Dict[str, float]:
+    """Returns a copy of `dials` with all alias keys resolved to canonical `birth.py` 24-leaf IDs."""
+    if not dials:
+        return {}
+    out: Dict[str, float] = {}
+    for raw_k, val in dials.items():
+        canon_k = normalize_leaf_dial_key(raw_k)
+        # If both an alias and canonical key are present, prefer explicit canonical key unless alias is non-neutral
+        if canon_k not in out or raw_k in CANONICAL_LEAF_IDS:
+            out[canon_k] = float(val)
+    return out
+
+
 DEFAULT_GAMMA = 0.35  # Situational responsiveness vs dispositional inertia
 DEFAULT_MU = 0.05     # Idle equilibrium drift rate towards 0.50
 
@@ -39,7 +83,8 @@ class PersistentDispositionalVector:
 
         self.dials: Dict[str, float] = {k: 0.50 for k in sorted(CANONICAL_LEAF_IDS)}
         if initial_dials:
-            for k, v in initial_dials.items():
+            norm_init = normalize_leaf_dials_dict(initial_dials)
+            for k, v in norm_init.items():
                 if k in self.dials:
                     self.dials[k] = round(max(0.0, min(1.0, float(v))), 4)
 
@@ -52,11 +97,12 @@ class PersistentDispositionalVector:
         gamma = self.gamma if gamma_override is None else max(0.05, min(0.95, float(gamma_override)))
         self.epoch_count += 1
 
+        norm_sit = normalize_leaf_dials_dict(situational_dials)
         prior_state = deepcopy(self.dials)
         deltas = {}
 
         for k in sorted(CANONICAL_LEAF_IDS):
-            sit_val = float(situational_dials.get(k, self.dials[k]))
+            sit_val = float(norm_sit.get(k, self.dials[k]))
             sit_val = max(0.0, min(1.0, sit_val))
 
             # EMA: D_t = (1 - gamma) * D_{t-1} + gamma * S_t
@@ -148,7 +194,7 @@ class PersistentDispositionalVector:
         self.gamma = float(state_dict.get("gamma", DEFAULT_GAMMA))
         self.mu = float(state_dict.get("mu", DEFAULT_MU))
 
-        incoming_dials = state_dict.get("dials", {})
+        incoming_dials = normalize_leaf_dials_dict(state_dict.get("dials", {}))
         for k in sorted(CANONICAL_LEAF_IDS):
             if k in incoming_dials:
                 self.dials[k] = round(max(0.0, min(1.0, float(incoming_dials[k]))), 4)

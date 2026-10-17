@@ -14,6 +14,7 @@ from copy import deepcopy
 from typing import Any, Dict, List, Optional, Tuple
 
 from lmft_lab.birth import _inventory
+from lmft_lab.dispositional_momentum import normalize_leaf_dials_dict
 from lmft_lab.runtime_store import digest
 
 
@@ -47,6 +48,7 @@ class EpisodicSaliencyJournal:
         core_pattern: Optional[str] = None,
     ) -> Dict[str, Any]:
         """Evaluates saliency admission and pens dual-coded journal entry if criteria met."""
+        leaf_dials = normalize_leaf_dials_dict(leaf_dials)
         salience = float(leaf_dials.get("experiential/reflection/salience", 0.50))
         novelty = float(leaf_dials.get("experiential/reflection/novelty", 0.50))
         arousal = float(leaf_dials.get("experiential/phase/arousal", 0.50))

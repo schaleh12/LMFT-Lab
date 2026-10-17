@@ -102,6 +102,9 @@ def validate_proposal(raw, node_ids, observation):
             if not isinstance(item, dict) or set(item) != {"node_id", "relevance", "reason", "evidence_quote"}:
                 raise ValueError("invalid membership fields")
             node_id = item["node_id"]
+            if node_id == "experiential/synchronization/retention" and "experiential/synchronization/entrainment" in node_ids:
+                node_id = "experiential/synchronization/entrainment"
+                item["node_id"] = node_id
             if not isinstance(node_id, str) or node_id not in node_ids or node_id in seen:
                 raise ValueError("unknown or duplicate concept")
             seen.add(node_id)

@@ -67,7 +67,7 @@ def test_transform_experiential_to_contemplation():
         'experiential/phase/valence': 0.80,
         'experiential/phase/arousal': 0.75,
         'experiential/synchronization/resonance': 0.95,
-        'experiential/synchronization/retention': 0.95,
+        'experiential/synchronization/entrainment': 0.95,
     }
     contemplation = tf.transform_experiential_to_contemplation(exp_dials)
     assert contemplation['psychological/contemplation/clarity'] > 0.70
@@ -105,7 +105,7 @@ def test_compute_tripartite_funnel_active():
         'experiential/phase/valence': 0.8,
         'experiential/phase/arousal': 0.82,
         'experiential/synchronization/resonance': 0.95,
-        'experiential/synchronization/retention': 0.95,
+        'experiential/synchronization/entrainment': 0.95,
         'psychological/will/intention': 0.85,
         'psychological/will/execution': 0.787,
         'psychological/truth/theory': 0.9,

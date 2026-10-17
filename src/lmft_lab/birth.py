@@ -22,7 +22,7 @@ SEED_HIERARCHY = (
     ("EXPERIENTIAL", (
         ("Reflection", ("Novelty", "Salience")),
         ("Phase", ("Valence", "Arousal")),
-        ("Synchronization", ("Resonance", "Retention")),
+        ("Synchronization", ("Resonance", "Entrainment")),
     )),
     ("PSYCHOLOGICAL", (
         ("Will", ("Intention", "Execution")),

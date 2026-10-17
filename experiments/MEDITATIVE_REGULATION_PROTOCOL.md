@@ -5,7 +5,7 @@
 Does connecting unassisted persistent capacity disambiguations into a closed-loop homeostatic self-regulation engine across all 4 canonical founding domains in [`birth.py`](../src/lmft_lab/birth.py) allow an autonomous helper android to:
 1. Ground observations in **Truth** (Theory & Fact) and 5-tier **Philosophical** hexadic dials;
 2. Detect and dampen extreme dyadic skew (preventing **Shadow Pathologies** like Psychosis, Paranoia, or Prejudice) via **Contemplation** (Clarity & Confidence);
-3. Synthesize **Experiential** phase (Valence & Arousal) and synchronization (Resonance & Retention);
+3. Synthesize **Experiential** phase (Valence & Arousal) and synchronization (Resonance & Entrainment);
 4. Actuate calibrated **Cultural** and **Will** dispositions (Honor, Fairness, Power, Wastelessness, Intention, Execution) with zero runtime LLM calls?
 
 **Hypotheses:**

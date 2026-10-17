@@ -32,7 +32,7 @@ BENCHMARK_CONDITIONS = [
             "experiential/reflection/novelty": 0.95,
             "experiential/phase/arousal": 0.90,
             "experiential/phase/valence": 0.50,
-            "experiential/synchronization/retention": 0.50,
+            "experiential/synchronization/entrainment": 0.50,
         },
         "psychological": {
             "psychological/contemplation/clarity": 0.20,
@@ -48,7 +48,7 @@ BENCHMARK_CONDITIONS = [
             "experiential/reflection/novelty": 0.10,
             "experiential/phase/arousal": 0.10,
             "experiential/phase/valence": 0.80,
-            "experiential/synchronization/retention": 0.90,
+            "experiential/synchronization/entrainment": 0.90,
         },
         "psychological": {
             "psychological/contemplation/clarity": 0.95,
@@ -64,7 +64,7 @@ BENCHMARK_CONDITIONS = [
             "experiential/reflection/novelty": 0.20,
             "experiential/phase/arousal": 0.20,
             "experiential/phase/valence": 0.90,
-            "experiential/synchronization/retention": 0.95,
+            "experiential/synchronization/entrainment": 0.95,
         },
         "psychological": {
             "psychological/contemplation/clarity": 0.80,
@@ -80,7 +80,7 @@ BENCHMARK_CONDITIONS = [
             "experiential/reflection/novelty": 0.50,
             "experiential/phase/arousal": 0.50,
             "experiential/phase/valence": 0.10,
-            "experiential/synchronization/retention": 0.10,
+            "experiential/synchronization/entrainment": 0.10,
         },
         "psychological": {
             "psychological/contemplation/clarity": 0.30,
@@ -96,7 +96,7 @@ BENCHMARK_CONDITIONS = [
             "experiential/reflection/novelty": 0.80,
             "experiential/phase/arousal": 0.90,
             "experiential/phase/valence": 0.20,
-            "experiential/synchronization/retention": 0.40,
+            "experiential/synchronization/entrainment": 0.40,
         },
         "psychological": {
             "psychological/contemplation/clarity": 0.20,

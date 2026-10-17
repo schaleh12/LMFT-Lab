@@ -106,7 +106,7 @@ def transform_experiential_to_contemplation(experiential_dials):
     val = experiential_dials.get('experiential/phase/valence', 0.5)
     aro = experiential_dials.get('experiential/phase/arousal', 0.5)
     res = experiential_dials.get('experiential/synchronization/resonance', 0.5)
-    ret = experiential_dials.get('experiential/synchronization/retention', 0.5)
+    ret = experiential_dials.get('experiential/synchronization/entrainment', 0.5)
 
     # Clarity: how sharply defined the digested sensory signal is (damping erratic arousal)
     stability = 1.0 - abs(aro - 0.5)

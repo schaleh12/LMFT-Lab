@@ -77,11 +77,11 @@ def test_retention_slows_habituation_decay():
     engine = AffectivePlasticityEngine()
     exp_high_ret = {
         "experiential/phase/valence": 0.90,
-        "experiential/synchronization/retention": 0.95,
+        "experiential/synchronization/entrainment": 0.95,
     }
     exp_low_ret = {
         "experiential/phase/valence": 0.10,
-        "experiential/synchronization/retention": 0.10,
+        "experiential/synchronization/entrainment": 0.10,
     }
 
     rates_high = engine.compute_dynamic_rates(exp_high_ret, {})
@@ -105,7 +105,7 @@ def test_rule_weight_bounds_and_clamping():
     assert res_snap["new_weight"] == 1.0
 
     # Decay near 0.10
-    res_low = engine.update_rule_weight(0.11, "decay", {"experiential/synchronization/retention": 0.0}, {})
+    res_low = engine.update_rule_weight(0.11, "decay", {"experiential/synchronization/entrainment": 0.0}, {})
     assert res_low["new_weight"] >= 0.10
 
 
@@ -118,7 +118,7 @@ def test_ordinary_memory_comparator_parity():
         ({}, {}),
         ({"experiential/reflection/novelty": 0.85}, {"psychological/contemplation/clarity": 0.15}),
         ({"experiential/phase/arousal": 0.90}, {"psychological/contemplation/confidence": 0.90}),
-        ({"experiential/synchronization/retention": 0.95}, {}),
+        ({"experiential/synchronization/entrainment": 0.95}, {}),
     ]
 
     for exp, psy in configs:

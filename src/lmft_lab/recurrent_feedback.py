@@ -22,7 +22,7 @@ EXPERIENTIAL_LEAF_IDS = [
     "experiential/phase/valence",
     "experiential/phase/arousal",
     "experiential/synchronization/resonance",
-    "experiential/synchronization/retention",
+    "experiential/synchronization/entrainment",
 ]
 
 for leaf_id in EXPERIENTIAL_LEAF_IDS:
@@ -42,8 +42,9 @@ class RecurrentFeedbackEngine:
         exp = {k: 0.50 for k in EXPERIENTIAL_LEAF_IDS}
         if experiential_dials:
             for k, v in experiential_dials.items():
-                if k in exp:
-                    exp[k] = max(0.0, min(1.0, float(v)))
+                norm_k = "experiential/synchronization/entrainment" if k == "experiential/synchronization/retention" else k
+                if norm_k in exp:
+                    exp[norm_k] = max(0.0, min(1.0, float(v)))
 
         posture = action_posture or "Equilibrated Synthesis"
         psy = psychological_state or {}
@@ -75,21 +76,21 @@ class RecurrentFeedbackEngine:
 
         elif intention > 0.65 and execution > 0.60:
             # Decisive Sovereign Enactment:
-            # Resolves tension (damps arousal), elevates valence (satisfaction), reinforces retention & resonance
+            # Resolves tension (damps arousal), elevates valence (satisfaction), reinforces entrainment & resonance
             delta["experiential/phase/arousal"] = -0.15
             delta["experiential/phase/valence"] = +0.12
             delta["experiential/synchronization/resonance"] = +0.15
-            delta["experiential/synchronization/retention"] = +0.10
+            delta["experiential/synchronization/entrainment"] = +0.10
             delta["experiential/reflection/salience"] = -0.05
             echo_type = "Harmonic Enactment Echo (Decisive Volitional Satisfaction)"
 
         else:
             # Methodical / Pragmatic Equilibrated Synthesis:
-            # Mild arousal dampening, steady retention, balanced valence
+            # Mild arousal dampening, steady entrainment, balanced valence
             delta["experiential/phase/arousal"] = -0.05
             delta["experiential/phase/valence"] = +0.05
             delta["experiential/synchronization/resonance"] = +0.08
-            delta["experiential/synchronization/retention"] = +0.05
+            delta["experiential/synchronization/entrainment"] = +0.05
             echo_type = "Equilibrated Synthesis Echo (Methodical Baseline Steadying)"
 
         # Apply deltas with strict [0.0, 1.0] bound enforcement
@@ -121,8 +122,9 @@ class OrdinaryMemoryRecurrentComparator:
         exp = {k: 0.50 for k in EXPERIENTIAL_LEAF_IDS}
         if experiential_dials:
             for k, v in experiential_dials.items():
-                if k in exp:
-                    exp[k] = max(0.0, min(1.0, float(v)))
+                norm_k = "experiential/synchronization/entrainment" if k == "experiential/synchronization/retention" else k
+                if norm_k in exp:
+                    exp[norm_k] = max(0.0, min(1.0, float(v)))
 
         posture = action_posture or "Equilibrated Synthesis"
         psy = psychological_state or {}
@@ -148,14 +150,14 @@ class OrdinaryMemoryRecurrentComparator:
             delta["experiential/phase/arousal"] = -0.15
             delta["experiential/phase/valence"] = +0.12
             delta["experiential/synchronization/resonance"] = +0.15
-            delta["experiential/synchronization/retention"] = +0.10
+            delta["experiential/synchronization/entrainment"] = +0.10
             delta["experiential/reflection/salience"] = -0.05
             echo_type = "Harmonic Enactment Echo (Decisive Volitional Satisfaction)"
         else:
             delta["experiential/phase/arousal"] = -0.05
             delta["experiential/phase/valence"] = +0.05
             delta["experiential/synchronization/resonance"] = +0.08
-            delta["experiential/synchronization/retention"] = +0.05
+            delta["experiential/synchronization/entrainment"] = +0.05
             echo_type = "Equilibrated Synthesis Echo (Methodical Baseline Steadying)"
 
         echoed_exp = {}

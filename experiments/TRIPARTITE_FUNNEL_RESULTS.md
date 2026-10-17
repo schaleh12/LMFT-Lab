@@ -38,7 +38,7 @@ The engine mathematically formalizes the three cognitive transformations:
    - Grade: 100% **Empirically Grounded Truth**.
 
 3. **Experiential $\rightarrow$ Contemplation (`psychological/contemplation/clarity`, `psychological/contemplation/confidence`)**:
-   - The sensory floodgate (*Novelty*, *Salience*, *Valence*, *Arousal*, *Resonance*, *Retention*) is digested into crystal-clear signal-to-noise ratio (*Clarity*) and persistent certainty (*Confidence*).
+   - The sensory floodgate (*Novelty*, *Salience*, *Valence*, *Arousal*, *Resonance*, *Entrainment*) is digested into crystal-clear signal-to-noise ratio (*Clarity*) and persistent certainty (*Confidence*).
    - State: 100% **Luminous Clarity** ($\text{Clarity} > 0.70$, $\text{Confidence} > 0.80$).
 
 ---

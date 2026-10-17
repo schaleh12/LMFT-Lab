@@ -1,7 +1,7 @@
 """Affective Plasticity Regulation Engine.
 
 Dynamically modulates capacity learning rate (reinforcement plasticity alpha) and habituation
-decay (lambda) as a function of the live Experiential (Novelty, Arousal, Valence, Retention)
+decay (lambda) as a function of the live Experiential (Novelty, Arousal, Valence, Entrainment)
 and Psychological (Contemplation Clarity, Confidence) leaf states without mutating or
 expanding the frozen 40-node founding seed (Rule D001).
 
@@ -24,7 +24,7 @@ EXPERIENTIAL_AFFECTIVE_LEAVES = [
     "experiential/phase/valence",
     "experiential/phase/arousal",
     "experiential/synchronization/resonance",
-    "experiential/synchronization/retention",
+    "experiential/synchronization/entrainment",
 ]
 
 PSYCHOLOGICAL_EPISTEMIC_LEAVES = [
@@ -64,12 +64,13 @@ class AffectivePlasticityEngine:
             "experiential/reflection/novelty": 0.50,
             "experiential/phase/arousal": 0.50,
             "experiential/phase/valence": 0.50,
-            "experiential/synchronization/retention": 0.50,
+            "experiential/synchronization/entrainment": 0.50,
         }
         if experiential_dials:
             for k, v in experiential_dials.items():
-                if k in exp:
-                    exp[k] = max(0.0, min(1.0, float(v)))
+                norm_k = "experiential/synchronization/entrainment" if k == "experiential/synchronization/retention" else k
+                if norm_k in exp:
+                    exp[norm_k] = max(0.0, min(1.0, float(v)))
 
         psy = {
             "psychological/contemplation/clarity": 0.50,
@@ -83,7 +84,7 @@ class AffectivePlasticityEngine:
         novelty = exp["experiential/reflection/novelty"]
         arousal = exp["experiential/phase/arousal"]
         valence = exp["experiential/phase/valence"]
-        retention = exp["experiential/synchronization/retention"]
+        entrainment = exp["experiential/synchronization/entrainment"]
 
         clarity = psy["psychological/contemplation/clarity"]
         confidence = psy["psychological/contemplation/confidence"]
@@ -100,8 +101,8 @@ class AffectivePlasticityEngine:
         dynamic_alpha = round(min(0.45, max(0.05, raw_alpha)), 4)
 
         # Dynamic Habituation Decay: lambda
-        # High retention and positive valence slow down forgetting
-        raw_lambda = self.base_lambda * (1.0 - 0.50 * retention + 0.30 * (1.0 - valence))
+        # High entrainment and positive valence slow down forgetting
+        raw_lambda = self.base_lambda * (1.0 - 0.50 * entrainment + 0.30 * (1.0 - valence))
         dynamic_lambda = round(min(0.15, max(0.01, raw_lambda)), 4)
 
         # Dynamic Contradiction Damping: delta
@@ -172,12 +173,13 @@ class OrdinaryMemoryAffectivePlasticityComparator:
             "experiential/reflection/novelty": 0.50,
             "experiential/phase/arousal": 0.50,
             "experiential/phase/valence": 0.50,
-            "experiential/synchronization/retention": 0.50,
+            "experiential/synchronization/entrainment": 0.50,
         }
         if experiential_dials:
             for k, v in experiential_dials.items():
-                if k in exp:
-                    exp[k] = max(0.0, min(1.0, float(v)))
+                norm_k = "experiential/synchronization/entrainment" if k == "experiential/synchronization/retention" else k
+                if norm_k in exp:
+                    exp[norm_k] = max(0.0, min(1.0, float(v)))
 
         psy = {
             "psychological/contemplation/clarity": 0.50,
@@ -191,7 +193,7 @@ class OrdinaryMemoryAffectivePlasticityComparator:
         novelty = exp["experiential/reflection/novelty"]
         arousal = exp["experiential/phase/arousal"]
         valence = exp["experiential/phase/valence"]
-        retention = exp["experiential/synchronization/retention"]
+        entrainment = exp["experiential/synchronization/entrainment"]
 
         clarity = psy["psychological/contemplation/clarity"]
         confidence = psy["psychological/contemplation/confidence"]
@@ -202,7 +204,7 @@ class OrdinaryMemoryAffectivePlasticityComparator:
         raw_alpha = self.base_alpha * (1.0 + surprise_factor - 0.70 * mastery_factor)
         dynamic_alpha = round(min(0.45, max(0.05, raw_alpha)), 4)
 
-        raw_lambda = self.base_lambda * (1.0 - 0.50 * retention + 0.30 * (1.0 - valence))
+        raw_lambda = self.base_lambda * (1.0 - 0.50 * entrainment + 0.30 * (1.0 - valence))
         dynamic_lambda = round(min(0.15, max(0.01, raw_lambda)), 4)
 
         raw_delta = self.base_delta * (1.0 + 0.30 * arousal - 0.20 * confidence)

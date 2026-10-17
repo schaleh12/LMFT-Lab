@@ -53,7 +53,7 @@ The homeostatic regulation loop dynamically mapped all 33 SemCor disambiguations
 The closed loop successfully connects all 4 founding branches of the frozen LMFT canonical seed:
 1. **Philosophical Branch**: Disambiguated evidence modulates the 6 ontological dials (`Agency` ↔ `Existence`, `Order` ↔ `Chaos`, `Continuity` ↔ `Discreteness`).
 2. **Psychological Branch**: Synthesizes `Clarity` from dial range, locks `Fact` to deterministic syntactic anchors, and models `Will` (Intention/Execution) from agency and order.
-3. **Experiential Branch**: Computes `Salience`, `Arousal`, `Valence`, `Resonance`, and verified `Retention` (grounded in compiled capacity rules).
+3. **Experiential Branch**: Computes `Salience`, `Arousal`, `Valence`, `Resonance`, and verified `Entrainment` (grounded in compiled capacity rules).
 4. **Cultural Branch**: Actuates `Power` (efficiency), `Wastelessness`, `Honor` (justice), `Fairness`, `Self-Sufficiency` (unassisted autonomy), and `Needlessness` (calibrated abstention).
 
 ---
